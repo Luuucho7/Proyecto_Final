@@ -1,0 +1,28 @@
+body{
+    background-color: #f2f2f2;
+}
+
+.flex_1 {
+    display:flex;
+    justify-content: left;
+    padding:20px;
+
+}
+
+.container_2 {
+    display:flex;
+    justify-content: center;
+    padding:20px;
+
+}
+
+.div_3 {
+    display:flex;
+    justify-content: right;
+    padding:20px;
+    margin-top:-50px;
+
+}
+
+
+
