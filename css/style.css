@@ -187,7 +187,107 @@ header{
     max-width:300px;
 
     height:180px;
+}
+
+           
+    }
+
+/*de aca para abajo esta todo lo del login / register */
+ #register-block {
+   max-width: 300px;
+   margin: 20px auto;
+   padding: 20px;
+   background-color: white;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+   border-radius: 15px;
+   display: flex;
+    flex-direction: column;
+
+}                                                                        
+
+
+.submit {
+   background-color: #4285f4;
+   color: white;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 15px;
+   cursor: pointer;
+   font-size: 17px;
+   margin-bottom: auto;
+   display: flex;
+   flex-direction: column;
+   width: 100px;
+   margin: 0 auto;
+   align-content: center;
+   margin-top: 10px;
+   text-decoration: none;
 
 }
 
+.submit:hover {
+   color: #3c4043;
 }
+
+
+.username_field, .password_field {
+   width: 100%;
+   padding: 10px;
+   margin: 10px 0;
+   border: 1px solid #3c4043;
+   border-radius: 15px;
+   
+}
+
+.txtup{
+   text-align: center;
+   padding: 10px;
+   background-color: #f1f3f4;
+   border-radius: 15px;
+   color: #3c4043;
+}
+
+.success {
+   color: green;
+   margin-top: 10px;
+   text-align: center;
+}
+
+.error {
+   color: red;
+   margin-top: 10px;
+}
+
+.text {
+   font-style: arial;
+   color: #4285F4;
+
+}
+
+.log {
+   font-size: 15px;
+   color: #4285F4;
+   cursor: pointer;
+   display: flex;
+   justify-content: center;
+} 
+
+.traducir-login-register {
+   background-color: #4285f4;
+   color: white;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 15px;
+   cursor: pointer;
+   font-size: 17px;
+   margin-bottom: auto;
+   display: flex;
+   flex-direction: column;
+   width: 100px;
+   margin: 0 auto;
+   align-content: center;
+   margin-top: 10px;
+   text-decoration: none;
+   align-items: center;
+   
+}            
