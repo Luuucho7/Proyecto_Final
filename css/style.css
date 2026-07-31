@@ -42,7 +42,7 @@ header{
 .menu i{
     font-size:28px;
     color:#555;
-    cursor:pointer;
+    cursor:pointer; /* Cambia el cursor al pasar encima */
 }
 
 .usuario i{
@@ -51,22 +51,22 @@ header{
 }
 
 .titulo{
-    display:flex;
+    display:flex;  /* Coloca logo y texto uno al lado del otro */
     align-items:center;
-    gap:10px;
+    gap:10px;   /* Espacio entre logo y texto */
 }
 
 .titulo img{
-    width:45px;
+    width:45px;   /* Tamaño del logo */
 }
 
 .titulo h2{
-    font-size:22px;
+    font-size:22px;  /* Tamaño del título */
     color:#444;
 }
 
 .titulo p{
-    color:gray;
+    color:gray;  /* Tamaño del subtítulo */
     font-size:12px;
 }
 
