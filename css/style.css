@@ -43,6 +43,17 @@ header{
     cursor:pointer;
 }
 
+.estilo_menu { 
+
+    position: relative;
+    left: -550px;
+}
+
+.logo {
+    width: 10px;
+    margin-left: 50px;
+}
+
 .usuario i{
     font-size:32px;
     color:#777;
@@ -51,11 +62,11 @@ header{
 .titulo{
     display:flex;
     align-items:center;
-    gap:10px;
+
 }
 
 .titulo img{
-    width:45px;
+    width:50px;
 }
 
 .titulo h2{
