@@ -64,19 +64,16 @@ header{
 .titulo{
     display:flex;  /* Coloca logo y texto uno al lado del otro */
     align-items:center;
-<<<<<<< HEAD
 
 }
 
 .titulo img{
     width:50px;
-=======
     gap:10px;   /* Espacio entre logo y texto */
 }
 
 .titulo img{
     width:45px;   /* Tamaño del logo */
->>>>>>> 2f14e604c337d843c72dd8fb56b9df24abf99a86
 }
 
 .titulo h2{
@@ -309,4 +306,4 @@ header{
    text-decoration: none;
    align-items: center;
    
-}            
+}           
