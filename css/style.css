@@ -9,7 +9,8 @@ body{
     background:#b9c6ff;
 }
 
- ---------------- HEADER ----------------/
+ /* ---------------- HEADER ---------------- */
+
 header{
     position:fixed;
     top:0;
@@ -25,6 +26,7 @@ header{
     z-index:1000;
 
 }
+
 header{
     background:white;
     height:75px;
@@ -66,15 +68,14 @@ header{
     font-size:12px;
 }
 
---------------- TARJETAS ---------------/
+/* --------------- TARJETAS --------------- */
 
 .contenedor{
 
     display:flex;
     justify-content:center;
     gap:25px;
-
-    margin-top:40px;
+    margin-top:150px;
     flex-wrap:wrap;
 
 }
@@ -141,7 +142,7 @@ header{
 
 .traslado{
 
-    background:url("img/traslado.jpg");
+    background:url(img/traslado.jpg);
 
     background-size:cover;
     background-position:center;
