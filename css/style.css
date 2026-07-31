@@ -42,7 +42,18 @@ header{
 .menu i{
     font-size:28px;
     color:#555;
-    cursor:pointer;
+    cursor:pointer; /* Cambia el cursor al pasar encima */
+}
+
+.estilo_menu { 
+
+    position: relative;
+    left: -550px;
+}
+
+.logo {
+    width: 10px;
+    margin-left: 50px;
 }
 
 .usuario i{
@@ -51,22 +62,30 @@ header{
 }
 
 .titulo{
-    display:flex;
+    display:flex;  /* Coloca logo y texto uno al lado del otro */
     align-items:center;
-    gap:10px;
+<<<<<<< HEAD
+
 }
 
 .titulo img{
-    width:45px;
+    width:50px;
+=======
+    gap:10px;   /* Espacio entre logo y texto */
+}
+
+.titulo img{
+    width:45px;   /* Tamaño del logo */
+>>>>>>> 2f14e604c337d843c72dd8fb56b9df24abf99a86
 }
 
 .titulo h2{
-    font-size:22px;
+    font-size:22px;  /* Tamaño del título */
     color:#444;
 }
 
 .titulo p{
-    color:gray;
+    color:gray;  /* Tamaño del subtítulo */
     font-size:12px;
 }
 
