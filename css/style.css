@@ -74,9 +74,9 @@ header{
 
 .contenedor{
 
-    display:flex;
-    justify-content:center;
-    gap:25px;
+    display:flex;    /* Coloca las tarjetas en fila */
+    justify-content:center;  /* Las centra horizontalmente */
+    gap:25px;   /* Espacio entre tarjetas */
     margin-top:150px;
     flex-wrap:wrap;
 
@@ -85,45 +85,38 @@ header{
 .card{
 
     position:relative;
-
     width:170px;
     height:250px;
-
     border-radius:25px;
-
-    overflow:hidden;
-
+    overflow:hidden; /* Oculta lo que sobresale */
     text-decoration:none;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     border:2px solid rgba(255,255,255,.6);
-
     transition:.3s;
 
 }
 
+/* ------------------ EFECTO AL PASAR EL MOUSE ------------------ */
+
 .card:hover{
 
-    transform:scale(1.05);
-
-    box-shadow:0 8px 20px rgba(0,0,0,.3);
+    transform:scale(1.05);  /* Agranda un poco la tarjeta */
+    box-shadow:0 8px 20px rgba(0,0,0,.3); /* Agrega una sombra */
+    
 
 }
+
+/* ------------------ TEXTO DE LAS TARJETAS ------------------ */
 
 .card h3{
 
     position:relative;
-
     color:white;
-
-    z-index:2;
-
+    z-index:2;   /* Hace que el texto quede por encima del fondo */
     font-size:22px;
-
-    text-shadow:2px 2px 8px black;
+    text-shadow:2px 2px 8px black;   /* Sombra para que se lea mejor */
 
 }
 
@@ -132,11 +125,9 @@ header{
 .fondo{
 
     position:absolute;
-
     width:100%;
     height:100%;
-
-    background:rgba(110,120,255,.45);
+    background:rgba(110,120,255,.45);  /* Color transparente sobre la imagen */
 
 }
 
@@ -145,7 +136,6 @@ header{
 .traslado{
 
     background:url(img/traslado.jpg);
-
     background-size:cover;
     background-position:center;
 
@@ -154,7 +144,6 @@ header{
 .atencion{
 
     background:url("img/atencion.jpg");
-
     background-size:cover;
     background-position:center;
 
@@ -163,7 +152,6 @@ header{
 .faq{
 
     background:url("img/faq.jpg");
-
     background-size:cover;
     background-position:center;
 
