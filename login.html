@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Hospital de Clinicas </title>
+    
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <header class="banner">
+
+        <h1> Hospital de Clinicas</h1>
+        <p>Atencion de calidad para toda la comunidad</p>
+    
+
+    </header>
+
+    <br><br><br>
+
+    <h2> Iniciar sesion</h2>
+
+    <form id="register-block" action="login.php" method="POST">
+        <label for="username" class="txtup">Usuario:</label>
+        <input type="text" id="feedback-user" class="username_field" name="username" required />
+
+        <br>
+
+        <label for="password" class="txtup"> Contraseña: </label>
+        <input type="password" id="feedback-pass" class="password_field" name="password" required />
+        
+
+
+        <div class="acciones-login">
+
+        <button type="submit" class="submit"> Enviar </button>
+
+        <a class="traducir-login-register" href="login_ingles.html" > Translate </a>
+
+        </div>
+       
+       
+        <div id="feedback" class="error"></div>
+
+         
+    </form>
+
+    
+
+    <a href="register.html" class="log">¿No tienes una cuenta? Regístrate aquí.</a>
+
+    <script src="java.js"> </script>
+
+</body>
+
+</html>
