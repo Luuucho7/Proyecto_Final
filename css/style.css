@@ -49,6 +49,19 @@ header{
 
     position: relative;
     left: -550px;
+    width: 5em;
+    height: 5em;
+
+}
+
+#hamburguesa {
+    position: relative;
+    left: 0em;
+    
+    width: 3em;
+    height: 3em;
+    margin-top: 1em;
+     
 }
 
 .logo {
@@ -62,18 +75,27 @@ header{
 }
 
 .titulo{
+
     display:flex;  /* Coloca logo y texto uno al lado del otro */
     align-items:center;
+<<<<<<< HEAD
+    
+=======
+>>>>>>> cd7be88ba3764f7daeaf296127de70042617b338
 
 }
 
 .titulo img{
+<<<<<<< HEAD
+    width:100px;
+=======
     width:50px;
     gap:10px;   /* Espacio entre logo y texto */
 }
 
 .titulo img{
     width:45px;   /* Tamaño del logo */
+>>>>>>> cd7be88ba3764f7daeaf296127de70042617b338
 }
 
 .titulo h2{
