@@ -1,0 +1,95 @@
+/* Elimina los márgenes y rellenos de todos los elementos */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box; /* Hace que el padding y el borde no aumenten el tamaño del elemento */
+    font-family:Arial, Helvetica, sans-serif; /* Fuente de toda la página */
+}
+
+/* Color de fondo de la página */
+body{
+    background:#edf1f7;
+}
+
+/* Menú lateral */
+.sidebar{
+    width:270px; /* Ancho del menú */
+    height:100vh; /* Ocupa toda la altura de la pantalla */
+    background:#101827; /* Color de fondo */
+    color:white; /* Color del texto */
+    display:flex; /* Activa Flexbox */
+    flex-direction:column; /* Organiza los elementos en columna */
+    position:fixed; /* Mantiene el menú fijo */
+    left:0; /* Lo pega al borde izquierdo */
+    top:75px; /* Lo ubica debajo del header */
+}
+
+/* Título del menú */
+.sidebar h4{
+    color:#9ca3af;
+    font-size:14px;
+    font-weight:normal;
+    margin:35px 25px;
+}
+
+/* Lista del menú */
+.sidebar ul{
+    list-style:none; /* Quita los puntos de la lista */
+    flex:1; /* Ocupa el espacio disponible */
+}
+
+/* Espacio entre cada opción */
+.sidebar ul li{
+    margin:5px 10px;
+}
+
+/* Estilo de los enlaces del menú */
+.sidebar ul li a{
+    display:flex; /* Coloca el icono y el texto en la misma línea */
+    align-items:center; /* Centra verticalmente */
+    gap:18px; /* Espacio entre icono y texto */
+    text-decoration:none; /* Quita el subrayado */
+    color:white;
+    padding:15px;
+    border-radius:10px; /* Bordes redondeados */
+    transition:.3s; /* Animación al pasar el mouse */
+}
+
+/* Color cuando se pasa el mouse */
+.sidebar ul li a:hover{
+    background:#1e40af;
+}
+
+/* Tamaño y alineación de los iconos */
+.sidebar ul li i{
+    width:20px;
+    text-align:center;
+    font-size:18px;
+}
+
+/* Opción seleccionada */
+.activo a{
+    background:#2563eb;
+}
+
+/* Contenedor del botón "Cerrar sesión" */
+.logout{
+    padding:20px 10px;
+    border-top:1px solid rgba(255,255,255,.1); /* Línea separadora */
+}
+
+/* Estilo del enlace de cerrar sesión */
+.logout a{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    text-decoration:none;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+}
+
+/* Color al pasar el mouse sobre cerrar sesión */
+.logout a:hover{
+    background:#1e40af;
+}

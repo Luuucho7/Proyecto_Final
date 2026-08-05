@@ -1,3 +1,107 @@
+/* Elimina los márgenes y espacios de todos los elementos */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box; /* Hace que el padding y el borde no aumenten el tamaño del elemento */
+    font-family:Arial, Helvetica, sans-serif; /* Fuente de toda la página */
+}
+
+/* Estilo del fondo de la página */
 body{
-    background:#b9c6ff;
+    background:#eef5f9; /* Color de fondo */
+    display:flex; /* Activa Flexbox */
+    justify-content:center; /* Centra horizontalmente */
+    align-items:center; /* Centra verticalmente */
+    min-height:100vh; /* Ocupa toda la altura de la pantalla */
+    padding:40px; /* Espacio alrededor del contenido */
+}
+
+/* Contenedor principal del formulario */
+.contenedor{
+    background:white; /* Fondo blanco */
+    width:700px; /* Ancho del formulario */
+    max-width:100%; /* Evita que se salga de la pantalla en celulares */
+    padding:35px; /* Espacio interno */
+    border-radius:12px; /* Bordes redondeados */
+    box-shadow:0 8px 20px rgba(0,0,0,.15); /* Sombra del contenedor */
+}
+
+/* Título principal */
+h1{
+    text-align:center; /* Centra el texto */
+    color:#005792; /* Color azul */
+    margin-bottom:10px; /* Separación inferior */
+}
+
+/* Párrafo descriptivo */
+.descripcion{
+    text-align:center; /* Centra el texto */
+    color:#555; /* Color gris */
+    margin-bottom:30px; /* Espacio debajo */
+}
+
+/* Cada grupo del formulario */
+.grupo{
+    margin-bottom:20px; /* Separación entre preguntas */
+}
+
+/* Etiquetas de los campos */
+label{
+    display:block; /* Cada etiqueta ocupa una línea */
+    margin-bottom:8px; /* Espacio debajo del texto */
+    font-weight:bold; /* Texto en negrita */
+    color:#333; /* Color gris oscuro */
+}
+
+/* Estilos para cajas de texto, números, listas y comentarios */
+input[type=text], /*selecciona los campos de texto*/
+input[type=number], /*selecciona los campos numericos*/
+select,
+textarea{ /*selecciona el cuadro grande para escribir comentarios o sugerencias*/
+  
+    width:100%; /* Ocupan todo el ancho disponible */
+    padding:12px; /* Espacio interno */
+    border:1px solid #ccc; /* Borde gris */
+    border-radius:8px; /* Bordes redondeados */
+    font-size:15px; /* Tamaño del texto */
+}
+
+/* Permite cambiar la altura del cuadro de comentarios */
+textarea{
+    resize:vertical;
+}
+
+/* Contenedor de los botones de opción (radio) */
+.radio{
+    display:flex; /* Coloca las opciones en fila */
+    flex-wrap:wrap; /* Si no entran, pasan a la siguiente línea */
+    gap:15px; /* Espacio entre las opciones */
+}
+
+/* Quita la negrita solo de las opciones de radio */
+.radio label{
+    font-weight:normal;
+}
+
+/* Hace que la barra de calificación ocupe todo el ancho */
+input[type=range]{
+    width:100%;
+}
+
+/* Botón para enviar la encuesta */
+button{
+    width:100%; /* Ocupa todo el ancho */
+    padding:15px; /* Espacio interno */
+    background:#0077b6; /* Color azul */
+    color:white; /* Texto blanco */
+    border:none; /* Sin borde */
+    border-radius:8px; /* Bordes redondeados */
+    font-size:17px; /* Tamaño del texto */
+    cursor:pointer; /* Cambia el cursor al pasar el mouse */
+    transition:.3s; /* Hace suave el cambio de color */
+}
+
+/* Cambia el color del botón cuando se pasa el mouse */
+button:hover{
+    background:#005f8f;
 }
