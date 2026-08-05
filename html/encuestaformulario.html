@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Satisfacción</title>
+    <link rel="stylesheet" href="../css/encuesta.css">
+</head>
+<body>
+    
+    <div class="contenedor">
+
+        <h1>Encuesta de Satisfacción</h1>
+
+        <p class="descripcion">
+            Su opinion es muy importante para ayudarnos a mejorar nuestros servicios.
+            Complete el siguiente formulario.
+            </p>
+
+            <form action="#" method="post"> <!-- Comienza el formulario -->
+
+                <div class="grupo">  <!-- Grupo para ingresar el nombre -->
+                
+                    <label for="nombre">Nombre (opcional)</label> <!-- Etiqueta del campo -->
+        
+
+            <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">  <!-- Campo donde el usuario escribe su nombre -->
+                </div>
+
+            <div class="grupo"> 
+                <label>Edad</label>
+                <input type="number" name="edad" min="0" max="120" required>
+            </div>
+
+             <div class="grupo"> 
+                <label>Servicio Recibido</label>
+                <select name="servicio" required>
+                    <option value="">Seleccione una opcion</option>
+                    <option>Consulta Medica</option>
+                    <option>Emergencia</option>
+                     <option>Laboratorio</option>
+                      <option>Imagenología</option>
+                       <option>Internación</option>
+                        <option>Nefrología</option>
+                         <option>Otro</option>
+                </select>
+            </div>
+
+            <div class="grupo">
+                <label>¿Cómo calificaría la atención recibida?</label>
+
+                <div class="radio">
+                    <label><input type="radio" name= "atencion" value="Excelente" required> Excelente </label>
+
+                      <label><input type="radio" name= "atencion" value="Muy Buena" required> Muy Buena </label>
+
+                      <label><input type="radio" name= "atencion" value="Buena" required> Buena </label>
+
+                      <label><input type="radio" name= "atencion" value="Regular" required> Regular </label>
+
+                      <label><input type="radio" name= "atencion" value="Mala" required> Mala </label>
+                </div>
+            </div>
+
+            <div class="grupo">
+                <label>¿El personal fue amable?</label>
+
+                <div class="radio"> 
+                    
+            <label> <input type="radio" name="amabilidad" value="Si" required> Si </label>
+
+            <label><input type="radio" name="amabilidad" value="No" required> No </label>
+                </div>
+            </div>
+
+            <div class="grupo"><label>¿Recibió toda la información necesaria? </label>
+            
+                <div class="grupo"> <label><input type="radio" name="informacion" value="Si" required> Si </label>
+
+                <input type="radio" name="informacion" value="No" required> No </label>
+            </div>
+                </div>
+
+                
+
+
+            </form>
+    </div>
+</body>
+</html>
