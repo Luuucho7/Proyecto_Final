@@ -105,3 +105,25 @@ button{
 button:hover{
     background:#005f8f;
 }
+
+/* Flecha para volver en encuesta */
+
+.flecha{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: block;
+}
+
+.flecha img{
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.flecha img:hover{
+    transform: scale(1.1);
+}
