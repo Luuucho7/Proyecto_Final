@@ -43,6 +43,24 @@ header {
     z-index: 1000;
 }
 
+.traslado-header {
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.traslado-logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.traslado-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .logo {
     width: 10px;
     margin-left: 50px;
