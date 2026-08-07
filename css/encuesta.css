@@ -110,15 +110,15 @@ button:hover{
 
 .flecha{
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 22px;
+    left: 22px;
     z-index: 1000;
     display: block;
 }
 
 .flecha img{
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     cursor: pointer;
     transition: 0.3s;

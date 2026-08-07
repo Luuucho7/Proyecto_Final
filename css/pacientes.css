@@ -23,24 +23,18 @@ body{
 
 /* Flecha para volver en pacientes */
 
+
 .flechaatras{
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    display: block;
+    top: 22px;
+    left: 22px;
+    z-index: 9999; /*hace que la flecha quede por encima del header, las imágenes y cualquier otro elemento que tenga un z-index menor*/
 }
 
 .flechaatras img{
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.flechaatras img:hover{
-    transform: scale(1.1);
 }
 
 
