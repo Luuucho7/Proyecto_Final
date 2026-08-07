@@ -10,9 +10,10 @@
 
 
 <header>
-    <div class="menu">
-        <i class="fa-solid fa-bars"></i>
-    </div>
+
+     <div class="menu">
+    <img src="../css/img/menu.jpg" alt="Menú" id="btnMenu">
+</div>
 
     <div class="titulo">
         <img src="../css/img/foca.jpg"
@@ -27,6 +28,7 @@
         <i class="fa-solid fa-circle-user"></i>
     </div>
 </header>
+
 <body>
     
     <section class="contenedor">
@@ -44,6 +46,31 @@
     </a>
 
 </section>
+
+        <div class="menulateral" id="menuLateral">
+
+    <h4>PANEL PRINCIPAL</h4>
+
+    <ul>
+        <li><a href="../html/pagina_principal.html">Inicio</a></li>
+        <li><a href="#">Pacientes</a></li>
+        <li><a href="#">Documentación QR</a></li>
+        <li><a href="../html/encuestaformulario.html">Encuestas</a></li>
+        <li><a href="../html/Traslado.html">Traslados en Ambulancia</a></li>
+    </ul>
+
+</div>
+
+
+<script>
+const boton = document.getElementById("btnMenu");
+const menu = document.getElementById("menuLateral");
+
+boton.addEventListener("click", function () {
+    menu.classList.toggle("activo");
+});
+</script>
+
 
 </body>
 </html>
