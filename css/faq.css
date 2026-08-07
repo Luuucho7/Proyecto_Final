@@ -103,8 +103,19 @@
 }
 
 .faq-page header.faq-header {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.9rem;
   margin-bottom: 1.25rem;
+}
+
+.faq-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border: none;
+  box-shadow: none;
 }
 
 .faq-page h1 {
