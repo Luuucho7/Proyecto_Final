@@ -146,6 +146,9 @@ header{
     background:url(img/traslado.jpg);
     background-size:cover;
     background-position:center;
+    height: 25rem;
+    width: 20rem;
+    opacity: 0.8;
 
 }
 
@@ -154,6 +157,9 @@ header{
     background:url("img/atencion.jpg");
     background-size:cover;
     background-position:center;
+    height: 25rem;
+    width: 20rem;
+    opacity: 0.8;
 
 }
 
@@ -162,7 +168,9 @@ header{
     background:url("img/faq.jpg");
     background-size:cover;
     background-position:center;
-
+    height: 25rem;
+    width: 20rem;
+    opacity: 0.8;
 }
 
 /* Responsive */
