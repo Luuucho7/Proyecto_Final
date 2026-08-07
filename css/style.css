@@ -54,7 +54,6 @@ header{
 
     display:flex;  /* Coloca logo y texto uno al lado del otro */
     align-items:center;
-    
 
 }
 
@@ -69,7 +68,6 @@ header{
 }
 
 .titulo h2{
-    font-size:22px;  /* Tamaño del título */
     color:#444;
 }
 
@@ -189,6 +187,15 @@ header{
     }
 
 /*de aca para abajo esta todo lo del login / register */
+
+.acciones-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
  #register-block {
    max-width: 300px;
    margin: 20px auto;
