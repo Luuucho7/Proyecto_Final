@@ -54,19 +54,11 @@ header{
 
     display:flex;  /* Coloca logo y texto uno al lado del otro */
     align-items:center;
-<<<<<<< HEAD
-=======
-    
->>>>>>> edcadf1d37973329d22f5df1dc4a2cf039a69e2c
 
 }
 
 .titulo img{
     width:100px;
-<<<<<<< HEAD
-==
-=======
->>>>>>> edcadf1d37973329d22f5df1dc4a2cf039a69e2c
     width:50px;
     gap:10px;   /* Espacio entre logo y texto */
 }
