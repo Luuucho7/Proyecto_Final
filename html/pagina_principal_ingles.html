@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital de Clinicas</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <img src="../css/img/menu.jpg" alt="Menu" id="btnMenu">
+        </div>
+
+        <div class="titulo">
+            <img src="../css/img/foca.jpg" alt="logo">
+            <div class="texto">
+                <h2>Hospital de Clinicas</h2>
+                <p>Quality care</p>
+            </div>
+        </div>
+
+        <div class="usuario">
+            <i class="fa-solid fa-circle-user"></i>
+        </div>
+    </header>
+
+    <section class="contenedor">
+        <a href="../html/Traslado.html" class="card traslado">
+            <h3>TRANSFERS</h3>
+        </a>
+
+        <a href="../html/Atencion_ingles.html" class="card atencion">
+            <h3>CARE</h3>
+        </a>
+
+        <a href="../html/FAQ_ingles.html" class="card faq">
+            <h3>FAQ</h3>
+        </a>
+    </section>
+
+    <div class="menulateral" id="menuLateral">
+        <h4>MAIN PANEL</h4>
+        <ul>
+            <li><a href="../html/pagina_principal_ingles.html">Home</a></li>
+            <li><a href="../html/pacientes.html">Patients</a></li>
+            <li><a href="../html/Atencion_ingles.html">Care</a></li>
+            <li><a href="#">QR Documentation</a></li>
+            <li><a href="../html/encuestaformulario.html">Surveys</a></li>
+            <li><a href="../html/Traslado.html">Ambulance Transfers</a></li>
+        </ul>
+    </div>
+
+    <a class="translate-btn" href="pagina_principal.html" aria-label="Switch to Spanish" role="button" style="position:fixed; left:1rem; bottom:1rem; width:52px; height:52px; border-radius:999px; background:linear-gradient(135deg, #0b5fff, #0a4ad6); color:#ffffff; font-weight:700; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; box-shadow:0 10px 24px rgba(11, 95, 255, 0.24); z-index:1100;">ES</a>
+
+    <script>
+        const boton = document.getElementById("btnMenu");
+        const menu = document.getElementById("menuLateral");
+
+        boton.addEventListener("click", function () {
+            menu.classList.toggle("activo");
+        });
+    </script>
+</body>
+</html>
