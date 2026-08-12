@@ -1,3 +1,14 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const boton = document.getElementById('btnMenu');
+    const menu = document.getElementById('menuLateral');
+
+    if (boton && menu) {
+        boton.addEventListener('click', function () {
+            menu.classList.toggle('activo');
+        });
+    }
+});
+
 function validarRegistro(event) {
     const pass = document.getElementById('password').value;
     const confirmPass = document.getElementById('confirm_password').value;
