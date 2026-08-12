@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'conexion.php';
+require_once '../Proyecto/php/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitización y obtención de datos
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Las contraseñas no coinciden.");
     }
 
-    // Validación de la contraseña: 8 a 16 caracteres, al menos un número y una mayúscula
+    // Validación de la contraseña (8-16 caracteres, 1 mayúscula, 1 número)
     if (!preg_match('/^(?=.*[A-Z])(?=.*\d).{8,16}$/', $password)) {
         die("La contraseña debe tener entre 8 y 16 caracteres, e incluir al menos una letra mayúscula y un número.");
     }
@@ -32,7 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $checkStmt->execute([':cedula' => $cedula, ':correo' => $correo]);
 
         if ($checkStmt->fetch()) {
-            die("La cédula o el correo electrónico ya se encuentran registrados.");
+            echo "<script>
+                    alert('La cédula o el correo electrónico ya se encuentran registrados.');
+                    window.history.back();
+                  </script>";
+            exit();
         }
 
         // Hash seguro de la contraseña
@@ -67,8 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuario_cedula'] = $cedula;
         $_SESSION['usuario_correo'] = $correo;
 
-        // Redireccionar al panel principal
-        header("Location: index.html");
+        // Alerta de éxito y redirección directa al index.html
+        echo "<script>
+                alert('¡Registro exitoso!');
+                window.location.href = '../Proyecto/index.html';
+              </script>";
         exit();
 
     } catch (Exception $e) {
@@ -78,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Error al procesar el registro: " . $e->getMessage());
     }
 } else {
-    header("Location: register.html");
+    header("Location: ../Proyecto/index.html");
     exit();
 }
 ?>

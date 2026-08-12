@@ -436,3 +436,8 @@ header {
     }
 }
 
+
+/* Espaciado para el registro */
+.campo-grupo {
+    margin-bottom: 12px;
+}
