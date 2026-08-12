@@ -42,24 +42,47 @@
     <div class="menulateral" id="menuLateral">
         <h4>MAIN PANEL</h4>
         <ul>
-            <li><a href="../html/pagina_principal_ingles.html">Home</a></li>
-            <li><a href="../html/pacientes.html">Patients</a></li>
-            <li><a href="../html/Atencion_ingles.html">Care</a></li>
-            <li><a href="#">QR Documentation</a></li>
-            <li><a href="../html/encuestaformulario.html">Surveys</a></li>
-            <li><a href="../html/Traslado.html">Ambulance Transfers</a></li>
+            <li>
+                <a href="../html/pagina_principal_ingles.html">
+                    <img src="../css/img/casa_logo.svg" alt="Home" style="width:20px; height:20px; object-fit:contain;">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="../html/pacientes.html">
+                    <img src="../css/img/persona_logo.svg" alt="Patients" style="width:20px; height:20px; object-fit:contain;">
+                    <span>Patients</span>
+                </a>
+            </li>
+            <li>
+                <a href="../html/Atencion_ingles.html">
+                    <img src="../css/img/hospital_logo.svg" alt="Care" style="width:20px; height:20px; object-fit:contain;">
+                    <span>Care</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../css/img/qr_logo.svg" alt="QR Documentation" style="width:20px; height:20px; object-fit:contain;">
+                    <span>QR Documentation</span>
+                </a>
+            </li>
+            <li>
+                <a href="../html/encuestaformulario.html">
+                    <img src="../css/img/estadisticas_logo.svg" alt="Surveys" style="width:20px; height:20px; object-fit:contain;">
+                    <span>Surveys</span>
+                </a>
+            </li>
+            <li>
+                <a href="../html/Traslado.html">
+                    <img src="../css/img/ambulancia_logo.svg" alt="Ambulance Transfers" style="width:20px; height:20px; object-fit:contain;">
+                    <span>Ambulance Transfers</span>
+                </a>
+            </li>
         </ul>
     </div>
 
     <a class="translate-btn" href="pagina_principal.html" aria-label="Switch to Spanish" role="button" style="position:fixed; left:1rem; bottom:1rem; width:52px; height:52px; border-radius:999px; background:linear-gradient(135deg, #0b5fff, #0a4ad6); color:#ffffff; font-weight:700; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; box-shadow:0 10px 24px rgba(11, 95, 255, 0.24); z-index:1100;">ES</a>
 
-    <script>
-        const boton = document.getElementById("btnMenu");
-        const menu = document.getElementById("menuLateral");
-
-        boton.addEventListener("click", function () {
-            menu.classList.toggle("activo");
-        });
-    </script>
+    <script src="../js/java.js"></script>
 </body>
 </html>
