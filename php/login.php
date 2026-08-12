@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../Proyecto/php/conexion.php';
+require_once 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['usuario_correo'] = $usuario['correo'];
 
             // Redirigir a la página principal de tu sistema
-            header("Location: ../Proyecto/html/pagina_principal.html");
+            header("Location: ../html/pagina_principal.html");
             exit();
         } else {
             echo "<script>
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Error en el inicio de sesión: " . $e->getMessage());
     }
 } else {
-    header("Location: ../Proyecto/index.html");
+    header("Location: ../index.html");
     exit();
 }
 ?>

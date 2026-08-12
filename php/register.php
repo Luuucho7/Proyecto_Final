@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once '../Proyecto/php/conexion.php';
+// Se incluye directamente porque está en la misma carpeta php/
+require_once 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitización y obtención de datos
@@ -71,10 +72,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuario_cedula'] = $cedula;
         $_SESSION['usuario_correo'] = $correo;
 
-        // Alerta de éxito y redirección directa al index.html
+        // Alerta de éxito y redirección directa a index.html (subiendo un nivel desde /php/)
         echo "<script>
                 alert('¡Registro exitoso!');
-                window.location.href = '../Proyecto/index.html';
+                window.location.href = '../index.html';
               </script>";
         exit();
 
@@ -85,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Error al procesar el registro: " . $e->getMessage());
     }
 } else {
-    header("Location: ../Proyecto/index.html");
+    header("Location: ../index.html");
     exit();
 }
 ?>
