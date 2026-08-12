@@ -1,60 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Hospital de Clinicas </title>
+    <title>Hospital de Clinicas - Registro</title>
     
     <link rel="stylesheet" href="../css/style.css">
-
 </head>
 
 <body>
 
     <header class="banner">
-
-        <h1> Hospital de Clinicas</h1>
-        <p>Atencion de calidad para toda la comunidad</p>
-    
-
+        <h1>Hospital de Clinicas</h1>
+        <p>Atención de calidad para toda la comunidad</p>
     </header>
 
     <br><br><br>
 
-    <h2> Iniciar sesion</h2>
+    <h2>Crear Cuenta</h2>
 
-    <form id="register-block" action="login.php" method="POST">
-        <label for="username" class="txtup">Usuario:</label>
-        <input type="text" id="feedback-user" class="username_field" name="username" required />
+    <form id="register-block" action="../php/register.php" method="POST" onsubmit="return validarRegistro(event)">
+        
+        <!-- Cédula -->
+        <label for="cedula" class="txtup">Cédula de Identidad:</label>
+        <input type="text" id="cedula" class="username_field" name="cedula" placeholder="Ej: 12345678" required />
 
         <br>
 
-        <label for="password" class="txtup"> Contraseña: </label>
-        <input type="password" id="feedback-pass" class="password_field" name="password" required />
-        
+        <!-- Correo -->
+        <label for="correo" class="txtup">Correo Electrónico:</label>
+        <input type="email" id="correo" class="username_field" name="correo" placeholder="ejemplo@correo.com" required />
 
+        <br>
+
+        <!-- Contraseña -->
+        <label for="password" class="txtup">Contraseña:</label>
+        <input type="password" id="password" class="password_field" name="password" minlength="8" maxlength="16" placeholder="8-16 chars, 1 mayús, 1 num" required />
+
+        <br>
+
+        <!-- Confirmar Contraseña -->
+        <label for="confirm_password" class="txtup">Confirmar Contraseña:</label>
+        <input type="password" id="confirm_password" class="password_field" name="confirm_password" required />
+
+        <br>
+
+        <!-- Dirección -->
+        <label for="direccion" class="txtup">Dirección:</label>
+        <input type="text" id="direccion" class="username_field" name="direccion" placeholder="Calle / Av. y Número" required />
+
+        <br>
+
+        <!-- Teléfono -->
+        <label for="telefono" class="txtup">Teléfono / Celular:</label>
+        <input type="tel" id="telefono" class="username_field" name="telefono" placeholder="099123456" required />
+
+        <br>
+
+        <!-- Fecha de Nacimiento -->
+        <label for="fecha_nacimiento" class="txtup">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" class="username_field" name="fecha_nacimiento" required />
 
         <div class="acciones-login">
-
-        <button type="submit" class="submit"> Enviar </button>
-
-        <a class="traducir-login-register" href="../html/register_ingles.html" > Translate </a>
-
+            <button type="submit" class="submit">Registrar</button>
+            <a class="traducir-login-register" href="../Proyecto_Final/html/register_ingles.html">Translate</a>
         </div>
-       
-       
-        <div id="feedback" class="error"></div>
 
-         
+        <!-- Div para mostrar mensajes de error si la contraseña no cumple requisitos -->
+        <div id="feedback" class="error" style="color: red; text-align: center; margin-top: 10px; font-weight: bold;"></div>
     </form>
 
-    
+    <a href="../index.html" class="log">¿Ya tienes una cuenta? Inicia sesión aquí.</a>
 
-    <a href="../index.html" class="log">¿Ya tenes una cuenta?  inicia sesión aquí.</a>
-
-    <script src="java.js"> </script>
-
+    <script src="../js/java.js"></script>
 </body>
 
 </html>
