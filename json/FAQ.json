@@ -1,0 +1,71 @@
+{
+    "es": {
+        "pagina_principal": "Página principal",
+        "atencion": "Atención",
+        "traslado": "Traslado",
+        "encuesta": "Encuesta",
+        "faq": "FAQ",
+        "preguntas_frecuentes": "Preguntas Frecuentes",
+
+        "pregunta_1": "¿Cuál es el horario de atención general?",
+        "respuesta_1": "Consultas externas: lunes a viernes de 8:00 a 17:00. Guardias y emergencias: 24 horas todos los días.",
+
+        "pregunta_2": "¿Cómo solicito un turno para una especialidad?",
+        "respuesta_2": "Puede solicitar un turno por teléfono al número de la central de turnos, a través del formulario de la web o personalmente en admisión. Lleve DNI y obra social o número de afiliado.",
+
+        "pregunta_3": "¿Qué debo hacer en caso de emergencia?",
+        "respuesta_3": "Si es una emergencia vital, diríjase directamente a la guardia más cercana o llame al número de emergencias local. En la guardia se prioriza por gravedad.",
+
+        "pregunta_4": "¿Aceptan obras sociales y prepagas?",
+        "respuesta_4": "El hospital trabaja con la mayoría de las obras sociales y planes privados. Consulte en admisión o en su obra social la cobertura de prestaciones y derivaciones.",
+
+        "pregunta_5": "¿Cómo puedo obtener resultados de estudios?",
+        "respuesta_5": "Los resultados se entregan en el área de informes; algunos estudios pueden consultarse en línea si se registró en el sistema de pacientes. Para entregas urgentes, consulte con su médico.",
+
+        "pregunta_6": "¿Qué documentos debo traer para internación programada?",
+        "respuesta_6": "DNI, carnet de obra social o información de prepaga, estudios previos solicitados por el equipo médico y lista de medicamentos actuales. Consulte la hoja informativa que le entrega el servicio.",
+
+        "pregunta_7": "¿Cómo solicito traslado entre hospitales?",
+        "respuesta_7": "Los traslados se coordinan desde la dirección médica o la admisión. En caso de alta médica con traslado programado, el servicio de social trabaja la logística y el transporte.",
+
+        "contacto_central": "Contacto central:",
+        "direccion": "Dirección:",
+        "horario_telefonico": "Horario de atención telefónica:",
+        "consulta_no_figura": "Si su consulta no figura aquí, comuníquese con atención al paciente o utilice el formulario de contacto de la web."
+    },
+
+    "en": {
+        "pagina_principal": "Home",
+        "atencion": "Care",
+        "traslado": "Transfer",
+        "encuesta": "Survey",
+        "faq": "FAQ",
+        "preguntas_frecuentes": "Frequently Asked Questions",
+
+        "pregunta_1": "What are the general opening hours?",
+        "respuesta_1": "Outpatient consultations: Monday to Friday from 8:00 AM to 5:00 PM. Emergency and urgent care: 24 hours every day.",
+
+        "pregunta_2": "How do I request an appointment for a specialty?",
+        "respuesta_2": "You can request an appointment by phone through the appointment center, using the website form, or in person at admissions. Bring your ID and health insurance card or membership number.",
+
+        "pregunta_3": "What should I do in case of an emergency?",
+        "respuesta_3": "If it is a life-threatening emergency, go directly to the nearest emergency department or call the local emergency number. Patients are prioritized according to the severity of their condition.",
+
+        "pregunta_4": "Do you accept health insurance and private plans?",
+        "respuesta_4": "The hospital works with most health insurance providers and private plans. Check with admissions or your insurance provider regarding coverage and referrals.",
+
+        "pregunta_5": "How can I obtain test results?",
+        "respuesta_5": "Results are provided in the reports department; some tests can be viewed online if you have registered in the patient system. For urgent results, consult your doctor.",
+
+        "pregunta_6": "What documents should I bring for a scheduled hospital admission?",
+        "respuesta_6": "ID, health insurance card or private insurance information, previous tests requested by the medical team, and a list of current medications. Check the information sheet provided by the department.",
+
+        "pregunta_7": "How do I request a transfer between hospitals?",
+        "respuesta_7": "Transfers are coordinated by the medical administration or admissions department. In the case of a scheduled transfer after discharge, the social services department coordinates the logistics and transportation.",
+
+        "contacto_central": "Central contact:",
+        "direccion": "Address:",
+        "horario_telefonico": "Telephone service hours:",
+        "consulta_no_figura": "If your question is not listed here, contact patient services or use the website contact form."
+    }
+}
