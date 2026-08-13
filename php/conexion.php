@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $dbname = "hospital_clinicas";
-$username = "root"; // Ajusta con tu usuario de MySQL
-$password = "";     // Ajusta con tu contraseña de MySQL
+$username = "root"; 
+$password = "";     
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [

@@ -3,44 +3,45 @@ session_start();
 require_once 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usernameInput = trim($_POST['username'] ?? ''); // Puede ser Cédula o Correo
-    $passwordInput = $_POST['password'] ?? '';
+    $username = trim($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
 
-    if (empty($usernameInput) || empty($passwordInput)) {
-        die("Por favor, completa todos los campos.");
+    if (empty($username) || empty($password)) {
+        echo "<script>
+                alert('Por favor, ingresa tu usuario y contraseña.');
+                window.history.back();
+              </script>";
+        exit();
     }
 
     try {
-        // Buscar usuario por Cédula o Correo
-        $stmt = $pdo->prepare("SELECT cedula, correo, password_hash FROM Persona WHERE cedula = :input OR correo = :input");
-        $stmt->execute([':input' => $usernameInput]);
+        // Buscar al usuario por cédula o por correo
+        $stmt = $pdo->prepare("SELECT * FROM Persona WHERE cedula = :username OR correo = :username");
+        $stmt->execute([':username' => $username]);
         $usuario = $stmt->fetch();
 
-        if ($usuario && password_verify($passwordInput, $usuario['password_hash'])) {
-            // Regenerar ID de sesión para prevenir Session Fixation
-            session_regenerate_id(true);
-
-            // Guardar datos en la sesión
+        // Verificar si existe el usuario y si la contraseña coincide con el hash
+        if ($usuario && password_verify($password, $usuario['password_hash'])) {
+            // Guardar datos clave en la sesión
             $_SESSION['usuario_cedula'] = $usuario['cedula'];
             $_SESSION['usuario_correo'] = $usuario['correo'];
 
-            // Redireccionar a la pantalla principal o dashboard
-            header("Location: index.html");
+            // Redirigir a la página principal de tu sistema
+            header("Location: ../html/pagina_principal.html");
             exit();
         } else {
-            // Datos incorrectos
             echo "<script>
-                    alert('Cédula/Correo o contraseña incorrectos.');
-                    window.location.href = 'index.html';
+                    alert('Cédula/correo o contraseña incorrectos.');
+                    window.history.back();
                   </script>";
             exit();
         }
 
     } catch (PDOException $e) {
-        die("Error al iniciar sesión: " . $e->getMessage());
+        die("Error en el inicio de sesión: " . $e->getMessage());
     }
 } else {
-    header("Location: index.html");
+    header("Location: ../index.html");
     exit();
 }
 ?>
