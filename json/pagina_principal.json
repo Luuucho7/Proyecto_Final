@@ -1,0 +1,26 @@
+{
+    "es": {
+        "titulo": "Hospital de Clinicas",
+        "descripcion": "Atencion de calidad para toda la comunidad",
+        "traslados": "TRASLADOS",
+        "atencion": "ATENCIÓN",
+        "panel_principal": "PANEL PRINCIPAL",
+        "inicio": "Inicio",
+        "pacientes": "Pacientes",
+        "documentacion_qr": "Documentación QR",
+        "encuestas": "Encuestas",
+        "traslados_ambulancia": "Traslados en Ambulancia"
+    },
+    "en": {
+        "titulo": "Hospital de Clinicas",
+        "descripcion": "Quality care for the entire community",
+        "traslados": "TRANSFERS",
+        "atencion": "CARE",
+        "panel_principal": "MAIN PANEL",
+        "inicio": "Home",
+        "pacientes": "Patients",
+        "documentacion_qr": "QR Documentation",
+        "encuestas": "Surveys",
+        "traslados_ambulancia": "Ambulance Transfers"
+    }
+}

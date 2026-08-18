@@ -1,0 +1,22 @@
+{
+    "es": {
+        "titulo": "Hospital de Clinicas",
+        "descripcion": "Atencion de calidad para toda la comunidad",
+        "iniciar_sesion": "Iniciar sesion",
+        "usuario": "Usuario:",
+        "contraseña": "Contraseña:",
+        "enviar": "Enviar",
+        "registrarse": "¿No tienes una cuenta? Regístrate aquí."
+    },
+
+    "en": {
+        "titulo": "Hospital de Clinicas",
+        "descripcion": "Quality care for the entire community",
+        "iniciar_sesion": "Log in",
+        "usuario": "Username:",
+        "contraseña": "Password:",
+        "enviar": "Submit",
+        "registrarse": "Don't have an account? Register here."
+    }
+}
+
