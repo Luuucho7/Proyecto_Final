@@ -1,4 +1,11 @@
 <?php
+
+$host = 'localhost';
+$dbname = 'hospital_clinicas'; 
+$username = 'root';                    
+$password = ''; 
+
+
 session_start();
 require_once 'conexion.php';
 

@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$dbname = "hospital_clinicas";
+$baseDatos = "hospital_clinicas";
 $username = "root"; 
 $password = "";     
 
@@ -13,3 +13,4 @@ try {
     die("Error de conexión a la base de datos: " . $e->getMessage());
 }
 ?>
+

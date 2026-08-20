@@ -7,22 +7,98 @@
     <link rel="stylesheet" href="../css/pacientes.css">
     
 </head>
-
-    <a href="../html/pagina_principal.html" class="flechaatras"> <img src="../css/img/atras.jpg" alt="Vuelve"> </a>
-
-</a>
-
-</header>
-
-<div class="banner">
-    <h2>Pacientes</h2>
-</div>
-    
-</header>
-
 <body>
 
+<header class="banner">
+    <a href="../html/pagina_principal.html" class="flechaatras">
+            <img src="../css/img/atras.jpg" alt="Volver">
+    </a>
+    <h2>Pacientes</h2>
+</header>
 
 
 
+<!-- Contenido Principal -->
+
+<main class="pacientes">
+
+<!-- Título y Botón de Acción -->
+        
+<div class="titulo-pacientes">
+            <div>
+                <h1>Gestión de Pacientes</h1>
+                <p class="subtitulo">Administra los registros e historial del hospital</p>
+            </div>
+            <a href="#formulario" class="boton-nuevo">+ Nuevo Paciente</a>
+        </div>
+
+        <!-- Buscador -->
+        <div class="buscador">
+            <input type="text" placeholder="Buscar por nombre o CI...">
+            <button type="button">🔍</button>
+        </div>
+
+        <!-- Tabla de Pacientes -->
+        <div class="tabla-contenedor">
+            <table class="tabla-pacientes">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cédula / Documento</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>María Rodríguez</td>
+                        <td>1.234.567-8</td>
+                        <td>099 123 456</td>
+                        <td><span class="estado activo">Activo</span></td>
+                    </tr>
+                    <tr>
+                        <td>Juan Pérez</td>
+                        <td>8.765.432-1</td>
+                        <td>098 654 321</td>
+                        <td><span class="estado inactivo">Inactivo</span></td>
+                    </tr>
+                    <!-- Ejemplo de fila vacía si no hay registros:
+                    <tr>
+                        <td colspan="4" class="sin-pacientes">No hay pacientes registrados</td>
+                    </tr> 
+                    -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Formulario para agregar paciente -->
+        <div class="formulario-paciente" id="formulario">
+            <h2>Registrar Nuevo Paciente</h2>
+            <form>
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
+
+                <label for="documento">Documento de Identidad</label>
+                <input type="text" id="documento" name="documento" placeholder="Ej. 4.567.890-1" required>
+
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 091 000 111">
+
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado">
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+
+                <button type="submit" class="boton-guardar">Guardar Paciente</button>
+            </form>
+        </div>
+
+    </main>
+
+<script src="../js/pacientes.js"></script>
 </body>
+
+ </body>
+
+ </html>

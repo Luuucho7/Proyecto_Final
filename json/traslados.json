@@ -1,0 +1,23 @@
+{
+    "es": {
+        "titulo": "Gestión de trazabilidad",
+        "descripcion": "Atencion de calidad para toda la comunidad",
+        "traslados": "Traslados",
+        "en_curso": "En curso",
+        "urgentes": "Urgentes",
+        "ambulancias": "Ambulancias",
+        "tabla_solicitudes": "Tabla de solicitudes",
+        "detalle_solicitud": "Detalle de la solicitud"
+    },
+
+    "en": {
+        "titulo": "Traceability Management",
+        "descripcion": "Quality care for the entire community",
+        "traslados": "Transfers",
+        "en_curso": "In Progress",
+        "urgentes": "Urgent",
+        "ambulancias": "Ambulances",
+        "tabla_solicitudes": "Request Table",
+        "detalle_solicitud": "Request Details"
+    }
+}
