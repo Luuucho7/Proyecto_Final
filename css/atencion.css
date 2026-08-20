@@ -24,18 +24,18 @@ a {
   color: inherit;
 }
 
-.faq-nav {
+.nav-atencion {
   position: fixed;
   top: 1rem;
   right: 1rem;
   z-index: 1100;
 }
 
-.nav-dropdown {
+.desplegable-nav {
   position: relative;
 }
 
-.nav-toggle {
+.alternar-nav {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -45,22 +45,23 @@ a {
   cursor: pointer;
 }
 
-.nav-toggle img {
+.alternar-nav img {
   width: 48px;
   height: 48px;
   object-fit: cover;
   display: block;
 }
 
-.nav-dropdown summary {
+
+.desplegable-nav summary {
   list-style: none;
 }
 
-.nav-dropdown summary::-webkit-details-marker {
+.desplegable-nav summary::-webkit-details-marker {
   display: none;
 }
 
-.nav-menu {
+.menu-nav {
   position: absolute;
   top: calc(100% + 0.45rem);
   right: 0;
@@ -75,7 +76,7 @@ a {
   border: 1px solid rgba(11, 95, 255, 0.08);
 }
 
-.nav-menu a {
+.menu-nav a {
   color: #0b2b4a;
   text-decoration: none;
   padding: 0.55rem 0.7rem;
@@ -83,8 +84,8 @@ a {
   transition: background 180ms ease, color 180ms ease;
 }
 
-.nav-menu a:hover,
-.nav-menu a:focus-visible {
+.menu-nav a:hover,
+.menu-nav a:focus-visible {
   background: #f2f7ff;
   color: #0b5fff;
 }
@@ -169,21 +170,19 @@ a {
   text-decoration: none;
 }
 
-.atencion-page {
+.pagina-atencion {
   max-width: 1040px;
   margin: 0 auto;
   padding: 2.25rem 1.6rem 3.25rem;
 }
-
-.intro {
+.introduccion {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 1.5rem;
   align-items: start;
   margin-bottom: 2.25rem;
 }
-
-.eyebrow {
+.subtitulo {
   display: inline-block;
   margin: 0 0 0.8rem;
   color: var(--primary);
@@ -193,19 +192,18 @@ a {
   font-size: 0.8rem;
 }
 
-.intro h2 {
+.introduccion h2 {
   margin: 0;
   font-size: 2.25rem;
   line-height: 1.15;
 }
 
-.intro p {
+.introduccion p {
   color: var(--muted);
   line-height: 1.75;
   max-width: 42rem;
 }
-
-.action-buttons {
+.botones-accion {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
@@ -242,85 +240,73 @@ a {
   opacity: 0.95;
 }
 
-.hero-card {
+.tarjeta-hero {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.5rem;
   box-shadow: 0 12px 32px rgba(21, 92, 192, 0.08);
 }
-
-.hero-card-title {
+.titulo-hero {
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 700;
   color: var(--primary);
 }
-
-.hero-card p {
+.tarjeta-hero p {
   margin: 0.5rem 0;
   color: var(--muted);
   line-height: 1.7;
 }
-
-.services-grid {
+.grid-servicios {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 2.25rem;
 }
-
-.service-card {
+.tarjeta-servicio {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.4rem;
   box-shadow: 0 10px 20px rgba(15, 50, 100, 0.05);
 }
-
-.service-card h3 {
+.tarjeta-servicio h3 {
   margin-top: 0;
   margin-bottom: 0.8rem;
   font-size: 1.05rem;
 }
-
-.service-card p {
+.tarjeta-servicio p {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
 }
-
-.details-section h2 {
+.seccion-detalles h2 {
   margin: 0 0 1rem;
   font-size: 1.65rem;
 }
-
-.details-grid {
+.grid-detalles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
-
-.detail-card {
+.tarjeta-detalle {
   background: var(--surface);
   border-radius: 16px;
   padding: 1.25rem;
   border: 1px solid var(--border);
 }
-
-.detail-card h4 {
+.tarjeta-detalle h4 {
   margin-top: 0;
   margin-bottom: 0.8rem;
   color: var(--primary);
 }
-
-.detail-card p {
+.tarjeta-detalle p {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
 }
-
-.info-banner {
+.banner-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -330,25 +316,21 @@ a {
   background: linear-gradient(135deg, #e8f0ff 0%, #ffffff 100%);
   border: 1px solid rgba(29, 91, 192, 0.16);
 }
-
-.info-banner h3 {
+.banner-info h3 {
   margin: 0 0 0.5rem;
 }
-
-.info-banner p {
+.banner-info p {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
 }
-
-.atencion-footer {
+.pie-atencion {
   padding: 1.6rem 1.5rem 2.2rem;
   text-align: center;
   color: var(--muted);
   font-size: 0.95rem;
 }
-
-.atencion-footer a {
+.pie-atencion a {
   color: var(--primary);
 }
 
