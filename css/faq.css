@@ -1,5 +1,5 @@
-/* FAQ styles */
-.faq-nav {
+/* Estilos para Preguntas Frecuentes */
+.nav-preguntas {
   position: fixed;
   top: 1rem;
   right: 1rem;
@@ -91,7 +91,7 @@
   outline: none;
 }
 
-.faq-page {
+.pagina-faq {
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #182026;
   padding: 4.5rem 1.5rem 3rem;
@@ -102,7 +102,7 @@
   box-shadow: 0 8px 30px rgba(17, 24, 39, 0.06);
 }
 
-.faq-page header.faq-header {
+.pagina-faq header.encabezado-faq {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -110,7 +110,7 @@
   margin-bottom: 1.25rem;
 }
 
-.faq-logo {
+.logo-faq {
   width: 56px;
   height: 56px;
   object-fit: cover;
@@ -118,13 +118,13 @@
   box-shadow: none;
 }
 
-.faq-page h1 {
+.pagina-faq h1 {
   font-size: 2.1rem;
   margin: 0;
   color: #0b2b4a;
 }
 
-.faq-list {
+.lista-faq {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -132,7 +132,7 @@
   gap: 0.9rem;
 }
 
-.faq-item {
+.item-faq {
   background: #ffffff;
   border-radius: 10px;
   padding: 0.65rem;
@@ -141,7 +141,7 @@
   border: 1px solid rgba(11, 95, 255, 0.04);
 }
 
-.faq-question {
+.pregunta-faq {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -149,13 +149,13 @@
   padding: 0.5rem;
 }
 
-.faq-question h3 {
+.pregunta-faq h3 {
   margin: 0;
   font-size: 1rem;
   color: #0b2b4a;
 }
 
-.faq-item details summary {
+.item-faq details summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -164,16 +164,16 @@
   list-style: none;
 }
 
-.faq-item details summary h3 {
+.item-faq details summary h3 {
   margin: 0;
   font-size: 1rem;
 }
 
-.faq-item details summary::-webkit-details-marker {
+.item-faq details summary::-webkit-details-marker {
   display: none;
 }
 
-.faq-item details summary::after {
+.item-faq details summary::after {
   content: '+';
   display: inline-flex;
   align-items: center;
@@ -188,24 +188,24 @@
   transition: transform 200ms ease;
 }
 
-.faq-item details[open] summary::after {
+.item-faq details[open] summary::after {
   content: '-';
 }
 
-.faq-answer {
+.respuesta-faq {
   color: #394b5a;
   font-size: 0.98rem;
   line-height: 1.5;
   padding-top: 0.7rem;
 }
 
-.faq-meta {
+.meta-faq {
   font-size: 0.9rem;
   color: #6b7785;
   margin-top: 0.5rem;
 }
 
-.contact {
+.contacto {
   margin-top: 1.35rem;
   padding: 1rem 1.2rem;
   background: linear-gradient(180deg, #f6f9ff, #ffffff);
@@ -213,27 +213,27 @@
   border: 1px solid rgba(11, 95, 255, 0.06);
 }
 
-.contact a {
+.contacto a {
   color: #0b5fff;
   text-decoration: none;
 }
 
-.faq-item:hover {
+.item-faq:hover {
   transform: translateY(-2px);
   transition: transform 180ms ease;
 }
 
-.faq-question:focus {
+.pregunta-faq:focus {
   outline: 3px solid rgba(11, 95, 255, 0.12);
 }
 
 @media (max-width: 580px) {
-  .faq-page {
+  .pagina-faq {
     padding: 1rem;
     margin: 1rem;
   }
 
-  .faq-question h3 {
+  .pregunta-faq h3 {
     font-size: 0.98rem;
   }
 }
