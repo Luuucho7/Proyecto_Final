@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Documentación - Hospital de Clínicas</title>
+
+    <link rel="stylesheet" href="../css/Documentacion.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+
+        <!-- LOGO -->
+        <div class="contenedorLogo">
+
+            <!-- Cambiá esta ruta por la imagen de tu logo -->
+            <img 
+                src="../css/img/foca.jpg" 
+                alt="Logo del Hospital"
+                class="logoHospital">
+
+        </div>
+
+
+        <!-- TITULO CENTRADO -->
+        <div class="tituloHospital">
+
+            <h1>Hospital de Clínicas</h1>
+
+            <p>Gestión de Documentación para Pacientes</p>
+
+        </div>
+
+
+        <!-- USUARIO -->
+        <div class="usuario">
+
+            <span>♙</span>
+
+            Funcionario Administrativo
+
+        </div>
+
+    </header>
+
+
+    <!-- MENU LATERAL -->
+    <aside class="menu">
+
+        <a href="#" class="opcion activa">
+            📄 Dashboard
+        </a>
+
+        <a href="#" class="opcion">
+            👥 Pacientes
+        </a>
+
+        <a href="#" class="opcion">
+            📁 Documentos
+        </a>
+
+        <a href="#" class="opcion">
+            ⬆ Subir Documento
+        </a>
+
+        <a href="#" class="opcion">
+            ▦ Generar Código QR
+        </a>
+
+        <a href="#" class="opcion">
+            ◷ Historial de Accesos
+        </a>
+
+        <a href="../html/pacientes.html" class="opcion">
+                <img src="../css/img/persona_logo.svg" alt="Pacientes" style="width:20px; height:20px; object-fit:contain;">
+                <span>Usuarios</span>
+            </a>
+
+    </aside>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <h2>Gestión de Documentación para Pacientes</h2>
+
+        <p class="descripcion">
+
+            Desde este módulo podrá cargar y gestionar documentación
+            de los pacientes.
+
+            Los pacientes podrán acceder a sus documentos escaneando
+            el código QR desde sus dispositivos móviles.
+
+        </p>
+
+
+        <!-- SUBIR DOCUMENTO -->
+        <section class="tarjeta">
+
+            <h3>Subir Documento</h3>
+
+            <div class="formulario">
+
+                <div class="campo">
+
+                    <label>Paciente</label>
+
+                    <input 
+                        type="text"
+                        id="paciente"
+                        placeholder="Buscar paciente por DNI o Nombre">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Tipo de Documento</label>
+
+                    <select id="tipoDocumento">
+
+                        <option value="">
+                            Seleccione tipo
+                        </option>
+
+                        <option>
+                            Historia Clínica
+                        </option>
+
+                        <option>
+                            Resultado de Laboratorio
+                        </option>
+
+                        <option>
+                            Informe Médico
+                        </option>
+
+                        <option>
+                            Estudios por Imágenes
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Descripción</label>
+
+                    <input 
+                        type="text"
+                        id="descripcionDocumento"
+                        placeholder="Ej: Estudios, Resultados">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Archivo</label>
+
+                    <input 
+                        type="file"
+                        id="archivo">
+
+                </div>
+
+            </div>
+
+
+            <button 
+                class="boton"
+                onclick="subirDocumento()">
+
+                ⬆ Subir Documento
+
+            </button>
+
+        </section>
+
+
+        <!-- DOCUMENTOS CARGADOS -->
+        <section class="tarjeta">
+
+            <h3>Documentos Cargados</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Paciente</th>
+
+                        <th>Tipo de Documento</th>
+
+                        <th>Descripción</th>
+
+                        <th>Fecha de carga</th>
+
+                        <th>Acciones</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>1</td>
+
+                        <td>Juan Pérez</td>
+
+                        <td>Resultado de Laboratorio</td>
+
+                        <td>Análisis de Sangre</td>
+
+                        <td>15/05/2026</td>
+
+                        <td>
+
+                            <button class="botonPequeno">
+                                👁 Ver
+                            </button>
+
+                            <button 
+                                class="botonPequeno"
+                                onclick="generarQR()">
+
+                                ▦ QR
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>2</td>
+
+                        <td>María Gómez</td>
+
+                        <td>Informe Médico</td>
+
+                        <td>Consulta Médica</td>
+
+                        <td>15/05/2026</td>
+
+                        <td>
+
+                            <button class="botonPequeno">
+                                👁 Ver
+                            </button>
+
+                            <button 
+                                class="botonPequeno"
+                                onclick="generarQR()">
+
+                                ▦ QR
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>3</td>
+
+                        <td>Luis Rodríguez</td>
+
+                        <td>Estudios por Imágenes</td>
+
+                        <td>Radiografía</td>
+
+                        <td>16/05/2026</td>
+
+                        <td>
+
+                            <button class="botonPequeno">
+                                👁 Ver
+                            </button>
+
+                            <button 
+                                class="botonPequeno"
+                                onclick="generarQR()">
+
+                                ▦ QR
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- GENERAR QR -->
+        <section class="tarjeta">
+
+            <h3>Generar Código QR</h3>
+
+            <p>
+                Ingrese el ID del documento para generar
+                el código QR que podrá escanear el paciente.
+            </p>
+
+
+            <div class="generadorQR">
+
+                <div>
+
+                    <label>ID del Documento</label>
+
+                    <input 
+                        type="number"
+                        id="idDocumento"
+                        placeholder="Ej: 1">
+
+                </div>
+
+
+                <button 
+                    class="boton"
+                    onclick="generarQR()">
+
+                    ▦ Generar QR
+
+                </button>
+
+            </div>
+
+
+            <div id="resultadoQR"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PAGINA -->
+    <footer class="pie">
+
+        © 2026 Hospital de Clínicas.
+        Todos los derechos reservados.
+
+    </footer>
+
+
+    <script src="../js/Documentacion.js"></script>
+
+</body>
+
+</html>
