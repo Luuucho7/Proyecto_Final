@@ -2,6 +2,7 @@ body {
     background: #eef5f9;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    color:#333
 }
 
 .banner {
@@ -18,16 +19,109 @@ body {
     z-index: 1000;
 }
 
+.banner h2{
+    margin:0;
+    font-size: 24px;
+    color:#1e293b;
+}
+
 .flechaatras {
-    position: fixed;
-    top: 22px;
+    position: absolute;
+    display: flex;
+    align-items: center;
     left: 22px;
-    z-index: 9999;
+   
 }
 
 .flechaatras img {
     width: 35px;
     height: 35px;
     cursor: pointer;
+}
+
+/*Titulo de pacientes */
+
+.pacientes {
+    max: widht 1100px;
+    margin:90px auto 40px auto;
+    padding: 0 20;
+}
+
+.titulo-pacientes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+}
+
+.titulo-pacientes h1 {
+    margin:0;
+    font-size: 24px;
+    color: #0f172a;
+}
+
+.subtitulo {
+    margin: 4px 0 0 0;
+    font-size: 16px;
+    color: #64748b;
+}
+
+.boton-nuevo{
+    background-color: #1d61e7;
+    color:#ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration:none;
+    font-weight: 600;
+     font-size: 14px;
+     transition: background-color 0.2s ease;
+    
+}
+
+.boton-nuevo:hover {
+    background-color: #154ec1;
+}
+
+
+/*buscador*/
+
+.buscador {
+    display: flex;
+    align-items: center;
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-bottom: 24px;
+    max-width:320px;
+    margin-bottom: 20px;
+}
+
+.buscador input{
+    border:none;
+    outline:none;
+    width:100%;
+    padding: 6px;;
+    font-size:14px;
+}
+
+.buscador button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.6;
+
+}
+
+/*TABLA DE PACIENTES*/
+
+.tabla-contenedor{
+    background: #ffffff;
+    border-radius:12px;
+    box-shadow: 0 4px 2'px rgba(0,0,0,0.1);
+    
+
 }
 

@@ -325,6 +325,21 @@ header {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
+.principal{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    
+}
+
+.tabla table {
+    border-spacing: 20px;
+}
+
+.detalle table {
+    border-spacing: 20px;
+    text-align:left;
+}
+
 /* ---------------- MENÚ LATERAL ---------------- */
 .menu {
     cursor: pointer;
