@@ -1,6 +1,6 @@
 {
     "es": {
-        "titulo": "Gestión de trazabilidad",
+        "titulo_traslado": "Gestión de trazabilidad",
         "descripcion": "Atencion de calidad para toda la comunidad",
         "traslados": "Traslados",
         "en_curso": "En curso",
@@ -11,7 +11,7 @@
     },
 
     "en": {
-        "titulo": "Traceability Management",
+        "titulo_traslado": "Traceability Management",
         "descripcion": "Quality care for the entire community",
         "traslados": "Transfers",
         "en_curso": "In Progress",

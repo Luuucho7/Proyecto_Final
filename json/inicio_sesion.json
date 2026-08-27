@@ -4,7 +4,7 @@
         "descripcion": "Atencion de calidad para toda la comunidad",
         "iniciar_sesion": "Iniciar sesion",
         "usuario": "Usuario:",
-        "contraseña": "Contraseña:",
+        "contrasena": "Contraseña:",
         "enviar": "Enviar",
         "registrarse": "¿No tienes una cuenta? Regístrate aquí."
     },
@@ -13,8 +13,8 @@
         "titulo": "Hospital de Clinicas",
         "descripcion": "Quality care for the entire community",
         "iniciar_sesion": "Log in",
-        "usuario": "Username:",
-        "contraseña": "Password:",
+        "usuario": "Username CI or Email:",
+        "contrasena": "Password:",
         "enviar": "Submit",
         "registrarse": "Don't have an account? Register here."
     }
