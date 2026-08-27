@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 // Se incluye directamente porque está en la misma carpeta php/
 require_once 'conexion.php';
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("La contraseña debe tener entre 8 y 16 caracteres, e incluir al menos una letra mayúscula y un número.");
     }
 
-    try {
+    try { 
         // Verificar si la cédula o el correo ya existen
         $checkStmt = $pdo->prepare("SELECT cedula FROM Persona WHERE cedula = :cedula OR correo = :correo");
         $checkStmt->execute([':cedula' => $cedula, ':correo' => $correo]);

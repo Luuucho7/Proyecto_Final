@@ -5,27 +5,26 @@
         "crear_cuenta": "Crear Cuenta",
         "cedula": "Cédula de Identidad:",
         "correo": "Correo Electrónico:",
-        "contraseña": "Contraseña:",
+        "contrasena": "Contraseña:",
         "confirmar_contraseña": "Confirmar Contraseña:",
         "direccion": "Dirección:",
         "telefono": "Teléfono / Celular:",
         "fecha_nacimiento": "Fecha de Nacimiento:",
         "registrar": "Registrar",
-        "iniciar_sesion": "¿Ya tienes una cuenta? Inicia sesión aquí."
+        "iniciar_sesion_msg": "¿Ya tienes una cuenta? Inicia sesión aquí."
     },
 
     "en": {
         "titulo": "Hospital de Clinicas",
         "descripcion": "Quality care for the entire community",
-        "crear_cuenta": "Create Account",
-        "cedula": "ID Number:",
+        "cedula": "ID:",
         "correo": "Email:",
-        "contraseña": "Password:",
-        "confirmar_contraseña": "Confirm Password:",
+        "contrasena": "Password:",
+        "confirmar_contrasena": "Confirm Password:",
         "direccion": "Address:",
         "telefono": "Phone / Mobile:",
         "fecha_nacimiento": "Date of Birth:",
         "registrar": "Register",
-        "iniciar_sesion": "Already have an account? Log in here."
+        "iniciar_sesion_msg": "Already have an account? Log in here."
     }
-}
+} 

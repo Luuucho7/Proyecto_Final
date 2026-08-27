@@ -3,10 +3,10 @@
         "titulo": "Hospital de Clinicas",
         "descripcion": "Atencion de calidad para toda la comunidad",
         "traslados": "TRASLADOS",
-        "atencion": "ATENCIÓN",
         "panel_principal": "PANEL PRINCIPAL",
         "inicio": "Inicio",
         "pacientes": "Pacientes",
+        "atencion": "ATENCIÓN",
         "documentacion_qr": "Documentación QR",
         "encuestas": "Encuestas",
         "traslados_ambulancia": "Traslados en Ambulancia"
@@ -15,10 +15,10 @@
         "titulo": "Hospital de Clinicas",
         "descripcion": "Quality care for the entire community",
         "traslados": "TRANSFERS",
-        "atencion": "CARE",
         "panel_principal": "MAIN PANEL",
         "inicio": "Home",
         "pacientes": "Patients",
+        "atencion": "CARE",
         "documentacion_qr": "QR Documentation",
         "encuestas": "Surveys",
         "traslados_ambulancia": "Ambulance Transfers"
