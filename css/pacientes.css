@@ -120,8 +120,41 @@ body {
 .tabla-contenedor{
     background: #ffffff;
     border-radius:12px;
-    box-shadow: 0 4px 2'px rgba(0,0,0,0.1);
-    
+    box-shadow: 0 4px 2'px rgba(0,0,0,0.3);
+    overflow:hidden;
+    margin-bottom: 30px;
+}
+
+.tabla-pacientes{
+    width: 100%;
+    border-collapse: collapse; /*hace que los bordes de las celdas de una tabla se unan en uno solo.*/
+    text-align:left;
 
 }
+
+.tabla-pacientes th{ /*selecciona los elementos <th> que estén dentro de ese elemento*/
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    padding: 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #e2e8f0;
+
+}
+
+.tabla-pacientes td{
+    padding: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+    color:#334155;
+}
+
+
+
+
+
+
+
+
+
 
