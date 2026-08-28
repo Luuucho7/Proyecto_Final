@@ -149,8 +149,107 @@ body {
     color:#334155;
 }
 
+.tabla-pacientes{
 
+}
 
+/*estado*/
+
+.estado{
+padding: 6px 14px;
+border-radius:20px;
+font-size: 14px;
+font-weight: 660;
+display:inline-block; /*sirve para poner elementos uno al lado del otro, pero pudiendo controlar su tamaño.*/
+}
+
+.estado-activo{
+    background-color: #dcfce7;
+    color: #15803d;
+
+}
+
+.estado-inactivo{
+    background-color: #fee2e2;
+    color: #b91c1c;
+
+}
+
+/*formulario*/
+
+.formulario-paciente{
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.formulario-paciente h2{
+    margin-top 0;
+    margin-bottom:20px;
+    font-size: 20px;
+    color: #0f172a;
+}
+
+.formulario-paciente form{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+.formulario-paciente label{
+    grid-column: span 2;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: -10px;
+}
+
+.formulario-paciente input,
+.formulario-paciente select{
+
+    grid-column: span 2;
+    width:100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    outline:none;
+    transition:border-color 0.2s ease;
+}
+
+.formulario-paciente input:focus,
+.formulario-paciente select:focus{
+    border-color: #1d61e7;
+}
+
+.boton-guardar{
+    grid-column:span 2;
+    background-color: #1d61e7;
+    color:#ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.boton-guardar:hover{
+    background-color: #154ec1;
+}
+
+/*responsive*/
+
+@media (min-width: 640px) {
+    .formulario-paciente label[for="nombre"],
+    .formulario-paciente input#nombre,
+    .formulario-paciente label[for="documento"],
+    .formulario-paciente input#documento {
+        grid-column: span 1;
+    }
+}
 
 
 
