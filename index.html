@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital de Clinicas</title>
-    <link rel="stylesheet" href="../Proyecto/css/style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-traduccion="titulo">Hospital de Clinicas</title>
+    <link rel="stylesheet" href="../Proyecto_Final/css/style.css">
 </head>
 
 <body>
 
     <header class="banner">
-        <h1>Hospital de Clinicas</h1>
-        <p>Atención de calidad para toda la comunidad</p>
+        <h1 data-traduccion="titulo">Hospital de Clinicas</h1>
+        <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
     </header>
 
     <br><br><br>
@@ -21,31 +21,30 @@
 
     <!-- La ruta envía los datos a la carpeta php/ -->
 
-    <form id="register-block" action="../Proyecto/php/login.php" method="POST">
-
     <form id="register-block" action="../Proyecto_Final/php/login.php" method="POST">
 
-<h2 style="text-align:center; ;">Iniciar sesión</h2>
+        
+<h2 style="text-align:center;" data-traduccion="iniciar_sesion">Iniciar sesión</h2>
 
+        <label for="username" class="txtup" data-traduccion="usuario">Usuario (Cédula o Correo):</label>
 
-        <label for="username" class="txtup">Usuario (Cédula o Correo):</label>
         <input type="text" id="feedback-user" class="username_field" name="username" required />
 
         <br>
 
-        <label for="password" class="txtup">Contraseña:</label>
+        <label for="password" class="txtup" data-traduccion="contrasena">Contraseña:</label>
         <input type="password" id="feedback-pass" class="password_field" name="password" required />
 
         <div class="acciones-login">
-            <button type="submit" class="submit">Enviar</button>
+            <button type="submit" class="submit" data-traduccion="enviar">Enviar</button>
         </div>
 
         <div id="feedback" class="error"></div>
     </form>
 
-    <a href="../Proyecto/html/register.html" class="log">¿No tienes una cuenta? Regístrate aquí.</a>
+    <a href="../Proyecto_Final/html/register.html" class="log" data-traduccion="registrarse">¿No tienes una cuenta? Regístrate aquí.</a>
 
-    <script src="../Proyecto/js/java.js"></script>
+    <script src="../Proyecto_Final/js/java.js"></script>
 
 </body>
 

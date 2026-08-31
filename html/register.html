@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital de Clinicas - Registro</title>
+    <title data-traduccion="titulo">Hospital de Clinicas - Registro</title>
     
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -12,35 +12,35 @@
 <body>
 
     <header class="banner">
-        <h1>Hospital de Clinicas</h1>
-        <p>Atención de calidad para toda la comunidad</p>
+        <h1 data-traduccion="titulo">Hospital de Clinicas</h1>
+        <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
     </header>
 
     <br><br><br>
 
     <form id="register-block" action="../php/register.php" method="POST" onsubmit="return validarRegistro(event)">
         
-        <!-- Cédula -->
+        
         <div class="campo-grupo">
-            <div class="txtup">Cédula de Identidad:</div>
+            <div class="txtup" data-traduccion="cedula">Cédula de Identidad:</div>
             <input type="text" id="cedula" class="username_field" name="cedula" placeholder="Ej: 12345678" required />
         </div>
 
         <!-- Correo -->
         <div class="campo-grupo">
-            <div class="txtup">Correo Electrónico:</div>
+            <div class="txtup" data-traduccion="correo">Correo Electrónico:</div>
             <input type="email" id="correo" class="username_field" name="correo" placeholder="ejemplo@correo.com" required />
         </div>
 
         <!-- Contraseña -->
         <div class="campo-grupo">
-            <div class="txtup">Contraseña:</div>
+            <div class="txtup" data-traduccion="contrasena">Contraseña:</div>
             <input type="password" id="password" class="password_field" name="password" minlength="8" maxlength="16" placeholder="8-16 chars, 1 mayús, 1 num" required />
         </div>
 
         <!-- Confirmar Contraseña -->
         <div class="campo-grupo">
-            <div class="txtup">Confirmar Contraseña:</div>
+            <div class="txtup" data-traduccion="confirmar_contrasena">Confirmar Contraseña:</div>
             <input type="password" id="confirm_password" class="password_field" name="confirm_password" required />
         </div>
 
@@ -52,25 +52,25 @@
 
         <!-- Teléfono -->
         <div class="campo-grupo">
-            <div class="txtup">Teléfono / Celular:</div>
+            <div class="txtup" data-traduccion="telefono">Teléfono / Celular:</div>
             <input type="tel" id="telefono" class="username_field" name="telefono" placeholder="099123456" required />
         </div>
 
         <!-- Fecha de Nacimiento -->
         <div class="campo-grupo">
-            <div class="txtup">Fecha de Nacimiento:</div>
+            <div class="txtup" data-traduccion="fecha_nacimiento">Fecha de Nacimiento:</div>
             <input type="date" id="fecha_nacimiento" class="username_field" name="fecha_nacimiento" required />
         </div>
 
         <div class="acciones-login">
-            <button type="submit" class="submit">Enviar</button>
+            <button type="submit" class="submit" data-traduccion="enviar">Enviar</button>
             <a class="traducir-login-register" href="../html/register_ingles.html">Translate</a>
         </div>
 
         <div id="feedback" class="error"></div>
     </form>
 
-    <a href="../index.html" class="log">¿Ya tienes una cuenta? Inicia Sesión aquí.</a>
+    <a href="../index.html" class="log" data-traduccion="iniciar_sesion_msg" >¿Ya tienes una  ? Inicia Sesión aquí.</a>
 
     <script src="../js/java.js"></script>
 </body>
