@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Referencias a elementos del DOM
-    const buscadorInput = document.querySelector('.buscador input');
+    const buscadorInput = document.querySelector('.buscador input');  
     const tablaBody = document.querySelector('.tabla-pacientes tbody');
     const formulario = document.querySelector('.formulario-paciente form');
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2. AGREGAR NUEVO PACIENTE DESDE EL FORMULARIO
-    formulario.addEventListener('submit', (e) => {
+    formulario.addEventListener('submit',(e) => {
         e.preventDefault(); // Evitar la recarga de página
 
         // Capturar valores
