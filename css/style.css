@@ -184,7 +184,7 @@ header {
 }
 
 .Documentos {
-    background: url("img/documentos.jpg");
+    background: url("img/Documentos.jpg");
     background-size: cover;
     background-position: center;
     opacity: 0.9;
@@ -232,6 +232,7 @@ header {
 }
 
 .username_field,
+.campo-usuario,
 .password_field {
     width: 100%;
     padding: 10px;
@@ -240,7 +241,8 @@ header {
     border-radius: 15px;
 }
 
-.txtup {
+.txtup,
+.texto-arriba {
     text-align: center;
     padding: 10px;
     background-color: #f1f3f4;

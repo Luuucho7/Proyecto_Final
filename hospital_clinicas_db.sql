@@ -11,9 +11,13 @@ CREATE TABLE Persona (
 );
 
 CREATE TABLE Paciente (
-    id_paciente INT PRIMARY KEY AUTO_INCREMENT,
-    cedula INT,
-    FOREIGN KEY (cedula) REFERENCES Persona(cedula)
+    
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    cedula VARCHAR(20) NOT NULL UNIQUE,
+    telefono VARCHAR(20),
+    estado ENUM('activo', 'inactivo') DEFAULT 'activo',
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE Funcionario (

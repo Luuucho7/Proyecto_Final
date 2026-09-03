@@ -125,6 +125,20 @@ a {
   border-bottom: 1px solid var(--border);
 }
 
+.encabezado-banner {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--primary-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.encabezado-banner h1 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.35rem;
+}
+
 .marca {
   display: flex;
   align-items: center;
@@ -335,16 +349,16 @@ a {
 }
 
 @media (max-width: 860px) {
-  .intro {
+  .introduccion {
     grid-template-columns: 1fr;
   }
 
-  .services-grid,
-  .details-grid {
+  .grid-servicios,
+  .grid-detalles {
     grid-template-columns: 1fr;
   }
 
-  .info-banner {
+  .banner-info {
     flex-direction: column;
     align-items: flex-start;
   }
