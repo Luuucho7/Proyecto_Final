@@ -463,3 +463,31 @@ header {
 .campo-grupo {
     margin-bottom: 12px;
 }
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 45px;
+}
+
+.ojo {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.ojo img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}

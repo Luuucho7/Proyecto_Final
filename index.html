@@ -10,7 +10,7 @@
 
 <body>
 
-    <header class="banner">
+    <header class="cabecera">
         <h1 data-traduccion="titulo">Hospital de Clinicas</h1>
         <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
     </header>
@@ -26,13 +26,23 @@
         
 <h2 style="text-align:center;" data-traduccion="iniciar_sesion">Iniciar sesión</h2>
 
-        <label for="username" class="txtup" data-traduccion="usuario">Usuario (Cédula o Correo):</label>
+        <label for="username" class="texto-arriba" data-traduccion="usuario">Usuario (Cédula o Correo):</label>
 
-        <input type="text" id="feedback-user" class="username_field" name="username" required />
+        <input type="text" id="feedback-user" class="campo-usuario" name="username" required />
 
         <br>
 
         <label for="password" class="txtup" data-traduccion="contrasena">Contraseña:</label>
+
+
+        <div class="password-container">
+    <input type="password" id="feedback-pass" class="password_field" name="password" required>
+
+  <button type="button" id="mostrarPass" class="ojo">
+    <img src="../Proyecto_Final/css/img/ojo_abierto_logo.svg" alt="Mostrar contraseña">
+  </button>
+       </div>
+        <label for="password" class="texto-arriba" data-traduccion="contrasena">Contraseña:</label>
         <input type="password" id="feedback-pass" class="password_field" name="password" required />
 
         <div class="acciones-login">

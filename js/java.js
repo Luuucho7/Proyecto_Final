@@ -34,3 +34,23 @@ function validarRegistro(event) {
 
     return true; // Permite enviar el formulario hacia register.php
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const password = document.getElementById('feedback-pass');
+    const botonOjo = document.getElementById('mostrarPass');
+    const imagenOjo = botonOjo.querySelector('img');
+
+    botonOjo.addEventListener('click', function () {
+
+        if (password.type === 'password') {
+            password.type = 'text';
+            imagenOjo.src = '../Proyecto_Final/css/img/ojo_cerrado_logo.svg';
+        } else {
+            password.type = 'password';
+            imagenOjo.src = '../Proyecto_Final/css/img/ojo_abierto_logo.svg';
+        }
+
+    });
+
+});
