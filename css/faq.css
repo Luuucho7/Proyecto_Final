@@ -6,11 +6,11 @@
   z-index: 1100;
 }
 
-.nav-dropdown {
+.desplegable-nav {
   position: relative;
 }
 
-.nav-toggle {
+.alternar-nav {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -21,22 +21,22 @@
   cursor: pointer;
 }
 
-.nav-toggle img {
+.alternar-nav img {
   width: 48px;
   height: 48px;
   object-fit: cover;
   display: block;
 }
 
-.nav-dropdown summary {
+.desplegable-nav summary {
   list-style: none;
 }
 
-.nav-dropdown summary::-webkit-details-marker {
+.desplegable-nav summary::-webkit-details-marker {
   display: none;
 }
 
-.nav-menu {
+.menu-nav {
   position: absolute;
   top: calc(100% + 0.45rem);
   right: 0;
@@ -51,7 +51,7 @@
   border: 1px solid rgba(11, 95, 255, 0.08);
 }
 
-.nav-menu a {
+.menu-nav a {
   color: #0b2b4a;
   text-decoration: none;
   padding: 0.55rem 0.7rem;
@@ -59,13 +59,13 @@
   transition: background 180ms ease, color 180ms ease;
 }
 
-.nav-menu a:hover,
-.nav-menu a:focus-visible {
+.menu-nav a:hover,
+.menu-nav a:focus-visible {
   background: #f2f7ff;
   color: #0b5fff;
 }
 
-.translate-btn {
+.boton-traducir {
   position: fixed;
   left: 1rem;
   bottom: 1rem;
@@ -85,8 +85,8 @@
   text-decoration: none;
 }
 
-.translate-btn:hover,
-.translate-btn:focus-visible {
+.boton-traducir:hover,
+.boton-traducir:focus-visible {
   transform: scale(1.05);
   outline: none;
 }
@@ -132,7 +132,7 @@
   gap: 0.9rem;
 }
 
-.item-faq {
+.elemento-faq {
   background: #ffffff;
   border-radius: 10px;
   padding: 0.65rem;
@@ -155,7 +155,7 @@
   color: #0b2b4a;
 }
 
-.item-faq details summary {
+.elemento-faq details summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -164,16 +164,16 @@
   list-style: none;
 }
 
-.item-faq details summary h3 {
+.elemento-faq details summary h3 {
   margin: 0;
   font-size: 1rem;
 }
 
-.item-faq details summary::-webkit-details-marker {
+.elemento-faq details summary::-webkit-details-marker {
   display: none;
 }
 
-.item-faq details summary::after {
+.elemento-faq details summary::after {
   content: '+';
   display: inline-flex;
   align-items: center;
@@ -188,7 +188,7 @@
   transition: transform 200ms ease;
 }
 
-.item-faq details[open] summary::after {
+.elemento-faq details[open] summary::after {
   content: '-';
 }
 
@@ -218,7 +218,7 @@
   text-decoration: none;
 }
 
-.item-faq:hover {
+.elemento-faq:hover {
   transform: translateY(-2px);
   transition: transform 180ms ease;
 }

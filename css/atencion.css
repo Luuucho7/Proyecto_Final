@@ -90,7 +90,7 @@ a {
   color: #0b5fff;
 }
 
-.translate-btn {
+.boton-traducir {
   position: fixed;
   left: 1rem;
   bottom: 1rem;
@@ -110,8 +110,8 @@ a {
   text-decoration: none;
 }
 
-.translate-btn:hover,
-.translate-btn:focus-visible {
+.boton-traducir:hover,
+.boton-traducir:focus-visible {
   transform: scale(1.05);
   outline: none;
 }
@@ -125,13 +125,27 @@ a {
   border-bottom: 1px solid var(--border);
 }
 
-.brand {
+.encabezado-banner {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--primary-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.encabezado-banner h1 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.35rem;
+}
+
+.marca {
   display: flex;
   align-items: center;
   gap: 0.95rem;
 }
 
-.brand-icon {
+.icono-marca {
   display: inline-flex;
   width: 60px;
   height: 60px;
@@ -141,18 +155,18 @@ a {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
-.brand-icon img {
+.icono-marca img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.brand h1 {
+.marca h1 {
   margin: 0;
   font-size: 1.35rem;
 }
 
-.brand p {
+.marca p {
   margin: 0.25rem 0 0;
   font-size: 0.95rem;
   color: var(--muted);
@@ -335,16 +349,16 @@ a {
 }
 
 @media (max-width: 860px) {
-  .intro {
+  .introduccion {
     grid-template-columns: 1fr;
   }
 
-  .services-grid,
-  .details-grid {
+  .grid-servicios,
+  .grid-detalles {
     grid-template-columns: 1fr;
   }
 
-  .info-banner {
+  .banner-info {
     flex-direction: column;
     align-items: flex-start;
   }

@@ -3,19 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-traduccion="titulo">Hospital de Clinicas</title>
-    <link rel="stylesheet" href="../Proyecto_Final/css/style.css">
-=======
-    <title>Hospital de Clinicas</title>
-    <link rel="stylesheet" href="../Proyecto/css/style.css">
->>>>>>> 4d6a44bb12f467276ad071e08bfddce221350b5c
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <header class="banner">
+    <header class="cabecera">
         <h1 data-traduccion="titulo">Hospital de Clinicas</h1>
         <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
     </header>
@@ -23,44 +18,31 @@
     <br><br><br>
 
    
-
+ 
     <!-- La ruta envía los datos a la carpeta php/ -->
-<<<<<<< HEAD
-     <form id="register-block" action="../Proyecto_Final/php/login.php" method="POST">
-=======
-<<<<<<< HEAD
-    <form id="register-block" action="../Proyecto/php/login.php" method="POST">
-=======
-    <form id="register-block" action="../Proyecto_Final/php/login.php" method="POST">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> e806a7de8f656870d0c59f9e5cac4ffcf76014af
->>>>>>> e8408f8ef448a295da4ec8a57867791f61f40fed
->>>>>>> e9bb3750c1bad4563464eea977804ea34a39fee2
-<h2 style="text-align:center; ;">Iniciar sesión</h2>
->>>>>>> 4d6a44bb12f467276ad071e08bfddce221350b5c
 
+    <form id="register-block" action="php/login.php" method="POST">
+
+        
 <h2 style="text-align:center;" data-traduccion="iniciar_sesion">Iniciar sesión</h2>
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-        <label for="username" class="txtup" data-traduccion="usuario">Usuario (Cédula o Correo):</label>
-=======
->>>>>>> e9bb3750c1bad4563464eea977804ea34a39fee2
-        <label for="username" class="txtup">Usuario (Cédula o Correo):</label>
->>>>>>> 4d6a44bb12f467276ad071e08bfddce221350b5c
-        <input type="text" id="feedback-user" class="username_field" name="username" required />
+        <label for="username" class="texto-arriba" data-traduccion="usuario">Usuario (Cédula o Correo):</label>
+
+        <input type="text" id="feedback-user" class="campo-usuario" name="username" required />
 
         <br>
 
         <label for="password" class="txtup" data-traduccion="contrasena">Contraseña:</label>
-        <input type="password" id="feedback-pass" class="password_field" name="password" required />
 
+
+        <div class="password-container">
+    <input type="password" id="feedback-pass" class="password_field" name="password" required>
+
+  <button type="button" id="mostrarPass" class="ojo">
+    <img src="css/img/ojo_abierto_logo.svg" alt="Mostrar contraseña">
+  </button>
+       </div>
+    
         <div class="acciones-login">
             <button type="submit" class="submit" data-traduccion="enviar">Enviar</button>
         </div>
@@ -68,13 +50,9 @@
         <div id="feedback" class="error"></div>
     </form>
 
-<<<<<<< HEAD
-    <a href="../Proyecto_Final/html/register.html" class="log" data-traduccion="registrarse">¿No tienes una cuenta? Regístrate aquí.</a>
-=======
-    <a href="../Proyecto/html/register.html" class="log">¿No tienes una cuenta? Regístrate aquí.</a>
->>>>>>> 4d6a44bb12f467276ad071e08bfddce221350b5c
+    <a href="html/register.html" class="log" data-traduccion="registrarse">¿No tienes una cuenta? Regístrate aquí.</a>
 
-    <script src="../Proyecto/js/java.js"></script>
+    <script src="js/java.js"></script>
 
 </body>
 
