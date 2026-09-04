@@ -1,6 +1,5 @@
 const script = document.currentScript;
-
-document.addEventListener('DOMContentLoaded', async () => {
+ 
     const archivo = script ? script.dataset.json : '';
 
     if (!archivo) return;
