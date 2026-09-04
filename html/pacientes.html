@@ -1,89 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital de Clinicas</title>
     <link rel="stylesheet" href="../css/pacientes.css">
-    
 </head>
 <body>
 
 <header class="cabecera">
     <a href="../html/pagina_principal.html" class="flechaatras">
-            <img src="../css/img/atras.jpg" alt="Volver"  width="35" height="35">
+        <img src="../css/img/atras.jpg" alt="Volver" width="35" height="35">
     </a>
     <h2>Pacientes</h2>
 </header>
 
-
 <!-- Contenido Principal -->
-
 <main class="pacientes">
 
-<!-- Título y Botón de Acción -->
-        
-<div class="titulo-pacientes">
-            <div>
-                <h1>Gestión de Pacientes</h1>
-                <p class="subtitulo">Administra los registros e historial del hospital</p>
-            </div>
-            <a href="#formulario" class="boton-nuevo">+ Nuevo Paciente</a>
+    <!-- Título y Botón de Acción -->
+    <div class="titulo-pacientes">
+        <div>
+            <h1>Gestión de Pacientes</h1>
+            <p class="subtitulo">Administra los registros e historial del hospital</p>
         </div>
+        <a href="#formulario" class="boton-nuevo">+ Nuevo Paciente</a>
+    </div>
 
-        <!-- Buscador -->
-        <div class="buscador">
-            <input type="text" placeholder="Buscar por nombre o CI...">
-            <button type="button" style="border-left: 0.2rem solid #ddd;">Buscar</button>
-        </div>
+    <!-- Buscador -->
+    <div class="buscador">
+        <input type="text" placeholder="Buscar por nombre o CI...">
+        <button type="button" style="border-left: 0.2rem solid #ddd;">Buscar</button>
+    </div>
 
-        <!-- Tabla de Pacientes -->
-        <div class="tabla-contenedor">
-            <table class="tabla-pacientes">
-                <thead>
-                    <tr> <!--Define una fila horizontal dentro de la tabla-->
-                        <th>Nombre</th>
-                        <th>Cédula / Documento</th>
-                        <th>Teléfono</th>
-                        <th>Estado</th>  <!--th: Define una celda de encabezado o título para la columna-->
-                    </tr>
-                </thead>
-                <tbody>
+    <!-- Tabla de Pacientes -->
+    <div class="tabla-contenedor">
+        <table class="tabla-pacientes">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cédula / Documento</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se cargan dinámicamente desde JavaScript -->
+            </tbody>
+        </table>
+    </div>
 
-                </tbody>
-            </table>
-        </div>
+    <!-- Formulario para agregar paciente -->
+    <div class="formulario-paciente" id="formulario">
+        <h2>Registrar Nuevo Paciente</h2>
+        <form id="form-paciente">
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
 
-        <!-- Formulario para agregar paciente -->
-        <div class="formulario-paciente" id="formulario">
-            <h2>Registrar Nuevo Paciente</h2>
-            <form>
-                <label for="nombre">Nombre Completo</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
+            <label for="cedula">Documento de Identidad</label>
+            <input type="text" id="cedula" name="documento" placeholder="Ej. 45678901" required>
 
-                <label for="documento">Documento de Identidad</label>
-                <input type="text" id="cedula" name="documento" placeholder="Ej. 45678901" required>
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ej. 091000111">
 
-                <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 091000111">
+            <label for="estado">Estado</label>
+            <select id="estado" name="estado">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+            </select>
 
-                <label for="estado">Estado</label>
-                <select id="estado" name="estado">
-                    <option value="activo">Activo</option>
-                    <option value="inactivo">Inactivo</option>
-                </select>
+            <button type="button" id="btn-guardar" class="boton-guardar">Guardar Paciente</button>
+        </form>
+    </div>
 
-                <button type="submit" class="boton-guardar">Guardar Paciente</button>
-            </form>
-        </div>
+</main>
 
-    </main>
-
-<script src="../js/traducciones.js" data-json="../json/pacientes.json"></script>
+<!-- Se carga primero pacientes.js para garantizar que el botón funcione sin depender de traducciones -->
 <script src="../js/pacientes.js"></script>
+<script src="../js/traducciones.js" data-json="../json/pacientes.json"></script>
 
 </body>
-
- 
-
- </html>
+</html>
