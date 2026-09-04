@@ -1,0 +1,164 @@
+/* ============================================================
+   BANNER ESTANDAR DEL HOSPITAL
+
+   Este archivo tiene SOLO lo del banner, para poder usarlo en
+   cualquier pagina sin importar que otro CSS use esa pagina.
+
+   Para ponerlo en una pagina nueva:
+     1) <link rel="stylesheet" href="../css/banner.css">
+     2) copiar el bloque <header class="banner-barra"> ... </header>
+     3) dejar lugar arriba (84px), porque el banner es fijo
+   ============================================================ */
+
+
+/* La barra queda fija arriba y ocupa todo el ancho. */
+.banner-barra {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 84px;
+    box-sizing: border-box;
+    padding: 0 24px;
+    background: linear-gradient(135deg, #0b5fff, #6e78ff);
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.18);
+    z-index: 1000;
+
+    /* Tres columnas: izquierda, centro y derecha.
+       Los costados miden lo mismo (1fr cada uno), asi el centro
+       queda centrado aunque un costado este vacio. */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* --------- Costados: pueden ir vacios --------- */
+
+.banner-izquierda,
+.banner-derecha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+.banner-izquierda {
+    justify-self: start;
+}
+
+.banner-derecha {
+    justify-self: end;
+}
+
+
+/* --------- Centro: logo + textos --------- */
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.banner-logo {
+    width: 56px;
+    height: 56px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+/* foca.jpg trae bastante margen blanco alrededor del circulo:
+   se agranda la imagen para recortarlo y que el logo llene el circulo. */
+.banner-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.5);
+}
+
+.banner-texto h2 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.banner-texto p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.2;
+    margin: 2px 0 0;
+}
+
+
+/* --------- Boton del menu (tres barras blancas) --------- */
+/* Se dibujan con CSS en vez de usar una imagen, asi se ven
+   bien sobre el fondo de color del banner. */
+
+.banner-menu {
+    cursor: pointer;
+}
+
+.banner-menu span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    margin: 5px 0;
+    background: #ffffff;
+    border-radius: 2px;
+}
+
+
+/* --------- Flecha para volver --------- */
+/* Es el caracter "←" escrito en el HTML, pintado de blanco. */
+
+.banner-atras {
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+    text-decoration: none;
+}
+
+
+/* --------- Titulo de la pagina, debajo del banner --------- */
+/* El margen de arriba deja lugar para el banner, que es fijo. */
+
+.titulo-pagina {
+    margin: 7rem 1rem 0;
+    color: #1f2937;
+    font-size: 1.6rem;
+}
+
+
+/* --------- Pantallas chicas --------- */
+/* Se achica el logo y se esconde el eslogan para que entre todo. */
+
+@media (max-width: 700px) {
+    .banner-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .banner-texto h2 {
+        font-size: 18px;
+    }
+
+    .banner-texto p {
+        display: none;
+    }
+}
+
+
+/* --------- Bloque de usuario, si la pagina lo usa --------- */
+
+.banner-derecha .usuario i {
+    color: #ffffff;
+    font-size: 32px;
+}

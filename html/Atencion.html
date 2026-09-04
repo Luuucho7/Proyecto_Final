@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atención | Hospital de Clínicas</title>
+    <link rel="stylesheet" href="../css/banner.css">
     <link rel="stylesheet" href="../css/atencion.css">
 </head>
 <body>
-    <nav class="nav-atencion" aria-label="Navegación principal">
+<header class="banner-barra">
+
+    <div class="banner-izquierda">
         <details class="desplegable-nav">
-            <summary class="alternar-nav" aria-label="Abrir menú">
-                <img src="../css/img/menu.jpg" alt="Menú" />
+            <summary class="banner-menu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
             </summary>
             <div class="menu-nav">
                 <a href="pagina_principal.html">Página principal</a>
@@ -20,20 +25,23 @@
                 <a href="FAQ.html">FAQ</a>
             </div>
         </details>
-    </nav>
+    </div>
 
-
-                    <header class="atencion-header">
-                        <div class="marca">
-                            <a href="pagina_principal.html" class="icono-marca" aria-label="Ir a la página principal">
-                <img src="../css/img/foca.jpg" alt="Logo Foca" />
-            </a>
-            <div>
-                <h1>Hospital de Clínicas</h1>
-                <p>Servicios de atención y gestión de turnos</p>
-            </div>
+    <div class="banner">
+        <span class="banner-logo">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </span>
+        <div class="banner-texto">
+            <h2 data-traduccion="titulo">Hospital de Clínicas</h2>
+            <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
         </div>
-    </header>
+    </div>
+
+    <div class="banner-derecha"></div>
+
+</header>
+
+
 
     <main class="pagina-atencion">
         <section class="introduccion">

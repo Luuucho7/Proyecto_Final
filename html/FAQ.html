@@ -5,34 +5,48 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Preguntas Frecuentes - Hospital de Clínicas</title>
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/banner.css">
         <link rel="stylesheet" href="../css/faq.css">
         <!-- Script eliminado a petición del usuario para simplificar la página -->
 </head>
 <body> 
 
-<nav class="nav-preguntas" aria-label="Navegación principal">
-    <details class="desplegable-nav">
-        <summary class="alternar-nav" aria-label="Abrir menú">
-            <img src="../css/img/menu.jpg" alt="Menú" />
-        </summary>
-        <div class="menu-nav">
-            <a href="pagina_principal.html">Página principal</a>
-            <a href="Atencion.html">Atención</a>
-            <a href="Traslado.html">Traslado</a>
-            <a href="encuestaformulario.html">Encuesta</a>
-            <a href="FAQ.html">FAQ</a>
+<header class="banner-barra">
+
+    <div class="banner-izquierda">
+        <details class="desplegable-nav">
+            <summary class="banner-menu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </summary>
+            <div class="menu-nav">
+                <a href="pagina_principal.html">Página principal</a>
+                <a href="Atencion.html">Atención</a>
+                <a href="Traslado.html">Traslado</a>
+                <a href="encuestaformulario.html">Encuesta</a>
+                <a href="FAQ.html">FAQ</a>
+            </div>
+        </details>
+    </div>
+
+    <div class="banner">
+        <span class="banner-logo">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </span>
+        <div class="banner-texto">
+            <h2 data-traduccion="titulo">Hospital de Clínicas</h2>
+            <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
         </div>
-    </details>
-</nav>
+    </div>
+
+    <div class="banner-derecha"></div>
+
+</header>
 
 
 <main class="pagina-faq">
-    <header class="encabezado-faq">
-        <a href="pagina_principal.html" aria-label="Ir a la página principal">
-            <img src="../css/img/foca.jpg" alt="Logo del hospital" class="logo-faq">
-        </a>
-        <h1>Preguntas Frecuentes</h1>
-    </header>
+    <h1>Preguntas Frecuentes</h1>
 
     <section aria-labelledby="preguntas">
         <ul class="lista-faq" id="preguntas">
