@@ -5,20 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traslados</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/banner.css">
 </head>
  
 <body>
 
-<header class="traslado-header">
-    <a href="pagina_principal.html" class="traslado-logo-link" aria-label="Ir a la página principal">
-        <img src="../css/img/foca.jpg" alt="Logo del hospital" class="traslado-logo">
-    </a>
+<header class="banner-barra">
 
-    <div class="cabecera">
-        <h1 data-traduccion="titulo_traslado">Gestión de trazabilidad</h1>
-        <p data-traduccion="descripcion">Atencion de calidad para toda la comunidad</p>
+    <div class="banner-izquierda">
+        <div class="banner-menu" id="btnMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
+
+    <div class="banner">
+        <span class="banner-logo">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </span>
+        <div class="banner-texto">
+            <h2 data-traduccion="titulo">Hospital de Clínicas</h2>
+            <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
+        </div>
+    </div>
+
+    <div class="banner-derecha"></div>
+
 </header>
+
+<div class="menulateral" id="menuLateral">
+
+    <h4 data-traduccion="panel_principal">PANEL PRINCIPAL</h4>
+
+    <ul>
+        <li>
+            <a href="../html/pagina_principal.html">
+                <img src="../css/img/casa_logo.svg" alt="Inicio" style="width:20px; height:20px; object-fit:contain;">
+                <span data-traduccion="inicio">Inicio</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/pacientes.html">
+                <img src="../css/img/persona_logo.svg" alt="Pacientes" style="width:20px; height:20px; object-fit:contain;">
+                <span data-traduccion="pacientes">Pacientes</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Atencion.html">
+                <img src="../css/img/hospital_logo.svg" alt="Atención" style="width:20px; height:20px; object-fit:contain;">
+                <span data-traduccion="atencion">Atención</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Documentacion.html">
+                <img src="../css/img/qr_logo.svg" alt="Documentación QR" style="width:20px; height:20px; object-fit:contain;">
+                <span data-traduccion="documentacion_qr">Documentación QR</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/encuestaformulario.html">
+                <img src="../css/img/estadisticas_logo.svg" alt="Encuestas" style="width:20px; height:20px; object-fit:contain;">
+                <span data-traduccion="encuestas">Encuestas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Traslado.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="Traslados en Ambulancia" style="width:20px; height:20px; object-fit:contain;">
+                <span data-traduccion="traslados_ambulancia">Traslados en Ambulancia</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/FAQ.html">
+                <img src="../css/img/pregunta_logo.svg" alt="Preguntas frecuentes" style="width:20px; height:20px; object-fit:contain;">
+                <span data-traduccion="preguntas_frecuentes">Preguntas frecuentes</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<h1 class="titulo-pagina" data-traduccion="titulo_traslado">Gestión de trazabilidad</h1>
 
 
 <div class="texto_arriba">
@@ -93,6 +160,7 @@
 
 
   
+<script src="../js/java.js"></script>
 </body>
 </html> 
     

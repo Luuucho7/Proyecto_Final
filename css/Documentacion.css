@@ -12,94 +12,9 @@ body {
     background-color: #f5f7fa;
 
     color: #17233c;
-}
 
-
-/* ========================= */
-/* ENCABEZADO */
-/* ========================= */
-
-.encabezado {
-
-    height: 85px;
-
-    background-color: #ffffff;
-
-    color: rgb(0, 0, 0);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 0 30px;
-
-    position: relative;
-}
-
-
-/* LOGO */
-
-.contenedorLogo {
-
-    width: 150px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-start;
-}
-
-
-.logoHospital {
-
-    width: 80px;
-
-    height: 80px;
-
-    object-fit: cover;
-
-    border-radius: 8px;
-
-    background-color: white;
-
-    padding: 3px;
-}
-
-
-/* TITULO CENTRADO */
-
-.tituloHospital {
-
-    position: absolute;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    text-align: center;
-
-    white-space: nowrap;
-}
-
-
-.tituloHospital h1 {
-
-    margin: 0;
-
-    font-size: 25px;
-
-}
-
-
-.tituloHospital p {
-
-    margin: 5px 0 0;
-
-    font-size: 13px;
-
+    /* Deja lugar arriba para el banner, que es fijo. */
+    padding-top: 84px;
 }
 
 
@@ -125,7 +40,7 @@ body {
 
     position: fixed;
 
-    top: 85px;
+    top: 84px;
 
     left: 0;
 

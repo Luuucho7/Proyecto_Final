@@ -5,39 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital de Clinicas</title>
     <link rel="stylesheet" href="../css/style.css">
-    
+    <link rel="stylesheet" href="../css/banner.css">
+
 </head>
 
+<body>
 
-<header>
+<header class="banner-barra">
 
-     <div class="menu">
-    <img src="../css/img/menu.jpg" alt="Menú" id="btnMenu">
-</div>
-
-    <div class="titulo">
-        <img src="../css/img/foca.jpg"
-        alt="logo">
-
-        <div class="texto">
-            <h2>Hospital de Clinicas</h2>
-        <p>Atencion de calidad</p>
+    <div class="banner-izquierda">
+        <div class="banner-menu" id="btnMenu">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
-    <div class="usuario">
-        <i class="fa-solid fa-circle-user"></i>
+    <div class="banner">
+        <span class="banner-logo">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </span>
+        <div class="banner-texto">
+            <h2 data-traduccion="titulo">Hospital de Clínicas</h2>
+            <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
+        </div>
     </div>
+
+    <div class="banner-derecha">
+        <div class="usuario">
+            <i class="fa-solid fa-circle-user"></i>
+        </div>
+    </div>
+
 </header>
 
-<body>
-    
     <section class="contenedor">
 
     <a href="../html/Traslado.html" class="card traslado">
         <h3>TRASLADOS</h3>
     </a>
-
 
     <a href="../html/Atencion.html" class="card atencion">
         <h3>ATENCIÓN</h3>
@@ -107,5 +113,4 @@
 <script src="../js/java.js"></script>
 </body>
 </html>
-
 
