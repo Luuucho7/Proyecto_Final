@@ -1,5 +1,5 @@
 <?php
-require_once 'conexion.php';
+require_once 'conexion.php';    // NO BIOLOGICO.PHP
 
 $clasificacion = $_POST['clasificacion'];
 $pendiente = $_POST['pendiente'];
