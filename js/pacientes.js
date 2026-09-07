@@ -1,5 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    const botonMenu = document.getElementById("btn-menu-pacientes");
+    const menu = document.getElementById("menu-derecho");
+
+    if (botonMenu && menu) {
+        botonMenu.addEventListener("click", function() {
+            const abierto = menu.classList.toggle("abierto");
+            botonMenu.setAttribute("aria-expanded", abierto.toString());
+            botonMenu.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
+        });
+    }
+
     const boton = document.getElementById("btn-guardar");
     const tabla = document.querySelector(".tabla-pacientes tbody");
     const formulario = document.getElementById("form-paciente");
