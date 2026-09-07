@@ -1,60 +1,65 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Referencias a elementos del DOM
-    const buscadorInput = document.querySelector('.buscador input');  
-    const tablaBody = document.querySelector('.tabla-pacientes tbody');
-    const formulario = document.querySelector('.formulario-paciente form');
+document.addEventListener("DOMContentLoaded", function() {
 
-    // 1. FILTRADO / BUSCADOR EN TIEMPO REAL
-    buscadorInput.addEventListener('input', (e) => {
-        const busqueda = e.target.value.toLowerCase().trim();
-        const filas = tablaBody.querySelectorAll('tr');
+    const boton = document.getElementById("btn-guardar");
+    const tabla = document.querySelector(".tabla-pacientes tbody");
+    const formulario = document.getElementById("form-paciente");
 
-        filas.forEach(fila => {
-            // Ignorar la fila de "sin pacientes" si estuviera visible
-            if (fila.querySelector('.sin-pacientes')) return;
+    if (boton) {
+        boton.addEventListener("click", function() {
 
-            const nombre = fila.children[0].textContent.toLowerCase();
-            const documento = fila.children[1].textContent.toLowerCase();
+            // Capturamos lo que escribió el usuario
+            const nombre = document.getElementById("nombre").value;
+            const cedula = document.getElementById("cedula").value;
+            const telefono = document.getElementById("telefono").value;
+            const estado = document.getElementById("estado").value;
 
-            if (nombre.includes(busqueda) || documento.includes(busqueda)) {
-                fila.style.display = '';
-            } else {
-                fila.style.display = 'none';
+            // Validamos que no envíe campos vacíos
+            if (nombre === "" || cedula === "") {
+                alert("Completa el nombre y la cédula");
+                return;
             }
+
+            // Armamos el objeto con los datos
+            const paciente = {
+                nombre: nombre,
+                cedula: cedula,
+                telefono: telefono,
+                estado: estado
+            };
+
+            // Enviamos los datos al archivo PHP (ajusta la ruta si guardaste el PHP en otra carpeta)
+            fetch("../php/guardar.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(paciente)
+            })
+            .then(respuesta => respuesta.json())
+            .then(resultado => {
+                if (resultado === "ok") {
+                    alert("¡Paciente guardado en la base de datos!");
+
+                    // Creamos la nueva fila para mostrarla en la tabla
+                    let claseEstado = (estado === "inactivo") ? "estado-inactivo" : "estado-activo";
+                    const nuevaFila = `
+                        <tr>
+                            <td>${nombre}</td>
+                            <td>${cedula}</td>
+                            <td>${telefono}</td>
+                            <td><span class="estado ${claseEstado}">${estado}</span></td>
+                        </tr>
+                    `;
+
+                    // Insertamos la fila en la tabla y limpiamos los campos
+                    tabla.innerHTML += nuevaFila;
+                    formulario.reset();
+                } else {
+                    alert("Error: No se pudo guardar en la base de datos.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Ocurrió un error. Verifica que Apache y MySQL estén encendidos en XAMPP.");
+            });
         });
-    });
-
-    // 2. AGREGAR NUEVO PACIENTE DESDE EL FORMULARIO
-    formulario.addEventListener('submit',(e) => {
-        e.preventDefault(); // Evitar la recarga de página
-
-        // Capturar valores
-        const nombre = document.getElementById('nombre').value.trim();
-        const documento = document.getElementById('documento').value.trim();
-        const telefono = document.getElementById('telefono').value.trim() || 'Sin registrar';
-        const estado = document.getElementById('estado').value;
-
-        // Validar datos mínimos
-        if (!nombre || !documento) return;
-
-        // Crear nueva fila HTML
-        const nuevaFila = document.createElement('tr');
-        
-        const claseEstado = estado === 'activo' ? 'activo' : 'inactivo';
-        const textoEstado = estado === 'activo' ? 'Activo' : 'Inactivo';
-
-        nuevaFila.innerHTML = `
-            <td>${nombre}</td>
-            <td>${documento}</td>
-            <td>${telefono}</td>
-            <td><span class="estado ${claseEstado}">${textoEstado}</span></td>
-        `;
-
-        // Insertar al inicio de la tabla
-        tablaBody.insertBefore(nuevaFila, tablaBody.firstChild);
-
-        // Limpiar formulario y hacer scroll hacia arriba
-        formulario.reset();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    }
 });

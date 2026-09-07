@@ -1,31 +1,6 @@
 /* Estilos para Preguntas Frecuentes */
-.nav-preguntas {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1100;
-}
-
 .desplegable-nav {
   position: relative;
-}
-
-.alternar-nav {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: none;
-  border-radius: 999px;
-  background: transparent;
-  cursor: pointer;
-}
-
-.alternar-nav img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  display: block;
 }
 
 .desplegable-nav summary {
@@ -39,7 +14,7 @@
 .menu-nav {
   position: absolute;
   top: calc(100% + 0.45rem);
-  right: 0;
+  left: 0;
   min-width: 220px;
   display: flex;
   flex-direction: column;
@@ -96,26 +71,10 @@
   color: #182026;
   padding: 4.5rem 1.5rem 3rem;
   max-width: 980px;
-  margin: 2.5rem auto;
+  margin: 7rem auto 2.5rem;
   background: linear-gradient(180deg, #fbfdff 0%, #ffffff 100%);
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(17, 24, 39, 0.06);
-}
-
-.pagina-faq header.encabezado-faq {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.9rem;
-  margin-bottom: 1.25rem;
-}
-
-.logo-faq {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border: none;
-  box-shadow: none;
 }
 
 .pagina-faq h1 {

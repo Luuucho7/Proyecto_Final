@@ -24,32 +24,8 @@ a {
   color: inherit;
 }
 
-.nav-atencion {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1100;
-}
-
 .desplegable-nav {
   position: relative;
-}
-
-.alternar-nav {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.alternar-nav img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  display: block;
 }
 
 
@@ -64,7 +40,7 @@ a {
 .menu-nav {
   position: absolute;
   top: calc(100% + 0.45rem);
-  right: 0;
+  left: 0;
   min-width: 220px;
   display: flex;
   flex-direction: column;
@@ -116,15 +92,6 @@ a {
   outline: none;
 }
 
-.atencion-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.4rem 1.6rem;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
 .encabezado-banner {
   margin: 0 0 1.5rem;
   padding: 1rem 1.25rem;
@@ -137,39 +104,6 @@ a {
   margin: 0;
   color: var(--primary);
   font-size: 1.35rem;
-}
-
-.marca {
-  display: flex;
-  align-items: center;
-  gap: 0.95rem;
-}
-
-.icono-marca {
-  display: inline-flex;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-}
-
-.icono-marca img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.marca h1 {
-  margin: 0;
-  font-size: 1.35rem;
-}
-
-.marca p {
-  margin: 0.25rem 0 0;
-  font-size: 0.95rem;
-  color: var(--muted);
 }
 
 .header-links {
@@ -187,7 +121,7 @@ a {
 .pagina-atencion {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 2.25rem 1.6rem 3.25rem;
+  padding: 7.5rem 1.6rem 3.25rem;
 }
 .introduccion {
   display: grid;
@@ -365,12 +299,6 @@ a {
 }
 
 @media (max-width: 560px) {
-  .atencion-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
   .header-links {
     justify-content: flex-start;
   }
