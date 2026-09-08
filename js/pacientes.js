@@ -4,10 +4,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const tablaBody = document.querySelector('.tabla-pacientes tbody');
     const formulario = document.querySelector('.formulario-paciente form');
 
+<<<<<<< HEAD
     // 1. FILTRADO / BUSCADOR EN TIEMPO REAL
     buscadorInput.addEventListener('input', (e) => {
         const busqueda = e.target.value.toLowerCase().trim();
         const filas = tablaBody.querySelectorAll('tr');
+=======
+    const botonMenu = document.getElementById("btn-menu-pacientes");
+    const menu = document.getElementById("menu-derecho");
+
+    if (botonMenu && menu) {
+        botonMenu.addEventListener("click", function() {
+            const abierto = menu.classList.toggle("abierto");
+            botonMenu.setAttribute("aria-expanded", abierto.toString());
+            botonMenu.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
+        });
+    }
+
+    const boton = document.getElementById("btn-guardar");
+    const tabla = document.querySelector(".tabla-pacientes tbody");
+    const formulario = document.getElementById("form-paciente");
+>>>>>>> e03a7755b260467a93c1114088f03170ed56dc3c
 
         filas.forEach(fila => {
             // Ignorar la fila de "sin pacientes" si estuviera visible
