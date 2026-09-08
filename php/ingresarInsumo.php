@@ -1,8 +1,8 @@
-<?php
-require_once 'conexion.php';
+<?php 
+require_once 'conexion.php';   // INGRESAR INSUMO.PHP
 
 $nombre = $_POST['nombre'];
-$estado = $_POST['estado'];
+$estado = $_POST['estado']; 
 
 $stmt = $pdo->prepare("INSERT INTO biologico (nombre, estado) VALUES (:nombre, :estado)");
 

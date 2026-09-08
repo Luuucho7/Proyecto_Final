@@ -1,8 +1,8 @@
 <?php
-require_once 'conexion.php';
+require_once 'conexion.php';    // ORGANO.PHP
 
-$clasificacion = $_POST['persona'];
-$pendiente = $_POST['en_curso'];
+$persona = $_POST['persona'];
+$en_curso = $_POST['en_curso'];
 
 $stmt = $pdo->prepare("INSERT INTO organo (persona, en_curso) VALUES (:persona, :en_curso)");
 

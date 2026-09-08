@@ -5,6 +5,85 @@ body {
     color: #333;
 }
 
+.banner-logo {
+    cursor: pointer;
+}
+
+.boton-menu-pacientes {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.boton-menu-pacientes img {
+    display: none;
+}
+
+.boton-menu-pacientes::before {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 4px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 999px;
+    transform: translateY(-8px);
+    box-shadow: 0 10px #ffffff, 0 20px #ffffff;
+}
+
+.menu-derecho {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    bottom: 0;
+    width: 230px;
+    padding: 24px 0;
+    background: #ffffff;
+    border-right: 1px solid #dbe4f0;
+    box-shadow: 4px 0 16px rgba(15, 23, 42, 0.08);
+    z-index: 900;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+}
+
+.menu-derecho.abierto {
+    transform: translateX(0);
+}
+
+.menu-derecho h2 {
+    margin: 0 24px 16px;
+    color: #1e293b;
+    font-size: 18px;
+}
+
+.menu-derecho nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-derecho a {
+    padding: 14px 24px;
+    color: #26354d;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-derecho a:hover,
+.menu-derecho a.activo {
+    background-color: #e8f0fb;
+    color: #0758c7;
+    font-weight: 600;
+}
+
 /* Titulo de pacientes */
 
 .pacientes {
@@ -201,6 +280,23 @@ body {
     .formulario-paciente input,
     .formulario-paciente select {
         grid-column: span 1;
+    }
+}
+
+@media (max-width: 900px) {
+    .menu-derecho {
+        width: 190px;
+    }
+}
+
+@media (max-width: 700px) {
+    .menu-derecho {
+        width: min(230px, 85vw);
+    }
+
+    .pacientes {
+        margin-top: 24px;
+        padding: 0 20px;
     }
 }
 
