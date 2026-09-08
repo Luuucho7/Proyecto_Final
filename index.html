@@ -42,11 +42,13 @@
 
     
 
+        <label for="feedback-user" class="txtup" data-traduccion="usuario">Cédula o correo:</label>
+
         <input type="text" id="feedback-user" class="campo-usuario" name="username" required />
 
         <br>
 
-        <label for="password" class="txtup" data-traduccion="contrasena">Contraseña:</label>
+        <label for="feedback-pass" class="txtup" data-traduccion="contrasena">Contraseña:</label>
 
 
         <div class="password-container">
@@ -66,7 +68,11 @@
 
     <a href="html/register.html" class="log" data-traduccion="registrarse">¿No tienes una cuenta? Regístrate aquí.</a>
 
+    <!-- java.js: menu lateral y el ojo para mostrar/ocultar la contrasena -->
     <script src="js/java.js"></script>
+
+    <!-- index.js: envia el formulario a php/login.php sin recargar la pagina -->
+    <script src="js/index.js"></script>
 
 </body>
 

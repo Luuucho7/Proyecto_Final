@@ -81,15 +81,15 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main class="contenido">
 
-        <h2>Gestión de Documentación para Pacientes</h2>
+        <h2>Gestión de Documentación</h2>
 
         <p class="descripcion">
 
-            Desde este módulo podrá cargar y gestionar documentación
-            de los pacientes.
+            Desde este módulo podrá cargar y gestionar la documentación
+            general del hospital.
 
-            Los pacientes podrán acceder a sus documentos escaneando
-            el código QR desde sus dispositivos móviles.
+            Cada documento de la lista tiene su propio código QR, que
+            lleva directamente a la página de ese documento.
 
         </p>
 
@@ -100,18 +100,6 @@
             <h3>Subir Documento</h3>
 
             <div class="formulario">
-
-                <div class="campo">
-
-                    <label>Paciente</label>
-
-                    <input 
-                        type="text"
-                        id="paciente"
-                        placeholder="Buscar paciente por DNI o Nombre">
-
-                </div>
-
 
                 <div class="campo">
 
@@ -148,7 +136,7 @@
 
                     <label>Descripción</label>
 
-                    <input 
+                    <input
                         type="text"
                         id="descripcionDocumento"
                         placeholder="Ej: Estudios, Resultados">
@@ -160,7 +148,7 @@
 
                     <label>Archivo</label>
 
-                    <input 
+                    <input
                         type="file"
                         id="archivo">
 
@@ -169,7 +157,7 @@
             </div>
 
 
-            <button 
+            <button
                 class="boton"
                 onclick="subirDocumento()">
 
@@ -193,8 +181,6 @@
 
                         <th>ID</th>
 
-                        <th>Paciente</th>
-
                         <th>Tipo de Documento</th>
 
                         <th>Descripción</th>
@@ -214,8 +200,6 @@
 
                         <td>1</td>
 
-                        <td>Juan Pérez</td>
-
                         <td>Resultado de Laboratorio</td>
 
                         <td>Análisis de Sangre</td>
@@ -228,9 +212,9 @@
                                 👁 Ver
                             </button>
 
-                            <button 
+                            <button
                                 class="botonPequeno"
-                                onclick="generarQR()">
+                                onclick="qrDeLaFila(1)">
 
                                 ▦ QR
 
@@ -245,8 +229,6 @@
 
                         <td>2</td>
 
-                        <td>María Gómez</td>
-
                         <td>Informe Médico</td>
 
                         <td>Consulta Médica</td>
@@ -259,9 +241,9 @@
                                 👁 Ver
                             </button>
 
-                            <button 
+                            <button
                                 class="botonPequeno"
-                                onclick="generarQR()">
+                                onclick="qrDeLaFila(2)">
 
                                 ▦ QR
 
@@ -276,8 +258,6 @@
 
                         <td>3</td>
 
-                        <td>Luis Rodríguez</td>
-
                         <td>Estudios por Imágenes</td>
 
                         <td>Radiografía</td>
@@ -290,9 +270,9 @@
                                 👁 Ver
                             </button>
 
-                            <button 
+                            <button
                                 class="botonPequeno"
-                                onclick="generarQR()">
+                                onclick="qrDeLaFila(3)">
 
                                 ▦ QR
 
@@ -316,36 +296,59 @@
 
             <p>
                 Ingrese el ID del documento para generar
-                el código QR que podrá escanear el paciente.
+                el código QR que lleva a la página de ese documento.
             </p>
 
 
-            <div class="generadorQR">
+            <div class="zonaQR">
 
-                <div>
+                <!-- Lado izquierdo: el generador -->
+                <div class="generadorQR">
 
-                    <label>ID del Documento</label>
+                    <div>
 
-                    <input 
-                        type="number"
-                        id="idDocumento"
-                        placeholder="Ej: 1">
+                        <label>ID del Documento</label>
+
+                        <input
+                            type="number"
+                            id="idDocumento"
+                            placeholder="Ej: 1">
+
+                    </div>
+
+
+                    <button
+                        class="boton"
+                        onclick="generarQR()">
+
+                        ▦ Generar QR
+
+                    </button>
 
                 </div>
 
 
-                <button 
-                    class="boton"
-                    onclick="generarQR()">
+                <!-- Lado derecho: el QR mostrado dentro de un iframe -->
+                <div class="marcoQR">
 
-                    ▦ Generar QR
+                    <iframe
+                        id="qrIframe"
+                        title="Código QR del documento"></iframe>
 
-                </button>
+                    <p id="resultadoQR"></p>
+
+                    <a
+                        id="descargarQR"
+                        class="botonPequeno"
+                        href="">
+
+                        ⬇ Descargar QR
+
+                    </a>
+
+                </div>
 
             </div>
-
-
-            <div id="resultadoQR"></div>
 
         </section>
 
