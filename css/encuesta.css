@@ -1,0 +1,94 @@
+/* Estilos para la encuesta */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #eef5f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* El 124px de arriba deja lugar para el banner, que es fijo. */
+    padding: 124px 40px 40px;
+}
+
+.contenedor {
+    background: white;
+    width: 700px;
+    max-width: 100%;
+    padding: 36px;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+    text-align: center;
+    color: #005792;
+    margin-bottom: 12px;
+}
+
+.descripcion {
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.grupo {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.radio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.radio label {
+    font-weight: normal;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #005f8f;
+}
