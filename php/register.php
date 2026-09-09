@@ -1,10 +1,12 @@
- <?php
+<?php
 session_start();
-// Se incluye directamente porque está en la misma carpeta php/
 require_once 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitización y obtención de datos
+
+    // Datos que llegan del formulario
+    $nombre = trim($_POST['nombre'] ?? '');
+    $apellido = trim($_POST['apellido'] ?? '');
     $cedula = trim($_POST['cedula'] ?? '');
     $correo = filter_var(trim($_POST['correo'] ?? ''), FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'] ?? '';
@@ -13,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefono = trim($_POST['telefono'] ?? '');
     $fecha_nacimiento = $_POST['fecha_nacimiento'] ?? '';
 
-    // Validaciones en servidor
-    if (empty($cedula) || empty($correo) || empty($password) || empty($direccion) || empty($telefono) || empty($fecha_nacimiento)) {
+    // Validaciones en el servidor
+    if (empty($nombre) || empty($apellido) || empty($cedula) || empty($correo) || empty($password) || empty($direccion) || empty($telefono) || empty($fecha_nacimiento)) {
         die("Por favor, completa todos los campos requeridos.");
     }
 
@@ -22,12 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Las contraseñas no coinciden.");
     }
 
-    // Validación de la contraseña (8-16 caracteres, 1 mayúscula, 1 número)
+    // La contraseña: entre 8 y 16 caracteres, con al menos 1 mayúscula y 1 número
     if (!preg_match('/^(?=.*[A-Z])(?=.*\d).{8,16}$/', $password)) {
-        die("La contraseña debe tener entre 8 y 16 caracteres, e incluir al menos una letra mayúscula y un número.");
+        die("La contraseña debe tener entre 8 y 16 caracteres, e incluir al menos una mayúscula y un número.");
     }
 
-    try { 
+    try {
         // Verificar si la cédula o el correo ya existen
         $checkStmt = $pdo->prepare("SELECT cedula FROM Persona WHERE cedula = :cedula OR correo = :correo");
         $checkStmt->execute([':cedula' => $cedula, ':correo' => $correo]);
@@ -40,19 +42,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        // Hash seguro de la contraseña
+        // Ciframos la contraseña antes de guardarla
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-        // Iniciar transacción SQL para insertar en Persona y Paciente
+        // Transacción: o se guardan las dos filas, o no se guarda ninguna
         $pdo->beginTransaction();
 
-        // 1. Insertar en la tabla Persona
-        $sqlPersona = "INSERT INTO Persona (cedula, correo, password_hash, direccion, telefono, fecha_nacimiento) 
-                       VALUES (:cedula, :correo, :password_hash, :direccion, :telefono, :fecha_nacimiento)";
-        
+        // 1. Guardar la persona
+        $sqlPersona = "INSERT INTO Persona (cedula, nombre, apellido, correo, password_hash, direccion, telefono, fecha_nacimiento)
+                       VALUES (:cedula, :nombre, :apellido, :correo, :password_hash, :direccion, :telefono, :fecha_nacimiento)";
+
         $stmtPersona = $pdo->prepare($sqlPersona);
         $stmtPersona->execute([
             ':cedula' => $cedula,
+            ':nombre' => $nombre,
+            ':apellido' => $apellido,
             ':correo' => $correo,
             ':password_hash' => $password_hash,
             ':direccion' => $direccion,
@@ -60,19 +64,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':fecha_nacimiento' => $fecha_nacimiento
         ]);
 
-        // 2. Insertar automáticamente en la tabla Paciente
-        $sqlPaciente = "INSERT INTO Paciente (cedula) VALUES (:cedula)";
+        // 2. Crear el paciente con el nombre y apellido juntos
+        $sqlPaciente = "INSERT INTO Paciente (cedula, nombre) VALUES (:cedula, :nombre)";
         $stmtPaciente = $pdo->prepare($sqlPaciente);
-        $stmtPaciente->execute([':cedula' => $cedula]);
+        $stmtPaciente->execute([
+            ':cedula' => $cedula,
+            ':nombre' => $nombre . ' ' . $apellido
+        ]);
 
-        // Confirmar transacción
+        // Confirmar los cambios
         $pdo->commit();
 
-        // Iniciar sesión del usuario
+        // Guardar al usuario en la sesión
         $_SESSION['usuario_cedula'] = $cedula;
         $_SESSION['usuario_correo'] = $correo;
 
-        // Alerta de éxito y redirección directa a index.html (subiendo un nivel desde /php/)
         echo "<script>
                 alert('¡Registro exitoso!');
                 window.location.href = '../index.html';
@@ -85,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         die("Error al procesar el registro: " . $e->getMessage());
     }
+
 } else {
     header("Location: ../index.html");
     exit();
