@@ -34,7 +34,7 @@
 
     <br><br><br>
 
-    <form id="register-block" action="../php/register.php" method="POST" onsubmit="return validarRegistro(event)">
+    <form id="register-block" action="../php/register.php" method="POST" novalidate>
         
         
         <div class="campo-grupo">
@@ -87,7 +87,11 @@
 
     <a href="../index.html" class="log" data-traduccion="iniciar_sesion_msg" >¿Ya tienes una  ? Inicia Sesión aquí.</a>
 
+    <!-- java.js: menu lateral -->
     <script src="../js/java.js"></script>
+
+    <!-- register.js: valida los campos antes de enviarlos a php/register.php -->
+    <script src="../js/register.js"></script>
 </body>
 
 </html>
