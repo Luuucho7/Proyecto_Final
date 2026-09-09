@@ -11,8 +11,7 @@ CREATE TABLE Persona (
 );
 
 CREATE TABLE Paciente (
-    
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     cedula VARCHAR(20) NOT NULL UNIQUE,
     telefono VARCHAR(20),
@@ -57,6 +56,7 @@ CREATE TABLE Traslado (
     id_paciente INT,
     id_funcionario INT,
     matricula VARCHAR(20),
+
     FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente),
     FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario),
     FOREIGN KEY (matricula) REFERENCES Ambulancia(matricula)
@@ -67,6 +67,7 @@ CREATE TABLE Codigo_QR (
     url VARCHAR(255),
     id_paciente INT,
     id_traslado INT,
+
     FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente),
     FOREIGN KEY (id_traslado) REFERENCES Traslado(id_traslado)
 );
