@@ -1,19 +1,39 @@
-<?php 
-require_once 'conexion.php';   // INGRESAR INSUMO.PHP
+<?php
 
-$cedula = $_POST['cedula'];
-$estado = $_POST['estado']; 
-$telefono = $_POST['telefono']; 
-$nombre = $_POST['nombre']; 
-
-
-$stmt = $pdo->prepare("INSERT INTO biologico (cedula, estado, telefono, nombre) VALUES (:cedula, :estado, :telefono, :nombre)");
-
+require_once 'conexion.php';
 
 header('Content-Type: application/json');
 
-if($stmt->execute([':cedula' => $cedula, ':estado' => $estado, ':telefono' => $telefono, ':nombre' => $nombre])) {
-    echo json_encode(['exito' => true]);
-} else {
-    echo json_encode(['exito' => false]);
+$nombre = $_POST['nombre'];
+$cedula = $_POST['cedula'];
+$telefono = $_POST['telefono'];
+$estado = $_POST['estado'];
+
+try {
+
+    $stmt = $pdo->prepare("
+        INSERT INTO Paciente
+        (nombre, cedula, telefono, estado)
+        VALUES
+        (:nombre, :cedula, :telefono, :estado)
+    ");
+
+    $stmt->execute([
+        ':nombre' => $nombre,
+        ':cedula' => $cedula,
+        ':telefono' => $telefono,
+        ':estado' => $estado
+    ]);
+
+    echo json_encode([
+        'exito' => true
+    ]);
+
+} catch (PDOException $e) {
+
+    echo json_encode([
+        'exito' => false,
+        'error' => $e->getMessage()
+    ]);
 }
+?>
