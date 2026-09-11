@@ -6,7 +6,7 @@
     <title>Hospital de Clinicas</title>
     <link rel="stylesheet" href="../css/pacientes.css">
     <link rel="stylesheet" href="../css/banner.css">
-    
+
 </head>
 <body>
 
@@ -50,7 +50,7 @@
 <main class="pacientes">
 
 <!-- Título y Botón de Acción -->
-        
+
 <div class="titulo-pacientes">
             <div>
                 <h1>Gestión de Pacientes</h1>
@@ -74,10 +74,11 @@
                         <th>Cédula / Documento</th>
                         <th>Teléfono</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-
+                <tbody id="listaPacientes">
+                    <!-- Las filas se arman solas con JavaScript, trayendo los pacientes guardados en la base -->
                 </tbody>
             </table>
         </div>
@@ -85,7 +86,7 @@
         <!-- Formulario para agregar paciente -->
         <div class="formulario-paciente" id="formulario">
             <h2>Registrar Nuevo Paciente</h2>
-            <form>
+            <form id="formPaciente">
                 <label for="nombre">Nombre Completo</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
 
@@ -101,7 +102,8 @@
                     <option value="inactivo">Inactivo</option>
                 </select>
 
-                <button type="submit" class="boton-guardar">Guardar Paciente</button>
+                <button type="submit" class="boton-guardar" id="botonGuardar">Guardar Paciente</button>
+                <button type="button" class="boton-guardar" id="botonCancelarEdicion" onclick="cancelarEdicion()" style="display:none;">Cancelar edición</button>
             </form>
         </div>
 
@@ -110,7 +112,4 @@
 <script src="../js/pacientes.js"></script>
 
 </body>
-
- 
-
- </html>    
+</html>
