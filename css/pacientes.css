@@ -71,6 +71,9 @@ body {
 }
 
 .menu-derecho a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     padding: 14px 24px;
     color: #26354d;
     text-decoration: none;
@@ -325,7 +328,53 @@ body {
     }
 }
 
+/* Botones Editar / Eliminar de cada fila de la tabla */
+.boton-editar,
+.boton-eliminar-fila {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 6px;
+}
 
+.boton-editar {
+    background-color: #e0e7ff;
+    color: #1d4ed8;
+}
+
+.boton-editar:hover {
+    background-color: #c7d2fe;
+}
+
+.boton-eliminar-fila {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.boton-eliminar-fila:hover {
+    background-color: #fecaca;
+}
+
+/* Botón para cancelar una edición en curso */
+.boton-cancelar {
+    grid-column: span 2;
+    background-color: #e2e8f0;
+    color: #334155;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 6px;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.boton-cancelar:hover {
+    background-color: #cbd5e1;
+}
 
 
 
