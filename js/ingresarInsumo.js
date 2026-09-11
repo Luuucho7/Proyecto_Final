@@ -123,3 +123,26 @@ mod_b.addEventListener("click", async (e) => {
 
 })
 
+   const encontrar_nobiologico = document.getElementById("encontrar");
+const buscar_boton_no = document.getElementById("buscar_boton_nobiologico");
+
+buscar_boton_no.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const datosBusqueda = new FormData();
+    datosBusqueda.append('clasificacion', encontrar_nobiologico.value);
+
+    const respuesta = await fetch('../php/buscar_noBiologico.php', {
+        method: 'POST',
+        body: datosBusqueda
+    });
+
+    const resultado = await respuesta.json();
+
+     if (resultado.exito) {
+        document.getElementById('form_noB').reset();
+        clasificacion.value = resultado.datos.clasificacion;
+        pendiente.value = resultado.datos.pendiente;
+    } else {
+        alert('Error al realizar la modificación');
+    }
+});

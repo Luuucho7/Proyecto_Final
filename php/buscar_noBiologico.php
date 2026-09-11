@@ -2,10 +2,9 @@
 require_once 'conexion.php';
 
 $clasificacion = $_POST['clasificacion'];
-$pendiente = $_POST['pendiente'];
 
-$stmt = $pdo -> prepare ("SELECT * FROM no_biologico WHERE clasificacion = :clasificacion AND pendiente = :pendiente");
-$stmt -> execute([':clasificacion' => $clasificacion, ':pendiente' => $pendiente]);
+$stmt = $pdo -> prepare ("SELECT * FROM no_biologico WHERE clasificacion = :clasificacion");
+$stmt -> execute ([":clasificacion" => $clasificacion]);
 
 $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
