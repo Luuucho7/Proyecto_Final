@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Documentación - Hospital de Clínicas</title>
+
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/Documentacion.css">
+</head>
+
+<body>
+
+<header class="banner-barra">
+
+    <div class="banner-izquierda"></div>
+
+    <div class="banner">
+        <a href="../html/pagina_principal_admin.html" class="banner-logo" aria-label="Ir al panel principal">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </a>
+        <div class="banner-texto">
+            <h2>Hospital de Clínicas</h2>
+            <p>Atención de calidad para toda la comunidad</p>
+        </div>
+    </div>
+
+    <div class="banner-derecha">
+        <div class="usuario">
+            <span>♙</span>
+            Funcionario Administrativo
+        </div>
+    </div>
+
+</header>
+
+
+    <!-- MENU LATERAL -->
+    <aside class="menu">
+
+        <a href="../html/pagina_principal_admin.html" class="opcion">
+            <img src="../css/img/casa_logo.svg" alt="Inicio" style="width:20px; height:20px; object-fit:contain;">
+            <span>Inicio</span>
+        </a>
+
+        <a href="../html/pacientes.html" class="opcion">
+            <img src="../css/img/persona_logo.svg" alt="Pacientes" style="width:20px; height:20px; object-fit:contain;">
+            <span>Pacientes</span>
+        </a>
+
+        <a href="../html/Atencion.html" class="opcion">
+            <img src="../css/img/hospital_logo.svg" alt="Atención" style="width:20px; height:20px; object-fit:contain;">
+            <span>Atención</span>
+        </a>
+
+        <a href="../html/encuestaformulario.html" class="opcion">
+            <img src="../css/img/estadisticas_logo.svg" alt="Encuestas" style="width:20px; height:20px; object-fit:contain;">
+            <span>Encuestas</span>
+        </a>
+
+        <a href="../html/Traslado.html" class="opcion">
+            <img src="../css/img/ambulancia_logo.svg" alt="Traslados en Ambulancia" style="width:20px; height:20px; object-fit:contain;">
+            <span>Traslados en Ambulancia</span>
+        </a>
+
+        <a href="../html/Elemento_trasladado.html" class="opcion">
+            <img src="../css/img/ambulancia_logo.svg" alt="Elemento a trasladar" style="width:20px; height:20px; object-fit:contain;">
+            <span>Elemento a trasladar</span>
+        </a>
+
+        <a href="../html/FAQ.html" class="opcion">
+            <img src="../css/img/pregunta_logo.svg" alt="Preguntas frecuentes" style="width:20px; height:20px; object-fit:contain;">
+            <span>Preguntas frecuentes</span>
+        </a>
+
+    </aside>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <h2>Gestión de Documentación</h2>
+
+        <p class="descripcion">
+
+            Desde este módulo podrá cargar y gestionar la documentación
+            general del hospital.
+
+            Cada documento de la lista tiene su propio código QR, que
+            lleva directamente a la página de ese documento.
+
+        </p>
+
+
+        <!-- SUBIR DOCUMENTO -->
+        <section class="tarjeta" id="subir-documento">
+
+            <h3>Subir Documento</h3>
+
+            <div class="formulario">
+
+                <div class="campo">
+
+                    <label>Tipo de Documento</label>
+
+                    <select id="tipoDocumento">
+
+                        <option value="">
+                            Seleccione tipo
+                        </option>
+
+                        <option>
+                            Historia Clínica
+                        </option>
+
+                        <option>
+                            Resultado de Laboratorio
+                        </option>
+
+                        <option>
+                            Informe Médico
+                        </option>
+
+                        <option>
+                            Estudios por Imágenes
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Descripción</label>
+
+                    <input
+                        type="text"
+                        id="descripcionDocumento"
+                        placeholder="Ej: Estudios, Resultados">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Archivo</label>
+
+                    <input
+                        type="file"
+                        id="archivo">
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="boton"
+                id="botonSubir"
+                onclick="subirDocumento()">
+
+                ⬆ Subir Documento
+
+            </button>
+
+            <button
+                class="botonPequeno"
+                id="botonCancelarEdicion"
+                onclick="cancelarEdicion()"
+                style="display:none;">
+
+                Cancelar edición
+
+            </button>
+
+        </section>
+
+
+        <!-- DOCUMENTOS CARGADOS -->
+        <section class="tarjeta" id="documentos-cargados">
+
+            <h3>Documentos Cargados</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Tipo de Documento</th>
+
+                        <th>Descripción</th>
+
+                        <th>Fecha de carga</th>
+
+                        <th>Acciones</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="listaDocumentos">
+
+                    <!-- Las filas se arman solas con JavaScript, trayendo los documentos guardados en la base -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- GENERAR QR -->
+        <section class="tarjeta" id="generar-qr">
+
+            <h3>Generar Código QR</h3>
+
+            <p>
+                Ingrese el ID del documento para generar
+                el código QR que lleva a la página de ese documento.
+            </p>
+
+
+            <div class="zonaQR">
+
+                <!-- Lado izquierdo: el generador -->
+                <div class="generadorQR">
+
+                    <div>
+
+                        <label>ID del Documento</label>
+
+                        <input
+                            type="number"
+                            id="idDocumento"
+                            placeholder="Ej: 1">
+
+                    </div>
+
+
+                    <button
+                        class="boton"
+                        onclick="generarQR()">
+
+                        ▦ Generar QR
+
+                    </button>
+
+                </div>
+
+
+                <!-- Lado derecho: el QR mostrado dentro de un iframe -->
+                <div class="marcoQR">
+
+                    <iframe
+                        id="qrIframe"
+                        title="Código QR del documento"></iframe>
+
+                    <p id="resultadoQR"></p>
+
+                    <a
+                        id="descargarQR"
+                        class="botonPequeno"
+                        href="">
+
+                        ⬇ Descargar QR
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PAGINA -->
+    <footer class="pie">
+
+        © 2026 Hospital de Clínicas.
+        Todos los derechos reservados.
+
+    </footer>
+
+
+    <script src="../js/Documentacion.js"></script>
+
+</body>
+
+</html>
