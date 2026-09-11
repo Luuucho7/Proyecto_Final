@@ -1,63 +1,50 @@
-  const form = document.getElementById('register-block');
-    const feedback = document.getElementById('feedback');
+// Este archivo controla el formulario de inicio de sesión (index.html)
 
-    // Add an event listener for form submission
-    form.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevents user from submitting an empty form
+const formulario = document.getElementById('register-block');
+const feedback = document.getElementById('feedback');
 
-      // Get the values entered by the user
-      const username = document.getElementById('feedback-user').value;
-      const password = document.getElementById('feedback-pass').value;
+// Cuando el usuario aprieta "Enviar"
+formulario.addEventListener('submit', async function (event) {
 
-      // === USERNAME VALIDATION ===
-      const hasLetter = /[a-zA-Z]/.test(username); // Checks for at least one letter
-      const hasNumber = /[0-9]/.test(username);    // Checks for at least one number
+  // Frenamos el envío normal del formulario.
+  // Los datos los vamos a mandar nosotros con JavaScript, sin recargar la página.
+  event.preventDefault();
 
-      if (!hasLetter || !hasNumber) {
-        feedback.textContent = "El nombre de usuario debe contener al menos una letra y un numero.";
-        feedback.className = "error";
-        return; // Stop the function if validation fails
-      }
+  // Tomamos lo que se escribió en los dos campos
+  const usuario = document.getElementById('feedback-user').value;
+  const contrasena = document.getElementById('feedback-pass').value;
 
-      // === PASSWORD VALIDATION ===
-      const hasLowercase = /[a-z]/.test(password);       // At least one lowercase
-      const hasUppercase = /[A-Z]/.test(password);       // At least one uppercase
-      const hasDigit = /[0-9]/.test(password);        // At least one number
-     
+  // Revisamos que no estén vacíos
+  if (usuario === "" || contrasena === "") {
+    feedback.textContent = "Tenés que completar la cédula o correo y la contraseña.";
+    feedback.className = "error";
+    return;
+  }
 
-      // Combine all password requirements
-      if (!hasLowercase || !hasUppercase || !hasDigit) {
-        feedback.textContent =
-          "La contraseña de contener al menos una letra minuscula, una letra mayuscula y un numero .";
-        feedback.className = "error";
-        return;
-      }
+  // Juntamos los datos que le vamos a enviar a login.php
+  const datos = new FormData();
+  datos.append("username", usuario);
+  datos.append("password", contrasena);
 
-      
+  // Enviamos los datos a login.php y esperamos la respuesta del servidor
+  const respuesta = await fetch("php/login.php", {
+    method: "POST",
+    body: datos
+  });
 
-      if (username.length < 5 || username.length > 16) {
-  feedback.textContent = "El nombre de usuario debe tener entre 5 y 16 caracteres.";
-  feedback.className = "error";
-  return;
-}
+  // login.php responde en formato JSON.
+  // Lo convertimos en un objeto de JavaScript para poder usarlo.
+  const resultado = await respuesta.json();
 
-// === PASSWORD LENGTH VALIDATION ===
-if (password.length < 8 || password.length > 20) {
-  feedback.textContent = "La contraseña debe tener entre 8 y 20 caracteres.";
-  feedback.className = "error";
-  return;
+  // Mostramos el mensaje que mandó el servidor
+  feedback.textContent = resultado.message;
 
-}
-
-// If both username and password are valid
-      feedback.textContent  = "¡Registro exitoso!";
-      feedback.className = "success";
-      form.submit();
-      
-    });
-
- // Function to see and hide the password
-function togglePassword() {
-  const passInput = document.getElementById("feedback-pass");
-  passInput.type = passInput.type === "password" ? "text" : "password";
-}
+  if (resultado.success === true) {
+    // Datos correctos: vamos a la página que indicó el servidor
+    feedback.className = "success";
+    window.location.href = resultado.redirect;
+  } else {
+    // Datos incorrectos: dejamos el mensaje de error a la vista
+    feedback.className = "error";
+  }
+});

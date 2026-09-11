@@ -1,85 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Elemento a trasladar - Hospital de Clínicas</title>
     <link rel="stylesheet" href="../css/banner.css">
     <link rel="stylesheet" href="../css/elemento_traslado.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<div class="banner">
-        <span class="banner-logo">
-            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
-        </span>
-        <div class="banner-texto">
-            <h2 data-traduccion="titulo">Hospital de Clínicas</h2>
-            <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
-        </div>
-    </div>
-
-  
-<header class="cabecera">
-        <h1 data-traduccion="titulo">Elemento a trasladar</h1>
-        <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
-</header>
 
 <body>
 
-    <div class="sectores">
+<header class="banner-barra">
 
-        <div class="biologico">
-    <h2>BIOLOGICO</h2>
-
-<<<<<<< HEAD
-    <form>
-        <input type="text" id="nombre" placeholder="Nombre del Insumo" name="nombre" class="escribir_organos">
-        <input type="text" id="estado" placeholder="Estado del insumo" name="estado" class="escribir_organos">
-        <input type="submit" id="boton" name="boton" value="Ingresar" class="boton_organos">
-=======
-    <form id="biologico">
-        <input type="text" id="nombre" placeholder="Nombre del Insumo" name="nombre">
-        <input type="text" id="estado" placeholder="Estado del insumo" name="estado">
-        <input type="submit" id="boton" name="boton" value="Ingresar">
->>>>>>> e8fde703e6244ddd2a0295b87eca6812eaedae36
-    </form>
-</div>
-
-       <div class="no_biologico">
-    <h2>NO BIOLOGICO</h2>
-
-<<<<<<< HEAD
-    <form>
-        <input type="text" id="clasificacion" placeholder="Nombre del Insumo" name="clasificacion" class="escribir_organos">
-        <input type="text" id="pendiente" placeholder="Estado del insumo" name="pendiente" class="escribir_organos">
-        <input type="submit" id="button" name="button" value="Ingresar" class="boton_organos">
-=======
-    <form id="no_biologico">
-        <input type="text" id="clasificacion" placeholder="Nombre del Insumo" name="clasificacion">
-        <input type="text" id="pendiente" placeholder="Estado del insumo" name="pendiente">
-        <input type="submit" id="button" name="button" value="Ingresar">
->>>>>>> e8fde703e6244ddd2a0295b87eca6812eaedae36
-    </form>
-</div>
-
-        <div class="organo">
-    <h2>ÓRGANO</h2>
-
-<<<<<<< HEAD
-    <form>
-        <input type="text" id="persona" placeholder="Nombre del Insumo" name="persona" class="escribir_organos">
-        <input type="text" id="en_curso" placeholder="Estado del insumo" name="en_curso" class="escribir_organos">
-        <input type="submit" id="tocar" name="tocar" value="Ingresar" class="boton_organos">
-=======
-    <form id="organo">
-        <input type="text" id="persona" placeholder="Nombre del Insumo" name="persona">
-        <input type="text" id="en_curso" placeholder="Estado del insumo" name="en_curso">
-        <input type="submit" id="tocar" name="tocar" value="Ingresar">
->>>>>>> e8fde703e6244ddd2a0295b87eca6812eaedae36
-    </form>
-</div>
-
+    <div class="banner-izquierda">
+        <div class="banner-menu" id="btnMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-    <script src="../js/ingresarInsumo.js"></script>
+
+    <div class="banner">
+        <a href="../html/pagina_principal_admin.html" class="banner-logo" aria-label="Ir al panel principal">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </a>
+        <div class="banner-texto">
+            <h2>Hospital de Clínicas</h2>
+            <p>Atención de calidad para toda la comunidad</p>
+        </div>
+    </div>
+
+    <div class="banner-derecha"></div>
+
+</header>
+
+<div class="menulateral" id="menuLateral">
+
+    <h4>PANEL PRINCIPAL</h4>
+
+    <ul>
+        <li>
+            <a href="../html/pagina_principal.html">
+                <img src="../css/img/casa_logo.svg" alt="Inicio" style="width:20px; height:20px; object-fit:contain;">
+                <span>Inicio</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/pacientes.html">
+                <img src="../css/img/persona_logo.svg" alt="Pacientes" style="width:20px; height:20px; object-fit:contain;">
+                <span>Pacientes</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Atencion.html">
+                <img src="../css/img/hospital_logo.svg" alt="Atención" style="width:20px; height:20px; object-fit:contain;">
+                <span>Atención</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Documentacion.html">
+                <img src="../css/img/qr_logo.svg" alt="Documentación QR" style="width:20px; height:20px; object-fit:contain;">
+                <span>Documentación QR</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/encuestaformulario.html">
+                <img src="../css/img/estadisticas_logo.svg" alt="Encuestas" style="width:20px; height:20px; object-fit:contain;">
+                <span>Encuestas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Traslado.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="Traslados en Ambulancia" style="width:20px; height:20px; object-fit:contain;">
+                <span>Traslados en Ambulancia</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/FAQ.html">
+                <img src="../css/img/pregunta_logo.svg" alt="Preguntas frecuentes" style="width:20px; height:20px; object-fit:contain;">
+                <span>Preguntas frecuentes</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<h1 class="titulo-pagina">Elemento a trasladar</h1>
+
+<div class="sectores">
+
+    <div class="biologico">
+        <h2>BIOLÓGICO</h2>
+        <form id="form_biologico">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre del insumo" class="escribir_organos">
+            <input type="text" id="estado" name="estado" placeholder="Estado del insumo" class="escribir_organos">
+            <input type="submit" id="boton" value="Ingresar" class="boton_organos">
+        </form>
+    </div>
+
+    <div class="no_biologico">
+        <h2>NO BIOLÓGICO</h2>
+        <form id="form_no_biologico">
+            <input type="text" id="clasificacion" name="clasificacion" placeholder="Clasificación" class="escribir_organos">
+            <input type="text" id="pendiente" name="pendiente" placeholder="¿Pendiente? (Si / No)" class="escribir_organos">
+            <input type="submit" id="button" value="Ingresar" class="boton_organos">
+        </form>
+    </div>
+
+    <div class="organo">
+        <h2>ÓRGANO</h2>
+        <form id="form_organo">
+            <input type="text" id="persona" name="persona" placeholder="Nombre de la persona" class="escribir_organos">
+            <input type="text" id="en_curso" name="en_curso" placeholder="¿En curso? (Si / No)" class="escribir_organos">
+            <input type="submit" id="tocar" value="Ingresar" class="boton_organos">
+        </form>
+    </div>
+
+</div>
+
+<script src="../js/java.js"></script>
+<script src="../js/ingresarInsumo.js"></script>
 </body>
 </html>

@@ -92,3 +92,41 @@ button {
 button:hover {
     background: #005f8f;
 }
+
+/* Botón "Ir al inicio" de la página de encuesta recibida */
+.boton-volver {
+    display: block;
+    max-width: 220px;
+    margin: 10px auto 0;
+    padding: 14px;
+    background: #0077b6;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.boton-volver:hover {
+    background: #005f8f;
+}
+
+/* Botón "Ir al inicio" de la página de encuesta recibida */
+.boton-volver {
+    display: block;
+    max-width: 220px;
+    margin: 10px auto 0;
+    padding: 14px;
+    background: #0077b6;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.boton-volver:hover {
+    background: #005f8f;
+}

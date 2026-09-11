@@ -1,3 +1,8 @@
+/* En esta página el título va centrado */
+.titulo-pagina {
+    text-align: center;
+}
+
 .sectores {
     display: flex;
     justify-content: center;
