@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-traduccion="titulo">Hospital de Clinicas - Registro</title>
-    
+    <title>Hospital de Clinicas - Registro</title>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/banner.css">
 </head>
@@ -23,8 +23,8 @@
             <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
         </span>
         <div class="banner-texto">
-            <h2 data-traduccion="titulo">Hospital de Clínicas</h2>
-            <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
+            <h2>Hospital de Clínicas</h2>
+            <p>Atención de calidad para toda la comunidad</p>
         </div>
     </div>
 
@@ -34,29 +34,41 @@
 
     <br><br><br>
 
-    <form id="register-block" action="../php/register.php" method="POST" onsubmit="return validarRegistro(event)">
-        
-        
+    <form id="register-block" action="../php/register.php" method="POST">
+
+        <!-- Nombre -->
         <div class="campo-grupo">
-            <div class="texto-arriba" data-traduccion="cedula">Cédula de Identidad:</div>
+            <div class="texto-arriba">Nombre:</div>
+            <input type="text" id="nombre" class="campo-usuario" name="nombre" placeholder="Ej: Juan" required />
+        </div>
+
+        <!-- Apellido -->
+        <div class="campo-grupo">
+            <div class="texto-arriba">Apellido:</div>
+            <input type="text" id="apellido" class="campo-usuario" name="apellido" placeholder="Ej: Pérez" required />
+        </div>
+
+        <!-- Cédula -->
+        <div class="campo-grupo">
+            <div class="texto-arriba">Cédula de Identidad:</div>
             <input type="text" id="cedula" class="campo-usuario" name="cedula" placeholder="Ej: 12345678" required />
         </div>
 
         <!-- Correo -->
         <div class="campo-grupo">
-            <div class="texto-arriba" data-traduccion="correo">Correo Electrónico:</div>
+            <div class="texto-arriba">Correo Electrónico:</div>
             <input type="email" id="correo" class="campo-usuario" name="correo" placeholder="ejemplo@correo.com" required />
         </div>
 
         <!-- Contraseña -->
         <div class="campo-grupo">
-            <div class="texto-arriba" data-traduccion="contrasena">Contraseña:</div>
-            <input type="password" id="password" class="password_field" name="password" minlength="8" maxlength="16" placeholder="8-16 chars, 1 mayús, 1 num" required />
+            <div class="texto-arriba">Contraseña:</div>
+            <input type="password" id="password" class="password_field" name="password" minlength="8" maxlength="16" placeholder="8-16 caracteres, 1 mayúscula, 1 número" required />
         </div>
 
         <!-- Confirmar Contraseña -->
         <div class="campo-grupo">
-            <div class="texto-arriba" data-traduccion="confirmar_contrasena">Confirmar Contraseña:</div>
+            <div class="texto-arriba">Confirmar Contraseña:</div>
             <input type="password" id="confirm_password" class="password_field" name="confirm_password" required />
         </div>
 
@@ -68,26 +80,26 @@
 
         <!-- Teléfono -->
         <div class="campo-grupo">
-            <div class="texto-arriba" data-traduccion="telefono">Teléfono / Celular:</div>
+            <div class="texto-arriba">Teléfono / Celular:</div>
             <input type="tel" id="telefono" class="campo-usuario" name="telefono" placeholder="099123456" required />
         </div>
 
         <!-- Fecha de Nacimiento -->
         <div class="campo-grupo">
-            <div class="texto-arriba" data-traduccion="fecha_nacimiento">Fecha de Nacimiento:</div>
+            <div class="texto-arriba">Fecha de Nacimiento:</div>
             <input type="date" id="fecha_nacimiento" class="campo-usuario" name="fecha_nacimiento" required />
         </div>
 
         <div class="acciones-login">
-            <button type="submit" class="submit" data-traduccion="enviar">Enviar</button>
+            <button type="submit" class="submit">Enviar</button>
         </div>
 
         <div id="feedback" class="error"></div>
     </form>
 
-    <a href="../index.html" class="log" data-traduccion="iniciar_sesion_msg" >¿Ya tienes una  ? Inicia Sesión aquí.</a>
+    <a href="../index.html" class="log">¿Ya tienes una cuenta? Inicia sesión aquí.</a>
 
-    <script src="../js/java.js"></script>
+    <script src="../js/register.js"></script>
 </body>
 
 </html>

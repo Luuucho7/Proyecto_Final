@@ -3,6 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     color: #333;
+    min-width: 320px;
 }
 
 .banner-logo {
@@ -161,12 +162,13 @@ body {
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
+    overflow-x: auto;
     margin-bottom: 30px;
 }
 
 .tabla-pacientes {
     width: 100%;
+    min-width: 650px;
     border-collapse: collapse;
     text-align: left;
 }
@@ -295,8 +297,31 @@ body {
     }
 
     .pacientes {
-        margin-top: 24px;
+        margin-top: 104px;
         padding: 0 20px;
+    }
+
+    .titulo-pacientes {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .titulo-pacientes h1 {
+        font-size: 22px;
+    }
+
+    .subtitulo {
+        font-size: 14px;
+    }
+
+    .boton-nuevo {
+        align-self: stretch;
+        text-align: center;
+    }
+
+    .formulario-paciente {
+        padding: 20px;
     }
 }
 

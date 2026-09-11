@@ -4,19 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital de Clinicas</title>
-    <link rel="stylesheet" href="../css/banner.css">
     <link rel="stylesheet" href="../css/pacientes.css">
+    <link rel="stylesheet" href="../css/banner.css">
+    
 </head>
 <body>
 
-<<<<<<< HEAD
-<header class="cabecera">
-    <a href="../html/pagina_principal.html" class="flechaatras">
-        <img src="../css/img/atras.jpg" alt="Volver" width="35" height="35">
-    </a>
-    <h2>Pacientes</h2>
-=======
->>>>>>> e03a7755b260467a93c1114088f03170ed56dc3c
 <header class="banner-barra">
 
     <div class="banner-izquierda">
@@ -30,8 +23,8 @@
             <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
         </a>
         <div class="banner-texto">
-            <h2 data-traduccion="titulo">Hospital de Clínicas</h2>
-            <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
+            <h2>Hospital de Clínicas</h2>
+            <p>Atención de calidad para toda la comunidad</p>
         </div>
     </div>
 
@@ -53,68 +46,71 @@
 </aside>
 
 <!-- Contenido Principal -->
+
 <main class="pacientes">
 
-    <!-- Título y Botón de Acción -->
-    <div class="titulo-pacientes">
-        <div>
-            <h1>Gestión de Pacientes</h1>
-            <p class="subtitulo">Administra los registros e historial del hospital</p>
+<!-- Título y Botón de Acción -->
+        
+<div class="titulo-pacientes">
+            <div>
+                <h1>Gestión de Pacientes</h1>
+                <p class="subtitulo">Administra los registros e historial del hospital</p>
+            </div>
+            <a href="#formulario" class="boton-nuevo">+ Nuevo Paciente</a>
         </div>
-        <a href="#formulario" class="boton-nuevo">+ Nuevo Paciente</a>
-    </div>
 
-    <!-- Buscador -->
-    <div class="buscador">
-        <input type="text" placeholder="Buscar por nombre o CI...">
-        <button type="button" style="border-left: 0.2rem solid #ddd;">Buscar</button>
-    </div>
+        <!-- Buscador -->
+        <div class="buscador">
+            <input type="text" placeholder="Buscar por nombre o CI...">
+            <button type="button">🔍</button>
+        </div>
 
-    <!-- Tabla de Pacientes -->
-    <div class="tabla-contenedor">
-        <table class="tabla-pacientes">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Cédula / Documento</th>
-                    <th>Teléfono</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Las filas se cargan dinámicamente desde JavaScript -->
-            </tbody>
-        </table>
-    </div>
+        <!-- Tabla de Pacientes -->
+        <div class="tabla-contenedor">
+            <table class="tabla-pacientes">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cédula / Documento</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-    <!-- Formulario para agregar paciente -->
-    <div class="formulario-paciente" id="formulario">
-        <h2>Registrar Nuevo Paciente</h2>
-        <form id="form-paciente">
-            <label for="nombre">Nombre Completo</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
+                </tbody>
+            </table>
+        </div>
 
-            <label for="cedula">Documento de Identidad</label>
-            <input type="text" id="cedula" name="documento" placeholder="Ej. 45678901" required>
+        <!-- Formulario para agregar paciente -->
+        <div class="formulario-paciente" id="formulario">
+            <h2>Registrar Nuevo Paciente</h2>
+            <form>
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
 
-            <label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="Ej. 091000111">
+                <label for="documento">Documento de Identidad</label>
+                <input type="text" id="documento" name="documento" placeholder="Ej. 45678901" required>
 
-            <label for="estado">Estado</label>
-            <select id="estado" name="estado">
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
-            </select>
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 091000111">
 
-            <button type="button" id="btn-guardar" class="boton-guardar">Guardar Paciente</button>
-        </form>
-    </div>
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado">
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
 
-</main>
+                <button type="submit" class="boton-guardar">Guardar Paciente</button>
+            </form>
+        </div>
 
-<!-- Se carga primero pacientes.js para garantizar que el botón funcione sin depender de traducciones -->
+    </main>
+
 <script src="../js/pacientes.js"></script>
-<script src="../js/traducciones.js" data-json="../json/pacientes.json"></script>
 
 </body>
-</html>
+
+ 
+
+ </html>    

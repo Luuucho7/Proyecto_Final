@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-traduccion="titulo">Hospital de Clinicas</title>
+    <title>Hospital de Clinicas</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/banner.css">
 </head>
@@ -20,8 +20,8 @@
             <img src="css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
         </span>
         <div class="banner-texto">
-            <h2 data-traduccion="titulo">Hospital de Clínicas</h2>
-            <p data-traduccion="descripcion">Atención de calidad para toda la comunidad</p>
+            <h2>Hospital de Clínicas</h2>
+            <p>Atención de calidad para toda la comunidad</p>
         </div>
     </div>
 
@@ -38,15 +38,17 @@
     <form id="register-block" action="php/login.php" method="POST">
 
         
-<h2 style="text-align:center;" data-traduccion="iniciar_sesion">Iniciar sesión</h2>
+<h2 style="text-align:center;">Iniciar sesión</h2>
 
     
+
+        <label for="feedback-user" class="txtup">Cédula o correo:</label>
 
         <input type="text" id="feedback-user" class="campo-usuario" name="username" required />
 
         <br>
 
-        <label for="password" class="txtup" data-traduccion="contrasena">Contraseña:</label>
+        <label for="feedback-pass" class="txtup">Contraseña:</label>
 
 
         <div class="password-container">
@@ -58,15 +60,19 @@
        </div>
     
         <div class="acciones-login">
-            <button type="submit" class="submit" data-traduccion="enviar">Enviar</button>
+            <button type="submit" class="submit">Enviar</button>
         </div>
 
         <div id="feedback" class="error"></div>
     </form>
 
-    <a href="html/register.html" class="log" data-traduccion="registrarse">¿No tienes una cuenta? Regístrate aquí.</a>
+    <a href="html/register.html" class="log">¿No tienes una cuenta? Regístrate aquí.</a>
 
+    <!-- java.js: menu lateral y el ojo para mostrar/ocultar la contrasena -->
     <script src="js/java.js"></script>
+
+    <!-- index.js: envia el formulario a php/login.php sin recargar la pagina -->
+    <script src="js/index.js"></script>
 
 </body>
 
