@@ -89,13 +89,14 @@
 <h1 class="titulo-pagina">Elemento a trasladar</h1>
 
 <div class="sectores">
-
+ 
     <div class="biologico">
         <h2>BIOLÓGICO</h2>
         <form id="form_biologico">
             <input type="text" id="nombre" name="nombre" placeholder="Nombre del insumo" class="escribir_organos">
             <input type="text" id="estado" name="estado" placeholder="Estado del insumo" class="escribir_organos">
             <input type="submit" id="boton" value="Ingresar" class="boton_organos">
+            <button id="mod_b">Modificar</button>
         </form>
     </div>
 
@@ -105,6 +106,7 @@
             <input type="text" id="clasificacion" name="clasificacion" placeholder="Clasificación" class="escribir_organos">
             <input type="text" id="pendiente" name="pendiente" placeholder="¿Pendiente? (Si / No)" class="escribir_organos">
             <input type="submit" id="button" value="Ingresar" class="boton_organos">
+             <button id="mod_no">Modificar</button>
         </form>
     </div>
 
@@ -114,10 +116,26 @@
             <input type="text" id="persona" name="persona" placeholder="Nombre de la persona" class="escribir_organos">
             <input type="text" id="en_curso" name="en_curso" placeholder="¿En curso? (Si / No)" class="escribir_organos">
             <input type="submit" id="tocar" value="Ingresar" class="boton_organos">
+             <button id="mod_org">Modificar</button>
         </form>
     </div>
 
 </div>
+
+<form id="form_buscar">
+    <input type="text" id="buscar" name="buscar" placeholder="Buscar elemento a trasladar...">
+    <input type="submit" id="buscar_boton" value="Buscar">
+</form>
+
+<form id="form_noB">
+    <input type="text" id="encontrar" name="buscar" placeholder="Buscar elemento a trasladar...">
+    <input type="submit" id="button" value="Buscar">
+</form>
+
+<form id="form_org">
+    <input type="text" id="encontrar_org" name="buscar" placeholder="Buscar elemento a trasladar...">
+    <input type="submit" id="button_org" value="Buscar">
+</form>
 
 <script src="../js/java.js"></script>
 <script src="../js/ingresarInsumo.js"></script>
