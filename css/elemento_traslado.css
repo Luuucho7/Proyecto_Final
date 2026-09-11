@@ -50,3 +50,52 @@
     border-radius: 20px;
     padding: 1rem;
 }
+
+/* Botón "Eliminar": mismo tamaño que los demás, pero en rojo para que se note que borra */
+.boton-eliminar {
+    border-radius: 20px;
+    padding: 1rem;
+    background: #e63946;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.boton-eliminar:hover {
+    background: #c92c39;
+}
+
+/* ---- Buscadores: cada uno en su propia tarjeta separada ---- */
+.buscadores {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin: 40px 0;
+}
+
+.buscador-item {
+    width: 320px;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buscador-item h3 {
+    margin: 0 0 15px;
+    font-size: 1.1rem;
+    color: #1f2937;
+}
+
+.buscador-item form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

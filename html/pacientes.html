@@ -74,23 +74,27 @@
                         <th>Cédula / Documento</th>
                         <th>Teléfono</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    <!-- pacientes.js llena esto con los datos de la base -->
                 </tbody>
             </table>
         </div>
 
-        <!-- Formulario para agregar paciente -->
+        <!-- Formulario para agregar o modificar un paciente -->
         <div class="formulario-paciente" id="formulario">
-            <h2>Registrar Nuevo Paciente</h2>
-            <form>
+            <h2>Registrar / Modificar Paciente</h2>
+            <form id="form-paciente">
+                <!-- Este campo no se ve: guarda el id del paciente cuando estamos modificando -->
+                <input type="hidden" id="id_paciente">
+
                 <label for="nombre">Nombre Completo</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
 
-                <label for="documento">Documento de Identidad</label>
-                <input type="text" id="documento" name="documento" placeholder="Ej. 45678901" required>
+                <label for="cedula">Documento de Identidad</label>
+                <input type="text" id="cedula" name="cedula" placeholder="Ej. 45678901" required>
 
                 <label for="telefono">Teléfono</label>
                 <input type="tel" id="telefono" name="telefono" placeholder="Ej. 091000111">
@@ -101,7 +105,8 @@
                     <option value="inactivo">Inactivo</option>
                 </select>
 
-                <button type="submit" class="boton-guardar">Guardar Paciente</button>
+                <button type="submit" class="boton-guardar" id="boton-guardar-paciente">Guardar Paciente</button>
+                <button type="button" class="boton-cancelar" id="boton-cancelar-edicion" style="display:none;">Cancelar edición</button>
             </form>
         </div>
 
@@ -110,7 +115,4 @@
 <script src="../js/pacientes.js"></script>
 
 </body>
-
- 
-
- </html>    
+</html>

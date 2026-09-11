@@ -1,24 +1,21 @@
 <?php
 require_once 'conexion.php';
 
-// Datos que manda ingresarInsumo.js
+$id = trim($_POST['id'] ?? '');
 $clasificacion = trim($_POST['clasificacion'] ?? '');
 $pendiente = trim($_POST['pendiente'] ?? '');
 
 header('Content-Type: application/json');
 
-// Si falta algún dato, avisamos y cortamos (no guardamos filas vacías)
-if ($clasificacion === '' || $pendiente === '') {
-    echo json_encode(['exito' => false, 'mensaje' => 'Completá la clasificación y el estado.']);
+if ($id === '' || $clasificacion === '' || $pendiente === '') {
+    echo json_encode(['exito' => false, 'mensaje' => 'Primero buscá un insumo y completá los datos.']);
     exit();
 }
 
 try {
-    $stmt = $pdo->prepare("UPDATE no_biologico SET pendiente = :pendiente WHERE clasificacion = :clasificacion");
-    $stmt->execute([':clasificacion' => $clasificacion, ':pendiente' => $pendiente]);
+    $stmt = $pdo->prepare("UPDATE no_biologico SET clasificacion = :clasificacion, pendiente = :pendiente WHERE id = :id");
+    $stmt->execute([':id' => $id, ':clasificacion' => $clasificacion, ':pendiente' => $pendiente]);
     echo json_encode(['exito' => true]);
 } catch (PDOException $e) {
     echo json_encode(['exito' => false, 'mensaje' => 'No se pudo modificar el objeto.']);
 }
-?>
-

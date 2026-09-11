@@ -1,23 +1,23 @@
 <?php
 require_once 'conexion.php';
 
-// Datos que manda ingresarInsumo.js
+// El id viene del campo oculto que se llena al buscar el insumo
+$id = trim($_POST['id'] ?? '');
 $nombre = trim($_POST['nombre'] ?? '');
 $estado = trim($_POST['estado'] ?? '');
 
 header('Content-Type: application/json');
 
-// Si falta algún dato, avisamos y cortamos (no guardamos filas vacías)
-if ($nombre === '' || $estado === '') {
-    echo json_encode(['exito' => false, 'mensaje' => 'Completá el nombre y el estado.']);
+if ($id === '' || $nombre === '' || $estado === '') {
+    echo json_encode(['exito' => false, 'mensaje' => 'Primero buscá un insumo y completá los datos.']);
     exit();
 }
 
 try {
-    $stmt = $pdo->prepare("UPDATE biologico SET estado = :estado WHERE nombre = :nombre");
-    $stmt->execute([':nombre' => $nombre, ':estado' => $estado]);
+    // Modificamos por id, así solo se toca la fila que se buscó (no otras con el mismo nombre)
+    $stmt = $pdo->prepare("UPDATE biologico SET nombre = :nombre, estado = :estado WHERE id = :id");
+    $stmt->execute([':id' => $id, ':nombre' => $nombre, ':estado' => $estado]);
     echo json_encode(['exito' => true]);
 } catch (PDOException $e) {
     echo json_encode(['exito' => false, 'mensaje' => 'No se pudo modificar el insumo.']);
 }
-?>
