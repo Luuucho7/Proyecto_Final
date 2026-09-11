@@ -45,6 +45,20 @@ form.addEventListener('submit', function (event) {
     return;
   }
 
+if (cedula === "" || correo === "" || password === "" || confirmPassword === "" || direccion === "" || telefono === "" || fechaNacimiento === "") {
+
+alert ("Porfavor, complete todo los campos antes de continuar.")
+
+}
+
+else{
+
+alert ("Registro exitoso")
+
+}
+
+
+
   // === VALIDACIÓN DEL CORREO ===
   const tieneArroba = correo.includes("@"); // Tiene que llevar arroba
   const tienePunto = correo.includes(".");  // Tiene que llevar punto
