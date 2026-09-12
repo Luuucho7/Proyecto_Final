@@ -1,7 +1,6 @@
 <?php
 require_once 'conexion.php';
 
-// El id viene del campo oculto que se llena al buscar el insumo
 $id = trim($_POST['id'] ?? '');
 $nombre = trim($_POST['nombre'] ?? '');
 $estado = trim($_POST['estado'] ?? '');
@@ -14,7 +13,6 @@ if ($id === '' || $nombre === '' || $estado === '') {
 }
 
 try {
-    // Modificamos por id, así solo se toca la fila que se buscó (no otras con el mismo nombre)
     $stmt = $pdo->prepare("UPDATE biologico SET nombre = :nombre, estado = :estado WHERE id = :id");
     $stmt->execute([':id' => $id, ':nombre' => $nombre, ':estado' => $estado]);
     echo json_encode(['exito' => true]);

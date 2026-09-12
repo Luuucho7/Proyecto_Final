@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonGuardar = document.getElementById('boton-guardar-paciente');
     const botonCancelar = document.getElementById('boton-cancelar-edicion');
 
-    // ---- Menú lateral ----
     if (botonMenu && menu) {
         botonMenu.addEventListener('click', () => {
             const abierto = menu.classList.toggle('abierto');
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ---- Vuelve el formulario al modo "paciente nuevo" ----
     function terminarEdicion() {
         formulario.reset();
         id_paciente.value = '';
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         botonCancelar.style.display = 'none';
     }
 
-    // ---- Le pide la lista de pacientes a la base y arma la tabla ----
     async function cargarPacientes() {
         const respuesta = await fetch('../php/listar_pacientes.php');
         const resultado = await respuesta.json();
@@ -58,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             `;
 
-            // Editar: carga los datos de este paciente en el formulario
             fila.querySelector('.boton-editar').addEventListener('click', () => {
                 id_paciente.value = paciente.id_paciente;
                 nombre.value = paciente.nombre;
@@ -71,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
             });
 
-            // Eliminar: borra este paciente, pidiendo confirmación antes
             fila.querySelector('.boton-eliminar-fila').addEventListener('click', async () => {
                 if (!confirm('¿Seguro que querés eliminar a ' + paciente.nombre + '?')) {
                     return;
@@ -99,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cargarPacientes();
 
-    // ---- Buscador: filtra lo que ya está mostrado en la tabla ----
     if (buscadorInput && tablaBody) {
         buscadorInput.addEventListener('input', (e) => {
             const busqueda = e.target.value.toLowerCase().trim();
@@ -114,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ---- Guardar (crear) o Modificar, según si hay un id cargado ----
     if (formulario) {
         formulario.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -128,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
             datos.append('telefono', telefono.value.trim());
             datos.append('estado', estado.value);
 
-            // Si el id está vacío, estamos creando; si no, estamos modificando
             const creando = id_paciente.value === '';
             const url = creando ? '../php/guardar_paciente.php' : '../php/modificar_paciente.php';
 

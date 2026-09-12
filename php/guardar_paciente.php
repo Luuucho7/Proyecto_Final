@@ -14,7 +14,6 @@ if ($nombre === '' || $cedula === '') {
 }
 
 try {
-    // Revisamos que no exista ya un paciente con esa cédula
     $verificar = $pdo->prepare("SELECT id_paciente FROM Paciente WHERE cedula = :cedula");
     $verificar->execute([':cedula' => $cedula]);
 

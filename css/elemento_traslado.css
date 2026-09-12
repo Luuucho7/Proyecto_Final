@@ -1,4 +1,4 @@
-/* En esta página el título va centrado */
+
 .titulo-pagina {
     text-align: center;
 }
@@ -36,7 +36,6 @@
     margin-top: 30px;
     border-radius: 20px;
 
-
 }
 
 .escribir_organos {
@@ -51,7 +50,6 @@
     padding: 1rem;
 }
 
-/* Botón "Eliminar": mismo tamaño que los demás, pero en rojo para que se note que borra */
 .boton-eliminar {
     border-radius: 20px;
     padding: 1rem;
@@ -65,7 +63,6 @@
     background: #c92c39;
 }
 
-/* ---- Buscadores: cada uno en su propia tarjeta separada ---- */
 .buscadores {
     display: flex;
     justify-content: center;

@@ -14,7 +14,6 @@ function subirDocumento() {
     }
 }
 
-
 function generarQR() {
 
     let idDocumento = document.getElementById("idDocumento").value;
@@ -25,16 +24,12 @@ function generarQR() {
 
     } else {
 
-        // Dirección de la página de ese documento.
         let pagina = "http://localhost/Proyecto_Final/html/Documentacion.html?documento=" + idDocumento;
 
-        // Dirección de la imagen del código QR de esa página.
         let imagenQR = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + pagina;
 
-        // El iframe muestra el código QR.
         document.getElementById("qrIframe").src = imagenQR;
 
-        // El enlace descarga esa misma imagen.
         document.getElementById("descargarQR").href = imagenQR + "&download=1";
         document.getElementById("descargarQR").style.display = "inline-block";
 
@@ -42,7 +37,6 @@ function generarQR() {
             "Código QR del documento Nº " + idDocumento;
     }
 }
-
 
 function qrDeLaFila(idDocumento) {
 

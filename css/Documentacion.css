@@ -1,4 +1,4 @@
-/* CONFIGURACIÓN GENERAL */
+
 
 * {
     box-sizing: border-box;
@@ -13,12 +13,9 @@ body {
 
     color: #17233c;
 
-    /* Deja lugar arriba para el banner, que es fijo. */
+    
     padding-top: 84px;
 }
-
-
-/* USUARIO */
 
 .usuario {
 
@@ -30,11 +27,6 @@ body {
 
     gap: 8px;
 }
-
-
-/* ========================= */
-/* MENU LATERAL */
-/* ========================= */
 
 .menu {
 
@@ -56,7 +48,6 @@ body {
     border-top: 1px solid #ddd;
 }
 
-
 .opcion {
 
     display: block;
@@ -70,14 +61,12 @@ body {
     font-size: 15px;
 }
 
-
 .opcion:hover {
 
     background-color: #eef4fc;
 
     color: #0758c7;
 }
-
 
 .opcion.activa {
 
@@ -88,11 +77,6 @@ body {
     font-weight: bold;
 }
 
-
-/* ========================= */
-/* CONTENIDO */
-/* ========================= */
-
 .contenido {
 
     margin-left: 250px;
@@ -102,7 +86,6 @@ body {
     min-height: calc(100vh - 85px);
 }
 
-
 .contenido h2 {
 
     margin-top: 0;
@@ -110,18 +93,12 @@ body {
     font-size: 28px;
 }
 
-
 .descripcion {
 
     color: #526078;
 
     margin-bottom: 25px;
 }
-
-
-/* ========================= */
-/* TARJETAS */
-/* ========================= */
 
 .tarjeta {
 
@@ -138,7 +115,6 @@ body {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-
 .tarjeta h3 {
 
     color: #0758c7;
@@ -146,16 +122,11 @@ body {
     margin-top: 0;
 }
 
-
-/* ========================= */
-/* FORMULARIO */
-/* ========================= */
-
 .formulario {
 
     display: grid;
 
-    /* Las tres columnas se reparten todo el ancho de la tarjeta. */
+    
     grid-template-columns: repeat(3, 1fr);
 
     gap: 20px;
@@ -165,7 +136,6 @@ body {
     width: 100%;
 }
 
-
 .campo {
 
     display: flex;
@@ -173,13 +143,11 @@ body {
     flex-direction: column;
 }
 
-
 .campo input,
 .campo select {
 
     width: 100%;
 }
-
 
 .campo input {
     padding: 0;
@@ -202,7 +170,6 @@ body {
     background-color: #06459c;
 }
 
-
 .campo label,
 .generadorQR label {
 
@@ -213,7 +180,6 @@ body {
     font-size: 14px;
     
 }
-
 
 input,
 select {
@@ -229,11 +195,6 @@ select {
     font-size: 14px;
 
 }
-
-
-/* ========================= */
-/* BOTONES */
-/* ========================= */
 
 .boton {
 
@@ -254,12 +215,10 @@ select {
     
 }
 
-
 .boton:hover {
 
     background-color: #06459c;
 }
-
 
 .botonPequeno {
 
@@ -280,17 +239,10 @@ select {
     
 }
 
-
 .botonPequeno:hover {
 
     background-color: #eef4fc;
 }
-
-
-
-/* ========================= */
-/* TABLA */
-/* ========================= */
 
 table {
 
@@ -300,7 +252,6 @@ table {
 
     margin-top: 15px;
 }
-
 
 th {
 
@@ -313,7 +264,6 @@ th {
     font-size: 13px;
 }
 
-
 td {
 
     padding: 13px;
@@ -323,12 +273,6 @@ td {
     font-size: 13px;
 }
 
-
-/* ========================= */
-/* GENERADOR QR */
-/* ========================= */
-
-/* El generador queda a la izquierda y el QR justo al lado. */
 .zonaQR {
 
     display: flex;
@@ -342,7 +286,6 @@ td {
     margin-top: 20px;
 }
 
-
 .generadorQR {
 
     display: flex;
@@ -352,7 +295,6 @@ td {
     gap: 15px;
 }
 
-
 .generadorQR div {
 
     display: flex;
@@ -360,12 +302,10 @@ td {
     flex-direction: column;
 }
 
-
 .marcoQR {
 
     text-align: center;
 }
-
 
 #qrIframe {
 
@@ -375,12 +315,11 @@ td {
 
     height: 180px;
 
-    /* Sin borde ni fondo, para que se vea solo el código QR. */
+    
     border: none;
 
     background-color: transparent;
 }
-
 
 #resultadoQR {
 
@@ -395,8 +334,6 @@ td {
     font-weight: bold;
 }
 
-
-/* El enlace de descarga aparece recién cuando se genera el QR. */
 #descargarQR {
 
     display: none;
@@ -405,11 +342,6 @@ td {
 
     margin-right: 0;
 }
-
-
-/* ========================= */
-/* PIE DE PAGINA */
-/* ========================= */
 
 .pie {
 
@@ -424,11 +356,6 @@ td {
     font-size: 13px;
 }
 
-
-/* ========================= */
-/* CELULARES */
-/* ========================= */
-
 @media (max-width: 900px) {
 
     .menu {
@@ -436,18 +363,15 @@ td {
         width: 190px;
     }
 
-
     .contenido {
 
         margin-left: 190px;
     }
 
-
     .pie {
 
         margin-left: 190px;
     }
-
 
     .formulario {
 

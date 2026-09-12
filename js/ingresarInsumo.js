@@ -1,23 +1,10 @@
-// Maneja los 3 formularios de la página "Elemento a trasladar":
-// Ingresar (crear), Buscar, Modificar y Eliminar, para Biológico, No biológico y Órgano.
-//
-// Modificar y Eliminar trabajan con el "id" de la fila (un campo oculto que se
-// llena solo cuando encontrás el elemento con "Buscar"). Por eso, para poder
-// modificar o eliminar, primero hay que buscar.
-//
-// Ojo con los campos "hidden": a diferencia de un input de texto normal,
-// form.reset() NO los vacía solo. Por eso, después de cada acción, limpiamos
-// el id "a mano" con id_xxx.value = ''.
-
-// ================= BIOLÓGICO =================
 const id_biologico = document.getElementById('id_biologico');
 const nombre = document.getElementById('nombre');
 const estado = document.getElementById('estado');
 const formBiologico = document.getElementById('form_biologico');
 
-// Ingresar
 formBiologico.addEventListener('submit', async (e) => {
-  e.preventDefault(); // no recargar la página
+  e.preventDefault();
 
   const datos = new FormData(formBiologico);
 
@@ -36,12 +23,11 @@ formBiologico.addEventListener('submit', async (e) => {
   }
 });
 
-// Buscar
 const buscar = document.getElementById('buscar');
 const buscar_boton = document.getElementById('buscar_boton');
 
 buscar_boton.addEventListener('click', async (e) => {
-  e.preventDefault(); // frena la recarga de la página
+  e.preventDefault();
 
   const datosBusqueda = new FormData();
   datosBusqueda.append('nombre', buscar.value);
@@ -62,7 +48,6 @@ buscar_boton.addEventListener('click', async (e) => {
   }
 });
 
-// Modificar
 const mod_b = document.getElementById('mod_b');
 
 mod_b.addEventListener('click', async (e) => {
@@ -93,7 +78,6 @@ mod_b.addEventListener('click', async (e) => {
   }
 });
 
-// Eliminar
 const del_b = document.getElementById('del_b');
 
 del_b.addEventListener('click', async (e) => {
@@ -126,14 +110,11 @@ del_b.addEventListener('click', async (e) => {
   }
 });
 
-
-// ================= NO BIOLÓGICO =================
 const id_no_biologico = document.getElementById('id_no_biologico');
 const clasificacion = document.getElementById('clasificacion');
 const pendiente = document.getElementById('pendiente');
 const formNoBiologico = document.getElementById('form_no_biologico');
 
-// Ingresar
 formNoBiologico.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -154,7 +135,6 @@ formNoBiologico.addEventListener('submit', async (e) => {
   }
 });
 
-// Buscar
 const encontrar = document.getElementById('encontrar');
 const buscar_boton_no = document.getElementById('buscar_boton_nobiologico');
 
@@ -180,7 +160,6 @@ buscar_boton_no.addEventListener('click', async (e) => {
   }
 });
 
-// Modificar
 const mod_no = document.getElementById('mod_no');
 
 mod_no.addEventListener('click', async (e) => {
@@ -211,7 +190,6 @@ mod_no.addEventListener('click', async (e) => {
   }
 });
 
-// Eliminar
 const del_no = document.getElementById('del_no');
 
 del_no.addEventListener('click', async (e) => {
@@ -244,14 +222,11 @@ del_no.addEventListener('click', async (e) => {
   }
 });
 
-
-// ================= ÓRGANO =================
 const id_organo = document.getElementById('id_organo');
 const persona = document.getElementById('persona');
 const en_curso = document.getElementById('en_curso');
 const formOrgano = document.getElementById('form_organo');
 
-// Ingresar
 formOrgano.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -272,7 +247,6 @@ formOrgano.addEventListener('submit', async (e) => {
   }
 });
 
-// Buscar
 const encontrar_organo = document.getElementById('encontrar_org');
 const buscar_boton_organo = document.getElementById('button_org');
 
@@ -298,7 +272,6 @@ buscar_boton_organo.addEventListener('click', async (e) => {
   }
 });
 
-// Modificar
 const mod_org = document.getElementById('mod_org');
 
 mod_org.addEventListener('click', async (e) => {
@@ -329,7 +302,6 @@ mod_org.addEventListener('click', async (e) => {
   }
 });
 
-// Eliminar
 const del_org = document.getElementById('del_org');
 
 del_org.addEventListener('click', async (e) => {

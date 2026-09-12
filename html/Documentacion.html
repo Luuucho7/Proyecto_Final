@@ -36,10 +36,7 @@
 
 </header>
 
-
-    <!-- MENU LATERAL -->
     <aside class="menu">
-
 
         <a href="../html/pacientes.html" class="opcion">
                 <img src="../css/img/pareja_logo.svg" alt="Pacientes" style="width:20px; height:20px; object-fit:contain;">
@@ -73,8 +70,6 @@
 
     </aside>
 
-
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="contenido">
 
         <h2>Gestión de Documentación</h2>
@@ -89,8 +84,6 @@
 
         </p>
 
-
-        <!-- SUBIR DOCUMENTO -->
         <section class="tarjeta" id="subir-documento">
 
             <h3>Subir Documento</h3>
@@ -127,7 +120,6 @@
 
                 </div>
 
-
                 <div class="campo">
 
                     <label>Descripción</label>
@@ -138,7 +130,6 @@
                         placeholder="Ej: Estudios, Resultados">
 
                 </div>
-
 
                 <div class="campo">
 
@@ -152,7 +143,6 @@
 
             </div>
 
-
             <button
                 class="boton"
                 onclick="subirDocumento()">
@@ -163,8 +153,6 @@
 
         </section>
 
-
-        <!-- DOCUMENTOS CARGADOS -->
         <section class="tarjeta" id="documentos-cargados">
 
             <h3>Documentos Cargados</h3>
@@ -188,7 +176,6 @@
                     </tr>
 
                 </thead>
-
 
                 <tbody>
 
@@ -220,7 +207,6 @@
 
                     </tr>
 
-
                     <tr>
 
                         <td>2</td>
@@ -248,7 +234,6 @@
                         </td>
 
                     </tr>
-
 
                     <tr>
 
@@ -284,8 +269,6 @@
 
         </section>
 
-
-        <!-- GENERAR QR -->
         <section class="tarjeta" id="generar-qr">
 
             <h3>Generar Código QR</h3>
@@ -295,10 +278,8 @@
                 el código QR que lleva a la página de ese documento.
             </p>
 
-
             <div class="zonaQR">
 
-                <!-- Lado izquierdo: el generador -->
                 <div class="generadorQR">
 
                     <div>
@@ -312,7 +293,6 @@
 
                     </div>
 
-
                     <button
                         class="boton"
                         onclick="generarQR()">
@@ -323,8 +303,6 @@
 
                 </div>
 
-
-                <!-- Lado derecho: el QR mostrado dentro de un iframe -->
                 <div class="marcoQR">
 
                     <iframe
@@ -350,15 +328,12 @@
 
     </main>
 
-
-    <!-- PIE DE PAGINA -->
     <footer class="pie">
 
         © 2026 Hospital de Clínicas.
         Todos los derechos reservados.
 
     </footer>
-
 
     <script src="../js/Documentacion.js"></script>
 
