@@ -1,4 +1,4 @@
-/* Estilos para la encuesta */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* El 124px de arriba deja lugar para el banner, que es fijo. */
+    
     padding: 124px 40px 40px;
 }
 
@@ -93,7 +93,6 @@ button:hover {
     background: #005f8f;
 }
 
-/* Botón "Ir al inicio" de la página de encuesta recibida */
 .boton-volver {
     display: block;
     max-width: 220px;
@@ -112,7 +111,6 @@ button:hover {
     background: #005f8f;
 }
 
-/* Botón "Ir al inicio" de la página de encuesta recibida */
 .boton-volver {
     display: block;
     max-width: 220px;
@@ -129,4 +127,49 @@ button:hover {
 
 .boton-volver:hover {
     background: #005f8f;
+}
+
+.desplegable-nav {
+    position: relative;
+}
+
+.desplegable-nav summary {
+    list-style: none;
+}
+
+.desplegable-nav summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu-nav {
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    left: 0;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.6rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+    border: 1px solid rgba(11, 95, 255, 0.08);
+    z-index: 1001;
+}
+
+.menu-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0b2b4a;
+    text-decoration: none;
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    transition: background 180ms ease, color 180ms ease;
+}
+
+.menu-nav a:hover,
+.menu-nav a:focus-visible {
+    background: #f2f7ff;
+    color: #0b5fff;
 }

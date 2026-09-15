@@ -18,3 +18,5 @@ try {
 } catch (PDOException $e) {
     echo json_encode(['exito' => false, 'mensaje' => 'No se pudo guardar el registro.']);
 }
+
+?>

@@ -71,6 +71,9 @@ body {
 }
 
 .menu-derecho a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     padding: 14px 24px;
     color: #26354d;
     text-decoration: none;
@@ -84,8 +87,6 @@ body {
     color: #0758c7;
     font-weight: 600;
 }
-
-/* Titulo de pacientes */
 
 .pacientes {
     max-width: 1100px;
@@ -127,8 +128,6 @@ body {
     background-color: #154ec1;
 }
 
-/* Buscador */
-
 .buscador {
     display: flex;
     align-items: center;
@@ -155,8 +154,6 @@ body {
     font-size: 14px;
     opacity: 0.6;
 }
-
-/* TABLA DE PACIENTES */
 
 .tabla-contenedor {
     background: #ffffff;
@@ -189,8 +186,6 @@ body {
     color: #334155;
 }
 
-/* Estado */
-
 .estado {
     padding: 6px 14px;
     border-radius: 20px;
@@ -208,8 +203,6 @@ body {
     background-color: #fee2e2;
     color: #b91c1c;
 }
-
-/* Formulario */
 
 .formulario-paciente {
     background: #ffffff;
@@ -275,8 +268,6 @@ body {
     background-color: #154ec1;
 }
 
-/* Responsive */
-
 @media (min-width: 640px) {
     .formulario-paciente label,
     .formulario-paciente input,
@@ -325,7 +316,49 @@ body {
     }
 }
 
+.boton-editar,
+.boton-eliminar-fila {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 6px;
+}
 
+.boton-editar {
+    background-color: #e0e7ff;
+    color: #1d4ed8;
+}
 
+.boton-editar:hover {
+    background-color: #c7d2fe;
+}
 
+.boton-eliminar-fila {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.boton-eliminar-fila:hover {
+    background-color: #fecaca;
+}
+
+.boton-cancelar {
+    grid-column: span 2;
+    background-color: #e2e8f0;
+    color: #334155;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 6px;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.boton-cancelar:hover {
+    background-color: #cbd5e1;
+}
 

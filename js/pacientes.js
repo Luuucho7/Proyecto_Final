@@ -1,132 +1,144 @@
-// Direcciones de los 4 archivos PHP que manejan los pacientes
-const URL_LISTAR = "../php/paciente_listar.php";
-const URL_GUARDAR = "../php/paciente_guardar.php";
-const URL_EDITAR = "../php/paciente_editar.php";
-const URL_ELIMINAR = "../php/paciente_eliminar.php";
+document.addEventListener('DOMContentLoaded', () => {
+    const buscadorInput = document.querySelector('.buscador input');
+    const tablaBody = document.querySelector('.tabla-pacientes tbody');
+    const formulario = document.getElementById('form-paciente');
+    const botonMenu = document.getElementById('btn-menu-pacientes');
+    const menu = document.getElementById('menu-derecho');
 
-let pacientes = [];     // la última lista de pacientes que trajo el servidor
-let idEnEdicion = null; // null = estamos cargando un paciente nuevo; si tiene número, estamos editando ese paciente
+    const id_paciente = document.getElementById('id_paciente');
+    const nombre = document.getElementById('nombre');
+    const cedula = document.getElementById('cedula');
+    const telefono = document.getElementById('telefono');
+    const estado = document.getElementById('estado');
+    const botonGuardar = document.getElementById('boton-guardar-paciente');
+    const botonCancelar = document.getElementById('boton-cancelar-edicion');
 
-document.addEventListener("DOMContentLoaded", function () {
+    if (botonMenu && menu) {
+        botonMenu.addEventListener('click', () => {
+            const abierto = menu.classList.toggle('abierto');
+            botonMenu.setAttribute('aria-expanded', abierto.toString());
+            botonMenu.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+        });
+    }
+
+    function terminarEdicion() {
+        formulario.reset();
+        id_paciente.value = '';
+        botonGuardar.textContent = 'Guardar Paciente';
+        botonCancelar.style.display = 'none';
+    }
+
+    async function cargarPacientes() {
+        const respuesta = await fetch('../php/listar_pacientes.php');
+        const resultado = await respuesta.json();
+
+        tablaBody.innerHTML = '';
+
+        if (!resultado.exito || resultado.pacientes.length === 0) {
+            tablaBody.innerHTML = '<tr><td colspan="5" class="sin-pacientes">No hay pacientes registrados todavía.</td></tr>';
+            return;
+        }
+
+        resultado.pacientes.forEach((paciente) => {
+            const claseEstado = paciente.estado === 'activo' ? 'estado-activo' : 'estado-inactivo';
+            const textoEstado = paciente.estado === 'activo' ? 'Activo' : 'Inactivo';
+
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${paciente.nombre}</td>
+                <td>${paciente.cedula}</td>
+                <td>${paciente.telefono || 'Sin registrar'}</td>
+                <td><span class="estado ${claseEstado}">${textoEstado}</span></td>
+                <td>
+                    <button type="button" class="boton-editar">Editar</button>
+                    <button type="button" class="boton-eliminar-fila">Eliminar</button>
+                </td>
+            `;
+
+            fila.querySelector('.boton-editar').addEventListener('click', () => {
+                id_paciente.value = paciente.id_paciente;
+                nombre.value = paciente.nombre;
+                cedula.value = paciente.cedula;
+                telefono.value = paciente.telefono || '';
+                estado.value = paciente.estado;
+
+                botonGuardar.textContent = 'Modificar Paciente';
+                botonCancelar.style.display = 'inline-block';
+                document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            fila.querySelector('.boton-eliminar-fila').addEventListener('click', async () => {
+                if (!confirm('¿Seguro que querés eliminar a ' + paciente.nombre + '?')) {
+                    return;
+                }
+
+                const datos = new FormData();
+                datos.append('id', paciente.id_paciente);
+
+                const respuesta = await fetch('../php/eliminar_paciente.php', {
+                    method: 'POST',
+                    body: datos
+                });
+                const resultado = await respuesta.json();
+
+                if (resultado.exito) {
+                    cargarPacientes();
+                } else {
+                    alert(resultado.mensaje || 'No se pudo eliminar el paciente');
+                }
+            });
+
+            tablaBody.appendChild(fila);
+        });
+    }
+
     cargarPacientes();
 
-    // El formulario ya tiene "required" en nombre y documento, así que el navegador
-    // no deja enviarlo vacío. Nosotros solo frenamos el envío normal para mandar los datos con fetch.
-    const formulario = document.getElementById("formPaciente");
-    formulario.addEventListener("submit", guardarPaciente);
+    if (buscadorInput && tablaBody) {
+        buscadorInput.addEventListener('input', (e) => {
+            const busqueda = e.target.value.toLowerCase().trim();
+
+            tablaBody.querySelectorAll('tr').forEach((fila) => {
+                if (fila.querySelector('.sin-pacientes')) return;
+
+                const nombreFila = fila.children[0].textContent.toLowerCase();
+                const documentoFila = fila.children[1].textContent.toLowerCase();
+                fila.style.display = nombreFila.includes(busqueda) || documentoFila.includes(busqueda) ? '' : 'none';
+            });
+        });
+    }
+
+    if (formulario) {
+        formulario.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!nombre.value.trim() || !cedula.value.trim()) return;
+
+            const datos = new FormData();
+            datos.append('id', id_paciente.value);
+            datos.append('nombre', nombre.value.trim());
+            datos.append('cedula', cedula.value.trim());
+            datos.append('telefono', telefono.value.trim());
+            datos.append('estado', estado.value);
+
+            const creando = id_paciente.value === '';
+            const url = creando ? '../php/guardar_paciente.php' : '../php/modificar_paciente.php';
+
+            const respuesta = await fetch(url, { method: 'POST', body: datos });
+            const resultado = await respuesta.json();
+
+            if (resultado.exito) {
+                alert(creando ? 'Paciente guardado correctamente' : 'Paciente modificado correctamente');
+                terminarEdicion();
+                cargarPacientes();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                alert(resultado.mensaje || 'No se pudo guardar el paciente');
+            }
+        });
+    }
+
+    if (botonCancelar) {
+        botonCancelar.addEventListener('click', terminarEdicion);
+    }
 });
-
-
-// Trae los pacientes guardados en la base y arma la tabla
-async function cargarPacientes() {
-
-    const respuesta = await fetch(URL_LISTAR);
-    const resultado = await respuesta.json();
-    pacientes = resultado.pacientes;
-
-    const tbody = document.getElementById("listaPacientes");
-    tbody.innerHTML = "";
-
-    for (let i = 0; i < pacientes.length; i++) {
-        const p = pacientes[i];
-
-        tbody.innerHTML += `
-            <tr>
-                <td>${p.nombre}</td>
-                <td>${p.cedula}</td>
-                <td>${p.telefono}</td>
-                <td>${p.estado}</td>
-                <td>
-                    <button type="button" onclick="editarPaciente(${p.id_paciente})">Editar</button>
-                    <button type="button" onclick="eliminarPaciente(${p.id_paciente})">Eliminar</button>
-                </td>
-            </tr>`;
-    }
-}
-
-
-// Se ejecuta al enviar el formulario (botón "Guardar Paciente" / "Guardar Cambios")
-async function guardarPaciente(evento) {
-    evento.preventDefault(); // frenamos el envío normal, los datos los mandamos nosotros con fetch
-
-    const nombre = document.getElementById("nombre").value.trim();
-    const cedula = document.getElementById("documento").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const estado = document.getElementById("estado").value;
-
-    const datos = new FormData();
-    datos.append("nombre", nombre);
-    datos.append("cedula", cedula);
-    datos.append("telefono", telefono);
-    datos.append("estado", estado);
-
-    // Si hay un ID en edición, los datos van a "editar". Si no, van a "guardar" (paciente nuevo).
-    let url = URL_GUARDAR;
-    if (idEnEdicion !== null) {
-        datos.append("id", idEnEdicion);
-        url = URL_EDITAR;
-    }
-
-    const respuesta = await fetch(url, { method: "POST", body: datos });
-    const resultado = await respuesta.json();
-
-    if (resultado.exito) {
-        cancelarEdicion();
-        cargarPacientes();
-    } else {
-        alert(resultado.mensaje || "No se pudo guardar el paciente.");
-    }
-}
-
-
-// Busca en la lista ya cargada el paciente con ese id
-function buscarPaciente(id) {
-    for (let i = 0; i < pacientes.length; i++) {
-        if (pacientes[i].id_paciente == id) {
-            return pacientes[i];
-        }
-    }
-}
-
-
-// Pone el formulario en "modo edición" con los datos del paciente elegido
-function editarPaciente(id) {
-    const p = buscarPaciente(id);
-    idEnEdicion = id;
-
-    document.getElementById("nombre").value = p.nombre;
-    document.getElementById("documento").value = p.cedula;
-    document.getElementById("telefono").value = p.telefono;
-    document.getElementById("estado").value = p.estado;
-
-    document.getElementById("botonGuardar").textContent = "Guardar Cambios";
-    document.getElementById("botonCancelarEdicion").style.display = "inline-block";
-}
-
-
-// Vuelve el formulario a "modo paciente nuevo"
-function cancelarEdicion() {
-    idEnEdicion = null;
-
-    document.getElementById("formPaciente").reset();
-    document.getElementById("botonGuardar").textContent = "Guardar Paciente";
-    document.getElementById("botonCancelarEdicion").style.display = "none";
-}
-
-
-// Borra un paciente (pide confirmación antes de hacerlo)
-async function eliminarPaciente(id) {
-    if (!confirm("¿Seguro que querés eliminar este paciente?")) return;
-
-    const datos = new FormData();
-    datos.append("id", id);
-
-    const respuesta = await fetch(URL_ELIMINAR, { method: "POST", body: datos });
-    const resultado = await respuesta.json();
-
-    if (resultado.exito) {
-        cargarPacientes();
-    } else {
-        alert(resultado.mensaje || "No se pudo eliminar el paciente.");
-    }
-}

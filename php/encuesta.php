@@ -1,13 +1,11 @@
 <?php
 require_once 'conexion.php';
 
-// Si alguien entra directo por la URL (sin enviar el formulario), lo mandamos al formulario
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ../html/encuestaformulario.html');
     exit();
 }
 
-// Datos que llegan del formulario
 $nombre        = trim($_POST['nombre'] ?? '');
 $edad          = filter_input(INPUT_POST, 'edad', FILTER_VALIDATE_INT);
 $servicio      = trim($_POST['servicio'] ?? '');
@@ -18,7 +16,6 @@ $instalaciones = filter_input(INPUT_POST, 'instalaciones', FILTER_VALIDATE_INT);
 $recomendacion = trim($_POST['recomendacion'] ?? '');
 $comentarios   = trim($_POST['comentarios'] ?? '');
 
-// Controlamos que los campos obligatorios estén completos
 $obligatorios = [$edad, $servicio, $atencion, $amabilidad, $informacion, $instalaciones, $recomendacion];
 foreach ($obligatorios as $campo) {
     if ($campo === false || $campo === null || $campo === '') {
@@ -27,7 +24,6 @@ foreach ($obligatorios as $campo) {
     }
 }
 
-// Guardamos la encuesta en la base de datos
 try {
     $sql = "INSERT INTO Encuesta (nombre, edad, servicio, atencion, amabilidad, informacion, instalaciones, recomendacion, comentarios)
             VALUES (:nombre, :edad, :servicio, :atencion, :amabilidad, :informacion, :instalaciones, :recomendacion, :comentarios)";
@@ -49,7 +45,6 @@ try {
     exit('No se pudo guardar la encuesta. Intentá más tarde.');
 }
 
-// Preparamos los textos para mostrarlos sin riesgo en la página de gracias
 $nombreSeguro = htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
 $servicioSeguro = htmlspecialchars($servicio, ENT_QUOTES, 'UTF-8');
 

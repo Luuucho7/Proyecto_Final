@@ -1,4 +1,4 @@
-/* Estilos para Preguntas Frecuentes */
+
 .desplegable-nav {
   position: relative;
 }
@@ -27,6 +27,9 @@
 }
 
 .menu-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: #0b2b4a;
   text-decoration: none;
   padding: 0.55rem 0.7rem;
