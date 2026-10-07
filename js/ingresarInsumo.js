@@ -361,3 +361,4 @@ del_org.addEventListener('click', async (e) => {
     alert('Error al eliminar el registro');
   }
 });
+  
