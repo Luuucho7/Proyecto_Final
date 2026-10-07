@@ -1,4 +1,4 @@
-/* Estilos para la encuesta */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* El 124px de arriba deja lugar para el banner, que es fijo. */
+    
     padding: 124px 40px 40px;
 }
 
@@ -93,7 +93,6 @@ button:hover {
     background: #005f8f;
 }
 
-/* Botón "Ir al inicio" de la página de encuesta recibida */
 .boton-volver {
     display: block;
     max-width: 220px;
@@ -112,7 +111,6 @@ button:hover {
     background: #005f8f;
 }
 
-/* Botón "Ir al inicio" de la página de encuesta recibida */
 .boton-volver {
     display: block;
     max-width: 220px;
@@ -131,7 +129,6 @@ button:hover {
     background: #005f8f;
 }
 
-/* Menú desplegable del banner (mismo estilo que Atención y FAQ) */
 .desplegable-nav {
     position: relative;
 }

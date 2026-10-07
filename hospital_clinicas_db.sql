@@ -1,15 +1,11 @@
--- ================================================
---  Base de datos del sistema del Hospital de Clínicas
--- ================================================
 
--- Si la base ya existe, la borramos para crearla de cero
 DROP DATABASE IF EXISTS hospital_clinicas;
 
 CREATE DATABASE hospital_clinicas;
 USE hospital_clinicas;
 
 
--- Personas que se registran en el sistema (la usan login.php y register.php)
+
 CREATE TABLE Persona (
     cedula INT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
@@ -22,7 +18,7 @@ CREATE TABLE Persona (
 );
 
 
--- Pacientes del hospital
+
 CREATE TABLE Paciente (
     id_paciente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -33,7 +29,7 @@ CREATE TABLE Paciente (
 );
 
 
--- Funcionarios del hospital
+
 CREATE TABLE Funcionario (
     id_funcionario INT PRIMARY KEY AUTO_INCREMENT,
     cedula INT,
@@ -41,15 +37,23 @@ CREATE TABLE Funcionario (
 );
 
 
--- Encuestas de satisfacción
+
 CREATE TABLE Encuesta (
     id_encuesta INT PRIMARY KEY AUTO_INCREMENT,
-    cedula INT,
-    FOREIGN KEY (cedula) REFERENCES Persona(cedula)
+    nombre VARCHAR(100),
+    edad INT,
+    servicio VARCHAR(50),
+    atencion VARCHAR(20),
+    amabilidad VARCHAR(5),
+    informacion VARCHAR(5),
+    instalaciones INT,
+    recomendacion VARCHAR(5),
+    comentarios TEXT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
--- Documentación del hospital
+
 CREATE TABLE Documentacion (
     id_documento INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100),
@@ -60,7 +64,7 @@ CREATE TABLE Documentacion (
 );
 
 
--- Ambulancias
+
 CREATE TABLE Ambulancia (
     matricula VARCHAR(20) PRIMARY KEY,
     origen VARCHAR(100),
@@ -69,7 +73,7 @@ CREATE TABLE Ambulancia (
 );
 
 
--- Traslados en ambulancia
+
 CREATE TABLE Traslado (
     id_traslado INT PRIMARY KEY AUTO_INCREMENT,
     hora_salida TIME,
@@ -85,7 +89,7 @@ CREATE TABLE Traslado (
 );
 
 
--- Códigos QR
+
 CREATE TABLE Codigo_QR (
     id_qr INT PRIMARY KEY AUTO_INCREMENT,
     url VARCHAR(255),
@@ -96,7 +100,7 @@ CREATE TABLE Codigo_QR (
 );
 
 
--- Insumos biológicos (pantalla "Elemento a trasladar") - la usa php/ingresarInsumo.php
+
 CREATE TABLE biologico (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
@@ -104,7 +108,7 @@ CREATE TABLE biologico (
 );
 
 
--- Insumos no biológicos - la usa php/no_biologico.php
+
 CREATE TABLE no_biologico (
     id INT AUTO_INCREMENT PRIMARY KEY,
     clasificacion VARCHAR(100),
@@ -112,7 +116,7 @@ CREATE TABLE no_biologico (
 );
 
 
--- Órganos en proceso de traslado - la usa php/organo.php
+
 CREATE TABLE organo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     persona VARCHAR(100),
@@ -120,7 +124,7 @@ CREATE TABLE organo (
 );
 
 
--- Usuario de prueba para entrar sin registrarse
+
 -- correo: 11111111    contraseña: Admin123
 INSERT INTO Persona (cedula, nombre, apellido, correo, password_hash, direccion, telefono, fecha_nacimiento)
 VALUES (57730555, 'Facundo', 'Ceriotti', 'facundo231208@gmail.com',

@@ -66,11 +66,8 @@
     </nav>
 </aside>
 
-<!-- Contenido Principal -->
-
 <main class="pacientes">
 
-<!-- Título y Botón de Acción -->
         
 <div class="titulo-pacientes">
             <div>
@@ -80,13 +77,11 @@
             <a href="#formulario" class="boton-nuevo">+ Nuevo Paciente</a>
         </div>
 
-        <!-- Buscador -->
         <div class="buscador">
             <input type="text" placeholder="Buscar por nombre o CI...">
             <button type="button">🔍</button>
         </div>
 
-        <!-- Tabla de Pacientes -->
         <div class="tabla-contenedor">
             <table class="tabla-pacientes">
                 <thead>
@@ -99,16 +94,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- pacientes.js llena esto con los datos de la base -->
                 </tbody>
             </table>
         </div>
 
-        <!-- Formulario para agregar o modificar un paciente -->
         <div class="formulario-paciente" id="formulario">
             <h2>Registrar / Modificar Paciente</h2>
             <form id="form-paciente">
-                <!-- Este campo no se ve: guarda el id del paciente cuando estamos modificando -->
                 <input type="hidden" id="id_paciente">
 
                 <label for="nombre">Nombre Completo</label>
