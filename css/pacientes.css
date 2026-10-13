@@ -261,7 +261,10 @@ body {
     cursor: pointer;
     margin-top: 10px;
     border: none;
-    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    width: 50%;
 }
 
 .boton-guardar:hover {
