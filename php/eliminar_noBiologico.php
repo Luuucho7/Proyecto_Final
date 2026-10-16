@@ -1,4 +1,5 @@
 <?php
+// Borra un elemento no biológico (mismo rol que eliminar_biologico.php, otra tabla)
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

@@ -76,11 +76,11 @@
 
         <p class="descripcion">
 
-            Desde este módulo podrá cargar y gestionar la documentación
-            general del hospital.
+            Desde este módulo podrá cargar y gestionar los documentos
+            informativos para los pacientes.
 
             Cada documento de la lista tiene su propio código QR, que
-            lleva directamente a la página de ese documento.
+            lleva directamente al PDF para verlo desde el celular.
 
         </p>
 
@@ -96,25 +96,13 @@
 
                     <select id="tipoDocumento">
 
-                        <option value="">
-                            Seleccione tipo
-                        </option>
-
-                        <option>
-                            Historia Clínica
-                        </option>
-
-                        <option>
-                            Resultado de Laboratorio
-                        </option>
-
-                        <option>
-                            Informe Médico
-                        </option>
-
-                        <option>
-                            Estudios por Imágenes
-                        </option>
+                        <option value="">Seleccione tipo</option>
+                        <option>Indicaciones</option>
+                        <option>Preparación para estudios</option>
+                        <option>Plan de alta</option>
+                        <option>Prevención</option>
+                        <option>Pauta</option>
+                        <option>Encuesta</option>
 
                     </select>
 
@@ -122,22 +110,30 @@
 
                 <div class="campo">
 
-                    <label>Descripción</label>
+                    <label>Título del documento</label>
 
                     <input
                         type="text"
-                        id="descripcionDocumento"
-                        placeholder="Ej: Estudios, Resultados">
+                        id="tituloDocumento"
+                        maxlength="100"
+                        placeholder="Ej: Prevención de infecciones">
 
                 </div>
 
                 <div class="campo">
 
-                    <label>Archivo</label>
+                    <label>Archivo (PDF)</label>
 
                     <input
                         type="file"
-                        id="archivo">
+                        id="archivo"
+                        accept="application/pdf">
+
+                    <small
+                        id="ayudaArchivo"
+                        style="display:none; margin-top:6px; color:#526078;">
+                        Dejalo vacío para conservar el PDF actual.
+                    </small>
 
                 </div>
 
@@ -145,9 +141,20 @@
 
             <button
                 class="boton"
+                id="botonSubir"
                 onclick="subirDocumento()">
 
                 ⬆ Subir Documento
+
+            </button>
+
+            <button
+                class="botonPequeno"
+                id="botonCancelarEdicion"
+                onclick="cancelarEdicion()"
+                style="display:none;">
+
+                Cancelar edición
 
             </button>
 
@@ -167,7 +174,7 @@
 
                         <th>Tipo de Documento</th>
 
-                        <th>Descripción</th>
+                        <th>Título</th>
 
                         <th>Fecha de carga</th>
 
@@ -177,91 +184,9 @@
 
                 </thead>
 
-                <tbody>
+                <tbody id="listaDocumentos">
 
-                    <tr>
-
-                        <td>1</td>
-
-                        <td>Resultado de Laboratorio</td>
-
-                        <td>Análisis de Sangre</td>
-
-                        <td>15/05/2026</td>
-
-                        <td>
-
-                            <button class="botonPequeno">
-                                👁 Ver
-                            </button>
-
-                            <button
-                                class="botonPequeno"
-                                onclick="qrDeLaFila(1)">
-
-                                ▦ QR
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>2</td>
-
-                        <td>Informe Médico</td>
-
-                        <td>Consulta Médica</td>
-
-                        <td>15/05/2026</td>
-
-                        <td>
-
-                            <button class="botonPequeno">
-                                👁 Ver
-                            </button>
-
-                            <button
-                                class="botonPequeno"
-                                onclick="qrDeLaFila(2)">
-
-                                ▦ QR
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>3</td>
-
-                        <td>Estudios por Imágenes</td>
-
-                        <td>Radiografía</td>
-
-                        <td>16/05/2026</td>
-
-                        <td>
-
-                            <button class="botonPequeno">
-                                👁 Ver
-                            </button>
-
-                            <button
-                                class="botonPequeno"
-                                onclick="qrDeLaFila(3)">
-
-                                ▦ QR
-
-                            </button>
-
-                        </td>
-
-                    </tr>
+                    <!-- Las filas se arman solas con JavaScript, con los documentos guardados en la base -->
 
                 </tbody>
 
@@ -275,7 +200,7 @@
 
             <p>
                 Ingrese el ID del documento para generar
-                el código QR que lleva a la página de ese documento.
+                el código QR que lleva directamente a su PDF.
             </p>
 
             <div class="zonaQR">
@@ -323,6 +248,10 @@
                 </div>
 
             </div>
+
+            <p
+                id="avisoQR"
+                style="color:#a05a00; font-size:13px; margin-top:15px;"></p>
 
         </section>
 

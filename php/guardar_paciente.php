@@ -1,4 +1,5 @@
 <?php
+// Crea un paciente nuevo (lo llama pacientes.js cuando el campo id_paciente viene vacío)
 require_once 'conexion.php';
 
 $nombre = trim($_POST['nombre'] ?? '');
@@ -14,6 +15,8 @@ if ($nombre === '' || $cedula === '') {
 }
 
 try {
+    // La cédula es UNIQUE en la base: revisamos antes para dar un mensaje claro
+    // en vez de un error feo de MySQL si ya existe
     $verificar = $pdo->prepare("SELECT id_paciente FROM Paciente WHERE cedula = :cedula");
     $verificar->execute([':cedula' => $cedula]);
 
@@ -22,6 +25,7 @@ try {
         exit();
     }
 
+    // Inserción del paciente nuevo, con consulta preparada (evita inyección SQL)
     $stmt = $pdo->prepare("INSERT INTO Paciente (nombre, cedula, telefono, estado) VALUES (:nombre, :cedula, :telefono, :estado)");
     $stmt->execute([
         ':nombre' => $nombre,

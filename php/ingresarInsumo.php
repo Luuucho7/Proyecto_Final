@@ -1,4 +1,5 @@
 <?php
+// Crea un elemento BIOLÓGICO nuevo (una de las 3 categorías de "Elemento a trasladar")
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

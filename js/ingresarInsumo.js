@@ -1,8 +1,13 @@
+// ===================== BIOLÓGICO =====================
+// Este archivo repite el mismo patrón 3 veces (biológico / no biológico / órgano):
+// Ingresar (submit) -> Buscar (rellena el formulario y guarda el id oculto) ->
+// Modificar / Eliminar (solo funcionan si ya se buscó, porque necesitan ese id).
 const id_biologico = document.getElementById('id_biologico');
 const nombre = document.getElementById('nombre');
 const estado = document.getElementById('estado');
 const formBiologico = document.getElementById('form_biologico');
 
+// Ingresar un elemento biológico nuevo
 formBiologico.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -23,6 +28,8 @@ formBiologico.addEventListener('submit', async (e) => {
   }
 });
 
+// Buscar un elemento biológico por nombre: si lo encuentra, rellena el formulario
+// (incluido el id oculto), que es lo que habilita a Modificar/Eliminar más abajo
 const buscar = document.getElementById('buscar');
 const buscar_boton = document.getElementById('buscar_boton');
 
@@ -48,6 +55,7 @@ buscar_boton.addEventListener('click', async (e) => {
   }
 });
 
+// Modificar: solo avanza si id_biologico.value NO está vacío (o sea, si ya se buscó antes)
 const mod_b = document.getElementById('mod_b');
 
 mod_b.addEventListener('click', async (e) => {
@@ -78,6 +86,7 @@ mod_b.addEventListener('click', async (e) => {
   }
 });
 
+// Eliminar: mismo requisito que Modificar, más confirm() antes de borrar
 const del_b = document.getElementById('del_b');
 
 del_b.addEventListener('click', async (e) => {
@@ -110,6 +119,8 @@ del_b.addEventListener('click', async (e) => {
   }
 });
 
+// ===================== NO BIOLÓGICO =====================
+// Mismo patrón que el bloque de arriba (Ingresar / Buscar / Modificar / Eliminar), otra tabla
 const id_no_biologico = document.getElementById('id_no_biologico');
 const clasificacion = document.getElementById('clasificacion');
 const pendiente = document.getElementById('pendiente');
@@ -222,6 +233,8 @@ del_no.addEventListener('click', async (e) => {
   }
 });
 
+// ===================== ÓRGANO =====================
+// Mismo patrón otra vez (Ingresar / Buscar / Modificar / Eliminar), tabla "organo"
 const id_organo = document.getElementById('id_organo');
 const persona = document.getElementById('persona');
 const en_curso = document.getElementById('en_curso');

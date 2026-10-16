@@ -1,4 +1,5 @@
 <?php
+// Crea un registro de ÓRGANO nuevo (misma lógica de las otras 2 categorías, tabla "organo")
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

@@ -1,4 +1,5 @@
 <?php
+// Actualiza un registro de órgano (mismo rol que los otros dos "modificar_*")
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

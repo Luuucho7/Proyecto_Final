@@ -1,4 +1,5 @@
 <?php
+// Busca UN elemento no biológico por clasificación (mismo rol que buscar_Ingresar.php, otra tabla)
 require_once 'conexion.php';
 
 $clasificacion = $_POST['clasificacion'];

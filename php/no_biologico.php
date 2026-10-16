@@ -1,4 +1,5 @@
 <?php
+// Crea un elemento NO BIOLÓGICO nuevo (misma lógica que ingresarInsumo.php, otra categoría/tabla)
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

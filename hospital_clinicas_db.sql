@@ -1,11 +1,13 @@
 
+-- Si ya existía una base con este nombre, la borra para empezar de cero
 DROP DATABASE IF EXISTS hospital_clinicas;
 
+-- Creación de la base de datos del proyecto
 CREATE DATABASE hospital_clinicas;
 USE hospital_clinicas;
 
 
-
+-- Personas que pueden iniciar sesión en el sistema (guarda la cuenta, no el paciente en sí)
 CREATE TABLE Persona (
     cedula INT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
@@ -19,6 +21,7 @@ CREATE TABLE Persona (
 
 
 
+-- Pacientes que administra el módulo "Pacientes"
 CREATE TABLE Paciente (
     id_paciente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -30,6 +33,7 @@ CREATE TABLE Paciente (
 
 
 
+-- Marca qué Personas son empleados del hospital (se conecta con Persona por la cédula)
 CREATE TABLE Funcionario (
     id_funcionario INT PRIMARY KEY AUTO_INCREMENT,
     cedula INT,
@@ -38,6 +42,7 @@ CREATE TABLE Funcionario (
 
 
 
+-- Cada respuesta enviada en el formulario de satisfacción
 CREATE TABLE Encuesta (
     id_encuesta INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100),
@@ -54,17 +59,20 @@ CREATE TABLE Encuesta (
 
 
 
+-- Documentos informativos para pacientes: cada fila guarda sus datos y el nombre del PDF subido
 CREATE TABLE Documentacion (
     id_documento INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100),
     tipo VARCHAR(50),
     fecha_creacion DATE,
+    archivo VARCHAR(255),
     id_funcionario INT,
     FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario)
 );
 
 
 
+-- Pensada para el módulo Traslados (todavía no la llena ningún formulario)
 CREATE TABLE Ambulancia (
     matricula VARCHAR(20) PRIMARY KEY,
     origen VARCHAR(100),
@@ -74,6 +82,7 @@ CREATE TABLE Ambulancia (
 
 
 
+-- Un traslado conecta un paciente, un funcionario y una ambulancia
 CREATE TABLE Traslado (
     id_traslado INT PRIMARY KEY AUTO_INCREMENT,
     hora_salida TIME,
@@ -90,6 +99,7 @@ CREATE TABLE Traslado (
 
 
 
+-- Códigos QR generados, asociados a un paciente o a un traslado
 CREATE TABLE Codigo_QR (
     id_qr INT PRIMARY KEY AUTO_INCREMENT,
     url VARCHAR(255),
@@ -101,6 +111,7 @@ CREATE TABLE Codigo_QR (
 
 
 
+-- Las 3 tablas de abajo son las categorías del módulo "Elemento a trasladar"
 CREATE TABLE biologico (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
@@ -123,8 +134,10 @@ CREATE TABLE organo (
     en_curso VARCHAR(100)
 );
 
+ALTER TABLE Documentacion ADD COLUMN archivo VARCHAR(255) AFTER fecha_creacion;
 
 
+-- Usuario de prueba para poder loguearse apenas se crea la base
 -- correo: 11111111    contraseña: Admin123
 INSERT INTO Persona (cedula, nombre, apellido, correo, password_hash, direccion, telefono, fecha_nacimiento)
 VALUES (57730555, 'Facundo', 'Ceriotti', 'facundo231208@gmail.com',

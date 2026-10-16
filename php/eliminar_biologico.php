@@ -1,4 +1,5 @@
 <?php
+// Borra un elemento biológico (también necesita haberlo buscado antes, para tener el id)
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

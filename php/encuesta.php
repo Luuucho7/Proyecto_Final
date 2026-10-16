@@ -1,4 +1,6 @@
 <?php
+// Este archivo es distinto a los demás: lo llama un <form> clásico (sin fetch/JavaScript),
+// así que en vez de contestar JSON, más abajo imprime una página HTML completa de vuelta.
 require_once 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -6,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
+// Recibimos cada campo de la encuesta. El nombre y los comentarios son opcionales.
 $nombre        = trim($_POST['nombre'] ?? '');
 $edad          = filter_input(INPUT_POST, 'edad', FILTER_VALIDATE_INT);
 $servicio      = trim($_POST['servicio'] ?? '');
@@ -16,6 +19,7 @@ $instalaciones = filter_input(INPUT_POST, 'instalaciones', FILTER_VALIDATE_INT);
 $recomendacion = trim($_POST['recomendacion'] ?? '');
 $comentarios   = trim($_POST['comentarios'] ?? '');
 
+// Revisa que ninguno de los campos obligatorios haya llegado vacío
 $obligatorios = [$edad, $servicio, $atencion, $amabilidad, $informacion, $instalaciones, $recomendacion];
 foreach ($obligatorios as $campo) {
     if ($campo === false || $campo === null || $campo === '') {
@@ -25,6 +29,7 @@ foreach ($obligatorios as $campo) {
 }
 
 try {
+    // Guarda la respuesta completa de la encuesta en una sola fila
     $sql = "INSERT INTO Encuesta (nombre, edad, servicio, atencion, amabilidad, informacion, instalaciones, recomendacion, comentarios)
             VALUES (:nombre, :edad, :servicio, :atencion, :amabilidad, :informacion, :instalaciones, :recomendacion, :comentarios)";
 
@@ -45,9 +50,11 @@ try {
     exit('No se pudo guardar la encuesta. Intentá más tarde.');
 }
 
+// htmlspecialchars evita que un nombre con código HTML/JavaScript se ejecute en la página de gracias
 $nombreSeguro = htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
 $servicioSeguro = htmlspecialchars($servicio, ENT_QUOTES, 'UTF-8');
 
+// A partir de acá el PHP ya no imprime JSON: imprime directamente el HTML de la página de agradecimiento
 ?><!DOCTYPE html>
 <html lang="es">
 <head>

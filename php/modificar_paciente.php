@@ -1,4 +1,5 @@
 <?php
+// Actualiza un paciente que ya existe (lo llama pacientes.js cuando id_paciente SÍ tiene valor)
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');
@@ -15,6 +16,7 @@ if ($id === '' || $nombre === '' || $cedula === '') {
 }
 
 try {
+    // UPDATE ... WHERE id_paciente = :id -> solo toca la fila de ESE paciente
     $stmt = $pdo->prepare("UPDATE Paciente SET nombre = :nombre, cedula = :cedula, telefono = :telefono, estado = :estado WHERE id_paciente = :id");
     $stmt->execute([
         ':id' => $id,
