@@ -1,0 +1,166 @@
+/* =========================================================
+   traslado.css
+   Estilos SOLO para la página Traslado.html
+   Se carga después de style.css y banner.css,
+   por eso lo que está acá "pisa" a lo de esos archivos.
+   ========================================================= */
+ 
+ 
+/* ---------- Colores que se repiten en toda la página ---------- */
+:root {
+    --azul: #0b5fff;          /* el mismo azul del banner */
+    --azul-oscuro: #0846c2;   /* para cuando pasás el mouse */
+    --azul-claro: #eaf1ff;    /* fondos suaves */
+    --gris-texto: #475569;    /* textos secundarios */
+    --borde: #dbe4f0;         /* bordes de cajas e inputs */
+}
+ 
+ 
+/* ---------- Título de la página ---------- */
+.titulo-pagina {
+    max-width: 1200px;
+    margin: 7rem auto 0;      /* 7rem para que no quede abajo del banner fijo */
+    padding: 0 1.5rem;
+    font-size: 1.8rem;
+}
+ 
+ 
+/* ---------- Tarjetas de arriba (Traslados, En curso, ...) ---------- */
+.texto_arriba {
+    max-width: 1200px;
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+}
+ 
+.tarjeta {
+    border: 1px solid var(--borde);
+    border-top: 4px solid var(--azul);   /* rayita azul arriba */
+    font-weight: bold;
+    font-size: 1.05rem;
+    color: var(--azul);
+    padding: 1.2rem;
+}
+ 
+ 
+/* ---------- Contenedor de las dos columnas ---------- */
+.cont {
+    max-width: 1200px;
+    min-height: auto;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+}
+ 
+.principal {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;      /* izquierda el doble de ancha */
+    gap: 24px;
+    align-items: start;                  /* cada caja con su propia altura */
+}
+ 
+ 
+/* ---------- Columna izquierda: formulario ---------- */
+.tabla {
+    border: 1px solid var(--borde);
+    padding: 28px;
+}
+ 
+.tabla h1 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--borde);
+}
+ 
+/* cada label ocupa su propio renglón, arriba de su campo */
+.tabla label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+ 
+/* inputs y select con el mismo aspecto */
+.tabla input,
+.tabla select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background-color: white;
+}
+ 
+/* cuando hacés clic en un campo, se marca en azul */
+.tabla input:focus,
+.tabla select:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px var(--azul-claro);
+}
+ 
+/* botón "Crear traslado" */
+.tabla button {
+    margin-top: 24px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: var(--azul);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+ 
+.tabla button:hover {
+    background-color: var(--azul-oscuro);
+}
+ 
+/* mensaje que aparece después de crear (o fallar) */
+#resultado p {
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color: var(--azul-claro);
+    color: var(--azul-oscuro);
+}
+ 
+ 
+/* ---------- Columna derecha: detalle de la solicitud ---------- */
+.detalle {
+    border: 1px solid var(--borde);
+    padding: 28px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+ 
+.detalle table {
+    width: 100%;
+    margin-top: 12px;
+    border-collapse: collapse;           /* sin espacios entre filas */
+    border-spacing: 0;
+}
+ 
+.detalle th {
+    padding: 12px 0;
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: var(--gris-texto);
+    border-bottom: 1px solid var(--borde);   /* línea entre cada dato */
+}
+ 
+ 
+/* ---------- Pantallas chicas (celular / tablet) ---------- */
+@media (max-width: 900px) {
+ 
+    /* las dos columnas pasan a estar una abajo de la otra */
+    .principal {
+        grid-template-columns: 1fr;
+    }
+ 
+    .titulo-pagina {
+        font-size: 1.4rem;
+    }
+}
