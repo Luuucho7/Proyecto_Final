@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,9 +121,7 @@
     <label>Seleccionar ambulancia:</label>
 
     <select id="ambulancia">
-        <option value="">SBA 3455 - libre</option>
-        <option value="">IAE 4566 - libre</option>
-        <option value="">IAH 7780 - libre</option>
+        <option value="">Cargando ambulancias...</option>
     </select>
 
     <label>Origen:</label>
@@ -129,12 +129,6 @@
 
     <label>Destino:</label>
     <input type="text" id="destino">
-
-    <button onclick="crearTraslado()">Crear traslado</button>
-
-    <div id="resultado"></div>
-
-    <script src="../js/traslado.js"></script>  
 
       <label>Hora de salida:</label>
       <input type="datetime-local" id="hora_salida">
@@ -153,7 +147,11 @@
 
       <label>ID del funcionario:</label>
       <input type="number" id="id_funcionario">
-    
+
+      <button onclick="crearTraslado()">Crear traslado</button>
+
+      <div id="resultado"></div>
+
 
 
         </section>
@@ -210,5 +208,6 @@
 
   
 <script src="../js/java.js"></script>
+<script src="../js/traslado.js"></script>
 </body>
 </html>
