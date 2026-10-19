@@ -1,98 +1,161 @@
+/* =========================================================
+   elemento_traslado.css
+   Estilos SOLO para la página Elemento_trasladado.html
+   Mismo estilo que traslado.css (colores, cajas, inputs, botones)
+   para que las dos páginas del módulo se vean iguales.
+   ========================================================= */
 
+
+/* ---------- Colores que se repiten en toda la página ---------- */
+:root {
+    --azul: #0b5fff;          /* el mismo azul del banner */
+    --azul-oscuro: #0846c2;   /* para cuando pasás el mouse */
+    --azul-claro: #eaf1ff;    /* fondos suaves */
+    --rojo: #d62839;          /* botón eliminar */
+    --rojo-oscuro: #a81e2c;
+    --borde: #dbe4f0;         /* bordes de cajas e inputs */
+}
+
+
+/* ---------- Título de la página ---------- */
 .titulo-pagina {
-    text-align: center;
+    max-width: 1200px;
+    margin: 7rem auto 0;      /* 7rem para que no quede abajo del banner fijo */
+    padding: 0 1.5rem;
+    font-size: 1.8rem;
+    text-align: left;
 }
 
-.sectores {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 35px;
-    margin-top: 150px;
+
+/* ---------- Filas de cajas (las 3 de arriba y las 3 de abajo) ---------- */
+.sectores,
+.buscadores {
+    max-width: 1200px;
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;   /* 3 columnas iguales */
+    gap: 24px;
 }
 
+/* más espacio entre la fila de arriba y la de los buscadores */
+.buscadores {
+    margin-top: 4rem;
+}
+
+
+/* ---------- Cada caja ---------- */
 .biologico,
 .no_biologico,
-.organo {
-    width: 320px;
-    min-height: 380px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    box-sizing: border-box;
-    border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    transition: 0.3s;
-}
-
-.biologico form,
-.no_biologico form,
-.organo form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin-top: 30px;
-    border-radius: 20px;
-
-}
-
-.escribir_organos {
-    border-radius: 200px;
-    padding: 1rem;
-    border-color: black;
-    border-width: 2px; 
-}
-
-.boton_organos {
-    border-radius: 20px;
-    padding: 1rem;
-}
-
-.boton-eliminar {
-    border-radius: 20px;
-    padding: 1rem;
-    background: #e63946;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.boton-eliminar:hover {
-    background: #c92c39;
-}
-
-.buscadores {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: wrap;
-    gap: 35px;
-    margin: 40px 0;
-}
-
+.organo,
 .buscador-item {
-    width: 320px;
-    box-sizing: border-box;
-    padding: 30px;
-    border-radius: 20px;
     background: white;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    border: 1px solid var(--borde);
+    border-top: 4px solid var(--azul);    /* rayita azul arriba, igual que las tarjetas de Traslados */
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
+/* título de cada caja (BIOLÓGICO, Buscar órgano, ...) */
+.biologico h2,
+.no_biologico h2,
+.organo h2,
 .buscador-item h3 {
-    margin: 0 0 15px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--borde);
     color: #1f2937;
 }
 
+/* el formulario de adentro: un elemento abajo del otro */
+.biologico form,
+.no_biologico form,
+.organo form,
 .buscador-item form {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
+
+
+/* ---------- Campos de texto ---------- */
+.escribir_organos {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+
+/* cuando hacés clic en un campo, se marca en azul */
+.escribir_organos:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px var(--azul-claro);
+}
+
+
+/* ---------- Botones ---------- */
+
+/* base que comparten todos los botones */
+.boton_organos,
+.boton-eliminar {
+    padding: 11px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: inherit;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* "Modificar": blanco con borde azul (acción secundaria) */
+.boton_organos {
+    background: white;
+    color: var(--azul);
+    border: 1px solid var(--azul);
+}
+
+.boton_organos:hover {
+    background: var(--azul-claro);
+}
+
+/* "Ingresar" y "Buscar": azul lleno (acción principal).
+   Son los <input type="submit">, por eso se eligen así */
+input[type="submit"].boton_organos {
+    background: var(--azul);
+    color: white;
+    border: none;
+}
+
+input[type="submit"].boton_organos:hover {
+    background: var(--azul-oscuro);
+}
+
+/* "Eliminar": rojo, para que se note que es peligroso */
+.boton-eliminar {
+    background: var(--rojo);
+    color: white;
+    border: none;
+}
+
+.boton-eliminar:hover {
+    background: var(--rojo-oscuro);
+}
+
+
+/* ---------- Pantallas chicas (celular / tablet) ---------- */
+@media (max-width: 900px) {
+
+    /* las cajas pasan a estar una abajo de la otra */
+    .sectores,
+    .buscadores {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-pagina {
+        font-size: 1.4rem;
+    }
+}   
