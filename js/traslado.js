@@ -1,4 +1,3 @@
-javascript
 function crearTraslado() {
 
     let matricula = document.getElementById('ambulancia').value;
@@ -23,6 +22,7 @@ function crearTraslado() {
         method: 'POST',
         body: datos
     })
+
     .then(respuesta => respuesta.json())
     .then(datos => {
 
@@ -39,8 +39,8 @@ function crearTraslado() {
         }
 
     })
-    .catch(error => {
 
+    .catch(error => {
         document.getElementById('resultado').innerHTML =
             '<p>Error al crear el traslado.</p>';
 
