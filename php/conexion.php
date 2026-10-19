@@ -1,6 +1,6 @@
 <?php
 $host     = 'localhost';
-$dbname   = 'hospital_clinicas';
+$dbname   = 'hospital_clinicas_db';
 $username = 'root';
 $password = '';
 
