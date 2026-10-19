@@ -1,8 +1,8 @@
 
-DROP DATABASE IF EXISTS hospital_clinicas;
+DROP DATABASE IF EXISTS hospital_clinicas_db;
 
-CREATE DATABASE hospital_clinicas;
-USE hospital_clinicas;
+CREATE DATABASE hospital_clinicas_db;
+USE hospital_clinicas_db;
 
 
 
