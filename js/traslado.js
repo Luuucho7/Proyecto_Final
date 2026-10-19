@@ -1,50 +1,81 @@
-function crearTraslado() {
+const formTraslado = document.getElementById('form_traslado');
+const datosTraslado = document.getElementById('datos_traslado');
+const avisoTipo = document.getElementById('aviso_tipo');
+const resultado = document.getElementById('resultado');
 
-    let matricula = document.getElementById('ambulancia').value;
-    let hora_salida = document.getElementById('hora_salida').value;
-    let hora_llegada = document.getElementById('hora_llegada').value;
-    let chofer = document.getElementById('chofer').value;
-    let copiloto = document.getElementById('copiloto').value;
-    let id_paciente = document.getElementById('id_paciente').value;
-    let id_funcionario = document.getElementById('id_funcionario').value;
+const nombresTipo = {
+    biologico: 'Biológico',
+    no_biologico: 'No biológico',
+    organo: 'Órgano'
+};
 
-    let datos = new FormData();
+// Al elegir un tipo, se muestran solo los campos de ese tipo.
+// Los fieldset ocultos quedan "disabled", así no se validan ni se envían.
+document.querySelectorAll('input[name="tipo"]').forEach(radio => {
+    radio.addEventListener('change', () => {
 
-    datos.append('matricula', matricula);
-    datos.append('hora_salida', hora_salida);
-    datos.append('hora_llegada', hora_llegada);
-    datos.append('chofer', chofer);
-    datos.append('copiloto', copiloto);
-    datos.append('id_paciente', id_paciente);
-    datos.append('id_funcionario', id_funcionario);
+        document.querySelectorAll('.datos-elemento').forEach(fieldset => {
+            const elegido = fieldset.dataset.tipo === radio.value;
+            fieldset.hidden = !elegido;
+            fieldset.disabled = !elegido;
+        });
 
-    fetch('../php/traslado.php', {
-        method: 'POST',
-        body: datos
-    })
+        datosTraslado.hidden = false;
+        datosTraslado.disabled = false;
+        avisoTipo.hidden = true;
+        resultado.innerHTML = '';
+    });
+});
 
-    .then(respuesta => respuesta.json())
-    .then(datos => {
+formTraslado.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        if (datos.exito) {
+    const datos = new FormData(formTraslado);
 
-            document.getElementById('resultado').innerHTML =
-                '<p>Traslado creado correctamente.</p>';
+    try {
+        const respuesta = await fetch('../php/traslado.php', {
+            method: 'POST',
+            body: datos
+        });
+        const res = await respuesta.json();
 
+        if (res.exito) {
+            resultado.innerHTML = '<p>Traslado creado correctamente.</p>';
+            mostrarDetalle(res.id_traslado, datos);
+            formTraslado.reset();
+            reiniciarSelector();
         } else {
-
-            document.getElementById('resultado').innerHTML =
-                '<p>' + datos.mensaje + '</p>';
-
+            resultado.innerHTML = '<p>' + res.mensaje + '</p>';
         }
 
-    })
+    } catch (error) {
+        resultado.innerHTML = '<p>Error al crear el traslado.</p>';
+    }
+});
 
-    .catch(error => {
-        document.getElementById('resultado').innerHTML =
-            '<p>Error al crear el traslado.</p>';
+// Completa la tabla "Detalle de la solicitud" con el traslado recién creado
+function mostrarDetalle(id, datos) {
+    const tipo = datos.get('tipo');
+    const elemento = {
+        biologico: datos.get('nombre'),
+        no_biologico: datos.get('clasificacion'),
+        organo: datos.get('persona')
+    }[tipo];
 
-    });
-
+    document.getElementById('d_id').textContent = id;
+    document.getElementById('d_elemento').textContent = elemento;
+    document.getElementById('d_tipo').textContent = nombresTipo[tipo];
+    document.getElementById('d_ambulancia').textContent = datos.get('matricula');
+    document.getElementById('d_origen').textContent = datos.get('origen') || '—';
+    document.getElementById('d_destino').textContent = datos.get('destino') || '—';
+    document.getElementById('d_estado').textContent = 'Solicitado';
 }
 
+// Vuelve el formulario al estado inicial: sin tipo elegido y todo oculto
+function reiniciarSelector() {
+    document.querySelectorAll('.datos-elemento, #datos_traslado').forEach(fieldset => {
+        fieldset.hidden = true;
+        fieldset.disabled = true;
+    });
+    avisoTipo.hidden = false;
+}

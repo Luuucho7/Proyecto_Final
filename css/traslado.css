@@ -1,6 +1,6 @@
 /* =========================================================
    traslado.css
-   Estilos SOLO para la página Traslado.html
+   Estilos SOLO para la página Traslado.html (traslados + elementos)
    Se carga después de style.css y banner.css,
    por eso lo que está acá "pisa" a lo de esos archivos.
    ========================================================= */
@@ -13,6 +13,8 @@
     --azul-claro: #eaf1ff;    /* fondos suaves */
     --gris-texto: #475569;    /* textos secundarios */
     --borde: #dbe4f0;         /* bordes de cajas e inputs */
+    --rojo: #d62839;          /* botón eliminar */
+    --rojo-oscuro: #a81e2c;
 }
  
  
@@ -148,15 +150,195 @@
     font-size: 0.95rem;
     font-weight: normal;
     color: var(--gris-texto);
+    text-align: left;
     border-bottom: 1px solid var(--borde);   /* línea entre cada dato */
 }
  
  
+/* el dato, a la derecha de cada título */
+.detalle td {
+    padding: 12px 0;
+    font-size: 0.95rem;
+    text-align: right;
+    border-bottom: 1px solid var(--borde);
+}
+
+
+
+/* ---------- Selector de tipo (Biológico / No biológico / Órgano) ---------- */
+.selector-tipo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+/* el radio queda escondido: se hace clic sobre toda la opción */
+.tabla .opcion-tipo input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+}
+
+.tabla .opcion-tipo {
+    margin: 0;
+    padding: 14px;
+    text-align: center;
+    color: var(--azul);
+    border: 1px solid var(--azul);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tabla .opcion-tipo:hover {
+    background: var(--azul-claro);
+}
+
+/* la opción elegida queda azul llena */
+.tabla .opcion-tipo:has(input:checked) {
+    background: var(--azul);
+    color: white;
+}
+
+.tabla .opcion-tipo:has(input:focus-visible) {
+    box-shadow: 0 0 0 3px var(--azul-claro);
+}
+
+/* bloques de campos: datos del elemento y datos del traslado */
+.tabla fieldset {
+    margin-top: 24px;
+    padding: 4px 20px 20px;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.tabla fieldset[hidden] {
+    display: none;
+}
+
+.tabla legend {
+    padding: 0 8px;
+    font-weight: bold;
+    color: var(--azul);
+}
+
+.aviso {
+    margin-top: 16px;
+    color: var(--gris-texto);
+}
+
+
+/* ---------- Elementos registrados (buscar / modificar / eliminar) ---------- */
+.subtitulo-pagina {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    font-size: 1.4rem;
+}
+
+.sectores {
+    max-width: 1200px;
+    margin: 1.5rem auto 3rem;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;   /* 3 columnas iguales */
+    gap: 24px;
+}
+
+.caja-elemento {
+    background: white;
+    border: 1px solid var(--borde);
+    border-top: 4px solid var(--azul);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.caja-elemento h2 {
+    font-size: 1.2rem;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--borde);
+    color: #1f2937;
+}
+
+/* buscador arriba, datos del elemento abajo */
+.caja-elemento form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.caja-elemento form + form {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--borde);
+}
+
+.escribir_organos {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+
+.escribir_organos:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px var(--azul-claro);
+}
+
+.boton_organos,
+.boton-eliminar {
+    padding: 11px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: inherit;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* "Modificar": blanco con borde azul */
+.boton_organos {
+    background: white;
+    color: var(--azul);
+    border: 1px solid var(--azul);
+}
+
+.boton_organos:hover {
+    background: var(--azul-claro);
+}
+
+/* "Buscar": azul lleno */
+input[type="submit"].boton_organos {
+    background: var(--azul);
+    color: white;
+    border: none;
+}
+
+input[type="submit"].boton_organos:hover {
+    background: var(--azul-oscuro);
+}
+
+/* "Eliminar": rojo */
+.boton-eliminar {
+    background: var(--rojo);
+    color: white;
+    border: none;
+}
+
+.boton-eliminar:hover {
+    background: var(--rojo-oscuro);
+}
+
+
 /* ---------- Pantallas chicas (celular / tablet) ---------- */
 @media (max-width: 900px) {
  
     /* las dos columnas pasan a estar una abajo de la otra */
-    .principal {
+    .principal,
+    .sectores {
         grid-template-columns: 1fr;
     }
  

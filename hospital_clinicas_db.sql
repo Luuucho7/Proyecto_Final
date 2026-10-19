@@ -83,6 +83,8 @@ CREATE TABLE Traslado (
     id_paciente INT,
     id_funcionario INT,
     matricula VARCHAR(20),
+    tipo_elemento VARCHAR(20),   -- biologico / no_biologico / organo
+    id_elemento INT,             -- id en la tabla de ese tipo
     FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente),
     FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario),
     FOREIGN KEY (matricula) REFERENCES Ambulancia(matricula)
@@ -130,3 +132,7 @@ INSERT INTO Persona (cedula, nombre, apellido, correo, password_hash, direccion,
 VALUES (57730555, 'Facundo', 'Ceriotti', 'facundo231208@gmail.com',
         '$2y$10$NAVVDgl3yilSmPC14TbtGu4nDOxOIszOanriA5I8m.w7l9rElQyJu',
         'Silván Fernandez 745', '098649062', '2008-12-23');
+
+
+-- Las ambulancias que aparecen en el selector de Traslado.html
+INSERT INTO Ambulancia (matricula) VALUES ('SBA 3355'), ('IAE 2466'), ('IAH 1234');

@@ -3,26 +3,6 @@ const nombre = document.getElementById('nombre');
 const estado = document.getElementById('estado');
 const formBiologico = document.getElementById('form_biologico');
 
-formBiologico.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const datos = new FormData(formBiologico);
-
-  const respuesta = await fetch('../php/ingresarInsumo.php', {
-    method: 'POST',
-    body: datos
-  });
-  const resultado = await respuesta.json();
-
-  if (resultado.exito) {
-    alert('Insumo ingresado correctamente');
-    formBiologico.reset();
-    id_biologico.value = '';
-  } else {
-    alert(resultado.mensaje || 'Error al ingresar el insumo');
-  }
-});
-
 const buscar = document.getElementById('buscar');
 const buscar_boton = document.getElementById('buscar_boton');
 
@@ -115,26 +95,6 @@ const clasificacion = document.getElementById('clasificacion');
 const pendiente = document.getElementById('pendiente');
 const formNoBiologico = document.getElementById('form_no_biologico');
 
-formNoBiologico.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const datos = new FormData(formNoBiologico);
-
-  const respuesta = await fetch('../php/no_biologico.php', {
-    method: 'POST',
-    body: datos
-  });
-  const resultado = await respuesta.json();
-
-  if (resultado.exito) {
-    alert('Insumo ingresado correctamente');
-    formNoBiologico.reset();
-    id_no_biologico.value = '';
-  } else {
-    alert(resultado.mensaje || 'Error al ingresar el insumo');
-  }
-});
-
 const encontrar = document.getElementById('encontrar');
 const buscar_boton_no = document.getElementById('buscar_boton_nobiologico');
 
@@ -226,26 +186,6 @@ const id_organo = document.getElementById('id_organo');
 const persona = document.getElementById('persona');
 const en_curso = document.getElementById('en_curso');
 const formOrgano = document.getElementById('form_organo');
-
-formOrgano.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const datos = new FormData(formOrgano);
-
-  const respuesta = await fetch('../php/organo.php', {
-    method: 'POST',
-    body: datos
-  });
-  const resultado = await respuesta.json();
-
-  if (resultado.exito) {
-    alert('Registro ingresado correctamente');
-    formOrgano.reset();
-    id_organo.value = '';
-  } else {
-    alert(resultado.mensaje || 'Error al ingresar el registro');
-  }
-});
 
 const encontrar_organo = document.getElementById('encontrar_org');
 const buscar_boton_organo = document.getElementById('button_org');
