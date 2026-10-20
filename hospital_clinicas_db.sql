@@ -58,6 +58,7 @@ CREATE TABLE Documentacion (
     id_documento INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100),
     tipo VARCHAR(50),
+    archivo VARCHAR(255),        -- nombre del PDF dentro de la carpeta documentos/
     fecha_creacion DATE,
     id_funcionario INT,
     FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario)
@@ -136,3 +137,26 @@ VALUES (57730555, 'Facundo', 'Ceriotti', 'facundo231208@gmail.com',
 
 -- Las ambulancias que aparecen en el selector de Traslado.html
 INSERT INTO Ambulancia (matricula) VALUES ('SBA 3355'), ('IAE 2466'), ('IAH 1234');
+
+
+-- El usuario de prueba también es funcionario (id_funcionario = 1)
+INSERT INTO Funcionario (cedula) VALUES (57730555);
+
+
+-- Los documentos que pide la letra. Los PDF están en la carpeta documentos/
+-- El paciente los abre desde el QR: php/ver_documento.php?id=1, ?id=2, ...
+INSERT INTO Documentacion (nombre, tipo, archivo, fecha_creacion, id_funcionario) VALUES
+('Indicaciones de interrupción voluntaria del embarazo', 'Indicaciones', 'interrupcion_voluntaria_embarazo.pdf', CURDATE(), 1),
+('Prostatectomía radical: indicaciones e información para el paciente', 'Indicaciones', 'prostatectomia_radical.pdf', CURDATE(), 1),
+('Preparación para estudios imagenológicos', 'Preparación para estudios', 'estudios_imagenologicos.pdf', CURDATE(), 1),
+('Estudios diagnósticos con pertecneciato', 'Preparación para estudios', 'estudios_pertecneciato.pdf', CURDATE(), 1),
+('Centellograma de perfusión miocárdica', 'Preparación para estudios', 'centellograma_perfusion_miocardica.pdf', CURDATE(), 1),
+('Indicaciones ecocardiograma con dobutamina', 'Indicaciones', 'ecocardiograma_dobutamina.pdf', CURDATE(), 1),
+('Indicaciones para pacientes en tratamiento con warfarina', 'Indicaciones', 'tratamiento_warfarina.pdf', CURDATE(), 1),
+('Indicaciones ecocardiograma transesofágico', 'Indicaciones', 'ecocardiograma_transesofagico.pdf', CURDATE(), 1),
+('Indicaciones para ingreso a centro de nefrología y trasplante', 'Indicaciones', 'ingreso_nefrologia_trasplante.pdf', CURDATE(), 1),
+('Plan de alta enfermería, Nefrología', 'Enfermería', 'plan_alta_nefrologia.pdf', CURDATE(), 1),
+('Indicaciones de enfermería para usuarios trasplantados', 'Enfermería', 'enfermeria_trasplantados.pdf', CURDATE(), 1),
+('Prevención de infecciones', 'Prevención', 'prevencion_infecciones.pdf', CURDATE(), 1),
+('Encuesta de satisfacción del usuario trasplantado', 'Encuesta', 'encuesta_usuario_trasplantado.pdf', CURDATE(), 1),
+('Pauta para pacientes ostomizados', 'Indicaciones', 'pauta_ostomizados.pdf', CURDATE(), 1);

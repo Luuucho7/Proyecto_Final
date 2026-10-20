@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const buscadorInput = document.querySelector('.buscador input');
     const tablaBody = document.querySelector('.tabla-pacientes tbody');
     const formulario = document.getElementById('form-paciente');
-    const botonMenu = document.getElementById('btn-menu-pacientes');
-    const menu = document.getElementById('menu-derecho');
 
     const id_paciente = document.getElementById('id_paciente');
     const nombre = document.getElementById('nombre');
@@ -12,14 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const estado = document.getElementById('estado');
     const botonGuardar = document.getElementById('boton-guardar-paciente');
     const botonCancelar = document.getElementById('boton-cancelar-edicion');
-
-    if (botonMenu && menu) {
-        botonMenu.addEventListener('click', () => {
-            const abierto = menu.classList.toggle('abierto');
-            botonMenu.setAttribute('aria-expanded', abierto.toString());
-            botonMenu.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
-        });
-    }
 
     function terminarEdicion() {
         formulario.reset();

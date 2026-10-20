@@ -11,42 +11,12 @@
 <header class="banner-barra">
 
     <div class="banner-izquierda">
-        <details class="desplegable-nav">
-            <summary class="banner-menu" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </summary>
-            <div class="menu-nav">
-                <a href="pagina_principal.html">
-                    <img src="../css/img/casa_logo.svg" alt="" style="width:18px; height:18px; object-fit:contain;">
-                    <span>Inicio</span>
-                </a>
-                <a href="pacientes.html">
-                    <img src="../css/img/persona_logo.svg" alt="" style="width:18px; height:18px; object-fit:contain;">
-                    <span>Pacientes</span>
-                </a>
-                <a href="Atencion.html">
-                    <img src="../css/img/hospital_logo.svg" alt="" style="width:18px; height:18px; object-fit:contain;">
-                    <span>Atención</span>
-                </a>
-                <a href="Documentacion.html">
-                    <img src="../css/img/qr_logo.svg" alt="" style="width:18px; height:18px; object-fit:contain;">
-                    <span>Documentación QR</span>
-                </a>
-                <a href="encuestaformulario.html">
-                    <img src="../css/img/estadisticas_logo.svg" alt="" style="width:18px; height:18px; object-fit:contain;">
-                    <span>Encuestas</span>
-                </a>
-                <a href="Traslado.html">
-                    <img src="../css/img/ambulancia_logo.svg" alt="" style="width:18px; height:18px; object-fit:contain;">
-                    <span>Traslados en Ambulancia</span>
-                </a>
-                <a href="FAQ.html">
-                    <img src="../css/img/pregunta_logo.svg" alt="" style="width:18px; height:18px; object-fit:contain;">
-                    <span>Preguntas frecuentes</span>
-                </a>
-            </div>
+        <div class="banner-menu" id="btnMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 
     <div class="banner">
         <a href="../html/pagina_principal_admin.html" class="banner-logo" aria-label="Ir al panel principal">
@@ -61,6 +31,57 @@
     <div class="banner-derecha"></div>
 
 </header>
+
+<div class="menulateral" id="menuLateral">
+
+    <h4>PANEL PRINCIPAL</h4>
+
+    <ul>
+        <li>
+            <a href="../html/pagina_principal_admin.html">
+                <img src="../css/img/casa_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Inicio</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/pacientes.html">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Pacientes</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Atencion.html" class="actual">
+                <img src="../css/img/hospital_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Atención</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Documentacion.html">
+                <img src="../css/img/qr_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Documentación</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/encuestaformulario.html">
+                <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Encuestas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Traslado.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Traslados en Ambulancia</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/FAQ.html">
+                <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Preguntas frecuentes</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
 
     <main class="pagina-atencion">
         <section class="introduccion">
@@ -145,5 +166,6 @@
         <p>Hospital de Clínicas • Av. Italia 2870, C.P. 11600 • Montevideo</p>
         <p>Tel: 0800-1953 • Email: <a href="mailto:atencion@hospitalclinicas.example">atencion@hospitalclinicas.example</a></p>
     </footer>
+<script src="../js/java.js"></script>
 </body>
 </html>

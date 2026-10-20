@@ -28,58 +28,7 @@ body {
     gap: 8px;
 }
 
-.menu {
-
-    position: fixed;
-
-    top: 84px;
-
-    left: 0;
-
-    bottom: 0;
-
-    width: 250px;
-
-    background-color: white;
-
-    padding-top: 25px;
-
-    border-right: 1px solid #ddd;
-    border-top: 1px solid #ddd;
-}
-
-.opcion {
-
-    display: block;
-
-    padding: 17px 30px;
-
-    color: #26354d;
-
-    text-decoration: none;
-
-    font-size: 15px;
-}
-
-.opcion:hover {
-
-    background-color: #eef4fc;
-
-    color: #0758c7;
-}
-
-.opcion.activa {
-
-    background-color: #e8f0fb;
-
-    color: #0758c7;
-
-    font-weight: bold;
-}
-
 .contenido {
-
-    margin-left: 250px;
 
     padding: 30px 35px;
 
@@ -307,9 +256,9 @@ td {
     text-align: center;
 }
 
-#qrIframe {
+#qrImagen {
 
-    display: block;
+    display: none;   /* se muestra recién cuando se genera el QR */
 
     width: 180px;
 
@@ -345,8 +294,6 @@ td {
 
 .pie {
 
-    margin-left: 250px;
-
     text-align: center;
 
     padding: 20px;
@@ -357,21 +304,6 @@ td {
 }
 
 @media (max-width: 900px) {
-
-    .menu {
-
-        width: 190px;
-    }
-
-    .contenido {
-
-        margin-left: 190px;
-    }
-
-    .pie {
-
-        margin-left: 190px;
-    }
 
     .formulario {
 

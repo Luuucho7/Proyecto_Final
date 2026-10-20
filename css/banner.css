@@ -120,3 +120,70 @@
     color: #ffffff;
     font-size: 32px;
 }
+
+/* ---------- Menú lateral (el mismo en todas las páginas del funcionario) ---------- */
+.menulateral {
+    position: fixed;
+    top: 84px;
+    left: -270px;
+    width: 270px;
+    height: calc(100vh - 84px);
+    box-sizing: border-box;
+    overflow-y: auto;
+    background: #ffffff;
+    color: #1f2937;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    transition: 0.4s;
+    z-index: 999;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+    border-right: 1px solid #e5e7eb;
+}
+
+/* java.js le agrega la clase "activo" para abrirlo */
+.menulateral.activo {
+    left: 0;
+}
+
+.menulateral h4 {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 30px 25px;
+}
+
+.menulateral ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+
+.menulateral ul li {
+    margin: 5px 10px;
+}
+
+.menulateral ul li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #1f2937;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.menulateral ul li a:hover {
+    background: #f3f4f6;
+    color: #0b5fff;
+}
+
+/* Solo el link de la página en la que estás queda marcado */
+.menulateral ul li a.actual {
+    background: #eff6ff;
+    color: #0b5fff;
+    font-weight: bold;
+}
