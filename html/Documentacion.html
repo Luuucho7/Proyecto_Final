@@ -15,7 +15,13 @@
 
 <header class="banner-barra">
 
-    <div class="banner-izquierda"></div>
+    <div class="banner-izquierda">
+        <div class="banner-menu" id="btnMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 
     <div class="banner">
         <a href="../html/pagina_principal_admin.html" class="banner-logo" aria-label="Ir al panel principal">
@@ -36,39 +42,57 @@
 
 </header>
 
-    <aside class="menu">
+<div class="menulateral" id="menuLateral">
 
-        <a href="../html/pacientes.html" class="opcion">
-                <img src="../css/img/pareja_logo.svg" alt="Pacientes" style="width:20px; height:20px; object-fit:contain;">
+    <h4>PANEL PRINCIPAL</h4>
+
+    <ul>
+        <li>
+            <a href="../html/pagina_principal_admin.html">
+                <img src="../css/img/casa_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Inicio</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/pacientes.html">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Pacientes</span>
             </a>
-
-        <a href="../html/Atencion.html" class="opcion">
-                <img src="../css/img/hospital_logo.svg" alt="Atención" style="width:20px; height:20px; object-fit:contain;">
+        </li>
+        <li>
+            <a href="../html/Atencion.html">
+                <img src="../css/img/hospital_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Atención</span>
             </a>
-
-        <a href="../html/encuestaformulario.html" class="opcion">
-                <img src="../css/img/estadisticas_logo.svg" alt="Encuestas" style="width:20px; height:20px; object-fit:contain;">
+        </li>
+        <li>
+            <a href="../html/Documentacion.html" class="actual">
+                <img src="../css/img/qr_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Documentación</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/encuestaformulario.html">
+                <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Encuestas</span>
             </a>
-
-        <a href="../html/Traslado.html" class="opcion">
-                <img src="../css/img/ambulancia_logo.svg" alt="Traslados en Ambulancia" style="width:20px; height:20px; object-fit:contain;">
+        </li>
+        <li>
+            <a href="../html/Traslado.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Traslados en Ambulancia</span>
             </a>
-
-        <a href="../html/FAQ.html" class="opcion">
-                <img src="../css/img/pregunta_logo.svg" alt="Preguntas frecuentes" style="width:20px; height:20px; object-fit:contain;">
+        </li>
+        <li>
+            <a href="../html/FAQ.html">
+                <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Preguntas frecuentes</span>
             </a>
+        </li>
+    </ul>
 
-            <a href="../html/Elemento_trasladado.html" class="opcion">
-                <img src="../css/img/ambulancia_logo.svg" alt="Elemento a trasladar" style="width:20px; height:20px; object-fit:contain;">
-                <span>Elemento a trasladar</span>
-            </a>
+</div>
 
-    </aside>
 
     <main class="contenido">
 
@@ -76,15 +100,15 @@
 
         <p class="descripcion">
 
-            Desde este módulo podrá cargar y gestionar los documentos
-            informativos para los pacientes.
+            Desde este módulo podrá cargar y gestionar la documentación
+            general del hospital.
 
             Cada documento de la lista tiene su propio código QR, que
-            lleva directamente al PDF para verlo desde el celular.
+            lleva directamente a la página de ese documento.
 
         </p>
 
-        <section class="tarjeta" id="subir-documento">
+            <section class="tarjeta" id="subir-documento">
 
             <h3>Subir Documento</h3>
 
@@ -97,12 +121,11 @@
                     <select id="tipoDocumento">
 
                         <option value="">Seleccione tipo</option>
-                        <option>Indicaciones</option>
-                        <option>Preparación para estudios</option>
-                        <option>Plan de alta</option>
-                        <option>Prevención</option>
-                        <option>Pauta</option>
-                        <option>Encuesta</option>
+                        <option value="Indicaciones">Indicaciones</option>
+                        <option value="Preparación para estudios">Preparación para estudios</option>
+                        <option value="Enfermería">Enfermería</option>
+                        <option value="Prevención">Prevención</option>
+                        <option value="Encuesta">Encuesta</option>
 
                     </select>
 
@@ -110,11 +133,11 @@
 
                 <div class="campo">
 
-                    <label>Título del documento</label>
+                    <label>Nombre del documento</label>
 
                     <input
                         type="text"
-                        id="tituloDocumento"
+                        id="nombreDocumento"
                         maxlength="100"
                         placeholder="Ej: Prevención de infecciones">
 
@@ -127,13 +150,7 @@
                     <input
                         type="file"
                         id="archivo"
-                        accept="application/pdf">
-
-                    <small
-                        id="ayudaArchivo"
-                        style="display:none; margin-top:6px; color:#526078;">
-                        Dejalo vacío para conservar el PDF actual.
-                    </small>
+                        accept=".pdf,application/pdf">
 
                 </div>
 
@@ -141,20 +158,9 @@
 
             <button
                 class="boton"
-                id="botonSubir"
                 onclick="subirDocumento()">
 
                 ⬆ Subir Documento
-
-            </button>
-
-            <button
-                class="botonPequeno"
-                id="botonCancelarEdicion"
-                onclick="cancelarEdicion()"
-                style="display:none;">
-
-                Cancelar edición
 
             </button>
 
@@ -174,7 +180,7 @@
 
                         <th>Tipo de Documento</th>
 
-                        <th>Título</th>
+                        <th>Nombre</th>
 
                         <th>Fecha de carga</th>
 
@@ -184,9 +190,8 @@
 
                 </thead>
 
-                <tbody id="listaDocumentos">
-
-                    <!-- Las filas se arman solas con JavaScript, con los documentos guardados en la base -->
+                <!-- Las filas las dibuja Documentacion.js con los datos de la base -->
+                <tbody id="tablaDocumentos">
 
                 </tbody>
 
@@ -194,13 +199,13 @@
 
         </section>
 
-        <section class="tarjeta" id="generar-qr">
+    <section class="tarjeta" id="generar-qr">
 
             <h3>Generar Código QR</h3>
 
             <p>
                 Ingrese el ID del documento para generar
-                el código QR que lleva directamente a su PDF.
+                el código QR que lleva a la página de ese documento.
             </p>
 
             <div class="zonaQR">
@@ -230,9 +235,9 @@
 
                 <div class="marcoQR">
 
-                    <iframe
-                        id="qrIframe"
-                        title="Código QR del documento"></iframe>
+                    <img
+                        id="qrImagen"
+                        alt="Código QR del documento">
 
                     <p id="resultadoQR"></p>
 
@@ -249,10 +254,6 @@
 
             </div>
 
-            <p
-                id="avisoQR"
-                style="color:#a05a00; font-size:13px; margin-top:15px;"></p>
-
         </section>
 
     </main>
@@ -266,6 +267,7 @@
 
     <script src="../js/Documentacion.js"></script>
 
+<script src="../js/java.js"></script>
 </body>
 
 </html>

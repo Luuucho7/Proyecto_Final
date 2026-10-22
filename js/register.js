@@ -1,11 +1,8 @@
-// Validaciones del formulario de registro, ANTES de mandarlo al servidor.
-// Son un filtro rápido para el usuario: register.php repite las más importantes,
-// porque el JavaScript se puede desactivar y nunca hay que confiar solo en él.
 const form = document.getElementById('register-block');
 const feedback = document.getElementById('feedback');
 
 form.addEventListener('submit', function (event) {
-  event.preventDefault(); // frenamos el envío hasta terminar de validar todo
+  event.preventDefault();
 
   const nombre = document.getElementById('nombre').value.trim();
   const apellido = document.getElementById('apellido').value.trim();
@@ -110,9 +107,6 @@ form.addEventListener('submit', function (event) {
     return;
   }
 
-  // Pasaron todas las validaciones: recién acá se deja enviar el formulario de verdad.
-  // form.submit() es un envío "clásico" (recarga la página), no usa fetch como los demás formularios,
-  // porque register.php contesta con una página HTML completa, no con JSON.
   feedback.textContent = "Enviando...";
   feedback.className = "success";
   form.submit();

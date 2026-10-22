@@ -1,15 +1,13 @@
-// Lógica del formulario de inicio de sesión (index.html)
 const formulario = document.getElementById('register-block');
 const feedback = document.getElementById('feedback');
 
 formulario.addEventListener('submit', async function (event) {
 
-  event.preventDefault(); // frena el envío normal, lo mandamos nosotros con fetch
+  event.preventDefault();
 
   const usuario = document.getElementById('feedback-user').value;
   const contrasena = document.getElementById('feedback-pass').value;
 
-  // Validación simple antes de gastar un viaje al servidor
   if (usuario === "" || contrasena === "") {
     feedback.textContent = "Tenés que completar la cédula o correo y la contraseña.";
     feedback.className = "error";
@@ -20,7 +18,6 @@ formulario.addEventListener('submit', async function (event) {
   datos.append("username", usuario);
   datos.append("password", contrasena);
 
-  // Manda los datos a login.php sin recargar la página
   const respuesta = await fetch("php/login.php", {
     method: "POST",
     body: datos
@@ -32,7 +29,6 @@ formulario.addEventListener('submit', async function (event) {
 
   if (resultado.success === true) {
     feedback.className = "success";
-    // Login correcto: login.php nos dice a qué página redirigir
     window.location.href = resultado.redirect;
   } else {
     feedback.className = "error";

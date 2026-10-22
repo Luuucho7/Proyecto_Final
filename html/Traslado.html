@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traslados</title>
+    <title>Traslados - Hospital de Clínicas</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/traslado.css">
 </head>
- 
+
 <body>
 
 <header class="banner-barra">
@@ -40,62 +41,57 @@
 
     <ul>
         <li>
-            <a href="../html/pagina_principal.html">
-                <img src="../css/img/casa_logo.svg" alt="Inicio" style="width:20px; height:20px; object-fit:contain;">
+            <a href="../html/pagina_principal_admin.html">
+                <img src="../css/img/casa_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Inicio</span>
             </a>
         </li>
         <li>
             <a href="../html/pacientes.html">
-                <img src="../css/img/persona_logo.svg" alt="Pacientes" style="width:20px; height:20px; object-fit:contain;">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Pacientes</span>
             </a>
         </li>
         <li>
             <a href="../html/Atencion.html">
-                <img src="../css/img/hospital_logo.svg" alt="Atención" style="width:20px; height:20px; object-fit:contain;">
+                <img src="../css/img/hospital_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Atención</span>
             </a>
         </li>
         <li>
             <a href="../html/Documentacion.html">
-                <img src="../css/img/qr_logo.svg" alt="Documentación QR" style="width:20px; height:20px; object-fit:contain;">
-                <span>Documentación QR</span>
+                <img src="../css/img/qr_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Documentación</span>
             </a>
         </li>
         <li>
             <a href="../html/encuestaformulario.html">
-                <img src="../css/img/estadisticas_logo.svg" alt="Encuestas" style="width:20px; height:20px; object-fit:contain;">
+                <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Encuestas</span>
             </a>
         </li>
         <li>
-            <a href="../html/Traslado.html">
-                <img src="../css/img/ambulancia_logo.svg" alt="Traslados en Ambulancia" style="width:20px; height:20px; object-fit:contain;">
+            <a href="../html/Traslado.html" class="actual">
+                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Traslados en Ambulancia</span>
             </a>
         </li>
         <li>
             <a href="../html/FAQ.html">
-                <img src="../css/img/pregunta_logo.svg" alt="Preguntas frecuentes" style="width:20px; height:20px; object-fit:contain;">
+                <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Preguntas frecuentes</span>
-            </a>
-        </li>
-        <li>
-            <a href="../html/Elemento_trasladado.html">
-                <img src="../css/img/ambulancia_logo.svg" alt="Elemento a trasladar" style="width:20px; height:20px; object-fit:contain;">
-                <span>Elemento a trasladar</span>
             </a>
         </li>
     </ul>
 
 </div>
 
+
 <h1 class="titulo-pagina">Gestión de trazabilidad</h1>
 
 
 <div class="texto_arriba">
- 
+
     <div class="tarjeta">Traslados</div>
 
     <div class="tarjeta">En curso</div>
@@ -112,61 +108,214 @@
     <main class="principal">
 
         <section class="tabla">
-            Tabla de solicitudes
+
+            <h1>Crear nuevo traslado</h1>
+
+            <form id="form_traslado">
+
+                <!-- 1. Qué se traslada -->
+                <label>¿Qué se va a trasladar?</label>
+
+                <div class="selector-tipo">
+                    <label class="opcion-tipo">
+                        <input type="radio" name="tipo" value="biologico">
+                        <span>Biológico</span>
+                    </label>
+                    <label class="opcion-tipo">
+                        <input type="radio" name="tipo" value="no_biologico">
+                        <span>No biológico</span>
+                    </label>
+                    <label class="opcion-tipo">
+                        <input type="radio" name="tipo" value="organo">
+                        <span>Órgano</span>
+                    </label>
+                </div>
+
+                <!-- 2. Datos del elemento (solo se ve el del tipo elegido) -->
+                <fieldset class="datos-elemento" data-tipo="biologico" hidden disabled>
+                    <legend>Datos del insumo biológico</legend>
+
+                    <label for="t_nombre">Nombre del insumo:</label>
+                    <input type="text" id="t_nombre" name="nombre" required>
+
+                    <label for="t_estado">Estado del insumo:</label>
+                    <input type="text" id="t_estado" name="estado" required>
+                </fieldset>
+
+                <fieldset class="datos-elemento" data-tipo="no_biologico" hidden disabled>
+                    <legend>Datos del insumo no biológico</legend>
+
+                    <label for="t_clasificacion">Clasificación:</label>
+                    <input type="text" id="t_clasificacion" name="clasificacion" required>
+
+                    <label for="t_pendiente">¿Pendiente?</label>
+                    <select id="t_pendiente" name="pendiente" required>
+                        <option value="">Seleccionar</option>
+                        <option value="Si">Sí</option>
+                        <option value="No">No</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="datos-elemento" data-tipo="organo" hidden disabled>
+                    <legend>Datos del órgano</legend>
+
+                    <label for="t_persona">Nombre de la persona:</label>
+                    <input type="text" id="t_persona" name="persona" required>
+
+                    <label for="t_en_curso">¿En curso?</label>
+                    <select id="t_en_curso" name="en_curso" required>
+                        <option value="">Seleccionar</option>
+                        <option value="Si">Sí</option>
+                        <option value="No">No</option>
+                    </select>
+                </fieldset>
+
+                <!-- 3. Datos del traslado (comunes a los tres tipos) -->
+                <fieldset id="datos_traslado" hidden disabled>
+                    <legend>Datos del traslado</legend>
+
+                    <label for="ambulancia">Seleccionar ambulancia:</label>
+                    <select id="ambulancia" name="matricula" required>
+                        <option value="">Seleccionar ambulancia</option>
+                        <option value="SBA 3355">SBA 3355 - Libre</option>
+                        <option value="IAE 2466">IAE 2466 - Ocupada</option>
+                        <option value="IAH 1234">IAH 1234 - En servicio</option>
+                    </select>
+
+                    <label for="origen">Origen:</label>
+                    <input type="text" id="origen" name="origen">
+
+                    <label for="destino">Destino:</label>
+                    <input type="text" id="destino" name="destino">
+
+                    <label for="hora_salida">Hora de salida:</label>
+                    <input type="datetime-local" id="hora_salida" name="hora_salida">
+
+                    <label for="hora_llegada">Hora de llegada:</label>
+                    <input type="datetime-local" id="hora_llegada" name="hora_llegada">
+
+                    <label for="chofer">Chofer:</label>
+                    <input type="text" id="chofer" name="chofer">
+
+                    <label for="copiloto">Copiloto:</label>
+                    <input type="text" id="copiloto" name="copiloto">
+
+                    <label for="id_paciente">ID del paciente (opcional):</label>
+                    <input type="number" id="id_paciente" name="id_paciente">
+
+                    <label for="id_funcionario">ID del funcionario:</label>
+                    <input type="number" id="id_funcionario" name="id_funcionario">
+
+                    <button type="submit">Crear traslado</button>
+                </fieldset>
+
+                <p id="aviso_tipo" class="aviso">Elegí un tipo para completar la solicitud.</p>
+
+            </form>
+
+            <div id="resultado"></div>
+
         </section>
 
         <section class="detalle">
             Detalle de la solicitud
-            
-     <table>
 
-         <tr>
-            <th>ID de solicitud:</th>
-        </tr>
-
-        <tr>
-            <th>Paciente/Elemento:</th>
-        </tr>
-
-        <tr>
-            <th>Tipo:</th>
-        </tr>
-
-        <tr>
-            <th>Ambulancia asignada:</th>
-        </tr>
-
-        <tr>
-            <th>Origen:</th>
-        </tr>
-
-        <tr>
-            <th>Destino:</th>
-        </tr>
-
-        <tr>
-            <th>Prioridad:</th>
-        </tr>
-
-        <tr>
-            <th>Estado:</th>
-        </tr>
-
-    </table>
+            <table>
+                <tr>
+                    <th>ID de solicitud:</th>
+                    <td id="d_id">—</td>
+                </tr>
+                <tr>
+                    <th>Paciente/Elemento:</th>
+                    <td id="d_elemento">—</td>
+                </tr>
+                <tr>
+                    <th>Tipo:</th>
+                    <td id="d_tipo">—</td>
+                </tr>
+                <tr>
+                    <th>Ambulancia asignada:</th>
+                    <td id="d_ambulancia">—</td>
+                </tr>
+                <tr>
+                    <th>Origen:</th>
+                    <td id="d_origen">—</td>
+                </tr>
+                <tr>
+                    <th>Destino:</th>
+                    <td id="d_destino">—</td>
+                </tr>
+                <tr>
+                    <th>Prioridad:</th>
+                    <td id="d_prioridad">—</td>
+                </tr>
+                <tr>
+                    <th>Estado:</th>
+                    <td id="d_estado">—</td>
+                </tr>
+            </table>
         </section>
 
     </main>
 
 </div>
 
-<div>
+
+<h2 class="subtitulo-pagina">Elementos registrados</h2>
+
+<div class="sectores">
+
+    <div class="caja-elemento">
+        <h2>BIOLÓGICO</h2>
+        <form id="form_buscar">
+            <input type="text" id="buscar" name="buscar" placeholder="Buscar por nombre del insumo..." class="escribir_organos">
+            <input type="submit" id="buscar_boton" value="Buscar" class="boton_organos">
+        </form>
+        <form id="form_biologico">
+            <input type="hidden" id="id_biologico">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre del insumo" class="escribir_organos">
+            <input type="text" id="estado" name="estado" placeholder="Estado del insumo" class="escribir_organos">
+            <button id="mod_b" class="boton_organos">Modificar</button>
+            <button id="del_b" class="boton-eliminar">Eliminar</button>
+        </form>
+    </div>
+
+    <div class="caja-elemento">
+        <h2>NO BIOLÓGICO</h2>
+        <form id="form_noB">
+            <input type="text" id="encontrar" name="buscar" placeholder="Buscar por clasificación..." class="escribir_organos">
+            <input type="submit" id="buscar_boton_nobiologico" value="Buscar" class="boton_organos">
+        </form>
+        <form id="form_no_biologico">
+            <input type="hidden" id="id_no_biologico">
+            <input type="text" id="clasificacion" name="clasificacion" placeholder="Clasificación" class="escribir_organos">
+            <input type="text" id="pendiente" name="pendiente" placeholder="¿Pendiente? (Si / No)" class="escribir_organos">
+            <button id="mod_no" class="boton_organos">Modificar</button>
+            <button id="del_no" class="boton-eliminar">Eliminar</button>
+        </form>
+    </div>
+
+    <div class="caja-elemento">
+        <h2>ÓRGANO</h2>
+        <form id="form_org">
+            <input type="text" id="encontrar_org" name="buscar" placeholder="Buscar por nombre de la persona..." class="escribir_organos">
+            <input type="submit" id="button_org" value="Buscar" class="boton_organos">
+        </form>
+        <form id="form_organo">
+            <input type="hidden" id="id_organo">
+            <input type="text" id="persona" name="persona" placeholder="Nombre de la persona" class="escribir_organos">
+            <input type="text" id="en_curso" name="en_curso" placeholder="¿En curso? (Si / No)" class="escribir_organos">
+            <button id="mod_org" class="boton_organos">Modificar</button>
+            <button id="del_org" class="boton-eliminar">Eliminar</button>
+        </form>
+    </div>
 
 </div>
 
 
-
-  
 <script src="../js/java.js"></script>
+<script src="../js/traslado.js"></script>
+<script src="../js/elementos.js"></script>
+
 </body>
-</html> 
-    
+</html>

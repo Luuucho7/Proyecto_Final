@@ -1,5 +1,4 @@
 <?php
-// Actualiza un elemento no biológico (mismo rol que modificar_biologico.php, otra tabla)
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

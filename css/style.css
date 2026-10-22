@@ -302,68 +302,6 @@ header {
     text-align:left;
 }
 
-.menulateral {
-    position: fixed;
-    top: 84px;
-    left: -270px;
-    width: 270px;
-    height: calc(100vh - 84px);
-    background: #ffffff;
-    color: #1f2937;
-    display: flex;
-    flex-direction: column;
-    transition: 0.4s;
-    z-index: 999;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
-    border-right: 1px solid #e5e7eb;
-}
-
-.menulateral.activo {
-    left: 0;
-}
-
-.menulateral h4 {
-    color: #64748b;
-    font-size: 14px;
-    font-weight: normal;
-    margin: 30px 25px;
-}
-
-.menulateral ul {
-    list-style: none;
-    flex: 1;
-}
-
-.menulateral ul li {
-    margin: 5px 10px;
-}
-
-.menulateral ul li a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: #1f2937;
-    text-decoration: none;
-    padding: 15px;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.menulateral ul li a:hover {
-    background: #f3f4f6;
-    color: #0b5fff;
-}
-
-.activo a {
-    background: #eff6ff;
-    color: #0b5fff;
-}
-
-.menulateral ul li i {
-    width: 20px;
-    text-align: center;
-}
-
 .logout {
     padding: 20px 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);

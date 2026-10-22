@@ -1,5 +1,4 @@
 <?php
-// Busca UN registro de órgano por el nombre de la persona (mismo rol que los otros dos "buscar_*")
 require_once 'conexion.php';
 
 $persona = trim($_POST['persona'] ?? '');

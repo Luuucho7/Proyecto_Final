@@ -1,6 +1,4 @@
 <?php
-// Busca UN elemento biológico por nombre. Su resultado (con el "id") es lo que después
-// permite Modificar o Eliminar, porque esos dos necesitan saber cuál fila tocar.
 require_once 'conexion.php';
 
 $nombre = $_POST['nombre'];

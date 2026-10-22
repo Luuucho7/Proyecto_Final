@@ -1,6 +1,4 @@
 <?php
-// Actualiza un elemento biológico. Necesita el "id" que trajo buscar_Ingresar.php,
-// por eso en la página primero hay que buscar y recién después se puede modificar.
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');
@@ -21,3 +19,4 @@ try {
 } catch (PDOException $e) {
     echo json_encode(['exito' => false, 'mensaje' => 'No se pudo modificar el insumo.']);
 }
+

@@ -1,35 +1,8 @@
-// ===================== BIOLÓGICO =====================
-// Este archivo repite el mismo patrón 3 veces (biológico / no biológico / órgano):
-// Ingresar (submit) -> Buscar (rellena el formulario y guarda el id oculto) ->
-// Modificar / Eliminar (solo funcionan si ya se buscó, porque necesitan ese id).
 const id_biologico = document.getElementById('id_biologico');
 const nombre = document.getElementById('nombre');
 const estado = document.getElementById('estado');
 const formBiologico = document.getElementById('form_biologico');
 
-// Ingresar un elemento biológico nuevo
-formBiologico.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const datos = new FormData(formBiologico);
-
-  const respuesta = await fetch('../php/ingresarInsumo.php', {
-    method: 'POST',
-    body: datos
-  });
-  const resultado = await respuesta.json();
-
-  if (resultado.exito) {
-    alert('Insumo ingresado correctamente');
-    formBiologico.reset();
-    id_biologico.value = '';
-  } else {
-    alert(resultado.mensaje || 'Error al ingresar el insumo');
-  }
-});
-
-// Buscar un elemento biológico por nombre: si lo encuentra, rellena el formulario
-// (incluido el id oculto), que es lo que habilita a Modificar/Eliminar más abajo
 const buscar = document.getElementById('buscar');
 const buscar_boton = document.getElementById('buscar_boton');
 
@@ -55,7 +28,6 @@ buscar_boton.addEventListener('click', async (e) => {
   }
 });
 
-// Modificar: solo avanza si id_biologico.value NO está vacío (o sea, si ya se buscó antes)
 const mod_b = document.getElementById('mod_b');
 
 mod_b.addEventListener('click', async (e) => {
@@ -86,7 +58,6 @@ mod_b.addEventListener('click', async (e) => {
   }
 });
 
-// Eliminar: mismo requisito que Modificar, más confirm() antes de borrar
 const del_b = document.getElementById('del_b');
 
 del_b.addEventListener('click', async (e) => {
@@ -119,32 +90,10 @@ del_b.addEventListener('click', async (e) => {
   }
 });
 
-// ===================== NO BIOLÓGICO =====================
-// Mismo patrón que el bloque de arriba (Ingresar / Buscar / Modificar / Eliminar), otra tabla
 const id_no_biologico = document.getElementById('id_no_biologico');
 const clasificacion = document.getElementById('clasificacion');
 const pendiente = document.getElementById('pendiente');
 const formNoBiologico = document.getElementById('form_no_biologico');
-
-formNoBiologico.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const datos = new FormData(formNoBiologico);
-
-  const respuesta = await fetch('../php/no_biologico.php', {
-    method: 'POST',
-    body: datos
-  });
-  const resultado = await respuesta.json();
-
-  if (resultado.exito) {
-    alert('Insumo ingresado correctamente');
-    formNoBiologico.reset();
-    id_no_biologico.value = '';
-  } else {
-    alert(resultado.mensaje || 'Error al ingresar el insumo');
-  }
-});
 
 const encontrar = document.getElementById('encontrar');
 const buscar_boton_no = document.getElementById('buscar_boton_nobiologico');
@@ -233,32 +182,10 @@ del_no.addEventListener('click', async (e) => {
   }
 });
 
-// ===================== ÓRGANO =====================
-// Mismo patrón otra vez (Ingresar / Buscar / Modificar / Eliminar), tabla "organo"
 const id_organo = document.getElementById('id_organo');
 const persona = document.getElementById('persona');
 const en_curso = document.getElementById('en_curso');
 const formOrgano = document.getElementById('form_organo');
-
-formOrgano.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const datos = new FormData(formOrgano);
-
-  const respuesta = await fetch('../php/organo.php', {
-    method: 'POST',
-    body: datos
-  });
-  const resultado = await respuesta.json();
-
-  if (resultado.exito) {
-    alert('Registro ingresado correctamente');
-    formOrgano.reset();
-    id_organo.value = '';
-  } else {
-    alert(resultado.mensaje || 'Error al ingresar el registro');
-  }
-});
 
 const encontrar_organo = document.getElementById('encontrar_org');
 const buscar_boton_organo = document.getElementById('button_org');
@@ -346,3 +273,4 @@ del_org.addEventListener('click', async (e) => {
     alert('Error al eliminar el registro');
   }
 });
+  

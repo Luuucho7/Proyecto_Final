@@ -1,5 +1,4 @@
 <?php
-// Borra un paciente. pacientes.js pide confirm() antes de llamar a este archivo
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

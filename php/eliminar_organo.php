@@ -1,5 +1,4 @@
 <?php
-// Borra un registro de órgano (mismo rol que los otros dos "eliminar_*")
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');
