@@ -53,16 +53,8 @@
 }
 
 #mapa {
-    background-color: white;
-    width: 55%;
-    min-height: 300px;
-    position: relative;
-    top: -270px;
-    margin: 30px auto;
-    margin-left:100px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 300px;
 }
  
 .principal {
