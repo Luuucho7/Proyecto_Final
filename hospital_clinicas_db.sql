@@ -15,7 +15,7 @@ CREATE TABLE Persona (
     correo VARCHAR(150) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     fecha_nacimiento DATE
-);
+)
 
 
 
