@@ -20,9 +20,9 @@
     </div>
 
     <div class="banner">
-        <span class="banner-logo">
+        <a href="../html/pagina_principal.html" class="banner-logo" aria-label="Ir al inicio">
             <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
-        </span>
+        </a>
         <div class="banner-texto">
             <h2>Hospital de Clínicas</h2>
             <p>Atención de calidad para toda la comunidad</p>
@@ -35,19 +35,13 @@
 
 <div class="menulateral" id="menuLateral">
 
-    <h4>PANEL PRINCIPAL</h4>
+    <h4>MENÚ</h4>
 
     <ul>
         <li>
-            <a href="../html/pagina_principal_admin.html">
+            <a href="../html/pagina_principal.html">
                 <img src="../css/img/casa_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Inicio</span>
-            </a>
-        </li>
-        <li>
-            <a href="../html/pacientes.html">
-                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Pacientes</span>
             </a>
         </li>
         <li>
@@ -57,27 +51,25 @@
             </a>
         </li>
         <li>
-            <a href="../html/Documentacion.html">
-                <img src="../css/img/qr_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Documentación</span>
-            </a>
-        </li>
-        <li>
             <a href="../html/encuestaformulario.html" class="actual">
                 <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Encuestas</span>
             </a>
         </li>
         <li>
-            <a href="../html/Traslado.html">
-                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Traslados en Ambulancia</span>
-            </a>
-        </li>
-        <li>
             <a href="../html/FAQ.html">
                 <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Preguntas frecuentes</span>
+            </a>
+        </li>
+    </ul>
+
+    <!-- Este link queda abajo de todo del menú: es para los funcionarios -->
+    <ul style="flex: none; margin-bottom: 20px;">
+        <li>
+            <a href="../html/login_funcionario.html">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Acceso funcionarios</span>
             </a>
         </li>
     </ul>
