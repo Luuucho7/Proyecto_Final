@@ -136,9 +136,9 @@ VALUES (57730555, 'Facundo', 'Ceriotti', 'facundo231208@gmail.com',
 
 
 -- Las ambulancias que aparecen en el selector de Traslado.html
-INSERT INTO Ambulancia (matricula) VALUES ('SBA 3355'), ('IAE 2466'), ('IAH 1234');
+INSERT INTO Ambulancia (matricula) VALUES ('SBA 3355'), ('IAE 2467'), ('IAH 1234');
 
-
+    
 -- El usuario de prueba también es funcionario (id_funcionario = 1)
 INSERT INTO Funcionario (cedula) VALUES (57730555);
 

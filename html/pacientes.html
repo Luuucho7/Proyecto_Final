@@ -127,11 +127,12 @@
                 <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
 
                 <label for="cedula">Documento de Identidad</label>
-                <input type="text" id="cedula" name="cedula" placeholder="Ej. 45678901" required>
+                <input type="text" id="cedula" name="cedula" placeholder="Ej. 45678901" required maxlength="16" minlength="8">
 
                 <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 0967676767">
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 0967676767" minlength="9" maxlength="15">
 
+                
                 <label for="estado">Estado</label>
                 <select id="estado" name="estado">
                     <option value="activo">Activo</option>

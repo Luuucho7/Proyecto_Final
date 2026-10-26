@@ -108,7 +108,7 @@
 
         </p>
 
-            <section class="tarjeta" id="subir-documento">
+        <section class="tarjeta" id="subir-documento">
 
             <h3>Subir Documento</h3>
 
@@ -120,12 +120,25 @@
 
                     <select id="tipoDocumento">
 
-                        <option value="">Seleccione tipo</option>
-                        <option value="Indicaciones">Indicaciones</option>
-                        <option value="Preparación para estudios">Preparación para estudios</option>
-                        <option value="Enfermería">Enfermería</option>
-                        <option value="Prevención">Prevención</option>
-                        <option value="Encuesta">Encuesta</option>
+                        <option value="">
+                            Seleccione tipo
+                        </option>
+
+                        <option>
+                            Historia Clínica
+                        </option>
+
+                        <option>
+                            Resultado de Laboratorio
+                        </option>
+
+                        <option>
+                            Informe Médico
+                        </option>
+
+                        <option>
+                            Estudios por Imágenes
+                        </option>
 
                     </select>
 
@@ -133,24 +146,22 @@
 
                 <div class="campo">
 
-                    <label>Nombre del documento</label>
+                    <label>Descripción</label>
 
                     <input
                         type="text"
-                        id="nombreDocumento"
-                        maxlength="100"
-                        placeholder="Ej: Prevención de infecciones">
+                        id="descripcionDocumento"
+                        placeholder="Ej: Estudios, Resultados">
 
                 </div>
 
                 <div class="campo">
 
-                    <label>Archivo (PDF)</label>
+                    <label>Archivo</label>
 
                     <input
                         type="file"
-                        id="archivo"
-                        accept=".pdf,application/pdf">
+                        id="archivo">
 
                 </div>
 
@@ -180,7 +191,7 @@
 
                         <th>Tipo de Documento</th>
 
-                        <th>Nombre</th>
+                        <th>Descripción</th>
 
                         <th>Fecha de carga</th>
 
@@ -190,8 +201,91 @@
 
                 </thead>
 
-                <!-- Las filas las dibuja Documentacion.js con los datos de la base -->
-                <tbody id="tablaDocumentos">
+                <tbody>
+
+                    <tr>
+
+                        <td>1</td>
+
+                        <td>Resultado de Laboratorio</td>
+
+                        <td>Análisis de Sangre</td>
+
+                        <td>15/05/2026</td>
+
+                        <td>
+
+                            <button class="botonPequeno">
+                                👁 Ver
+                            </button>
+
+                            <button
+                                class="botonPequeno"
+                                onclick="qrDeLaFila(1)">
+
+                                ▦ QR
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>2</td>
+
+                        <td>Informe Médico</td>
+
+                        <td>Consulta Médica</td>
+
+                        <td>15/05/2026</td>
+
+                        <td>
+
+                            <button class="botonPequeno">
+                                👁 Ver
+                            </button>
+
+                            <button
+                                class="botonPequeno"
+                                onclick="qrDeLaFila(2)">
+
+                                ▦ QR
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>3</td>
+
+                        <td>Estudios por Imágenes</td>
+
+                        <td>Radiografía</td>
+
+                        <td>16/05/2026</td>
+
+                        <td>
+
+                            <button class="botonPequeno">
+                                👁 Ver
+                            </button>
+
+                            <button
+                                class="botonPequeno"
+                                onclick="qrDeLaFila(3)">
+
+                                ▦ QR
+
+                            </button>
+
+                        </td>
+
+                    </tr>
 
                 </tbody>
 
@@ -199,7 +293,7 @@
 
         </section>
 
-    <section class="tarjeta" id="generar-qr">
+        <section class="tarjeta" id="generar-qr">
 
             <h3>Generar Código QR</h3>
 
