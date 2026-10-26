@@ -60,10 +60,10 @@ try {
     $stmt = $pdo->prepare(
         "INSERT INTO traslado
         (hora_salida, hora_llegada, chofer, copiloto,
-        id_paciente, id_funcionario, matricula, tipo_elemento, id_elemento)
+        id_paciente, matricula, tipo_elemento, id_elemento)
         VALUES
         (:hora_salida, :hora_llegada, :chofer, :copiloto,
-        :id_paciente, :id_funcionario, :matricula, :tipo_elemento, :id_elemento)"
+        :id_paciente, :matricula, :tipo_elemento, :id_elemento)"
     );
 
     $stmt->execute([
@@ -72,7 +72,6 @@ try {
         ':chofer' => opcional($_POST['chofer'] ?? ''),
         ':copiloto' => opcional($_POST['copiloto'] ?? ''),
         ':id_paciente' => opcional($_POST['id_paciente'] ?? ''),
-        ':id_funcionario' => opcional($_POST['id_funcionario'] ?? ''),
         ':matricula' => $matricula,
         ':tipo_elemento' => $tipo,
         ':id_elemento' => $id_elemento

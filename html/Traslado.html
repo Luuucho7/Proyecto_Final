@@ -200,17 +200,18 @@
                     <label for="hora_llegada">Hora de llegada:</label>
                     <input type="datetime-local" id="hora_llegada" name="hora_llegada">
 
+                    <!-- list="lista_personas" hace que el navegador sugiera nombres mientras se escribe -->
                     <label for="chofer">Chofer:</label>
-                    <input type="text" id="chofer" name="chofer">
+                    <input type="text" id="chofer" name="chofer" list="lista_personas" placeholder="Seleccionar chofer" autocomplete="off">
 
                     <label for="copiloto">Copiloto:</label>
-                    <input type="text" id="copiloto" name="copiloto">
+                    <input type="text" id="copiloto" name="copiloto" list="lista_personas" placeholder="Seleccionar copiloto" autocomplete="off">
+
+                    <!-- Las opciones las llena traslado.js con los nombres de la base -->
+                    <datalist id="lista_personas"></datalist>
 
                     <label for="id_paciente">ID del paciente (opcional):</label>
                     <input type="number" id="id_paciente" name="id_paciente">
-
-                    <label for="id_funcionario">ID del funcionario:</label>
-                    <input type="number" id="id_funcionario" name="id_funcionario">
 
                     <button type="submit">Crear traslado</button>
                 </fieldset>

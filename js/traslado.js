@@ -71,6 +71,23 @@ function mostrarDetalle(id, datos) {
     document.getElementById('d_estado').textContent = 'Solicitado';
 }
 
+// Llena la lista de nombres que se sugieren al escribir el chofer o el copiloto
+async function cargarPersonas() {
+    const respuesta = await fetch('../php/listar_personas.php');
+    const resultado = await respuesta.json();
+
+    const lista = document.getElementById('lista_personas');
+
+    // Una <option> por cada nombre; el navegador muestra las que se parecen a lo escrito
+    resultado.personas.forEach(nombre => {
+        const opcion = document.createElement('option');
+        opcion.value = nombre;
+        lista.appendChild(opcion);
+    });
+}
+
+cargarPersonas();
+
 // Vuelve el formulario al estado inicial: sin tipo elegido y todo oculto
 function reiniciarSelector() {
     document.querySelectorAll('.datos-elemento, #datos_traslado').forEach(fieldset => {
