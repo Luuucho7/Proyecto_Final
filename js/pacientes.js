@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         id_paciente.value = '';
         botonGuardar.textContent = 'Guardar Paciente';
         botonCancelar.style.display = 'none';
+        traducirPagina();
     }
 
     async function cargarPacientes() {
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!resultado.exito || resultado.pacientes.length === 0) {
             tablaBody.innerHTML = '<tr><td colspan="5" class="sin-pacientes">No hay pacientes registrados todavía.</td></tr>';
+            traducirPagina();
             return;
         }
 
@@ -54,11 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 botonGuardar.textContent = 'Modificar Paciente';
                 botonCancelar.style.display = 'inline-block';
+                traducirPagina();
                 document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
             });
 
             fila.querySelector('.boton-eliminar-fila').addEventListener('click', async () => {
-                if (!confirm('¿Seguro que querés eliminar a ' + paciente.nombre + '?')) {
+                if (!confirm(t('¿Seguro que querés eliminar a') + ' ' + paciente.nombre + '?')) {
                     return;
                 }
 
@@ -74,12 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (resultado.exito) {
                     cargarPacientes();
                 } else {
-                    alert(resultado.mensaje || 'No se pudo eliminar el paciente');
+                    alert(t(resultado.mensaje || 'No se pudo eliminar el paciente'));
                 }
             });
 
             tablaBody.appendChild(fila);
         });
+
+        // Las filas se dibujan en español: las traducimos si la página está en inglés
+        traducirPagina();
     }
 
     cargarPacientes();
@@ -118,12 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const resultado = await respuesta.json();
 
             if (resultado.exito) {
-                alert(creando ? 'Paciente guardado correctamente' : 'Paciente modificado correctamente');
+                alert(t(creando ? 'Paciente guardado correctamente' : 'Paciente modificado correctamente'));
                 terminarEdicion();
                 cargarPacientes();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
-                alert(resultado.mensaje || 'No se pudo guardar el paciente');
+                alert(t(resultado.mensaje || 'No se pudo guardar el paciente'));
             }
         });
     }

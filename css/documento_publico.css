@@ -160,3 +160,8 @@ body {
         font-size: 26px;
     }
 }
+
+/* El botón de idioma (lo crea js/idioma.js) queda a la derecha del encabezado */
+.encabezado button {
+    margin-left: auto;
+}

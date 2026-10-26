@@ -40,16 +40,16 @@ formTraslado.addEventListener('submit', async (e) => {
         const res = await respuesta.json();
 
         if (res.exito) {
-            resultado.innerHTML = '<p>Traslado creado correctamente.</p>';
+            resultado.innerHTML = '<p>' + t('Traslado creado correctamente.') + '</p>';
             mostrarDetalle(res.id_traslado, datos);
             formTraslado.reset();
             reiniciarSelector();
         } else {
-            resultado.innerHTML = '<p>' + res.mensaje + '</p>';
+            resultado.innerHTML = '<p>' + t(res.mensaje) + '</p>';
         }
 
     } catch (error) {
-        resultado.innerHTML = '<p>Error al crear el traslado.</p>';
+        resultado.innerHTML = '<p>' + t('Error al crear el traslado.') + '</p>';
     }
 });
 
@@ -69,6 +69,9 @@ function mostrarDetalle(id, datos) {
     document.getElementById('d_origen').textContent = datos.get('origen') || '—';
     document.getElementById('d_destino').textContent = datos.get('destino') || '—';
     document.getElementById('d_estado').textContent = 'Solicitado';
+
+    // Los datos se escriben en español: los traducimos si la página está en inglés
+    traducirPagina();
 }
 
 // Llena la lista de nombres que se sugieren al escribir el chofer o el copiloto
