@@ -74,20 +74,76 @@ function mostrarDetalle(id, datos) {
     traducirPagina();
 }
 
-// Llena la lista de nombres que se sugieren al escribir el chofer o el copiloto
+// ---------- Chofer y Copiloto: lista desplegable con buscador ----------
+
+// Acá quedan los nombres de las personas de la base
+let nombresPersonas = [];
+
+// Para comparar sin importar mayúsculas ni tildes: "José" y "jose" cuentan como iguales
+function simplificar(texto) {
+    return texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+
+// Convierte un campo de texto en una lista desplegable donde se puede escribir para buscar
+function activarBuscador(idCampo) {
+    const campo = document.getElementById(idCampo);
+    const lista = campo.parentElement.querySelector('.opciones-lista');
+
+    // Arma la lista. Si "filtrar" es true, muestra solo los nombres que contienen lo escrito
+    function mostrarOpciones(filtrar) {
+        const buscado = filtrar ? simplificar(campo.value) : '';
+        lista.innerHTML = '';
+
+        nombresPersonas.forEach(nombre => {
+            if (simplificar(nombre).includes(buscado)) {
+                const opcion = document.createElement('li');
+                opcion.textContent = nombre;
+
+                // Se usa mousedown (y no click) para elegir el nombre antes de que el campo pierda el foco
+                opcion.addEventListener('mousedown', () => {
+                    campo.value = nombre;
+                    lista.hidden = true;
+                });
+
+                lista.appendChild(opcion);
+            }
+        });
+
+        if (lista.children.length === 0) {
+            const vacio = document.createElement('li');
+            vacio.textContent = t('Sin resultados');
+            vacio.className = 'sin-resultados';
+            lista.appendChild(vacio);
+        }
+
+        lista.hidden = false;
+    }
+
+    // Al hacer clic se ven todos los nombres; al escribir, solo los que se parecen
+    campo.addEventListener('focus', () => mostrarOpciones(false));
+    campo.addEventListener('click', () => mostrarOpciones(false));
+    campo.addEventListener('input', () => mostrarOpciones(true));
+
+    // Al salir del campo se cierra la lista. Como en un select, solo vale un nombre de la lista
+    campo.addEventListener('blur', () => {
+        lista.hidden = true;
+
+        if (!nombresPersonas.includes(campo.value)) {
+            campo.value = '';
+        }
+    });
+}
+
+// Pide los nombres al servidor
 async function cargarPersonas() {
     const respuesta = await fetch('../php/listar_personas.php');
     const resultado = await respuesta.json();
 
-    const lista = document.getElementById('lista_personas');
-
-    // Una <option> por cada nombre; el navegador muestra las que se parecen a lo escrito
-    resultado.personas.forEach(nombre => {
-        const opcion = document.createElement('option');
-        opcion.value = nombre;
-        lista.appendChild(opcion);
-    });
+    nombresPersonas = resultado.personas;
 }
+
+activarBuscador('chofer');
+activarBuscador('copiloto');
 
 cargarPersonas();
 

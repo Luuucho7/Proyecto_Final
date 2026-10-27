@@ -79,6 +79,12 @@
             </a>
         </li>
         <li>
+            <a href="../html/ambulancias.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Ambulancias</span>
+            </a>
+        </li>
+        <li>
             <a href="../html/FAQ.html">
                 <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Preguntas frecuentes</span>
@@ -200,15 +206,18 @@
                     <label for="hora_llegada">Hora de llegada:</label>
                     <input type="datetime-local" id="hora_llegada" name="hora_llegada">
 
-                    <!-- list="lista_personas" hace que el navegador sugiera nombres mientras se escribe -->
+                    <!-- Chofer y Copiloto: lista desplegable con buscador. Las opciones las arma traslado.js con los nombres de la base -->
                     <label for="chofer">Chofer:</label>
-                    <input type="text" id="chofer" name="chofer" list="lista_personas" placeholder="Seleccionar chofer" autocomplete="off">
+                    <div class="buscador-lista">
+                        <input type="text" id="chofer" name="chofer" placeholder="Seleccionar chofer" autocomplete="off">
+                        <ul class="opciones-lista" hidden></ul>
+                    </div>
 
                     <label for="copiloto">Copiloto:</label>
-                    <input type="text" id="copiloto" name="copiloto" list="lista_personas" placeholder="Seleccionar copiloto" autocomplete="off">
-
-                    <!-- Las opciones las llena traslado.js con los nombres de la base -->
-                    <datalist id="lista_personas"></datalist>
+                    <div class="buscador-lista">
+                        <input type="text" id="copiloto" name="copiloto" placeholder="Seleccionar copiloto" autocomplete="off">
+                        <ul class="opciones-lista" hidden></ul>
+                    </div>
 
                     <label for="id_paciente">ID del paciente (opcional):</label>
                     <input type="number" id="id_paciente" name="id_paciente">

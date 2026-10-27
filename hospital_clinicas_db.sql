@@ -70,7 +70,8 @@ CREATE TABLE Ambulancia (
     matricula VARCHAR(20) PRIMARY KEY,
     origen VARCHAR(100),
     destino VARCHAR(100),
-    acompanante VARCHAR(100)
+    acompanante VARCHAR(100),
+    estado ENUM('libre', 'ocupada', 'en_servicio') DEFAULT 'libre'   -- se administra desde html/ambulancias.html
 );
 
 
