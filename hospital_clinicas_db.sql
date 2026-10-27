@@ -76,6 +76,15 @@ CREATE TABLE Ambulancia (
 
 
 
+CREATE TABLE Tripulante (
+    id_tripulante INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    rol ENUM('chofer', 'copiloto') NOT NULL   -- se administra desde html/tripulacion.html
+);
+
+
+
 CREATE TABLE Traslado (
     id_traslado INT PRIMARY KEY AUTO_INCREMENT,
     hora_salida TIME,

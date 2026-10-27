@@ -34,6 +34,27 @@ if ($matricula === '') {
     exit();
 }
 
+// Solo se puede usar una ambulancia que esté libre. Aunque el formulario ya no deja elegir las otras,
+// se vuelve a revisar acá, porque alguien podría mandar los datos sin pasar por el formulario.
+try {
+    $stmt = $pdo->prepare("SELECT estado FROM Ambulancia WHERE matricula = :matricula");
+    $stmt->execute([':matricula' => $matricula]);
+    $ambulancia = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo json_encode(['exito' => false, 'mensaje' => 'No se pudo crear el traslado.']);
+    exit();
+}
+
+if (!$ambulancia) {
+    echo json_encode(['exito' => false, 'mensaje' => 'La ambulancia seleccionada no existe.']);
+    exit();
+}
+
+if ($ambulancia['estado'] !== 'libre') {
+    echo json_encode(['exito' => false, 'mensaje' => 'La ambulancia seleccionada no está disponible.']);
+    exit();
+}
+
 // Los campos opcionales vacíos se guardan como NULL
 function opcional($valor) {
     $valor = trim($valor ?? '');
@@ -78,6 +99,11 @@ try {
     ]);
 
     $id_traslado = $pdo->lastInsertId();
+
+    // La ambulancia elegida pasa a "En servicio" (se ve en la página de ambulancias).
+    // Va dentro de la misma transacción: si algo falla, no queda ni el traslado ni el cambio de estado.
+    $stmt = $pdo->prepare("UPDATE Ambulancia SET estado = 'en_servicio' WHERE matricula = :matricula");
+    $stmt->execute([':matricula' => $matricula]);
 
     $pdo->commit();
 

@@ -44,6 +44,8 @@ formTraslado.addEventListener('submit', async (e) => {
             mostrarDetalle(res.id_traslado, datos);
             formTraslado.reset();
             reiniciarSelector();
+            // La ambulancia que se usó ahora está "En servicio": se vuelve a pedir la lista
+            cargarAmbulancias();
         } else {
             resultado.innerHTML = '<p>' + t(res.mensaje) + '</p>';
         }
@@ -74,76 +76,60 @@ function mostrarDetalle(id, datos) {
     traducirPagina();
 }
 
-// ---------- Chofer y Copiloto: lista desplegable con buscador ----------
+// ---------- Lista de ambulancias (viene de la base de datos) ----------
 
-// Acá quedan los nombres de las personas de la base
-let nombresPersonas = [];
+const listaAmbulancias = document.getElementById('ambulancia');
 
-// Para comparar sin importar mayúsculas ni tildes: "José" y "jose" cuentan como iguales
-function simplificar(texto) {
-    return texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-}
+const textoEstadoAmbulancia = {
+    libre: 'Libre',
+    ocupada: 'Ocupada',
+    en_servicio: 'En servicio'
+};
 
-// Convierte un campo de texto en una lista desplegable donde se puede escribir para buscar
-function activarBuscador(idCampo) {
-    const campo = document.getElementById(idCampo);
-    const lista = campo.parentElement.querySelector('.opciones-lista');
-
-    // Arma la lista. Si "filtrar" es true, muestra solo los nombres que contienen lo escrito
-    function mostrarOpciones(filtrar) {
-        const buscado = filtrar ? simplificar(campo.value) : '';
-        lista.innerHTML = '';
-
-        nombresPersonas.forEach(nombre => {
-            if (simplificar(nombre).includes(buscado)) {
-                const opcion = document.createElement('li');
-                opcion.textContent = nombre;
-
-                // Se usa mousedown (y no click) para elegir el nombre antes de que el campo pierda el foco
-                opcion.addEventListener('mousedown', () => {
-                    campo.value = nombre;
-                    lista.hidden = true;
-                });
-
-                lista.appendChild(opcion);
-            }
-        });
-
-        if (lista.children.length === 0) {
-            const vacio = document.createElement('li');
-            vacio.textContent = t('Sin resultados');
-            vacio.className = 'sin-resultados';
-            lista.appendChild(vacio);
-        }
-
-        lista.hidden = false;
-    }
-
-    // Al hacer clic se ven todos los nombres; al escribir, solo los que se parecen
-    campo.addEventListener('focus', () => mostrarOpciones(false));
-    campo.addEventListener('click', () => mostrarOpciones(false));
-    campo.addEventListener('input', () => mostrarOpciones(true));
-
-    // Al salir del campo se cierra la lista. Como en un select, solo vale un nombre de la lista
-    campo.addEventListener('blur', () => {
-        lista.hidden = true;
-
-        if (!nombresPersonas.includes(campo.value)) {
-            campo.value = '';
-        }
+// Escribe el texto de cada opción, por ejemplo "SBA 3355 - Libre", en el idioma elegido
+function ponerTextosAmbulancias() {
+    listaAmbulancias.querySelectorAll('option[data-estado]').forEach(opcion => {
+        const estado = opcion.dataset.estado;
+        opcion.textContent = opcion.value + ' - ' + t(textoEstadoAmbulancia[estado] || estado);
     });
 }
 
-// Pide los nombres al servidor
-async function cargarPersonas() {
-    const respuesta = await fetch('../php/listar_personas.php');
+async function cargarAmbulancias() {
+    const respuesta = await fetch('../php/listar_ambulancias.php');
     const resultado = await respuesta.json();
 
-    nombresPersonas = resultado.personas;
+    if (!resultado.exito) {
+        return;
+    }
+
+    // Se borran las opciones anteriores, menos la primera ("Seleccionar ambulancia")
+    while (listaAmbulancias.options.length > 1) {
+        listaAmbulancias.remove(1);
+    }
+
+    resultado.ambulancias.forEach(ambulancia => {
+        const opcion = new Option('', ambulancia.matricula);
+        opcion.dataset.estado = ambulancia.estado;
+
+        // Se ven todas, pero solo se pueden elegir las que están libres
+        opcion.disabled = (ambulancia.estado !== 'libre');
+
+        listaAmbulancias.add(opcion);
+    });
+
+    ponerTextosAmbulancias();
 }
 
-activarBuscador('chofer');
-activarBuscador('copiloto');
+// Cuando se cambia el idioma, se vuelven a escribir los textos de las opciones
+document.addEventListener('cambioIdioma', ponerTextosAmbulancias);
+
+cargarAmbulancias();
+
+
+// ---------- Chofer y Copiloto: lista desplegable con buscador (el código está en js/buscador_nombres.js) ----------
+
+activarBuscador('chofer', 'chofer');
+activarBuscador('copiloto', 'copiloto');
 
 cargarPersonas();
 

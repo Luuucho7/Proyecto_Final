@@ -113,6 +113,9 @@ function crearBoton() {
         document.cookie = 'idioma=' + nuevoIdioma + '; path=/';
 
         traducirPagina();
+
+        // Avisa a los otros scripts de la página que cambió el idioma (por si tienen textos propios que rearmar)
+        document.dispatchEvent(new Event('cambioIdioma'));
     });
 
     // Va arriba a la derecha, en el banner. Si la página no tiene banner, queda flotando en la esquina
@@ -141,4 +144,5 @@ fetch(rutaJson)
     .then(function (datos) {
         diccionario = datos;
         traducirPagina();
+        document.dispatchEvent(new Event('cambioIdioma'));
     });
