@@ -198,10 +198,16 @@
                     </select>
 
                     <label for="origen">Origen:</label>
-                    <input type="text" id="origen" name="origen" placeholder="Ej. Av. Italia 2870, Montevideo">
+                    <div class="buscador-lista sin-flecha">
+                        <input type="text" id="origen" name="origen" placeholder="Escribí para buscar una dirección" autocomplete="off">
+                        <ul class="opciones-lista" hidden></ul>
+                    </div>
 
                     <label for="destino">Destino:</label>
-                    <input type="text" id="destino" name="destino" placeholder="Ej. Plaza Independencia, Montevideo">
+                    <div class="buscador-lista sin-flecha">
+                        <input type="text" id="destino" name="destino" placeholder="Escribí para buscar una dirección" autocomplete="off">
+                        <ul class="opciones-lista" hidden></ul>
+                    </div>
 
                     <button type="button" id="boton_ruta" class="boton-ruta">Ver ruta</button>
                     <p id="mensaje_ruta" class="aviso"></p>
@@ -250,8 +256,6 @@
             <div id="info_ruta" class="info-ruta" hidden>
                 <p><strong>Distancia:</strong> <span id="ruta_distancia"></span></p>
                 <p><strong>Tiempo estimado:</strong> <span id="ruta_tiempo"></span></p>
-                <h3>Indicaciones del recorrido</h3>
-                <ol id="pasos_ruta"></ol>
             </div>
 
 

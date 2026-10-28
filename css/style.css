@@ -362,3 +362,17 @@ header {
     object-fit: contain;
 }
 
+
+/* Tarjeta ENCUESTAS de la página principal: la imagen tiene fondo blanco, así que la tarjeta es blanca y el título va abajo en azul */
+.encuestas {
+    background: #ffffff url("img/encuesta.jpg") no-repeat center 40%;
+    background-size: 95%;
+    opacity: 0.9;
+}
+
+.encuestas h3 {
+    position: absolute;
+    bottom: 1.5rem;
+    color: #0a4ad6;
+    text-shadow: none;
+}

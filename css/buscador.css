@@ -48,3 +48,10 @@
 .opciones-lista li.sin-resultados:hover {
     background: transparent;
 }
+
+/* Variante sin la flechita (para los campos donde se busca escribiendo, como las direcciones) */
+.buscador-lista.sin-flecha input {
+    background-image: none;
+    padding-right: 0.75rem;
+    cursor: text;
+}

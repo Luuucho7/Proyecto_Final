@@ -390,11 +390,3 @@ input[type="submit"].boton_organos:hover {
     margin-top: 1rem;
 }
 
-.info-ruta h3 {
-    margin: 1rem 0 0.5rem;
-}
-
-.info-ruta ol {
-    padding-left: 1.25rem;
-    line-height: 1.6;
-}
