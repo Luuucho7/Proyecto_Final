@@ -35,7 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tablaBody.innerHTML = '';
 
-        if (!resultado.exito || resultado.tripulantes.length === 0) {
+        // Si el servidor respondió con un error (por ejemplo, MySQL apagado), se muestra ese mensaje
+        if (!resultado.exito) {
+            tablaBody.innerHTML = '<tr><td colspan="4" class="sin-pacientes"></td></tr>';
+            tablaBody.querySelector('td').textContent = t(resultado.mensaje);
+            return;
+        }
+
+        if (resultado.tripulantes.length === 0) {
             tablaBody.innerHTML = '<tr><td colspan="4" class="sin-pacientes">No hay choferes ni copilotos registrados todavía.</td></tr>';
             traducirPagina();
             return;
@@ -82,6 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultado = await respuesta.json();
 
                 if (resultado.exito) {
+                    // Si justo se estaba editando esta persona, se cierra la edición
+                    if (id_tripulante.value === String(tripulante.id_tripulante)) {
+                        terminarEdicion();
+                    }
                     cargarTripulantes();
                 } else {
                     alert(t(resultado.mensaje || 'No se pudo eliminar el chofer o copiloto'));

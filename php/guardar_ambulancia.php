@@ -1,6 +1,7 @@
 <?php
 // guardar_ambulancia.php
 // Registra una ambulancia nueva en la tabla Ambulancia
+require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 // La matrícula se guarda siempre en mayúsculas: "sba 3355" pasa a "SBA 3355"

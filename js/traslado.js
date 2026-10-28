@@ -32,6 +32,10 @@ formTraslado.addEventListener('submit', async (e) => {
 
     const datos = new FormData(formTraslado);
 
+    // Se desactiva el botón mientras se espera la respuesta: así un doble clic no crea dos traslados
+    const botonCrear = formTraslado.querySelector('button[type="submit"]');
+    botonCrear.disabled = true;
+
     try {
         const respuesta = await fetch('../php/traslado.php', {
             method: 'POST',
@@ -46,6 +50,7 @@ formTraslado.addEventListener('submit', async (e) => {
             reiniciarSelector();
             // La ambulancia que se usó ahora está "En servicio": se vuelve a pedir la lista
             cargarAmbulancias();
+            cargarPacientesTraslado();
         } else {
             resultado.innerHTML = '<p>' + t(res.mensaje) + '</p>';
         }
@@ -53,6 +58,8 @@ formTraslado.addEventListener('submit', async (e) => {
     } catch (error) {
         resultado.innerHTML = '<p>' + t('Error al crear el traslado.') + '</p>';
     }
+
+    botonCrear.disabled = false;
 });
 
 // Completa la tabla "Detalle de la solicitud" con el traslado recién creado
@@ -70,7 +77,7 @@ function mostrarDetalle(id, datos) {
     document.getElementById('d_ambulancia').textContent = datos.get('matricula');
     document.getElementById('d_origen').textContent = datos.get('origen') || '—';
     document.getElementById('d_destino').textContent = datos.get('destino') || '—';
-    document.getElementById('d_estado').textContent = 'Solicitado';
+    document.getElementById('d_estado').textContent = 'En curso';
 
     // Los datos se escriben en español: los traducimos si la página está en inglés
     traducirPagina();
@@ -124,6 +131,36 @@ async function cargarAmbulancias() {
 document.addEventListener('cambioIdioma', ponerTextosAmbulancias);
 
 cargarAmbulancias();
+
+
+// ---------- Lista de pacientes (viene de la base de datos) ----------
+// Antes había que escribir el ID del paciente de memoria. Ahora se elige de una lista por nombre y cédula.
+// Solo aparecen los pacientes activos.
+
+const listaPacientes = document.getElementById('id_paciente');
+
+async function cargarPacientesTraslado() {
+    const respuesta = await fetch('../php/listar_pacientes.php');
+    const resultado = await respuesta.json();
+
+    if (!resultado.exito) {
+        return;
+    }
+
+    // Se borran las opciones anteriores, menos la primera ("Sin paciente")
+    while (listaPacientes.options.length > 1) {
+        listaPacientes.remove(1);
+    }
+
+    resultado.pacientes.forEach(paciente => {
+        if (paciente.estado === 'activo') {
+            const texto = paciente.nombre + ' - CI ' + paciente.cedula;
+            listaPacientes.add(new Option(texto, paciente.id_paciente));
+        }
+    });
+}
+
+cargarPacientesTraslado();
 
 
 // ---------- Chofer y Copiloto: lista desplegable con buscador (el código está en js/buscador_nombres.js) ----------

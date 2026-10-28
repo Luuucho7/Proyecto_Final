@@ -1,4 +1,5 @@
 <?php
+require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');
@@ -15,6 +16,15 @@ if ($id === '' || $nombre === '' || $cedula === '') {
 }
 
 try {
+    // El paciente tiene que existir (por si lo eliminaron mientras se estaba editando)
+    $verificar = $pdo->prepare("SELECT id_paciente FROM Paciente WHERE id_paciente = :id");
+    $verificar->execute([':id' => $id]);
+
+    if (!$verificar->fetch()) {
+        echo json_encode(['exito' => false, 'mensaje' => 'Ese paciente ya no existe. Recargá la página.']);
+        exit();
+    }
+
     $stmt = $pdo->prepare("UPDATE Paciente SET nombre = :nombre, cedula = :cedula, telefono = :telefono, estado = :estado WHERE id_paciente = :id");
     $stmt->execute([
         ':id' => $id,

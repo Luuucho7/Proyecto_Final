@@ -1,6 +1,7 @@
 <?php
 // guardar_tripulante.php
 // Registra un chofer o un copiloto nuevo en la tabla Tripulante
+require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 $nombre = trim($_POST['nombre'] ?? '');

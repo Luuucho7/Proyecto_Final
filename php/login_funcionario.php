@@ -23,9 +23,17 @@ if ($username === '' || $password === '') {
 try {
 
     // JOIN une las dos tablas: solo aparece la persona si su cédula también está en Funcionario
+    // Si lo escrito son solo números, se busca por cédula; si no, por correo.
+    // (Antes se buscaba "cédula O correo" a la vez, y MySQL convertía "57730555abc" en 57730555: entraba igual)
+    if (ctype_digit($username)) {
+        $condicion = "Persona.cedula = :username";
+    } else {
+        $condicion = "Persona.correo = :username";
+    }
+
     $stmt = $pdo->prepare("SELECT Persona.*, Funcionario.id_funcionario FROM Persona
                            JOIN Funcionario ON Funcionario.cedula = Persona.cedula
-                           WHERE Persona.cedula = :username OR Persona.correo = :username");
+                           WHERE " . $condicion);
     $stmt->execute([':username' => $username]);
     $funcionario = $stmt->fetch();
 

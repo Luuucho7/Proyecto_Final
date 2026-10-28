@@ -1,4 +1,5 @@
 <?php
+require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

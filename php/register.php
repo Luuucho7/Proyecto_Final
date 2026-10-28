@@ -60,12 +60,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':fecha_nacimiento' => $fecha_nacimiento
         ]);
 
-        $sqlPaciente = "INSERT INTO Paciente (cedula, nombre) VALUES (:cedula, :nombre)";
-        $stmtPaciente = $pdo->prepare($sqlPaciente);
-        $stmtPaciente->execute([
-            ':cedula' => $cedula,
-            ':nombre' => $nombre . ' ' . $apellido
-        ]);
+        // Puede que la persona ya esté cargada como paciente (la cargó un funcionario antes de que se registrara).
+        // En ese caso no se crea otro paciente: se usa el que ya existe.
+        $buscarPaciente = $pdo->prepare("SELECT id_paciente FROM Paciente WHERE cedula = :cedula");
+        $buscarPaciente->execute([':cedula' => $cedula]);
+        $pacienteExistente = $buscarPaciente->fetch();
+
+        if (!$pacienteExistente) {
+            $sqlPaciente = "INSERT INTO Paciente (cedula, nombre) VALUES (:cedula, :nombre)";
+            $stmtPaciente = $pdo->prepare($sqlPaciente);
+            $stmtPaciente->execute([
+                ':cedula' => $cedula,
+                ':nombre' => $nombre . ' ' . $apellido
+            ]);
+        }
 
         $pdo->commit();
 

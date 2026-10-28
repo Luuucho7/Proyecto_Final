@@ -36,7 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tablaBody.innerHTML = '';
 
-        if (!resultado.exito || resultado.ambulancias.length === 0) {
+        // Si el servidor respondió con un error (por ejemplo, MySQL apagado), se muestra ese mensaje
+        if (!resultado.exito) {
+            tablaBody.innerHTML = '<tr><td colspan="3" class="sin-pacientes"></td></tr>';
+            tablaBody.querySelector('td').textContent = t(resultado.mensaje);
+            return;
+        }
+
+        if (resultado.ambulancias.length === 0) {
             tablaBody.innerHTML = '<tr><td colspan="3" class="sin-pacientes">No hay ambulancias registradas todavía.</td></tr>';
             traducirPagina();
             return;
@@ -83,6 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultado = await respuesta.json();
 
                 if (resultado.exito) {
+                    // Si justo se estaba editando esta ambulancia, se cierra la edición
+                    if (id_ambulancia.value === ambulancia.matricula) {
+                        terminarEdicion();
+                    }
                     cargarAmbulancias();
                 } else {
                     alert(t(resultado.mensaje || 'No se pudo eliminar la ambulancia'));

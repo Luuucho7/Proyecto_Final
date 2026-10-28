@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/banner.css">
     <link rel="stylesheet" href="../css/buscador.css">
 
+    <!-- Si no hay un funcionario logueado, manda al login -->
+    <script src="../js/proteger.js"></script>
 </head>
 <body>
 
@@ -94,6 +96,12 @@
                 <span>Preguntas frecuentes</span>
             </a>
         </li>
+        <li>
+            <a href="../php/logout.php">
+                <img src="../css/img/flecha_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Cerrar sesión</span>
+            </a>
+        </li>
     </ul>
 
 </div>
@@ -123,11 +131,13 @@
                         <th>Elemento</th>
                         <th>Detalle</th>
                         <th>Ambulancia</th>
+                        <th>Recorrido</th>
                         <th>Chofer</th>
                         <th>Copiloto</th>
                         <th>Salida</th>
                         <th>Llegada</th>
                         <th>Paciente</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -158,16 +168,18 @@
                     <ul class="opciones-lista" hidden></ul>
                 </div>
 
+                <!-- Fecha y hora, igual que al crear el traslado (antes solo hora y se perdía el día) -->
                 <label for="hora_salida">Hora de salida</label>
-                <input type="time" id="hora_salida" name="hora_salida">
+                <input type="datetime-local" id="hora_salida" name="hora_salida">
 
                 <label for="hora_llegada">Hora de llegada</label>
-                <input type="time" id="hora_llegada" name="hora_llegada">
+                <input type="datetime-local" id="hora_llegada" name="hora_llegada">
 
-                <label for="id_paciente">ID del paciente (opcional)</label>
-                <input type="number" id="id_paciente" name="id_paciente" min="1">
+                <!-- Lista de pacientes: la arma traslados_lista.js desde la base -->
+                <label for="id_paciente">Paciente (opcional)</label>
+                <select id="id_paciente" name="id_paciente"></select>
 
-                <button type="submit" class="boton-guardar">Guardar cambios</button>
+                <button type="submit" class="boton-guardar" id="boton-guardar-traslado">Guardar cambios</button>
                 <button type="button" class="boton-cancelar" id="boton-cancelar-edicion">Cancelar edición</button>
             </form>
         </div>

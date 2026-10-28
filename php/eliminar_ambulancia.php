@@ -1,6 +1,7 @@
 <?php
 // eliminar_ambulancia.php
 // Borra una ambulancia de la base
+require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 $matricula = trim($_POST['id'] ?? '');

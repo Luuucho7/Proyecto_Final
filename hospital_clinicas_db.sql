@@ -87,8 +87,11 @@ CREATE TABLE Tripulante (
 
 CREATE TABLE Traslado (
     id_traslado INT PRIMARY KEY AUTO_INCREMENT,
-    hora_salida TIME,
-    hora_llegada TIME,
+    hora_salida DATETIME,        -- fecha y hora (antes era TIME y se perdía el día)
+    hora_llegada DATETIME,
+    origen VARCHAR(255),         -- dirección elegida en el mapa
+    destino VARCHAR(255),
+    estado ENUM('en_curso', 'finalizado') DEFAULT 'en_curso',   -- al finalizar, la ambulancia vuelve a quedar libre
     chofer VARCHAR(100),
     copiloto VARCHAR(100),
     id_paciente INT,
