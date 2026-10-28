@@ -6,11 +6,11 @@ function subirDocumento() {
 
     if (tipoDocumento == "" || descripcion == "" || archivo == "") {
 
-        alert("Complete todos los campos antes de subir el documento.");
+        alert(t("Complete todos los campos antes de subir el documento."));
 
     } else {
 
-        alert("El documento fue cargado correctamente.");
+        alert(t("El documento fue cargado correctamente."));
     }
 }
 
@@ -20,7 +20,7 @@ function generarQR() {
 
     if (idDocumento == "") {
 
-        alert("Ingrese el ID del documento.");
+        alert(t("Ingrese el ID del documento."));
 
     } else {
 
@@ -43,7 +43,7 @@ function generarQR() {
         document.getElementById("descargarQR").style.display = "inline-block";
 
         document.getElementById("resultadoQR").innerHTML =
-            "Código QR del documento Nº " + idDocumento;
+            t("Código QR del documento Nº") + " " + idDocumento;
     }
 }
 

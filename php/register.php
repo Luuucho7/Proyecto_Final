@@ -2,6 +2,9 @@
 session_start();
 require_once 'conexion.php';
 
+// js/idioma.js guarda el idioma elegido en una cookie: así PHP también sabe si hay que responder en inglés
+$ingles = (($_COOKIE['idioma'] ?? 'es') === 'en');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nombre = trim($_POST['nombre'] ?? '');
@@ -32,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($checkStmt->fetch()) {
             echo "<script>
-                    alert('La cédula o el correo electrónico ya se encuentran registrados.');
+                    alert('" . ($ingles ? 'The ID number or email is already registered.' : 'La cédula o el correo electrónico ya se encuentran registrados.') . "');
                     window.history.back();
                   </script>";
             exit();
@@ -70,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuario_correo'] = $correo;
 
         echo "<script>
-                alert('¡Registro exitoso!');
+                alert('" . ($ingles ? 'Registration successful!' : '¡Registro exitoso!') . "');
                 window.location.href = '../index.html';
               </script>";
         exit();

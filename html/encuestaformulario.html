@@ -20,9 +20,9 @@
     </div>
 
     <div class="banner">
-        <span class="banner-logo">
+        <a href="../html/pagina_principal.html" class="banner-logo" aria-label="Ir al inicio">
             <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
-        </span>
+        </a>
         <div class="banner-texto">
             <h2>Hospital de Clínicas</h2>
             <p>Atención de calidad para toda la comunidad</p>
@@ -35,19 +35,13 @@
 
 <div class="menulateral" id="menuLateral">
 
-    <h4>PANEL PRINCIPAL</h4>
+    <h4>MENÚ</h4>
 
     <ul>
         <li>
-            <a href="../html/pagina_principal_admin.html">
+            <a href="../html/pagina_principal.html">
                 <img src="../css/img/casa_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Inicio</span>
-            </a>
-        </li>
-        <li>
-            <a href="../html/pacientes.html">
-                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Pacientes</span>
             </a>
         </li>
         <li>
@@ -57,27 +51,25 @@
             </a>
         </li>
         <li>
-            <a href="../html/Documentacion.html">
-                <img src="../css/img/qr_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Documentación</span>
-            </a>
-        </li>
-        <li>
             <a href="../html/encuestaformulario.html" class="actual">
                 <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Encuestas</span>
             </a>
         </li>
         <li>
-            <a href="../html/Traslado.html">
-                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Traslados en Ambulancia</span>
-            </a>
-        </li>
-        <li>
             <a href="../html/FAQ.html">
                 <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Preguntas frecuentes</span>
+            </a>
+        </li>
+    </ul>
+
+    <!-- Este link queda abajo de todo del menú: es para los funcionarios -->
+    <ul style="flex: none; margin-bottom: 20px;">
+        <li>
+            <a href="../html/login_funcionario.html">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Acceso funcionarios</span>
             </a>
         </li>
     </ul>
@@ -109,40 +101,40 @@
                 <label>Servicio Recibido</label>
                 <select name="servicio" required>
                     <option value="">Seleccione una opción</option>
-                    <option>Consulta Médica</option>
-                    <option>Emergencia</option>
-                    <option>Laboratorio</option>
-                    <option>Imagenología</option>
-                    <option>Internación</option>
-                    <option>Nefrología</option>
-                    <option>Otro</option>
+                    <option value="Consulta Médica">Consulta Médica</option>
+                    <option value="Emergencia">Emergencia</option>
+                    <option value="Laboratorio">Laboratorio</option>
+                    <option value="Imagenología">Imagenología</option>
+                    <option value="Internación">Internación</option>
+                    <option value="Nefrología">Nefrología</option>
+                    <option value="Otro">Otro</option>
                 </select>
             </div>
 
             <div class="grupo">
                 <label>¿Cómo calificaría la atención recibida?</label>
                 <div class="radio">
-                    <label><input type="radio" name="atencion" value="Excelente" required> Excelente </label>
-                    <label><input type="radio" name="atencion" value="Muy Buena" required> Muy Buena </label>
-                    <label><input type="radio" name="atencion" value="Buena" required> Buena </label>
-                    <label><input type="radio" name="atencion" value="Regular" required> Regular </label>
-                    <label><input type="radio" name="atencion" value="Mala" required> Mala </label>
+                    <label><input type="radio" name="atencion" value="Excelente" required> <span>Excelente</span></label>
+                    <label><input type="radio" name="atencion" value="Muy Buena" required> <span>Muy Buena</span></label>
+                    <label><input type="radio" name="atencion" value="Buena" required> <span>Buena</span></label>
+                    <label><input type="radio" name="atencion" value="Regular" required> <span>Regular</span></label>
+                    <label><input type="radio" name="atencion" value="Mala" required> <span>Mala</span></label>
                 </div>
             </div>
 
             <div class="grupo">
                 <label>¿El personal fue amable?</label>
                 <div class="radio"> 
-                    <label><input type="radio" name="amabilidad" value="Si" required> Sí </label>
-                    <label><input type="radio" name="amabilidad" value="No" required> No </label>
+                    <label><input type="radio" name="amabilidad" value="Si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="amabilidad" value="No" required> <span>No</span></label>
                 </div>
             </div>
 
             <div class="grupo">
                 <label>¿Recibió toda la información necesaria?</label>
                 <div class="radio"> 
-                    <label><input type="radio" name="informacion" value="Si" required> Sí</label>
-                    <label><input type="radio" name="informacion" value="No" required> No</label>
+                    <label><input type="radio" name="informacion" value="Si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="informacion" value="No" required> <span>No</span></label>
                 </div>
             </div>
 
@@ -154,8 +146,8 @@
             <div class="grupo">
                 <label>¿Recomendaría el Hospital de Clínicas?</label>
                 <div class="radio">
-                    <label><input type="radio" name="recomendacion" value="Si" required> Sí </label> 
-                    <label><input type="radio" name="recomendacion" value="No" required> No </label> 
+                    <label><input type="radio" name="recomendacion" value="Si" required> <span>Sí</span></label> 
+                    <label><input type="radio" name="recomendacion" value="No" required> <span>No</span></label> 
                 </div>
             </div>
 
@@ -170,6 +162,7 @@
 
     </div>
 
+<script src="../js/idioma.js"></script>
 <script src="../js/java.js"></script>
 </body>
 </html>

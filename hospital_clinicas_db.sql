@@ -15,7 +15,7 @@ CREATE TABLE Persona (
     correo VARCHAR(150) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     fecha_nacimiento DATE
-)
+);
 
 
 
@@ -70,7 +70,17 @@ CREATE TABLE Ambulancia (
     matricula VARCHAR(20) PRIMARY KEY,
     origen VARCHAR(100),
     destino VARCHAR(100),
-    acompanante VARCHAR(100)
+    acompanante VARCHAR(100),
+    estado ENUM('libre', 'ocupada', 'en_servicio') DEFAULT 'libre'   -- se administra desde html/ambulancias.html
+);
+
+
+
+CREATE TABLE Tripulante (
+    id_tripulante INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    rol ENUM('chofer', 'copiloto') NOT NULL   -- se administra desde html/tripulacion.html
 );
 
 
@@ -136,9 +146,9 @@ VALUES (57730555, 'Facundo', 'Ceriotti', 'facundo231208@gmail.com',
 
 
 -- Las ambulancias que aparecen en el selector de Traslado.html
-INSERT INTO Ambulancia (matricula) VALUES ('SBA 3355'), ('IAE 2466'), ('IAH 1234');
+INSERT INTO Ambulancia (matricula) VALUES ('SBA 3355'), ('IAE 2467'), ('IAH 1234');
 
-
+    
 -- El usuario de prueba también es funcionario (id_funcionario = 1)
 INSERT INTO Funcionario (cedula) VALUES (57730555);
 

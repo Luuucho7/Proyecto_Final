@@ -66,7 +66,7 @@ if ($documento) {
 
             <p class="etiqueta"><?php echo $tipo; ?></p>
             <h1><?php echo $nombre; ?></h1>
-            <p class="fecha">Publicado el <?php echo $fecha; ?></p>
+            <p class="fecha"><span>Publicado el</span> <?php echo $fecha; ?></p>
 
             <?php if ($hayArchivo) { ?>
 
@@ -98,6 +98,9 @@ if ($documento) {
     <footer class="pie">
         Hospital de Clínicas · Av. Italia s/n, Montevideo
     </footer>
+
+    <script src="../js/idioma.js"></script>
+
 
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso funcionarios - Hospital de Clínicas</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/banner.css">
+</head>
+
+<body>
+
+<header class="banner-barra">
+
+    <div class="banner-izquierda">
+        <a href="../index.html" class="banner-cambio">Ingreso común</a>
+    </div>
+
+    <div class="banner">
+        <a href="../html/pagina_principal.html" class="banner-logo" aria-label="Ir al inicio">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </a>
+        <div class="banner-texto">
+            <h2>Hospital de Clínicas</h2>
+            <p>Atención de calidad para toda la comunidad</p>
+        </div>
+    </div>
+
+    <div class="banner-derecha"></div>
+
+</header>
+
+    <br><br><br>
+
+    <form id="register-block">
+
+        <h2 style="text-align:center;">Acceso funcionarios</h2>
+
+        <label for="feedback-user" class="txtup">Cédula o correo:</label>
+
+        <input type="text" id="feedback-user" class="campo-usuario" name="username" required />
+
+        <br>
+
+        <label for="feedback-pass" class="txtup">Contraseña:</label>
+
+        <div class="password-container">
+            <input type="password" id="feedback-pass" class="password_field" name="password" required>
+
+            <button type="button" id="mostrarPass" class="ojo">
+                <img src="../css/img/ojo_abierto_logo.svg" alt="Mostrar contraseña">
+            </button>
+        </div>
+
+        <div class="acciones-login">
+            <button type="submit" class="submit">Enviar</button>
+        </div>
+
+        <div id="feedback" class="error"></div>
+    </form>
+
+    <a href="../html/pagina_principal.html" class="log">Volver al inicio</a>
+
+    <script src="../js/idioma.js?v=2"></script>
+    <script src="../js/java.js"></script>
+
+    <script src="../js/login_funcionario.js"></script>
+
+</body>
+
+</html>

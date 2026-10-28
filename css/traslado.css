@@ -363,3 +363,30 @@ input[type="submit"].boton_organos:hover {
         font-size: 1.4rem;
     }
 }
+
+
+/* ---------- Ruta entre origen y destino (botón y datos debajo del mapa) ---------- */
+.boton-ruta {
+    margin-top: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: #ffffff;
+    color: var(--azul);
+    border: 1px solid var(--azul);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-ruta:hover {
+    background: var(--azul-claro);
+}
+
+.boton-ruta:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.info-ruta {
+    margin-top: 1rem;
+}
+

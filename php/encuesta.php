@@ -59,8 +59,10 @@ $servicioSeguro = htmlspecialchars($servicio, ENT_QUOTES, 'UTF-8');
 <body>
     <main class="contenedor">
         <h1>Encuesta recibida</h1>
-        <p class="descripcion">Gracias<?php if ($nombreSeguro !== '') { echo ', ' . $nombreSeguro; } ?>. Tu opinión sobre <?php echo $servicioSeguro; ?> fue registrada.</p>
+        <p class="descripcion"><span>Gracias</span><?php if ($nombreSeguro !== '') { echo ', ' . $nombreSeguro; } ?>. <span>Tu opinión sobre</span> <?php echo $servicioSeguro; ?> <span>fue registrada.</span></p>
         <a href="../html/pagina_principal.html" class="boton-volver">Ir al inicio</a>
     </main>
+    <script src="../js/idioma.js"></script>
+
 </body>
 </html>

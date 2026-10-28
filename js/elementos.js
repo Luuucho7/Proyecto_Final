@@ -24,7 +24,7 @@ buscar_boton.addEventListener('click', async (e) => {
     nombre.value = resultado.datos.nombre;
     estado.value = resultado.datos.estado;
   } else {
-    alert('No se encontró el insumo.');
+    alert(t('No se encontró el insumo.'));
   }
 });
 
@@ -34,7 +34,7 @@ mod_b.addEventListener('click', async (e) => {
   e.preventDefault();
 
   if (id_biologico.value === '') {
-    alert('Primero buscá el insumo que querés modificar.');
+    alert(t('Primero buscá el insumo que querés modificar.'));
     return;
   }
 
@@ -50,11 +50,11 @@ mod_b.addEventListener('click', async (e) => {
   const resultado = await respuesta.json();
 
   if (resultado.exito) {
-    alert('Elemento modificado correctamente');
+    alert(t('Elemento modificado correctamente'));
     formBiologico.reset();
     id_biologico.value = '';
   } else {
-    alert('Error al realizar la modificación');
+    alert(t('Error al realizar la modificación'));
   }
 });
 
@@ -64,11 +64,11 @@ del_b.addEventListener('click', async (e) => {
   e.preventDefault();
 
   if (id_biologico.value === '') {
-    alert('Primero buscá el insumo que querés eliminar.');
+    alert(t('Primero buscá el insumo que querés eliminar.'));
     return;
   }
 
-  if (!confirm('¿Seguro que querés eliminar este insumo?')) {
+  if (!confirm(t('¿Seguro que querés eliminar este insumo?'))) {
     return;
   }
 
@@ -82,11 +82,11 @@ del_b.addEventListener('click', async (e) => {
   const resultado = await respuesta.json();
 
   if (resultado.exito) {
-    alert('Insumo eliminado correctamente');
+    alert(t('Insumo eliminado correctamente'));
     formBiologico.reset();
     id_biologico.value = '';
   } else {
-    alert('Error al eliminar el insumo');
+    alert(t('Error al eliminar el insumo'));
   }
 });
 
@@ -116,7 +116,7 @@ buscar_boton_no.addEventListener('click', async (e) => {
     clasificacion.value = resultado.datos.clasificacion;
     pendiente.value = resultado.datos.pendiente;
   } else {
-    alert('No se encontró el insumo.');
+    alert(t('No se encontró el insumo.'));
   }
 });
 
@@ -126,7 +126,7 @@ mod_no.addEventListener('click', async (e) => {
   e.preventDefault();
 
   if (id_no_biologico.value === '') {
-    alert('Primero buscá el insumo que querés modificar.');
+    alert(t('Primero buscá el insumo que querés modificar.'));
     return;
   }
 
@@ -142,11 +142,11 @@ mod_no.addEventListener('click', async (e) => {
   const resultado = await respuesta.json();
 
   if (resultado.exito) {
-    alert('Elemento modificado correctamente');
+    alert(t('Elemento modificado correctamente'));
     formNoBiologico.reset();
     id_no_biologico.value = '';
   } else {
-    alert('Error al realizar la modificación');
+    alert(t('Error al realizar la modificación'));
   }
 });
 
@@ -156,11 +156,11 @@ del_no.addEventListener('click', async (e) => {
   e.preventDefault();
 
   if (id_no_biologico.value === '') {
-    alert('Primero buscá el insumo que querés eliminar.');
+    alert(t('Primero buscá el insumo que querés eliminar.'));
     return;
   }
 
-  if (!confirm('¿Seguro que querés eliminar este insumo?')) {
+  if (!confirm(t('¿Seguro que querés eliminar este insumo?'))) {
     return;
   }
 
@@ -174,11 +174,11 @@ del_no.addEventListener('click', async (e) => {
   const resultado = await respuesta.json();
 
   if (resultado.exito) {
-    alert('Insumo eliminado correctamente');
+    alert(t('Insumo eliminado correctamente'));
     formNoBiologico.reset();
     id_no_biologico.value = '';
   } else {
-    alert('Error al eliminar el insumo');
+    alert(t('Error al eliminar el insumo'));
   }
 });
 
@@ -208,7 +208,7 @@ buscar_boton_organo.addEventListener('click', async (e) => {
     persona.value = resultado.datos.persona;
     en_curso.value = resultado.datos.en_curso;
   } else {
-    alert('No se encontró el registro.');
+    alert(t('No se encontró el registro.'));
   }
 });
 
@@ -218,7 +218,7 @@ mod_org.addEventListener('click', async (e) => {
   e.preventDefault();
 
   if (id_organo.value === '') {
-    alert('Primero buscá el registro que querés modificar.');
+    alert(t('Primero buscá el registro que querés modificar.'));
     return;
   }
 
@@ -234,11 +234,11 @@ mod_org.addEventListener('click', async (e) => {
   const resultado = await respuesta.json();
 
   if (resultado.exito) {
-    alert('Registro modificado correctamente');
+    alert(t('Registro modificado correctamente'));
     formOrgano.reset();
     id_organo.value = '';
   } else {
-    alert('Error al realizar la modificación');
+    alert(t('Error al realizar la modificación'));
   }
 });
 
@@ -248,11 +248,11 @@ del_org.addEventListener('click', async (e) => {
   e.preventDefault();
 
   if (id_organo.value === '') {
-    alert('Primero buscá el registro que querés eliminar.');
+    alert(t('Primero buscá el registro que querés eliminar.'));
     return;
   }
 
-  if (!confirm('¿Seguro que querés eliminar este registro?')) {
+  if (!confirm(t('¿Seguro que querés eliminar este registro?'))) {
     return;
   }
 
@@ -266,11 +266,11 @@ del_org.addEventListener('click', async (e) => {
   const resultado = await respuesta.json();
 
   if (resultado.exito) {
-    alert('Registro eliminado correctamente');
+    alert(t('Registro eliminado correctamente'));
     formOrgano.reset();
     id_organo.value = '';
   } else {
-    alert('Error al eliminar el registro');
+    alert(t('Error al eliminar el registro'));
   }
 });
   

@@ -9,7 +9,7 @@ formulario.addEventListener('submit', async function (event) {
   const contrasena = document.getElementById('feedback-pass').value;
 
   if (usuario === "" || contrasena === "") {
-    feedback.textContent = "Tenés que completar la cédula o correo y la contraseña.";
+    feedback.textContent = t("Tenés que completar la cédula o correo y la contraseña.");
     feedback.className = "error";
     return;
   }
@@ -25,7 +25,7 @@ formulario.addEventListener('submit', async function (event) {
 
   const resultado = await respuesta.json();
 
-  feedback.textContent = resultado.message;
+  feedback.textContent = t(resultado.message);
 
   if (resultado.success === true) {
     feedback.className = "success";

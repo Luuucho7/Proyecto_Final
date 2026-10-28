@@ -40,16 +40,18 @@ formTraslado.addEventListener('submit', async (e) => {
         const res = await respuesta.json();
 
         if (res.exito) {
-            resultado.innerHTML = '<p>Traslado creado correctamente.</p>';
+            resultado.innerHTML = '<p>' + t('Traslado creado correctamente.') + '</p>';
             mostrarDetalle(res.id_traslado, datos);
             formTraslado.reset();
             reiniciarSelector();
+            // La ambulancia que se usó ahora está "En servicio": se vuelve a pedir la lista
+            cargarAmbulancias();
         } else {
-            resultado.innerHTML = '<p>' + res.mensaje + '</p>';
+            resultado.innerHTML = '<p>' + t(res.mensaje) + '</p>';
         }
 
     } catch (error) {
-        resultado.innerHTML = '<p>Error al crear el traslado.</p>';
+        resultado.innerHTML = '<p>' + t('Error al crear el traslado.') + '</p>';
     }
 });
 
@@ -69,7 +71,67 @@ function mostrarDetalle(id, datos) {
     document.getElementById('d_origen').textContent = datos.get('origen') || '—';
     document.getElementById('d_destino').textContent = datos.get('destino') || '—';
     document.getElementById('d_estado').textContent = 'Solicitado';
+
+    // Los datos se escriben en español: los traducimos si la página está en inglés
+    traducirPagina();
 }
+
+// ---------- Lista de ambulancias (viene de la base de datos) ----------
+
+const listaAmbulancias = document.getElementById('ambulancia');
+
+const textoEstadoAmbulancia = {
+    libre: 'Libre',
+    ocupada: 'Ocupada',
+    en_servicio: 'En servicio'
+};
+
+// Escribe el texto de cada opción, por ejemplo "SBA 3355 - Libre", en el idioma elegido
+function ponerTextosAmbulancias() {
+    listaAmbulancias.querySelectorAll('option[data-estado]').forEach(opcion => {
+        const estado = opcion.dataset.estado;
+        opcion.textContent = opcion.value + ' - ' + t(textoEstadoAmbulancia[estado] || estado);
+    });
+}
+
+async function cargarAmbulancias() {
+    const respuesta = await fetch('../php/listar_ambulancias.php');
+    const resultado = await respuesta.json();
+
+    if (!resultado.exito) {
+        return;
+    }
+
+    // Se borran las opciones anteriores, menos la primera ("Seleccionar ambulancia")
+    while (listaAmbulancias.options.length > 1) {
+        listaAmbulancias.remove(1);
+    }
+
+    resultado.ambulancias.forEach(ambulancia => {
+        const opcion = new Option('', ambulancia.matricula);
+        opcion.dataset.estado = ambulancia.estado;
+
+        // Se ven todas, pero solo se pueden elegir las que están libres
+        opcion.disabled = (ambulancia.estado !== 'libre');
+
+        listaAmbulancias.add(opcion);
+    });
+
+    ponerTextosAmbulancias();
+}
+
+// Cuando se cambia el idioma, se vuelven a escribir los textos de las opciones
+document.addEventListener('cambioIdioma', ponerTextosAmbulancias);
+
+cargarAmbulancias();
+
+
+// ---------- Chofer y Copiloto: lista desplegable con buscador (el código está en js/buscador_nombres.js) ----------
+
+activarBuscador('chofer', 'chofer');
+activarBuscador('copiloto', 'copiloto');
+
+cargarPersonas();
 
 // Vuelve el formulario al estado inicial: sin tipo elegido y todo oculto
 function reiniciarSelector() {

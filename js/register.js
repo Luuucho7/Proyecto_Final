@@ -15,13 +15,13 @@ form.addEventListener('submit', function (event) {
   const fechaNacimiento = document.getElementById('fecha_nacimiento').value;
 
   if (nombre.length < 2) {
-    feedback.textContent = "El nombre debe tener al menos 2 letras.";
+    feedback.textContent = t("El nombre debe tener al menos 2 letras.");
     feedback.className = "error";
     return;
   }
 
   if (apellido.length < 2) {
-    feedback.textContent = "El apellido debe tener al menos 2 letras.";
+    feedback.textContent = t("El apellido debe tener al menos 2 letras.");
     feedback.className = "error";
     return;
   }
@@ -29,13 +29,13 @@ form.addEventListener('submit', function (event) {
   const cedulaSoloNumeros = /^[0-9]+$/.test(cedula);
 
   if (!cedulaSoloNumeros) {
-    feedback.textContent = "La cédula solo puede contener números.";
+    feedback.textContent = t("La cédula solo puede contener números.");
     feedback.className = "error";
     return;
   }
 
   if (cedula.length !== 8) {
-    feedback.textContent = "La cédula debe tener 8 números.";
+    feedback.textContent = t("La cédula debe tener 8 números.");
     feedback.className = "error";
     return;
   }
@@ -44,7 +44,7 @@ form.addEventListener('submit', function (event) {
   const tienePunto = correo.includes(".");
 
   if (!tieneArroba || !tienePunto) {
-    feedback.textContent = "El correo debe tener un @ y un punto. Ejemplo: nombre@correo.com";
+    feedback.textContent = t("El correo debe tener un @ y un punto. Ejemplo: nombre@correo.com");
     feedback.className = "error";
     return;
   }
@@ -55,25 +55,25 @@ form.addEventListener('submit', function (event) {
 
   if (!tieneMinuscula || !tieneMayuscula || !tieneNumero) {
     feedback.textContent =
-      "La contraseña debe contener al menos una letra minúscula, una mayúscula y un número.";
+      t("La contraseña debe contener al menos una letra minúscula, una mayúscula y un número.");
     feedback.className = "error";
     return;
   }
 
   if (password.length < 8 || password.length > 16) {
-    feedback.textContent = "La contraseña debe tener entre 8 y 16 caracteres.";
+    feedback.textContent = t("La contraseña debe tener entre 8 y 16 caracteres.");
     feedback.className = "error";
     return;
   }
 
   if (password !== confirmPassword) {
-    feedback.textContent = "Las contraseñas no coinciden.";
+    feedback.textContent = t("Las contraseñas no coinciden.");
     feedback.className = "error";
     return;
   }
 
   if (direccion.trim().length < 5) {
-    feedback.textContent = "La dirección debe tener al menos 5 caracteres.";
+    feedback.textContent = t("La dirección debe tener al menos 5 caracteres.");
     feedback.className = "error";
     return;
   }
@@ -81,19 +81,19 @@ form.addEventListener('submit', function (event) {
   const telefonoSoloNumeros = /^[0-9]+$/.test(telefono);
 
   if (!telefonoSoloNumeros) {
-    feedback.textContent = "El teléfono solo puede contener números.";
+    feedback.textContent = t("El teléfono solo puede contener números.");
     feedback.className = "error";
     return;
   }
 
   if (telefono.length < 8 || telefono.length > 9) {
-    feedback.textContent = "El teléfono debe tener 8 o 9 números.";
+    feedback.textContent = t("El teléfono debe tener 8 o 9 números.");
     feedback.className = "error";
     return;
   }
 
   if (fechaNacimiento === "") {
-    feedback.textContent = "Tenés que elegir tu fecha de nacimiento.";
+    feedback.textContent = t("Tenés que elegir tu fecha de nacimiento.");
     feedback.className = "error";
     return;
   }
@@ -102,12 +102,12 @@ form.addEventListener('submit', function (event) {
   const hoy = new Date();
 
   if (fechaElegida > hoy) {
-    feedback.textContent = "La fecha de nacimiento no puede ser posterior al día de hoy.";
+    feedback.textContent = t("La fecha de nacimiento no puede ser posterior al día de hoy.");
     feedback.className = "error";
     return;
   }
 
-  feedback.textContent = "Enviando...";
+  feedback.textContent = t("Enviando...");
   feedback.className = "success";
   form.submit();
 });
