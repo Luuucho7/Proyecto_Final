@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/banner.css">
     <link rel="stylesheet" href="../css/traslado.css">
-    <link rel="stylesheet" href="../css/buscador.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-
-    <!-- Si no hay un funcionario logueado, manda al login -->
-    <script src="../js/proteger.js"></script>
 </head>
 
 <body>
@@ -82,27 +77,9 @@
             </a>
         </li>
         <li>
-            <a href="../html/ambulancias.html">
-                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Ambulancias</span>
-            </a>
-        </li>
-        <li>
-            <a href="../html/tripulacion.html">
-                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Choferes y copilotos</span>
-            </a>
-        </li>
-        <li>
             <a href="../html/FAQ.html">
                 <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
                 <span>Preguntas frecuentes</span>
-            </a>
-        </li>
-        <li>
-            <a href="../php/logout.php">
-                <img src="../css/img/flecha_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
-                <span>Cerrar sesión</span>
             </a>
         </li>
     </ul>
@@ -115,11 +92,13 @@
 
 <div class="texto_arriba">
 
-    <a href="../html/Traslado.html" class="tarjeta">Traslados</a>
+    <div class="tarjeta">Traslados</div>
 
-    <a href="../html/traslados_lista.html" class="tarjeta">En curso</a>
+    <div class="tarjeta">En curso</div>
 
-    <a href="../html/ambulancias.html" class="tarjeta">Ambulancias</a>
+    <div class="tarjeta">Urgentes</div>
+
+    <div class="tarjeta">Ambulancias</div>
 
 </div>
 
@@ -127,10 +106,6 @@
 <div class="cont">
 
     <main class="principal">
-
-        <div>
-
-
 
         <section class="tabla">
 
@@ -184,7 +159,7 @@
                 <fieldset class="datos-elemento" data-tipo="organo" hidden disabled>
                     <legend>Datos del órgano</legend>
 
-                    <label for="t_persona">Nombre de la persona:</label>
+                    <label for="t_persona">Nombre del organo:</label>
                     <input type="text" id="t_persona" name="persona" required>
 
                     <label for="t_en_curso">¿En curso?</label>
@@ -201,24 +176,17 @@
 
                     <label for="ambulancia">Seleccionar ambulancia:</label>
                     <select id="ambulancia" name="matricula" required>
-                        <!-- Las ambulancias las agrega traslado.js desde la base. Solo se pueden elegir las libres -->
                         <option value="">Seleccionar ambulancia</option>
+                        <option value="SBA 3355">SBA 3355 - Libre</option>
+                        <option value="IAE 2466">IAE 2466 - Ocupada</option>
+                        <option value="IAH 1234">IAH 1234 - En servicio</option>
                     </select>
 
                     <label for="origen">Origen:</label>
-                    <div class="buscador-lista sin-flecha">
-                        <input type="text" id="origen" name="origen" placeholder="Escribí para buscar una dirección" autocomplete="off">
-                        <ul class="opciones-lista" hidden></ul>
-                    </div>
+                    <input type="text" id="origen" name="origen">
 
                     <label for="destino">Destino:</label>
-                    <div class="buscador-lista sin-flecha">
-                        <input type="text" id="destino" name="destino" placeholder="Escribí para buscar una dirección" autocomplete="off">
-                        <ul class="opciones-lista" hidden></ul>
-                    </div>
-
-                    <button type="button" id="boton_ruta" class="boton-ruta">Ver ruta</button>
-                    <p id="mensaje_ruta" class="aviso"></p>
+                    <input type="text" id="destino" name="destino">
 
                     <label for="hora_salida">Hora de salida:</label>
                     <input type="datetime-local" id="hora_salida" name="hora_salida">
@@ -226,24 +194,17 @@
                     <label for="hora_llegada">Hora de llegada:</label>
                     <input type="datetime-local" id="hora_llegada" name="hora_llegada">
 
-                    <!-- Chofer y Copiloto: lista desplegable con buscador. Las opciones las arma traslado.js con los nombres de la base -->
                     <label for="chofer">Chofer:</label>
-                    <div class="buscador-lista">
-                        <input type="text" id="chofer" name="chofer" placeholder="Seleccionar chofer" autocomplete="off">
-                        <ul class="opciones-lista" hidden></ul>
-                    </div>
+                    <input type="text" id="chofer" name="chofer">
 
                     <label for="copiloto">Copiloto:</label>
-                    <div class="buscador-lista">
-                        <input type="text" id="copiloto" name="copiloto" placeholder="Seleccionar copiloto" autocomplete="off">
-                        <ul class="opciones-lista" hidden></ul>
-                    </div>
+                    <input type="text" id="copiloto" name="copiloto">
 
-                    <!-- Lista de pacientes activos: la arma traslado.js desde la base (antes había que saber el ID de memoria) -->
-                    <label for="id_paciente">Paciente (opcional):</label>
-                    <select id="id_paciente" name="id_paciente">
-                        <option value="">Sin paciente</option>
-                    </select>
+                    <label for="id_paciente">ID del paciente (opcional):</label>
+                    <input type="number" id="id_paciente" name="id_paciente">
+
+                    <label for="id_funcionario">ID del funcionario:</label>
+                    <input type="number" id="id_funcionario" name="id_funcionario">
 
                     <button type="submit">Crear traslado</button>
                 </fieldset>
@@ -256,25 +217,8 @@
 
         </section>
 
-        <div class="padding-mapa">
-
-            <div id="mapa">       
-            <h2>trazabilidad</h2>
-
-        </div>
-
-            <!-- Se completa con js/ruta.js al calcular una ruta -->
-            <div id="info_ruta" class="info-ruta" hidden>
-                <p><strong>Distancia:</strong> <span id="ruta_distancia"></span></p>
-                <p><strong>Tiempo estimado:</strong> <span id="ruta_tiempo"></span></p>
-            </div>
-
-
-        </div>
-
-          </div>
         <section class="detalle">
-            <span>Detalle de la solicitud</span>
+            Detalle de la solicitud
 
             <table>
                 <tr>
@@ -327,8 +271,6 @@
             <input type="text" id="buscar" name="buscar" placeholder="Buscar por nombre del insumo..." class="escribir_organos">
             <input type="submit" id="buscar_boton" value="Buscar" class="boton_organos">
         </form>
-        <!-- Si la búsqueda encuentra varios, aparece esta lista para elegir cuál -->
-        <select id="resultados_b" class="escribir_organos" hidden></select>
         <form id="form_biologico">
             <input type="hidden" id="id_biologico">
             <input type="text" id="nombre" name="nombre" placeholder="Nombre del insumo" class="escribir_organos">
@@ -344,17 +286,10 @@
             <input type="text" id="encontrar" name="buscar" placeholder="Buscar por clasificación..." class="escribir_organos">
             <input type="submit" id="buscar_boton_nobiologico" value="Buscar" class="boton_organos">
         </form>
-        <!-- Si la búsqueda encuentra varios, aparece esta lista para elegir cuál -->
-        <select id="resultados_no" class="escribir_organos" hidden></select>
         <form id="form_no_biologico">
             <input type="hidden" id="id_no_biologico">
             <input type="text" id="clasificacion" name="clasificacion" placeholder="Clasificación" class="escribir_organos">
-            <!-- Sí/No igual que al crear el traslado (antes era texto libre) -->
-            <select id="pendiente" name="pendiente" class="escribir_organos">
-                <option value="">¿Pendiente?</option>
-                <option value="Si">Sí</option>
-                <option value="No">No</option>
-            </select>
+            <input type="text" id="pendiente" name="pendiente" placeholder="¿Pendiente? (Si / No)" class="escribir_organos">
             <button id="mod_no" class="boton_organos">Modificar</button>
             <button id="del_no" class="boton-eliminar">Eliminar</button>
         </form>
@@ -366,17 +301,10 @@
             <input type="text" id="encontrar_org" name="buscar" placeholder="Buscar por nombre de la persona..." class="escribir_organos">
             <input type="submit" id="button_org" value="Buscar" class="boton_organos">
         </form>
-        <!-- Si la búsqueda encuentra varios, aparece esta lista para elegir cuál -->
-        <select id="resultados_org" class="escribir_organos" hidden></select>
         <form id="form_organo">
             <input type="hidden" id="id_organo">
             <input type="text" id="persona" name="persona" placeholder="Nombre de la persona" class="escribir_organos">
-            <!-- Sí/No igual que al crear el traslado (antes era texto libre) -->
-            <select id="en_curso" name="en_curso" class="escribir_organos">
-                <option value="">¿En curso?</option>
-                <option value="Si">Sí</option>
-                <option value="No">No</option>
-            </select>
+            <input type="text" id="en_curso" name="en_curso" placeholder="¿En curso? (Si / No)" class="escribir_organos">
             <button id="mod_org" class="boton_organos">Modificar</button>
             <button id="del_org" class="boton-eliminar">Eliminar</button>
         </form>
@@ -384,14 +312,10 @@
 
 </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="../js/idioma.js?v=2"></script>
+
 <script src="../js/java.js"></script>
-<script src="../js/buscador_nombres.js"></script>
-<script src="../js/traslado.js?v=3"></script>
-<script src="../js/elementos.js?v=2"></script>
-<script src="../js/mapa.js"></script>
-<script src="../js/config.js"></script>
-<script src="../js/ruta.js"></script>
+<script src="../js/traslado.js"></script>
+<script src="../js/elementos.js"></script>
+
 </body>
 </html>
