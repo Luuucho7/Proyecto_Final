@@ -14,32 +14,8 @@ if ($id === '' || $matricula === '') {
     exit();
 }
 
-// Los campos opcionales vacíos se guardan como NULL
-function opcional($valor) {
-    $valor = trim($valor ?? '');
-
-    if ($valor === '') {
-        return null;
-    }
-    return $valor;
-}
-
-// El input datetime-local manda "2026-10-19T14:30". La columna es DATETIME ("2026-10-19 14:30:00").
-// Devuelve null si está vacío y false si lo escrito no es una fecha válida.
-function fecha($valor) {
-    $valor = opcional($valor);
-
-    if ($valor === null) {
-        return null;
-    }
-
-    $tiempo = strtotime($valor);
-
-    if ($tiempo === false) {
-        return false;
-    }
-    return date('Y-m-d H:i:s', $tiempo);
-}
+// opcional() y fecha() están en funciones_traslado.php
+require_once 'funciones_traslado.php';
 
 // ---------- Revisar las fechas ----------
 $salida = fecha($_POST['hora_salida'] ?? '');

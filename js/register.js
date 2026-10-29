@@ -1,6 +1,12 @@
 const form = document.getElementById('register-block');
 const feedback = document.getElementById('feedback');
 
+// Muestra un error debajo del formulario (en el idioma elegido)
+function mostrarError(texto) {
+  feedback.textContent = t(texto);
+  feedback.className = "error";
+}
+
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -15,38 +21,28 @@ form.addEventListener('submit', function (event) {
   const fechaNacimiento = document.getElementById('fecha_nacimiento').value;
 
   if (nombre.length < 2) {
-    feedback.textContent = t("El nombre debe tener al menos 2 letras.");
-    feedback.className = "error";
-    return;
+    return mostrarError("El nombre debe tener al menos 2 letras.");
   }
 
   if (apellido.length < 2) {
-    feedback.textContent = t("El apellido debe tener al menos 2 letras.");
-    feedback.className = "error";
-    return;
+    return mostrarError("El apellido debe tener al menos 2 letras.");
   }
 
   const cedulaSoloNumeros = /^[0-9]+$/.test(cedula);
 
   if (!cedulaSoloNumeros) {
-    feedback.textContent = t("La cédula solo puede contener números.");
-    feedback.className = "error";
-    return;
+    return mostrarError("La cédula solo puede contener números.");
   }
 
   if (cedula.length !== 8) {
-    feedback.textContent = t("La cédula debe tener 8 números.");
-    feedback.className = "error";
-    return;
+    return mostrarError("La cédula debe tener 8 números.");
   }
 
   const tieneArroba = correo.includes("@");
   const tienePunto = correo.includes(".");
 
   if (!tieneArroba || !tienePunto) {
-    feedback.textContent = t("El correo debe tener un @ y un punto. Ejemplo: nombre@correo.com");
-    feedback.className = "error";
-    return;
+    return mostrarError("El correo debe tener un @ y un punto. Ejemplo: nombre@correo.com");
   }
 
   const tieneMinuscula = /[a-z]/.test(password);
@@ -54,57 +50,40 @@ form.addEventListener('submit', function (event) {
   const tieneNumero = /[0-9]/.test(password);
 
   if (!tieneMinuscula || !tieneMayuscula || !tieneNumero) {
-    feedback.textContent =
-      t("La contraseña debe contener al menos una letra minúscula, una mayúscula y un número.");
-    feedback.className = "error";
-    return;
+    return mostrarError("La contraseña debe contener al menos una letra minúscula, una mayúscula y un número.");
   }
 
   if (password.length < 8 || password.length > 16) {
-    feedback.textContent = t("La contraseña debe tener entre 8 y 16 caracteres.");
-    feedback.className = "error";
-    return;
+    return mostrarError("La contraseña debe tener entre 8 y 16 caracteres.");
   }
 
   if (password !== confirmPassword) {
-    feedback.textContent = t("Las contraseñas no coinciden.");
-    feedback.className = "error";
-    return;
+    return mostrarError("Las contraseñas no coinciden.");
   }
 
   if (direccion.trim().length < 5) {
-    feedback.textContent = t("La dirección debe tener al menos 5 caracteres.");
-    feedback.className = "error";
-    return;
+    return mostrarError("La dirección debe tener al menos 5 caracteres.");
   }
 
   const telefonoSoloNumeros = /^[0-9]+$/.test(telefono);
 
   if (!telefonoSoloNumeros) {
-    feedback.textContent = t("El teléfono solo puede contener números.");
-    feedback.className = "error";
-    return;
+    return mostrarError("El teléfono solo puede contener números.");
   }
 
   if (telefono.length < 8 || telefono.length > 9) {
-    feedback.textContent = t("El teléfono debe tener 8 o 9 números.");
-    feedback.className = "error";
-    return;
+    return mostrarError("El teléfono debe tener 8 o 9 números.");
   }
 
   if (fechaNacimiento === "") {
-    feedback.textContent = t("Tenés que elegir tu fecha de nacimiento.");
-    feedback.className = "error";
-    return;
+    return mostrarError("Tenés que elegir tu fecha de nacimiento.");
   }
 
   const fechaElegida = new Date(fechaNacimiento);
   const hoy = new Date();
 
   if (fechaElegida > hoy) {
-    feedback.textContent = t("La fecha de nacimiento no puede ser posterior al día de hoy.");
-    feedback.className = "error";
-    return;
+    return mostrarError("La fecha de nacimiento no puede ser posterior al día de hoy.");
   }
 
   feedback.textContent = t("Enviando...");

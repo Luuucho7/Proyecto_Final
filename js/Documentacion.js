@@ -169,11 +169,13 @@ function generarQR() {
         // encodeURIComponent hace que el "?" y el "=" de la dirección no se confundan con los del servicio de QR
         let imagenQR = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + encodeURIComponent(pagina);
 
-        document.getElementById("qrImagen").src = imagenQR;
-        document.getElementById("qrImagen").style.display = "block";
+        const qrImagen = document.getElementById("qrImagen");
+        qrImagen.src = imagenQR;
+        qrImagen.style.display = "block";
 
-        document.getElementById("descargarQR").href = imagenQR + "&download=1";
-        document.getElementById("descargarQR").style.display = "inline-block";
+        const descargarQR = document.getElementById("descargarQR");
+        descargarQR.href = imagenQR + "&download=1";
+        descargarQR.style.display = "inline-block";
 
         document.getElementById("resultadoQR").innerHTML =
             t("Código QR del documento Nº") + " " + idDocumento;

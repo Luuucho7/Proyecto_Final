@@ -14,6 +14,37 @@ function textoTraslado(dato) {
   return t('Sin traslado');
 }
 
+// Manda los datos a un archivo PHP y devuelve su respuesta.
+// Uso: const resultado = await enviar('../php/buscar_organo.php', { persona: 'Juan' });
+async function enviar(url, campos) {
+  const datos = new FormData();
+
+  for (const nombreCampo in campos) {
+    datos.append(nombreCampo, campos[nombreCampo]);
+  }
+
+  const respuesta = await fetch(url, {
+    method: 'POST',
+    body: datos
+  });
+  return respuesta.json();
+}
+
+// Cuando una búsqueda encuentra varios, arma la lista para elegir cuál.
+// "campo" es el dato que se muestra de cada uno (por ejemplo 'nombre').
+// El "value" de cada opción es su posición en la lista
+function mostrarVarios(lista, encontrados, campo) {
+  lista.innerHTML = '';
+  lista.add(new Option(t('Hay varios resultados: elegí uno'), ''));
+
+  for (let i = 0; i < encontrados.length; i++) {
+    const texto = textoTraslado(encontrados[i]) + ' - ' + encontrados[i][campo];
+    lista.add(new Option(texto, i));
+  }
+
+  lista.hidden = false;
+}
+
 
 // ==================== BIOLÓGICO ====================
 
@@ -46,14 +77,7 @@ function limpiarBiologico() {
 buscar_boton.addEventListener('click', async (e) => {
   e.preventDefault();
 
-  const datosBusqueda = new FormData();
-  datosBusqueda.append('nombre', buscar.value);
-
-  const respuesta = await fetch('../php/buscar_Ingresar.php', {
-    method: 'POST',
-    body: datosBusqueda
-  });
-  const resultado = await respuesta.json();
+  const resultado = await enviar('../php/buscar_Ingresar.php', { nombre: buscar.value });
 
   limpiarBiologico();
 
@@ -68,16 +92,7 @@ buscar_boton.addEventListener('click', async (e) => {
   if (encontrados_b.length === 1) {
     cargarBiologico(encontrados_b[0]);
   } else {
-    // Hay varios: se arma la lista para elegir. El "value" de cada opción es su posición en la lista
-    resultados_b.innerHTML = '';
-    resultados_b.add(new Option(t('Hay varios resultados: elegí uno'), ''));
-
-    for (let i = 0; i < encontrados_b.length; i++) {
-      const texto = textoTraslado(encontrados_b[i]) + ' - ' + encontrados_b[i].nombre;
-      resultados_b.add(new Option(texto, i));
-    }
-
-    resultados_b.hidden = false;
+    mostrarVarios(resultados_b, encontrados_b, 'nombre');
   }
 });
 
@@ -98,16 +113,11 @@ mod_b.addEventListener('click', async (e) => {
     return;
   }
 
-  const datosModificar = new FormData();
-  datosModificar.append('id', id_biologico.value);
-  datosModificar.append('nombre', nombre.value);
-  datosModificar.append('estado', estado.value);
-
-  const respuesta = await fetch('../php/modificar_biologico.php', {
-    method: 'POST',
-    body: datosModificar
+  const resultado = await enviar('../php/modificar_biologico.php', {
+    id: id_biologico.value,
+    nombre: nombre.value,
+    estado: estado.value
   });
-  const resultado = await respuesta.json();
 
   if (resultado.exito) {
     alert(t('Elemento modificado correctamente'));
@@ -132,14 +142,7 @@ del_b.addEventListener('click', async (e) => {
     return;
   }
 
-  const datosEliminar = new FormData();
-  datosEliminar.append('id', id_biologico.value);
-
-  const respuesta = await fetch('../php/eliminar_biologico.php', {
-    method: 'POST',
-    body: datosEliminar
-  });
-  const resultado = await respuesta.json();
+  const resultado = await enviar('../php/eliminar_biologico.php', { id: id_biologico.value });
 
   if (resultado.exito) {
     alert(t('Insumo eliminado correctamente'));
@@ -180,14 +183,7 @@ function limpiarNoBiologico() {
 buscar_boton_no.addEventListener('click', async (e) => {
   e.preventDefault();
 
-  const datosBusqueda = new FormData();
-  datosBusqueda.append('clasificacion', encontrar.value);
-
-  const respuesta = await fetch('../php/buscar_noBiologico.php', {
-    method: 'POST',
-    body: datosBusqueda
-  });
-  const resultado = await respuesta.json();
+  const resultado = await enviar('../php/buscar_noBiologico.php', { clasificacion: encontrar.value });
 
   limpiarNoBiologico();
 
@@ -202,15 +198,7 @@ buscar_boton_no.addEventListener('click', async (e) => {
   if (encontrados_no.length === 1) {
     cargarNoBiologico(encontrados_no[0]);
   } else {
-    resultados_no.innerHTML = '';
-    resultados_no.add(new Option(t('Hay varios resultados: elegí uno'), ''));
-
-    for (let i = 0; i < encontrados_no.length; i++) {
-      const texto = textoTraslado(encontrados_no[i]) + ' - ' + encontrados_no[i].clasificacion;
-      resultados_no.add(new Option(texto, i));
-    }
-
-    resultados_no.hidden = false;
+    mostrarVarios(resultados_no, encontrados_no, 'clasificacion');
   }
 });
 
@@ -230,16 +218,11 @@ mod_no.addEventListener('click', async (e) => {
     return;
   }
 
-  const datosModificar = new FormData();
-  datosModificar.append('id', id_no_biologico.value);
-  datosModificar.append('clasificacion', clasificacion.value);
-  datosModificar.append('pendiente', pendiente.value);
-
-  const respuesta = await fetch('../php/modificar_noBiologico.php', {
-    method: 'POST',
-    body: datosModificar
+  const resultado = await enviar('../php/modificar_noBiologico.php', {
+    id: id_no_biologico.value,
+    clasificacion: clasificacion.value,
+    pendiente: pendiente.value
   });
-  const resultado = await respuesta.json();
 
   if (resultado.exito) {
     alert(t('Elemento modificado correctamente'));
@@ -263,14 +246,7 @@ del_no.addEventListener('click', async (e) => {
     return;
   }
 
-  const datosEliminar = new FormData();
-  datosEliminar.append('id', id_no_biologico.value);
-
-  const respuesta = await fetch('../php/eliminar_noBiologico.php', {
-    method: 'POST',
-    body: datosEliminar
-  });
-  const resultado = await respuesta.json();
+  const resultado = await enviar('../php/eliminar_noBiologico.php', { id: id_no_biologico.value });
 
   if (resultado.exito) {
     alert(t('Insumo eliminado correctamente'));
@@ -310,14 +286,7 @@ function limpiarOrgano() {
 buscar_boton_organo.addEventListener('click', async (e) => {
   e.preventDefault();
 
-  const datosBusqueda = new FormData();
-  datosBusqueda.append('persona', encontrar_organo.value);
-
-  const respuesta = await fetch('../php/buscar_organo.php', {
-    method: 'POST',
-    body: datosBusqueda
-  });
-  const resultado = await respuesta.json();
+  const resultado = await enviar('../php/buscar_organo.php', { persona: encontrar_organo.value });
 
   limpiarOrgano();
 
@@ -332,15 +301,7 @@ buscar_boton_organo.addEventListener('click', async (e) => {
   if (encontrados_org.length === 1) {
     cargarOrgano(encontrados_org[0]);
   } else {
-    resultados_org.innerHTML = '';
-    resultados_org.add(new Option(t('Hay varios resultados: elegí uno'), ''));
-
-    for (let i = 0; i < encontrados_org.length; i++) {
-      const texto = textoTraslado(encontrados_org[i]) + ' - ' + encontrados_org[i].persona;
-      resultados_org.add(new Option(texto, i));
-    }
-
-    resultados_org.hidden = false;
+    mostrarVarios(resultados_org, encontrados_org, 'persona');
   }
 });
 
@@ -360,16 +321,11 @@ mod_org.addEventListener('click', async (e) => {
     return;
   }
 
-  const datosModificar = new FormData();
-  datosModificar.append('id', id_organo.value);
-  datosModificar.append('persona', persona.value);
-  datosModificar.append('en_curso', en_curso.value);
-
-  const respuesta = await fetch('../php/modificar_organo.php', {
-    method: 'POST',
-    body: datosModificar
+  const resultado = await enviar('../php/modificar_organo.php', {
+    id: id_organo.value,
+    persona: persona.value,
+    en_curso: en_curso.value
   });
-  const resultado = await respuesta.json();
 
   if (resultado.exito) {
     alert(t('Registro modificado correctamente'));
@@ -393,14 +349,7 @@ del_org.addEventListener('click', async (e) => {
     return;
   }
 
-  const datosEliminar = new FormData();
-  datosEliminar.append('id', id_organo.value);
-
-  const respuesta = await fetch('../php/eliminar_organo.php', {
-    method: 'POST',
-    body: datosEliminar
-  });
-  const resultado = await respuesta.json();
+  const resultado = await enviar('../php/eliminar_organo.php', { id: id_organo.value });
 
   if (resultado.exito) {
     alert(t('Registro eliminado correctamente'));

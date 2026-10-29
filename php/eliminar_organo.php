@@ -1,53 +1,7 @@
 <?php
 // eliminar_organo.php
-// Borra un elemento de la tabla organo JUNTO CON su traslado.
-// Cada traslado tiene un solo elemento: si se borrara solo el elemento, el traslado quedaría "huérfano"
-// (en la lista aparecería sin elemento). Si el traslado estaba en curso, su ambulancia vuelve a quedar libre.
+// Borra un elemento de la tabla organo JUNTO CON su traslado (el código está en eliminar_elemento.php)
 require_once 'conexion.php';
+require_once 'eliminar_elemento.php';
 
-$id = trim($_POST['id'] ?? '');
-
-header('Content-Type: application/json');
-
-if ($id === '') {
-    echo json_encode(['exito' => false, 'mensaje' => 'Primero buscá el registro que querés eliminar.']);
-    exit();
-}
-
-try {
-    // Todo va junto: si falla una parte, no se borra nada
-    $pdo->beginTransaction();
-
-    // 1. Buscar el traslado al que pertenece este elemento
-    $stmt = $pdo->prepare("SELECT id_traslado, matricula, estado FROM Traslado WHERE tipo_elemento = 'organo' AND id_elemento = :id");
-    $stmt->execute([':id' => $id]);
-    $traslado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($traslado) {
-        // 2. Borrar el traslado
-        $stmt = $pdo->prepare("DELETE FROM Traslado WHERE id_traslado = :id_traslado");
-        $stmt->execute([':id_traslado' => $traslado['id_traslado']]);
-
-        // 3. Si todavía no había vuelto al hospital, liberar la ambulancia
-        if ($traslado['estado'] !== 'finalizado') {
-            $stmt = $pdo->prepare("UPDATE Ambulancia SET estado = 'libre' WHERE matricula = :matricula AND estado = 'en_servicio'");
-            $stmt->execute([':matricula' => $traslado['matricula']]);
-        }
-    }
-
-    // 4. Borrar el elemento
-    $stmt = $pdo->prepare("DELETE FROM organo WHERE id = :id");
-    $stmt->execute([':id' => $id]);
-
-    $pdo->commit();
-
-    echo json_encode(['exito' => true]);
-
-} catch (PDOException $e) {
-
-    if ($pdo->inTransaction()) {
-        $pdo->rollBack();
-    }
-
-    echo json_encode(['exito' => false, 'mensaje' => 'No se pudo eliminar el registro.']);
-}
+eliminarElemento($pdo, 'organo', 'Primero buscá el registro que querés eliminar.', 'No se pudo eliminar el registro.');

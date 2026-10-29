@@ -110,9 +110,7 @@ async function cargarAmbulancias() {
     }
 
     // Se borran las opciones anteriores, menos la primera ("Seleccionar ambulancia")
-    while (listaAmbulancias.options.length > 1) {
-        listaAmbulancias.remove(1);
-    }
+    listaAmbulancias.length = 1;
 
     resultado.ambulancias.forEach(ambulancia => {
         const opcion = new Option('', ambulancia.matricula);
@@ -148,9 +146,7 @@ async function cargarPacientesTraslado() {
     }
 
     // Se borran las opciones anteriores, menos la primera ("Sin paciente")
-    while (listaPacientes.options.length > 1) {
-        listaPacientes.remove(1);
-    }
+    listaPacientes.length = 1;
 
     resultado.pacientes.forEach(paciente => {
         if (paciente.estado === 'activo') {
