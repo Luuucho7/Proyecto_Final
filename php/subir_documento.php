@@ -2,7 +2,6 @@
 // subir_documento.php
 // Recibe un PDF desde Documentacion.html, lo guarda en la carpeta documentos/
 // y lo registra en la tabla Documentacion. Después ya se le puede generar el QR.
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede subir documentos
 require_once 'conexion.php';
 
 header('Content-Type: application/json');
@@ -51,13 +50,13 @@ if (!move_uploaded_file($archivo['tmp_name'], $destino)) {
 try {
     $stmt = $pdo->prepare(
         "INSERT INTO Documentacion (nombre, tipo, archivo, fecha_creacion, id_funcionario)
-         VALUES (:nombre, :tipo, :archivo, CURDATE(), :id_funcionario)"
+         VALUES (:nombre, :tipo, :archivo, CURDATE(), NULL)"
     );
+    // id_funcionario queda vacío (NULL): la página no guarda quién inició sesión
     $stmt->execute([
         ':nombre' => $descripcion,
         ':tipo' => $tipo,
-        ':archivo' => $nombreArchivo,
-        ':id_funcionario' => $_SESSION['id_funcionario']
+        ':archivo' => $nombreArchivo
     ]);
 
     echo json_encode(['exito' => true, 'id_documento' => $pdo->lastInsertId()]);

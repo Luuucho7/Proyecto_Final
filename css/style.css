@@ -42,34 +42,9 @@ header {
     z-index: 1000;
 }
 
-.logo {
-    width: 10px;
-    margin-left: 50px;
-}
-
 .usuario i {
     font-size: 32px;
     color: #777;
-}
-
-.translate-btn {
-    position: fixed;
-    left: 1rem;
-    bottom: 1rem;
-    width: 52px;
-    height: 52px;
-    border: none;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-dark), #0a4ad6);
-    color: #ffffff;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 10px 24px rgba(11, 95, 255, 0.24);
-    z-index: 1100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
 }
 
 .contenedor {
@@ -185,7 +160,6 @@ header {
     color: #3c4043;
 }
 
-.username_field,
 .campo-usuario,
 .password_field {
     width: 100%;
@@ -227,23 +201,6 @@ header {
     display: flex;
     justify-content: center;
     margin-top: 16px;
-}
-
-.traducir-login-register {
-    background-color: #4285f4;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 17px;
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
 }
 
 .texto_arriba {
@@ -302,26 +259,6 @@ header {
     text-align:left;
 }
 
-.logout {
-    padding: 20px 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.logout a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: #1f2937;
-    text-decoration: none;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.logout a:hover {
-    background: #f3f4f6;
-    color: #0b5fff;
-}
-
 @media (max-width: 700px) {
     .card {
         width: 90%;
@@ -361,7 +298,6 @@ header {
     height: 22px;
     object-fit: contain;
 }
-
 
 /* Tarjeta ENCUESTAS de la página principal: la imagen tiene fondo blanco, así que la tarjeta es blanca y el título va abajo en azul */
 .encuestas {

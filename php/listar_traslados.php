@@ -2,7 +2,6 @@
 // listar_traslados.php
 // Devuelve TODOS los traslados con su información, en formato JSON.
 // Lo usa traslados_lista.html para dibujar la tabla.
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede ver los traslados
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

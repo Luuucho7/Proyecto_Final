@@ -2,7 +2,6 @@
 // modificar_traslado.php
 // Cambia los datos de un traslado que ya existe: ambulancia, chofer, copiloto, fechas y paciente.
 // (El elemento que se traslada se modifica desde la sección "Elementos registrados" de Traslado.html)
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede modificar traslados
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

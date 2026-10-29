@@ -3,7 +3,6 @@
 // Busca en la tabla organo los registros cuyo "persona" CONTIENE lo escrito (no hace falta escribirlo entero).
 // Devuelve TODOS los que coinciden, cada uno con el número de su traslado,
 // porque cada traslado guarda su propio elemento y puede haber varios con el mismo nombre.
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 $persona = trim($_POST['persona'] ?? '');

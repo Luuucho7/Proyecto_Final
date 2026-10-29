@@ -1,5 +1,4 @@
 <?php
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede crear traslados
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

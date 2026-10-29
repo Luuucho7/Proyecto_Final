@@ -3,7 +3,6 @@
 // Borra un paciente, pero solo si no deja datos "colgados":
 //  - si tiene una cuenta (se registró en la página), no se borra: se marca como inactivo
 //  - si tiene traslados registrados, tampoco: el historial se tiene que mantener
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

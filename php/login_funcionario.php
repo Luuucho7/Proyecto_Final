@@ -3,8 +3,6 @@
 // Es igual que login.php, pero además revisa que la persona sea FUNCIONARIO
 // (que su cédula esté en la tabla Funcionario). Si lo es, la manda al panel admin.
 
-session_start();
-
 header('Content-Type: application/json; charset=utf-8');
 
 require_once 'conexion.php';
@@ -31,18 +29,13 @@ try {
         $condicion = "Persona.correo = :username";
     }
 
-    $stmt = $pdo->prepare("SELECT Persona.*, Funcionario.id_funcionario FROM Persona
+    $stmt = $pdo->prepare("SELECT Persona.* FROM Persona
                            JOIN Funcionario ON Funcionario.cedula = Persona.cedula
                            WHERE " . $condicion);
     $stmt->execute([':username' => $username]);
     $funcionario = $stmt->fetch();
 
     if ($funcionario && password_verify($password, $funcionario['password_hash'])) {
-
-        // id_funcionario es la clave que usa php/sesion.php para saber que hay un funcionario logueado
-        $_SESSION['id_funcionario'] = $funcionario['id_funcionario'];
-        $_SESSION['usuario_cedula'] = $funcionario['cedula'];
-        $_SESSION['usuario_correo'] = $funcionario['correo'];
 
         echo json_encode([
             'success'  => true,

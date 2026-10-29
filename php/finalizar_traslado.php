@@ -2,7 +2,6 @@
 // finalizar_traslado.php
 // Marca un traslado como "finalizado" y deja su ambulancia libre otra vez.
 // Lo usa el botón "Finalizar" de traslados_lista.html
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede finalizar traslados
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

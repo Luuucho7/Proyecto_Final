@@ -2,7 +2,6 @@
 // modificar_ambulancia.php
 // Cambia el estado de una ambulancia. La matrícula no se puede cambiar:
 // es su identificador y los traslados ya registrados la usan.
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 $matricula = trim($_POST['id'] ?? '');

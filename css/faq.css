@@ -1,29 +1,4 @@
 
-.boton-traducir {
-  position: fixed;
-  left: 1rem;
-  bottom: 1rem;
-  width: 52px;
-  height: 52px;
-  border: none;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #0b5fff, #0a4ad6);
-  color: #ffffff;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(11, 95, 255, 0.24);
-  z-index: 1100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
-.boton-traducir:hover,
-.boton-traducir:focus-visible {
-  transform: scale(1.05);
-  outline: none;
-}
 
 .pagina-faq {
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

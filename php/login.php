@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 header('Content-Type: application/json; charset=utf-8');
 
 require_once 'conexion.php';
@@ -38,9 +36,6 @@ try {
     $usuario = $stmt->fetch();
 
     if ($usuario && password_verify($password, $usuario['password_hash'])) {
-
-        $_SESSION['usuario_cedula'] = $usuario['cedula'];
-        $_SESSION['usuario_correo'] = $usuario['correo'];
 
         echo json_encode([
             'success'  => true,

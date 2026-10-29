@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'conexion.php';
 
 // js/idioma.js guarda el idioma elegido en una cookie: así PHP también sabe si hay que responder en inglés
@@ -76,9 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $pdo->commit();
-
-        $_SESSION['usuario_cedula'] = $cedula;
-        $_SESSION['usuario_correo'] = $correo;
 
         echo "<script>
                 alert('" . ($ingles ? 'Registration successful!' : '¡Registro exitoso!') . "');

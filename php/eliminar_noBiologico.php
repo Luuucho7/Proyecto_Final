@@ -3,7 +3,6 @@
 // Borra un elemento de la tabla no_biologico JUNTO CON su traslado.
 // Cada traslado tiene un solo elemento: si se borrara solo el elemento, el traslado quedaría "huérfano"
 // (en la lista aparecería sin elemento). Si el traslado estaba en curso, su ambulancia vuelve a quedar libre.
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

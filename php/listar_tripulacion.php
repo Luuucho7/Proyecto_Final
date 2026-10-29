@@ -2,7 +2,6 @@
 // listar_tripulacion.php
 // Devuelve todos los choferes y copilotos de la base en formato JSON.
 // Lo usan tripulacion.html (la tabla) y Traslado.html (las listas de Chofer y Copiloto).
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

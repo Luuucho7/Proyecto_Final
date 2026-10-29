@@ -3,7 +3,6 @@
 // Devuelve los documentos de la tabla Documentacion en formato JSON.
 // Lo usa Documentacion.html para dibujar la tabla "Documentos Cargados".
 // Así la tabla siempre coincide con lo que abre el QR (php/ver_documento.php?id=...)
-require_once 'verificar_sesion.php';   // solo un funcionario logueado puede usar este archivo
 require_once 'conexion.php';
 
 header('Content-Type: application/json');
