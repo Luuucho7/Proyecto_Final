@@ -1,15 +1,9 @@
 <?php
-// ver_documento.php
-// Página PÚBLICA: es la que abre el paciente cuando escanea el QR con el celular.
-// Por eso NO pide iniciar sesión y NO tiene el menú del funcionario.
-// Se usa así: ver_documento.php?id=3
 
 require_once 'conexion.php';
 
-// 1. Leer el id que viene en la URL
 $id = $_GET['id'] ?? '';
 
-// 2. Buscar el documento en la base de datos
 $documento = false;
 
 if ($id !== '') {
@@ -18,7 +12,6 @@ if ($id !== '') {
     $documento = $stmt->fetch();
 }
 
-// 3. Revisar que el PDF exista de verdad en la carpeta documentos/
 $hayArchivo = false;
 
 if ($documento) {
@@ -29,7 +22,6 @@ if ($documento) {
     }
 }
 
-// 4. Preparar los textos para mostrarlos sin riesgo (htmlspecialchars evita que se ejecute HTML)
 $nombre = '';
 $tipo = '';
 $fecha = '';

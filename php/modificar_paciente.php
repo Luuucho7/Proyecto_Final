@@ -15,7 +15,6 @@ if ($id === '' || $nombre === '' || $cedula === '') {
 }
 
 try {
-    // El paciente tiene que existir (por si lo eliminaron mientras se estaba editando)
     $verificar = $pdo->prepare("SELECT id_paciente FROM Paciente WHERE id_paciente = :id");
     $verificar->execute([':id' => $id]);
 

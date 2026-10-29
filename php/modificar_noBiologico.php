@@ -12,7 +12,6 @@ if ($id === '' || $clasificacion === '' || $pendiente === '') {
     exit();
 }
 
-// Igual que al crear el traslado: solo se acepta Si o No
 if ($pendiente !== 'Si' && $pendiente !== 'No') {
     echo json_encode(['exito' => false, 'mensaje' => 'En "Pendiente" elegí Sí o No.']);
     exit();

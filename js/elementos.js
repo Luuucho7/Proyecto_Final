@@ -1,12 +1,4 @@
-// elementos.js
-// Sección "Elementos registrados" de Traslado.html: buscar, modificar y eliminar
-// los elementos de los traslados (biológico, no biológico y órgano).
-//
-// Cada traslado guarda su propio elemento, así que puede haber varios con el mismo nombre.
-// Por eso la búsqueda trae TODOS los que coinciden: si hay uno solo se carga directo,
-// y si hay varios aparece una lista para elegir cuál (cada uno dice a qué traslado pertenece).
 
-// Texto que dice a qué traslado pertenece un elemento
 function textoTraslado(dato) {
   if (dato.id_traslado) {
     return t('Traslado Nº') + ' ' + dato.id_traslado;
@@ -14,8 +6,6 @@ function textoTraslado(dato) {
   return t('Sin traslado');
 }
 
-// Manda los datos a un archivo PHP y devuelve su respuesta.
-// Uso: const resultado = await enviar('../php/buscar_organo.php', { persona: 'Juan' });
 async function enviar(url, campos) {
   const datos = new FormData();
 
@@ -30,9 +20,6 @@ async function enviar(url, campos) {
   return respuesta.json();
 }
 
-// Cuando una búsqueda encuentra varios, arma la lista para elegir cuál.
-// "campo" es el dato que se muestra de cada uno (por ejemplo 'nombre').
-// El "value" de cada opción es su posición en la lista
 function mostrarVarios(lista, encontrados, campo) {
   lista.innerHTML = '';
   lista.add(new Option(t('Hay varios resultados: elegí uno'), ''));
@@ -46,7 +33,6 @@ function mostrarVarios(lista, encontrados, campo) {
 }
 
 
-// ==================== BIOLÓGICO ====================
 
 const id_biologico = document.getElementById('id_biologico');
 const nombre = document.getElementById('nombre');
@@ -57,17 +43,14 @@ const buscar = document.getElementById('buscar');
 const buscar_boton = document.getElementById('buscar_boton');
 const resultados_b = document.getElementById('resultados_b');
 
-// Acá quedan los resultados de la última búsqueda
 let encontrados_b = [];
 
-// Pone los datos de un insumo en el formulario de modificar
 function cargarBiologico(dato) {
   id_biologico.value = dato.id;
   nombre.value = dato.nombre;
   estado.value = dato.estado;
 }
 
-// Deja todo como al principio (sin insumo elegido)
 function limpiarBiologico() {
   formBiologico.reset();
   id_biologico.value = '';
@@ -96,7 +79,6 @@ buscar_boton.addEventListener('click', async (e) => {
   }
 });
 
-// Al elegir uno de la lista, se carga en el formulario
 resultados_b.addEventListener('change', () => {
   if (resultados_b.value !== '') {
     cargarBiologico(encontrados_b[Number(resultados_b.value)]);
@@ -137,7 +119,6 @@ del_b.addEventListener('click', async (e) => {
     return;
   }
 
-  // El elemento y su traslado se borran juntos (si no, el traslado quedaría sin elemento)
   if (!confirm(t('¿Seguro que querés eliminar este insumo? También se va a eliminar su traslado.'))) {
     return;
   }
@@ -147,7 +128,6 @@ del_b.addEventListener('click', async (e) => {
   if (resultado.exito) {
     alert(t('Insumo eliminado correctamente'));
     limpiarBiologico();
-    // Si el traslado estaba en curso, su ambulancia quedó libre: se actualiza la lista de ambulancias
     cargarAmbulancias();
   } else {
     alert(t(resultado.mensaje || 'Error al eliminar el insumo'));
@@ -155,7 +135,6 @@ del_b.addEventListener('click', async (e) => {
 });
 
 
-// ==================== NO BIOLÓGICO ====================
 
 const id_no_biologico = document.getElementById('id_no_biologico');
 const clasificacion = document.getElementById('clasificacion');
@@ -258,7 +237,6 @@ del_no.addEventListener('click', async (e) => {
 });
 
 
-// ==================== ÓRGANO ====================
 
 const id_organo = document.getElementById('id_organo');
 const persona = document.getElementById('persona');

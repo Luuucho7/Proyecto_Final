@@ -278,7 +278,6 @@ body {
 }
 
 
-/* Estado "En servicio" de las ambulancias (amarillo) */
 .estado-servicio {
     background-color: #fef3c7;
     color: #b45309;

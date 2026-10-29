@@ -9,8 +9,6 @@ const nombresTipo = {
     organo: 'Órgano'
 };
 
-// Al elegir un tipo, se muestran solo los campos de ese tipo.
-// Los fieldset ocultos quedan "disabled", así no se validan ni se envían.
 document.querySelectorAll('input[name="tipo"]').forEach(radio => {
     radio.addEventListener('change', () => {
 
@@ -32,7 +30,6 @@ formTraslado.addEventListener('submit', async (e) => {
 
     const datos = new FormData(formTraslado);
 
-    // Se desactiva el botón mientras se espera la respuesta: así un doble clic no crea dos traslados
     const botonCrear = formTraslado.querySelector('button[type="submit"]');
     botonCrear.disabled = true;
 
@@ -48,7 +45,6 @@ formTraslado.addEventListener('submit', async (e) => {
             mostrarDetalle(res.id_traslado, datos);
             formTraslado.reset();
             reiniciarSelector();
-            // La ambulancia que se usó ahora está "En servicio": se vuelve a pedir la lista
             cargarAmbulancias();
             cargarPacientesTraslado();
         } else {
@@ -62,7 +58,6 @@ formTraslado.addEventListener('submit', async (e) => {
     botonCrear.disabled = false;
 });
 
-// Completa la tabla "Detalle de la solicitud" con el traslado recién creado
 function mostrarDetalle(id, datos) {
     const tipo = datos.get('tipo');
     const elemento = {
@@ -79,11 +74,9 @@ function mostrarDetalle(id, datos) {
     document.getElementById('d_destino').textContent = datos.get('destino') || '—';
     document.getElementById('d_estado').textContent = 'En camino';
 
-    // Los datos se escriben en español: los traducimos si la página está en inglés
     traducirPagina();
 }
 
-// ---------- Lista de ambulancias (viene de la base de datos) ----------
 
 const listaAmbulancias = document.getElementById('ambulancia');
 
@@ -93,7 +86,6 @@ const textoEstadoAmbulancia = {
     en_servicio: 'En servicio'
 };
 
-// Escribe el texto de cada opción, por ejemplo "SBA 3355 - Libre", en el idioma elegido
 function ponerTextosAmbulancias() {
     listaAmbulancias.querySelectorAll('option[data-estado]').forEach(opcion => {
         const estado = opcion.dataset.estado;
@@ -109,14 +101,12 @@ async function cargarAmbulancias() {
         return;
     }
 
-    // Se borran las opciones anteriores, menos la primera ("Seleccionar ambulancia")
     listaAmbulancias.length = 1;
 
     resultado.ambulancias.forEach(ambulancia => {
         const opcion = new Option('', ambulancia.matricula);
         opcion.dataset.estado = ambulancia.estado;
 
-        // Se ven todas, pero solo se pueden elegir las que están libres
         opcion.disabled = (ambulancia.estado !== 'libre');
 
         listaAmbulancias.add(opcion);
@@ -125,15 +115,11 @@ async function cargarAmbulancias() {
     ponerTextosAmbulancias();
 }
 
-// Cuando se cambia el idioma, se vuelven a escribir los textos de las opciones
 document.addEventListener('cambioIdioma', ponerTextosAmbulancias);
 
 cargarAmbulancias();
 
 
-// ---------- Lista de pacientes (viene de la base de datos) ----------
-// Antes había que escribir el ID del paciente de memoria. Ahora se elige de una lista por nombre y cédula.
-// Solo aparecen los pacientes activos.
 
 const listaPacientes = document.getElementById('id_paciente');
 
@@ -145,7 +131,6 @@ async function cargarPacientesTraslado() {
         return;
     }
 
-    // Se borran las opciones anteriores, menos la primera ("Sin paciente")
     listaPacientes.length = 1;
 
     resultado.pacientes.forEach(paciente => {
@@ -159,14 +144,12 @@ async function cargarPacientesTraslado() {
 cargarPacientesTraslado();
 
 
-// ---------- Chofer y Copiloto: lista desplegable con buscador (el código está en js/buscador_nombres.js) ----------
 
 activarBuscador('chofer', 'chofer');
 activarBuscador('copiloto', 'copiloto');
 
 cargarPersonas();
 
-// Vuelve el formulario al estado inicial: sin tipo elegido y todo oculto
 function reiniciarSelector() {
     document.querySelectorAll('.datos-elemento, #datos_traslado').forEach(fieldset => {
         fieldset.hidden = true;

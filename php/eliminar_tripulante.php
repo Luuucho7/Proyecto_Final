@@ -1,7 +1,4 @@
 <?php
-// eliminar_tripulante.php
-// Borra un chofer o copiloto de la base.
-// Los traslados que ya se hicieron no se tocan: guardan el nombre escrito.
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');

@@ -1,6 +1,4 @@
 <?php
-// listar_ambulancias.php
-// Devuelve todas las ambulancias de la base en formato JSON (para dibujar la tabla de ambulancias.html)
 require_once 'conexion.php';
 
 header('Content-Type: application/json');

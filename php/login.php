@@ -25,8 +25,6 @@ if ($username === '' || $password === '') {
 
 try {
 
-    // Si lo escrito son solo números, se busca por cédula; si no, por correo.
-    // (Antes se buscaba "cédula O correo" a la vez, y MySQL convertía "57730555abc" en 57730555: entraba igual)
     if (ctype_digit($username)) {
         $stmt = $pdo->prepare("SELECT * FROM Persona WHERE cedula = :username");
     } else {

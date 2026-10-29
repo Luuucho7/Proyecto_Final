@@ -1,33 +1,24 @@
-/* =========================================================
-   traslado.css
-   Estilos SOLO para la página Traslado.html (traslados + elementos)
-   Se carga después de style.css y banner.css,
-   por eso lo que está acá "pisa" a lo de esos archivos.
-   ========================================================= */
  
  
-/* ---------- Colores que se repiten en toda la página ---------- */
 :root {
-    --azul: #0b5fff;          /* el mismo azul del banner */
-    --azul-oscuro: #0846c2;   /* para cuando pasás el mouse */
-    --azul-claro: #eaf1ff;    /* fondos suaves */
-    --gris-texto: #475569;    /* textos secundarios */
-    --borde: #dbe4f0;         /* bordes de cajas e inputs */
-    --rojo: #d62839;          /* botón eliminar */
+    --azul: #0b5fff;
+    --azul-oscuro: #0846c2;
+    --azul-claro: #eaf1ff;
+    --gris-texto: #475569;
+    --borde: #dbe4f0;
+    --rojo: #d62839;
     --rojo-oscuro: #a81e2c;
 }
  
  
-/* ---------- Título de la página ---------- */
 .titulo-pagina {
     max-width: 1200px;
-    margin: 7rem auto 0;      /* 7rem para que no quede abajo del banner fijo */
+    margin: 7rem auto 0;
     padding: 0 1.5rem;
     font-size: 1.8rem;
 }
  
  
-/* ---------- Tarjetas de arriba (Traslados, En curso, ...) ---------- */
 .texto_arriba {
     max-width: 1200px;
     margin: 1.5rem auto;
@@ -36,7 +27,7 @@
  
 .tarjeta {
     border: 1px solid var(--borde);
-    border-top: 4px solid var(--azul);   /* rayita azul arriba */
+    border-top: 4px solid var(--azul);
     font-weight: bold;
     font-size: 1.05rem;
     color: var(--azul);
@@ -44,7 +35,6 @@
 }
  
  
-/* ---------- Contenedor de las dos columnas ---------- */
 .cont {
     max-width: 1200px;
     min-height: auto;
@@ -72,13 +62,12 @@
 .principal {
     padding: 0;
     display: grid;
-    grid-template-columns: 2fr 1fr;      /* izquierda el doble de ancha */
+    grid-template-columns: 2fr 1fr;
     gap: 24px;
-    align-items: start;                  /* cada caja con su propia altura */
+    align-items: start;
 }
  
  
-/* ---------- Columna izquierda: formulario ---------- */
 .tabla {
     border: 1px solid var(--borde);
     padding: 28px;
@@ -91,7 +80,6 @@
     border-bottom: 1px solid var(--borde);
 }
  
-/* cada label ocupa su propio renglón, arriba de su campo */
 .tabla label {
     display: block;
     margin-top: 16px;
@@ -100,7 +88,6 @@
     font-size: 0.95rem;
 }
  
-/* inputs y select con el mismo aspecto */
 .tabla input,
 .tabla select {
     width: 100%;
@@ -112,7 +99,6 @@
     background-color: white;
 }
  
-/* cuando hacés clic en un campo, se marca en azul */
 .tabla input:focus,
 .tabla select:focus {
     outline: none;
@@ -120,7 +106,6 @@
     box-shadow: 0 0 0 3px var(--azul-claro);
 }
  
-/* botón "Crear traslado" */
 .tabla button {
     margin-top: 24px;
     padding: 12px 24px;
@@ -137,7 +122,6 @@
     background-color: var(--azul-oscuro);
 }
  
-/* mensaje que aparece después de crear (o fallar) */
 #resultado p {
     margin-top: 14px;
     padding: 10px 14px;
@@ -147,7 +131,6 @@
 }
  
  
-/* ---------- Columna derecha: detalle de la solicitud ---------- */
 .detalle {
     border: 1px solid var(--borde);
     padding: 28px;
@@ -158,7 +141,7 @@
 .detalle table {
     width: 100%;
     margin-top: 12px;
-    border-collapse: collapse;           /* sin espacios entre filas */
+    border-collapse: collapse;
     border-spacing: 0;
 }
  
@@ -168,11 +151,10 @@
     font-weight: normal;
     color: var(--gris-texto);
     text-align: left;
-    border-bottom: 1px solid var(--borde);   /* línea entre cada dato */
+    border-bottom: 1px solid var(--borde);
 }
  
  
-/* el dato, a la derecha de cada título */
 .detalle td {
     padding: 12px 0;
     font-size: 0.95rem;
@@ -182,14 +164,12 @@
 
 
 
-/* ---------- Selector de tipo (Biológico / No biológico / Órgano) ---------- */
 .selector-tipo {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 }
 
-/* el radio queda escondido: se hace clic sobre toda la opción */
 .tabla .opcion-tipo input {
     position: absolute;
     opacity: 0;
@@ -210,7 +190,6 @@
     background: var(--azul-claro);
 }
 
-/* la opción elegida queda azul llena */
 .tabla .opcion-tipo:has(input:checked) {
     background: var(--azul);
     color: white;
@@ -220,7 +199,6 @@
     box-shadow: 0 0 0 3px var(--azul-claro);
 }
 
-/* bloques de campos: datos del elemento y datos del traslado */
 .tabla fieldset {
     margin-top: 24px;
     padding: 4px 20px 20px;
@@ -244,7 +222,6 @@
 }
 
 
-/* ---------- Elementos registrados (buscar / modificar / eliminar) ---------- */
 .subtitulo-pagina {
     max-width: 1200px;
     margin: 0 auto;
@@ -257,7 +234,7 @@
     margin: 1.5rem auto 3rem;
     padding: 0 1.5rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;   /* 3 columnas iguales */
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
 }
 
@@ -278,7 +255,6 @@
     color: #1f2937;
 }
 
-/* buscador arriba, datos del elemento abajo */
 .caja-elemento form {
     display: flex;
     flex-direction: column;
@@ -316,7 +292,6 @@
     cursor: pointer;
 }
 
-/* "Modificar": blanco con borde azul */
 .boton_organos {
     background: white;
     color: var(--azul);
@@ -327,7 +302,6 @@
     background: var(--azul-claro);
 }
 
-/* "Buscar": azul lleno */
 input[type="submit"].boton_organos {
     background: var(--azul);
     color: white;
@@ -338,7 +312,6 @@ input[type="submit"].boton_organos:hover {
     background: var(--azul-oscuro);
 }
 
-/* "Eliminar": rojo */
 .boton-eliminar {
     background: var(--rojo);
     color: white;
@@ -350,10 +323,8 @@ input[type="submit"].boton_organos:hover {
 }
 
 
-/* ---------- Pantallas chicas (celular / tablet) ---------- */
 @media (max-width: 900px) {
  
-    /* las dos columnas pasan a estar una abajo de la otra */
     .principal,
     .sectores {
         grid-template-columns: 1fr;
@@ -365,7 +336,6 @@ input[type="submit"].boton_organos:hover {
 }
 
 
-/* ---------- Ruta entre origen y destino (botón y datos debajo del mapa) ---------- */
 .boton-ruta {
     margin-top: 0.75rem;
     padding: 0.6rem 1rem;

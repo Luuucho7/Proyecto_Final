@@ -1,6 +1,4 @@
 <?php
-// modificar_tripulante.php
-// Cambia los datos de un chofer o copiloto que ya existe
 require_once 'conexion.php';
 
 $id = trim($_POST['id'] ?? '');
@@ -26,7 +24,6 @@ if (!in_array($rol, ['chofer', 'copiloto'], true)) {
 }
 
 try {
-    // La persona tiene que existir (por si la eliminaron mientras se estaba editando)
     $existe = $pdo->prepare("SELECT id_tripulante FROM Tripulante WHERE id_tripulante = :id");
     $existe->execute([':id' => $id]);
 
@@ -35,7 +32,6 @@ try {
         exit();
     }
 
-    // Que no quede repetido con OTRA persona (la misma persona sí puede quedar igual)
     $verificar = $pdo->prepare("SELECT id_tripulante FROM Tripulante WHERE nombre = :nombre AND rol = :rol AND id_tripulante <> :id");
     $verificar->execute([':nombre' => $nombre, ':rol' => $rol, ':id' => $id]);
 

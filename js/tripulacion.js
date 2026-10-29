@@ -1,6 +1,3 @@
-// tripulacion.js
-// Lo mismo que pacientes.js, pero para choferes y copilotos:
-// muestra la tabla, busca por nombre, y permite guardar, modificar y eliminar.
 
 document.addEventListener('DOMContentLoaded', () => {
     const buscadorInput = document.querySelector('.buscador input');
@@ -14,13 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonGuardar = document.getElementById('boton-guardar-tripulante');
     const botonCancelar = document.getElementById('boton-cancelar-edicion');
 
-    // Cómo se ve cada rol en la tabla: el texto y el color de la etiqueta
     const roles = {
         chofer: { texto: 'Chofer', clase: 'estado-activo' },
         copiloto: { texto: 'Copiloto', clase: 'estado-servicio' }
     };
 
-    // Vuelve el formulario a "Guardar datos" (sin ninguna persona en edición)
     function terminarEdicion() {
         formulario.reset();
         id_tripulante.value = '';
@@ -35,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tablaBody.innerHTML = '';
 
-        // Si el servidor respondió con un error (por ejemplo, MySQL apagado), se muestra ese mensaje
         if (!resultado.exito) {
             tablaBody.innerHTML = '<tr><td colspan="4" class="sin-pacientes"></td></tr>';
             tablaBody.querySelector('td').textContent = t(resultado.mensaje);
@@ -89,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultado = await respuesta.json();
 
                 if (resultado.exito) {
-                    // Si justo se estaba editando esta persona, se cierra la edición
                     if (id_tripulante.value === String(tripulante.id_tripulante)) {
                         terminarEdicion();
                     }
@@ -102,13 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tablaBody.appendChild(fila);
         });
 
-        // Las filas se dibujan en español: las traducimos si la página está en inglés
         traducirPagina();
     }
 
     cargarTripulantes();
 
-    // Buscador: oculta las filas cuyo nombre no contiene lo escrito
     if (buscadorInput && tablaBody) {
         buscadorInput.addEventListener('input', (e) => {
             const busqueda = e.target.value.toLowerCase().trim();
@@ -122,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Guardar (si es nuevo) o modificar (si se estaba editando)
     if (formulario) {
         formulario.addEventListener('submit', async (e) => {
             e.preventDefault();

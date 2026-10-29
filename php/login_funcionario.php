@@ -1,7 +1,4 @@
 <?php
-// login_funcionario.php
-// Es igual que login.php, pero además revisa que la persona sea FUNCIONARIO
-// (que su cédula esté en la tabla Funcionario). Si lo es, la manda al panel admin.
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -20,9 +17,6 @@ if ($username === '' || $password === '') {
 
 try {
 
-    // JOIN une las dos tablas: solo aparece la persona si su cédula también está en Funcionario
-    // Si lo escrito son solo números, se busca por cédula; si no, por correo.
-    // (Antes se buscaba "cédula O correo" a la vez, y MySQL convertía "57730555abc" en 57730555: entraba igual)
     if (ctype_digit($username)) {
         $condicion = "Persona.cedula = :username";
     } else {

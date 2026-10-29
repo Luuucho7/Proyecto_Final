@@ -258,7 +258,7 @@ td {
 
 #qrImagen {
 
-    display: none;   /* se muestra recién cuando se genera el QR */
+    display: none;
 
     width: 180px;
 

@@ -299,7 +299,6 @@ header {
     object-fit: contain;
 }
 
-/* Tarjeta ENCUESTAS de la página principal: la imagen tiene fondo blanco, así que la tarjeta es blanca y el título va abajo en azul */
 .encuestas {
     background: #ffffff url("img/encuesta.jpg") no-repeat center 40%;
     background-size: 95%;

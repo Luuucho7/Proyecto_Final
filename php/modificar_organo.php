@@ -12,7 +12,6 @@ if ($id === '' || $persona === '' || $en_curso === '') {
     exit();
 }
 
-// Igual que al crear el traslado: solo se acepta Si o No
 if ($en_curso !== 'Si' && $en_curso !== 'No') {
     echo json_encode(['exito' => false, 'mensaje' => 'En "En curso" elegí Sí o No.']);
     exit();

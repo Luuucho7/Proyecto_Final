@@ -1,6 +1,4 @@
 <?php
-// guardar_tripulante.php
-// Registra un chofer o un copiloto nuevo en la tabla Tripulante
 require_once 'conexion.php';
 
 $nombre = trim($_POST['nombre'] ?? '');
@@ -14,20 +12,17 @@ if ($nombre === '') {
     exit();
 }
 
-// La columna "nombre" acepta como máximo 100 letras
 if (mb_strlen($nombre) > 100) {
     echo json_encode(['exito' => false, 'mensaje' => 'El nombre es demasiado largo (máximo 100 letras).']);
     exit();
 }
 
-// Solo existen estos dos roles
 if (!in_array($rol, ['chofer', 'copiloto'], true)) {
     echo json_encode(['exito' => false, 'mensaje' => 'Elegí si es chofer o copiloto.']);
     exit();
 }
 
 try {
-    // Para no repetir: no puede haber dos choferes (o dos copilotos) con el mismo nombre
     $verificar = $pdo->prepare("SELECT id_tripulante FROM Tripulante WHERE nombre = :nombre AND rol = :rol");
     $verificar->execute([':nombre' => $nombre, ':rol' => $rol]);
 

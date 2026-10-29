@@ -1,8 +1,4 @@
 <?php
-// buscar_organo.php
-// Busca en la tabla organo los registros cuyo "persona" CONTIENE lo escrito (no hace falta escribirlo entero).
-// Devuelve TODOS los que coinciden, cada uno con el número de su traslado,
-// porque cada traslado guarda su propio elemento y puede haber varios con el mismo nombre.
 require_once 'conexion.php';
 
 $persona = trim($_POST['persona'] ?? '');
@@ -15,8 +11,6 @@ if ($persona === '') {
 }
 
 try {
-    // LIKE con % adelante y atrás = "que contenga lo escrito"
-    // LEFT JOIN con Traslado = traer también el número del traslado al que pertenece
     $stmt = $pdo->prepare(
         "SELECT e.id, e.persona, e.en_curso, t.id_traslado
          FROM organo e

@@ -1,8 +1,4 @@
 <?php
-// buscar_Ingresar.php
-// Busca en la tabla biologico los registros cuyo "nombre" CONTIENE lo escrito (no hace falta escribirlo entero).
-// Devuelve TODOS los que coinciden, cada uno con el número de su traslado,
-// porque cada traslado guarda su propio elemento y puede haber varios con el mismo nombre.
 require_once 'conexion.php';
 
 $nombre = trim($_POST['nombre'] ?? '');
@@ -15,8 +11,6 @@ if ($nombre === '') {
 }
 
 try {
-    // LIKE con % adelante y atrás = "que contenga lo escrito"
-    // LEFT JOIN con Traslado = traer también el número del traslado al que pertenece
     $stmt = $pdo->prepare(
         "SELECT e.id, e.nombre, e.estado, t.id_traslado
          FROM biologico e

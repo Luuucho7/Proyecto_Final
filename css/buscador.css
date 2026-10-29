@@ -1,19 +1,14 @@
-/* buscador.css
-   Lista desplegable con buscador (Chofer y Copiloto).
-   La usan Traslado.html y traslados_lista.html. Se carga DESPUÉS de los otros estilos de cada página. */
 
 .buscador-lista {
     position: relative;
 }
 
 .buscador-lista input {
-    /* flechita hacia abajo, como la de un select */
     background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23475569' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 0.9rem center;
     padding-right: 2.5rem;
     cursor: pointer;
 }
 
-/* la lista de nombres que se abre debajo del campo */
 .opciones-lista {
     position: absolute;
     top: 100%;
@@ -49,7 +44,6 @@
     background: transparent;
 }
 
-/* Variante sin la flechita (para los campos donde se busca escribiendo, como las direcciones) */
 .buscador-lista.sin-flecha input {
     background-image: none;
     padding-right: 0.75rem;

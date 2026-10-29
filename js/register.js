@@ -1,7 +1,6 @@
 const form = document.getElementById('register-block');
 const feedback = document.getElementById('feedback');
 
-// Muestra un error debajo del formulario (en el idioma elegido)
 function mostrarError(texto) {
   feedback.textContent = t(texto);
   feedback.className = "error";

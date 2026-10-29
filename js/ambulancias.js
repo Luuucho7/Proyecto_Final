@@ -1,6 +1,3 @@
-// ambulancias.js
-// Lo mismo que pacientes.js, pero para ambulancias:
-// muestra la tabla, busca, y permite guardar, modificar y eliminar.
 
 document.addEventListener('DOMContentLoaded', () => {
     const buscadorInput = document.querySelector('.buscador input');
@@ -13,14 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonGuardar = document.getElementById('boton-guardar-ambulancia');
     const botonCancelar = document.getElementById('boton-cancelar-edicion');
 
-    // Cómo se ve cada estado en la tabla: el texto y el color de la etiqueta
     const estados = {
         libre: { texto: 'Libre', clase: 'estado-activo' },
         ocupada: { texto: 'Ocupada', clase: 'estado-inactivo' },
         en_servicio: { texto: 'En servicio', clase: 'estado-servicio' }
     };
 
-    // Vuelve el formulario a "Guardar Ambulancia" (sin ninguna ambulancia en edición)
     function terminarEdicion() {
         formulario.reset();
         id_ambulancia.value = '';
@@ -36,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tablaBody.innerHTML = '';
 
-        // Si el servidor respondió con un error (por ejemplo, MySQL apagado), se muestra ese mensaje
         if (!resultado.exito) {
             tablaBody.innerHTML = '<tr><td colspan="3" class="sin-pacientes"></td></tr>';
             tablaBody.querySelector('td').textContent = t(resultado.mensaje);
@@ -67,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 matricula.value = ambulancia.matricula;
                 estado.value = ambulancia.estado;
 
-                // La matrícula es el identificador: se puede ver pero no cambiar
                 matricula.readOnly = true;
                 botonGuardar.textContent = 'Modificar Ambulancia';
                 botonCancelar.style.display = 'inline-block';
@@ -90,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultado = await respuesta.json();
 
                 if (resultado.exito) {
-                    // Si justo se estaba editando esta ambulancia, se cierra la edición
                     if (id_ambulancia.value === ambulancia.matricula) {
                         terminarEdicion();
                     }
@@ -103,13 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tablaBody.appendChild(fila);
         });
 
-        // Las filas se dibujan en español: las traducimos si la página está en inglés
         traducirPagina();
     }
 
     cargarAmbulancias();
 
-    // Buscador: oculta las filas cuya matrícula no contiene lo escrito
     if (buscadorInput && tablaBody) {
         buscadorInput.addEventListener('input', (e) => {
             const busqueda = e.target.value.toLowerCase().trim();
@@ -123,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Guardar (si es nueva) o modificar (si se estaba editando)
     if (formulario) {
         formulario.addEventListener('submit', async (e) => {
             e.preventDefault();

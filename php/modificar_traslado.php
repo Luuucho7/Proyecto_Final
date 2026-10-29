@@ -1,7 +1,4 @@
 <?php
-// modificar_traslado.php
-// Cambia los datos de un traslado que ya existe: ambulancia, chofer, copiloto, fechas y paciente.
-// (El elemento que se traslada se modifica desde la sección "Elementos registrados" de Traslado.html)
 require_once 'conexion.php';
 
 header('Content-Type: application/json');
@@ -14,10 +11,8 @@ if ($id === '' || $matricula === '') {
     exit();
 }
 
-// opcional() y fecha() están en funciones_traslado.php
 require_once 'funciones_traslado.php';
 
-// ---------- Revisar las fechas ----------
 $salida = fecha($_POST['hora_salida'] ?? '');
 $llegada = fecha($_POST['hora_llegada'] ?? '');
 
@@ -36,7 +31,6 @@ if ($salida !== null && $llegada !== null) {
 try {
     $pdo->beginTransaction();
 
-    // 1. Buscar el traslado para saber qué ambulancia y qué paciente tenía hasta ahora
     $stmt = $pdo->prepare("SELECT matricula, id_paciente, estado FROM Traslado WHERE id_traslado = :id");
     $stmt->execute([':id' => $id]);
     $traslado = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -47,19 +41,14 @@ try {
         exit();
     }
 
-    // Un traslado finalizado ya no se modifica (su ambulancia ya se liberó)
     if ($traslado['estado'] === 'finalizado') {
         $pdo->rollBack();
         echo json_encode(['exito' => false, 'mensaje' => 'El traslado ya está finalizado y no se puede modificar.']);
         exit();
     }
 
-    // 2. Si cambió de ambulancia: la nueva tiene que estar libre y pasa a "En servicio".
-    //    La vieja vuelve a "Libre", pero SOLO si estaba "En servicio" por este traslado.
-    //    (Si alguien la había puesto "Ocupada", por ejemplo porque está en el taller, se respeta)
     if ($matricula !== $traslado['matricula']) {
 
-        // Ocupar la nueva solo si sigue libre (rowCount = cuántas filas cambió el UPDATE)
         $stmt = $pdo->prepare("UPDATE Ambulancia SET estado = 'en_servicio' WHERE matricula = :matricula AND estado = 'libre'");
         $stmt->execute([':matricula' => $matricula]);
 
@@ -73,8 +62,6 @@ try {
         $stmt->execute([':matricula' => $traslado['matricula']]);
     }
 
-    // 3. Si se eligió un paciente, tiene que existir.
-    //    Si es un paciente NUEVO para este traslado, además tiene que estar activo.
     $id_paciente = opcional($_POST['id_paciente'] ?? '');
 
     if ($id_paciente !== null) {
@@ -97,7 +84,6 @@ try {
         }
     }
 
-    // 4. Guardar los cambios
     $stmt = $pdo->prepare(
         "UPDATE Traslado
          SET hora_salida = :hora_salida, hora_llegada = :hora_llegada,

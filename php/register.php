@@ -1,7 +1,6 @@
 <?php
 require_once 'conexion.php';
 
-// js/idioma.js guarda el idioma elegido en una cookie: así PHP también sabe si hay que responder en inglés
 $ingles = (($_COOKIE['idioma'] ?? 'es') === 'en');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -59,8 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':fecha_nacimiento' => $fecha_nacimiento
         ]);
 
-        // Puede que la persona ya esté cargada como paciente (la cargó un funcionario antes de que se registrara).
-        // En ese caso no se crea otro paciente: se usa el que ya existe.
         $buscarPaciente = $pdo->prepare("SELECT id_paciente FROM Paciente WHERE cedula = :cedula");
         $buscarPaciente->execute([':cedula' => $cedula]);
         $pacienteExistente = $buscarPaciente->fetch();

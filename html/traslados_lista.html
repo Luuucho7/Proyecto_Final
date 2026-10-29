@@ -146,11 +146,9 @@
             </table>
         </div>
 
-        <!-- Formulario para modificar un traslado: está oculto y aparece al apretar "Editar" en una fila -->
         <div class="formulario-paciente" id="formulario" style="display:none;">
             <h2>Modificar traslado</h2>
             <form id="form-traslado-editar">
-                <!-- Guarda el id del traslado que se está modificando -->
                 <input type="hidden" id="id_traslado">
 
                 <label for="ambulancia">Ambulancia</label>
@@ -168,14 +166,12 @@
                     <ul class="opciones-lista" hidden></ul>
                 </div>
 
-                <!-- Fecha y hora, igual que al crear el traslado (antes solo hora y se perdía el día) -->
                 <label for="hora_salida">Hora de salida</label>
                 <input type="datetime-local" id="hora_salida" name="hora_salida">
 
                 <label for="hora_llegada">Hora de llegada</label>
                 <input type="datetime-local" id="hora_llegada" name="hora_llegada">
 
-                <!-- Lista de pacientes: la arma traslados_lista.js desde la base -->
                 <label for="id_paciente">Paciente (opcional)</label>
                 <select id="id_paciente" name="id_paciente"></select>
 

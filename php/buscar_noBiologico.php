@@ -1,8 +1,4 @@
 <?php
-// buscar_noBiologico.php
-// Busca en la tabla no_biologico los registros cuyo "clasificacion" CONTIENE lo escrito (no hace falta escribirlo entero).
-// Devuelve TODOS los que coinciden, cada uno con el número de su traslado,
-// porque cada traslado guarda su propio elemento y puede haber varios con el mismo nombre.
 require_once 'conexion.php';
 
 $clasificacion = trim($_POST['clasificacion'] ?? '');
@@ -15,8 +11,6 @@ if ($clasificacion === '') {
 }
 
 try {
-    // LIKE con % adelante y atrás = "que contenga lo escrito"
-    // LEFT JOIN con Traslado = traer también el número del traslado al que pertenece
     $stmt = $pdo->prepare(
         "SELECT e.id, e.clasificacion, e.pendiente, t.id_traslado
          FROM no_biologico e

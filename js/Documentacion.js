@@ -1,9 +1,5 @@
-// Documentacion.js
-// Sube documentos PDF, muestra la tabla de documentos (desde la base de datos) y genera el QR de cada uno.
 
-// ---------- Tabla "Documentos Cargados" ----------
 
-// La fecha viene de la base como "2026-10-28"; se muestra como "28/10/2026"
 function formatoFecha(fecha) {
     if (!fecha) {
         return "—";
@@ -13,7 +9,6 @@ function formatoFecha(fecha) {
     return partes[2] + "/" + partes[1] + "/" + partes[0];
 }
 
-// Agrega una fila con un solo mensaje (por ejemplo, cuando no hay documentos)
 function filaMensaje(tabla, mensaje) {
     tabla.innerHTML = "";
 
@@ -48,7 +43,6 @@ async function cargarDocumentos() {
         resultado.documentos.forEach(function (documento) {
             const fila = document.createElement("tr");
 
-            // Las celdas de texto se llenan con textContent: así se ve exactamente lo que está guardado
             const datos = [
                 documento.id_documento,
                 documento.tipo,
@@ -62,14 +56,12 @@ async function cargarDocumentos() {
                 fila.appendChild(celda);
             });
 
-            // Última celda: los botones Ver y QR
             const acciones = document.createElement("td");
 
             const botonVer = document.createElement("button");
             botonVer.className = "botonPequeno";
             botonVer.textContent = "👁 " + t("Ver");
             botonVer.addEventListener("click", function () {
-                // Abre la misma página que ve el paciente al escanear el QR
                 window.open("../php/ver_documento.php?id=" + documento.id_documento, "_blank");
             });
 
@@ -95,7 +87,6 @@ async function cargarDocumentos() {
 document.addEventListener("DOMContentLoaded", cargarDocumentos);
 
 
-// ---------- Subir un documento ----------
 
 async function subirDocumento() {
 
@@ -109,13 +100,11 @@ async function subirDocumento() {
         return;
     }
 
-    // FormData puede llevar archivos: así el PDF viaja al servidor junto con los otros datos
     const datos = new FormData();
     datos.append("tipo", tipoDocumento);
     datos.append("descripcion", descripcion);
     datos.append("archivo", campoArchivo.files[0]);
 
-    // Se desactiva el botón mientras se sube, para que un doble clic no lo suba dos veces
     botonSubir.disabled = true;
 
     try {
@@ -128,7 +117,6 @@ async function subirDocumento() {
         if (resultado.exito) {
             alert(t("El documento fue cargado correctamente.") + " ID: " + resultado.id_documento);
 
-            // Se limpian los campos y se vuelve a dibujar la tabla con el documento nuevo
             document.getElementById("tipoDocumento").value = "";
             document.getElementById("descripcionDocumento").value = "";
             campoArchivo.value = "";
@@ -145,7 +133,6 @@ async function subirDocumento() {
 }
 
 
-// ---------- Código QR ----------
 
 function generarQR() {
 
@@ -157,16 +144,11 @@ function generarQR() {
 
     } else {
 
-        // La dirección se arma con la misma que tiene el navegador ahora.
-        // Si abrís esta página con la IP de la PC (ej: http://192.168.1.50/Proyecto_Final/...),
-        // el QR también va a usar esa IP, y así el celular del paciente la puede abrir.
         let servidor = window.location.origin;
         let carpeta = window.location.pathname.split("/html/")[0];
 
-        // El QR lleva a la página pública del documento (la que ve el paciente)
         let pagina = servidor + carpeta + "/php/ver_documento.php?id=" + idDocumento;
 
-        // encodeURIComponent hace que el "?" y el "=" de la dirección no se confundan con los del servicio de QR
         let imagenQR = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + encodeURIComponent(pagina);
 
         const qrImagen = document.getElementById("qrImagen");

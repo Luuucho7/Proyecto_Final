@@ -58,7 +58,7 @@ CREATE TABLE Documentacion (
     id_documento INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100),
     tipo VARCHAR(50),
-    archivo VARCHAR(255),        -- nombre del PDF dentro de la carpeta documentos/
+    archivo VARCHAR(255),
     fecha_creacion DATE,
     id_funcionario INT,
     FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario)
@@ -71,7 +71,7 @@ CREATE TABLE Ambulancia (
     origen VARCHAR(100),
     destino VARCHAR(100),
     acompanante VARCHAR(100),
-    estado ENUM('libre', 'ocupada', 'en_servicio') DEFAULT 'libre'   -- se administra desde html/ambulancias.html
+    estado ENUM('libre', 'ocupada', 'en_servicio') DEFAULT 'libre'
 );
 
 
@@ -80,29 +80,27 @@ CREATE TABLE Tripulante (
     id_tripulante INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     telefono VARCHAR(20),
-    rol ENUM('chofer', 'copiloto') NOT NULL   -- se administra desde html/tripulacion.html
+    rol ENUM('chofer', 'copiloto') NOT NULL
 );
 
 
 
 CREATE TABLE Traslado (
     id_traslado INT PRIMARY KEY AUTO_INCREMENT,
-    hora_salida DATETIME,        -- fecha y hora (antes era TIME y se perdía el día)
-    hora_llegada DATETIME,       -- hora estimada de llegada (la escribe el funcionario)
-    hora_llegada_real DATETIME,  -- hora en que de verdad llegó al destino (se guarda sola al marcar "En destino")
-    hora_retorno DATETIME,       -- hora en que volvió al hospital (se guarda sola al finalizar)
-    origen VARCHAR(255),         -- dirección elegida en el mapa
+    hora_salida DATETIME,
+    hora_llegada DATETIME,
+    hora_llegada_real DATETIME,
+    hora_retorno DATETIME,
+    origen VARCHAR(255),
     destino VARCHAR(255),
-    -- Ciclo del traslado: sale del hospital -> llega al destino -> vuelve -> está de nuevo en el hospital.
-    -- Al finalizar, la ambulancia vuelve a quedar libre
     estado ENUM('en_camino', 'en_destino', 'retornando', 'finalizado') DEFAULT 'en_camino',
     chofer VARCHAR(100),
     copiloto VARCHAR(100),
     id_paciente INT,
     id_funcionario INT,
     matricula VARCHAR(20),
-    tipo_elemento VARCHAR(20),   -- biologico / no_biologico / organo
-    id_elemento INT,             -- id en la tabla de ese tipo
+    tipo_elemento VARCHAR(20),
+    id_elemento INT,
     FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente),
     FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario),
     FOREIGN KEY (matricula) REFERENCES Ambulancia(matricula)
@@ -145,23 +143,18 @@ CREATE TABLE organo (
 
 
 
--- correo: 11111111    contraseña: Admin123
 INSERT INTO Persona (cedula, nombre, apellido, correo, password_hash, direccion, telefono, fecha_nacimiento)
 VALUES (57730555, 'Facundo', 'Ceriotti', 'facundo231208@gmail.com',
         '$2y$10$NAVVDgl3yilSmPC14TbtGu4nDOxOIszOanriA5I8m.w7l9rElQyJu',
         'Silván Fernandez 745', '098649062', '2008-12-23');
 
 
--- Las ambulancias que aparecen en el selector de Traslado.html
 INSERT INTO Ambulancia (matricula) VALUES ('SBA 3355'), ('IAE 2467'), ('IAH 1234');
 
     
--- El usuario de prueba también es funcionario (id_funcionario = 1)
 INSERT INTO Funcionario (cedula) VALUES (57730555);
 
 
--- Los documentos que pide la letra. Los PDF están en la carpeta documentos/
--- El paciente los abre desde el QR: php/ver_documento.php?id=1, ?id=2, ...
 INSERT INTO Documentacion (nombre, tipo, archivo, fecha_creacion, id_funcionario) VALUES
 ('Indicaciones de interrupción voluntaria del embarazo', 'Indicaciones', 'interrupcion_voluntaria_embarazo.pdf', CURDATE(), 1),
 ('Prostatectomía radical: indicaciones e información para el paciente', 'Indicaciones', 'prostatectomia_radical.pdf', CURDATE(), 1),

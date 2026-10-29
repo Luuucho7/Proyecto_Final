@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tablaBody.innerHTML = '';
 
-        // Si el servidor respondió con un error (por ejemplo, MySQL apagado), se muestra ese mensaje
         if (!resultado.exito) {
             tablaBody.innerHTML = '<tr><td colspan="5" class="sin-pacientes"></td></tr>';
             tablaBody.querySelector('td').textContent = t(resultado.mensaje);
@@ -82,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultado = await respuesta.json();
 
                 if (resultado.exito) {
-                    // Si justo se estaba editando este paciente, se cierra la edición
                     if (id_paciente.value === String(paciente.id_paciente)) {
                         terminarEdicion();
                     }
@@ -95,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tablaBody.appendChild(fila);
         });
 
-        // Las filas se dibujan en español: las traducimos si la página está en inglés
         traducirPagina();
     }
 

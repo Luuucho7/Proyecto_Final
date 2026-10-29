@@ -3,7 +3,6 @@ require_once 'conexion.php';
 
 header('Content-Type: application/json');
 
-// Cada tipo de traslado guarda su elemento en su propia tabla
 $tipos = [
     'biologico'    => ['nombre', 'estado'],
     'no_biologico' => ['clasificacion', 'pendiente'],
@@ -34,10 +33,8 @@ if ($matricula === '') {
     exit();
 }
 
-// opcional() y fecha() están en funciones_traslado.php
 require_once 'funciones_traslado.php';
 
-// ---------- Revisar las fechas ----------
 $salida = fecha($_POST['hora_salida'] ?? '');
 $llegada = fecha($_POST['hora_llegada'] ?? '');
 
@@ -46,7 +43,6 @@ if ($salida === false || $llegada === false) {
     exit();
 }
 
-// Si están las dos, la llegada tiene que ser después de la salida
 if ($salida !== null && $llegada !== null) {
     if (strtotime($llegada) <= strtotime($salida)) {
         echo json_encode(['exito' => false, 'mensaje' => 'La llegada tiene que ser después de la salida.']);
@@ -55,9 +51,6 @@ if ($salida !== null && $llegada !== null) {
 }
 
 try {
-    // ---------- Revisar la ambulancia ----------
-    // Solo se puede usar una ambulancia que esté libre. Aunque el formulario ya no deja elegir las otras,
-    // se vuelve a revisar acá, porque alguien podría mandar los datos sin pasar por el formulario.
     $stmt = $pdo->prepare("SELECT estado FROM Ambulancia WHERE matricula = :matricula");
     $stmt->execute([':matricula' => $matricula]);
     $ambulancia = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -72,7 +65,6 @@ try {
         exit();
     }
 
-    // ---------- Revisar el paciente (es opcional) ----------
     $id_paciente = opcional($_POST['id_paciente'] ?? '');
 
     if ($id_paciente !== null) {
@@ -91,13 +83,8 @@ try {
         }
     }
 
-    // ---------- Guardar ----------
-    // Todo se guarda junto: si falla una parte, no se guarda ninguna
     $pdo->beginTransaction();
 
-    // 1. Ocupar la ambulancia, PERO solo si sigue libre.
-    //    Si se aprieta "Crear traslado" dos veces muy rápido, el segundo pedido ya no la encuentra libre:
-    //    rowCount() dice cuántas filas cambió el UPDATE. Si es 0, otro traslado la ocupó recién.
     $stmt = $pdo->prepare("UPDATE Ambulancia SET estado = 'en_servicio' WHERE matricula = :matricula AND estado = 'libre'");
     $stmt->execute([':matricula' => $matricula]);
 
@@ -107,7 +94,6 @@ try {
         exit();
     }
 
-    // 2. Guardar el elemento en su tabla
     $columnas = implode(', ', array_keys($elemento));
     $parametros = ':' . implode(', :', array_keys($elemento));
 
@@ -115,7 +101,6 @@ try {
     $stmt->execute($elemento);
     $id_elemento = $pdo->lastInsertId();
 
-    // 3. Guardar el traslado (ahora también con origen y destino)
     $stmt = $pdo->prepare(
         "INSERT INTO Traslado
         (hora_salida, hora_llegada, origen, destino, chofer, copiloto,

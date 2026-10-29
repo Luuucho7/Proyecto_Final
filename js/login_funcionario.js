@@ -1,12 +1,9 @@
-// login_funcionario.js
-// Manda los datos del formulario a php/login_funcionario.php y muestra el resultado.
 
 const formulario = document.getElementById('register-block');
 const feedback = document.getElementById('feedback');
 
 formulario.addEventListener('submit', async function (event) {
 
-  // Evita que el formulario recargue la página
   event.preventDefault();
 
   const usuario = document.getElementById('feedback-user').value;
@@ -33,7 +30,6 @@ formulario.addEventListener('submit', async function (event) {
 
   if (resultado.success === true) {
     feedback.className = "success";
-    // Esta página está en la carpeta html/, igual que el panel admin
     window.location.href = resultado.redirect;
   } else {
     feedback.className = "error";

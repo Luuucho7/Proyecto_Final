@@ -121,7 +121,6 @@
     font-size: 32px;
 }
 
-/* ---------- Menú lateral (el mismo en todas las páginas del funcionario) ---------- */
 .menulateral {
     position: fixed;
     top: 84px;
@@ -141,7 +140,6 @@
     border-right: 1px solid #e5e7eb;
 }
 
-/* java.js le agrega la clase "activo" para abrirlo */
 .menulateral.activo {
     left: 0;
 }
@@ -181,14 +179,12 @@
     color: #0b5fff;
 }
 
-/* Solo el link de la página en la que estás queda marcado */
 .menulateral ul li a.actual {
     background: #eff6ff;
     color: #0b5fff;
     font-weight: bold;
 }
 
-/* Botón del banner para pasar de un login a otro */
 .banner-cambio {
     background: #ffffff;
     color: #0b5fff;

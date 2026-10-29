@@ -1,14 +1,8 @@
-// traslados_lista.js
-// Muestra en una tabla todos los traslados registrados, con la información de cada uno.
-// Cada traslado pasa por estos pasos: En camino -> En destino -> Retornando -> Finalizado.
-// Mientras no está finalizado se puede modificar (botón "Editar") y pasar al siguiente paso (el otro botón).
-// Al finalizar un traslado, su ambulancia vuelve a quedar libre.
 
 document.addEventListener('DOMContentLoaded', () => {
     const buscadorInput = document.querySelector('.buscador input');
     const tablaBody = document.querySelector('.tabla-pacientes tbody');
 
-    // Formulario para modificar un traslado
     const formulario = document.getElementById('formulario');
     const formEditar = document.getElementById('form-traslado-editar');
     const id_traslado = document.getElementById('id_traslado');
@@ -21,14 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonGuardar = document.getElementById('boton-guardar-traslado');
     const botonCancelar = document.getElementById('boton-cancelar-edicion');
 
-    // Nombre del tipo y nombre de lo que indica el "detalle" de cada tipo de elemento
     const tipos = {
         biologico: { nombre: 'Biológico', detalle: 'Estado:' },
         no_biologico: { nombre: 'No biológico', detalle: 'Pendiente:' },
         organo: { nombre: 'Órgano', detalle: 'En curso:' }
     };
 
-    // Cada estado del traslado: cómo se muestra, su color y qué dice el botón que lo pasa al siguiente paso
     const estadosTraslado = {
         en_camino:  { texto: 'En camino',  clase: 'estado-servicio', boton: 'Llegó al destino' },
         en_destino: { texto: 'En destino', clase: 'estado-activo',   boton: 'Inicia el retorno' },
@@ -42,21 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
         en_servicio: 'En servicio'
     };
 
-    // Las fechas vienen de la base como "2026-10-28 14:30:00"; se muestran como "28/10/2026 14:30".
-    // Si no hay fecha, una raya.
     function fechaHora(valor) {
         if (!valor) {
             return '—';
         }
 
-        const partes = valor.split(' ');          // ["2026-10-28", "14:30:00"]
-        const dia = partes[0].split('-');         // ["2026", "10", "28"]
-        const hora = partes[1].substring(0, 5);   // "14:30"
+        const partes = valor.split(' ');
+        const dia = partes[0].split('-');
+        const hora = partes[1].substring(0, 5);
 
         return dia[2] + '/' + dia[1] + '/' + dia[0] + ' ' + hora;
     }
 
-    // El campo datetime-local necesita "2026-10-28T14:30" (con una T en el medio y sin segundos)
     function valorParaCampo(valor) {
         if (!valor) {
             return '';
@@ -64,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return valor.replace(' ', 'T').substring(0, 16);
     }
 
-    // Si no hay dato, una raya
     function dato(valor) {
         if (valor) {
             return valor;
@@ -72,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return '—';
     }
 
-    // ---------- Tabla de traslados ----------
 
     async function cargarTraslados() {
         const respuesta = await fetch('../php/listar_traslados.php');
@@ -99,14 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 tipo = { nombre: dato(traslado.tipo_elemento), detalle: 'Detalle:' };
             }
 
-            // Recorrido: "origen → destino" (si no se eligió ninguna dirección, una raya)
             let recorrido = '—';
 
             if (traslado.origen || traslado.destino) {
                 recorrido = dato(traslado.origen) + ' → ' + dato(traslado.destino);
             }
 
-            // Estado del traslado y botones: mientras no esté finalizado se puede editar y pasar al siguiente paso
             let estado = estadosTraslado[traslado.estado];
 
             if (!estado) {
@@ -142,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             if (activo) {
-                // El primer botón con clase "boton-editar" es Editar; el de "boton-avanzar" pasa al siguiente paso
                 fila.querySelector('.boton-editar').addEventListener('click', () => {
                     empezarEdicion(traslado);
                 });
@@ -155,16 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
             tablaBody.appendChild(fila);
         });
 
-        // Las filas se dibujan en español: las traducimos si la página está en inglés
         traducirPagina();
     }
 
-    // ---------- Pasar un traslado al siguiente paso ----------
 
     async function avanzarTraslado(traslado, accion) {
         let pregunta = t('Traslado Nº') + ' ' + traslado.id_traslado + ': ' + t(accion) + '?';
 
-        // El último paso libera la ambulancia: se avisa
         if (traslado.estado === 'retornando') {
             pregunta = pregunta + ' ' + t('La ambulancia va a quedar libre.');
         }
@@ -180,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const resultado = await respuesta.json();
 
         if (resultado.exito) {
-            // Si se finalizó justo el traslado que se estaba editando, se cierra el formulario
             if (resultado.estado === 'finalizado' && id_traslado.value === String(traslado.id_traslado)) {
                 terminarEdicion();
             }
@@ -190,9 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ---------- Modificar un traslado ----------
 
-    // Llena la lista de ambulancias: se pueden elegir las libres y la que ya tiene este traslado
     async function cargarAmbulancias(matriculaActual) {
         const respuesta = await fetch('../php/listar_ambulancias.php');
         const resultado = await respuesta.json();
@@ -222,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ambulancia.value = matriculaActual;
     }
 
-    // Llena la lista de pacientes: se pueden elegir los activos y el que ya tiene este traslado
     async function cargarPacientes(idActual) {
         const respuesta = await fetch('../php/listar_pacientes.php');
         const resultado = await respuesta.json();
@@ -258,8 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Si el traslado tiene un nombre que no está en las listas (por ejemplo, escrito a mano antes),
-    // se agrega a la lista para que el buscador no lo borre
     function asegurarNombre(rol, nombre) {
         if (nombre && !nombresPorRol[rol].includes(nombre)) {
             nombresPorRol[rol].push(nombre);
@@ -290,14 +265,12 @@ document.addEventListener('DOMContentLoaded', () => {
         formulario.style.display = 'none';
     }
 
-    // Guardar los cambios
     formEditar.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const datos = new FormData(formEditar);
         datos.append('id_traslado', id_traslado.value);
 
-        // Se desactiva el botón mientras se espera la respuesta (para que un doble clic no mande dos veces)
         botonGuardar.disabled = true;
 
         try {
@@ -321,16 +294,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     botonCancelar.addEventListener('click', terminarEdicion);
 
-    // ---------- Arranque ----------
 
-    // Las listas de Chofer y Copiloto (el código está en js/buscador_nombres.js)
     activarBuscador('chofer', 'chofer');
     activarBuscador('copiloto', 'copiloto');
     cargarPersonas();
 
     cargarTraslados();
 
-    // Buscador: oculta las filas que no contienen lo escrito en ninguna de sus columnas
     buscadorInput.addEventListener('input', (e) => {
         const busqueda = e.target.value.toLowerCase().trim();
 

@@ -1,6 +1,4 @@
 <?php
-// eliminar_noBiologico.php
-// Borra un elemento de la tabla no_biologico JUNTO CON su traslado (el código está en eliminar_elemento.php)
 require_once 'conexion.php';
 require_once 'eliminar_elemento.php';
 

@@ -45,7 +45,6 @@ try {
     exit('No se pudo guardar la encuesta. Intentá más tarde.');
 }
 
-// Si la encuesta se cargó desde el panel (encuestaformulario_admin.html), el botón vuelve al panel
 $volverA = '../html/pagina_principal.html';
 $textoVolver = 'Ir al inicio';
 
