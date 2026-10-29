@@ -45,6 +45,15 @@ try {
     exit('No se pudo guardar la encuesta. Intentá más tarde.');
 }
 
+// Si la encuesta se cargó desde el panel (encuestaformulario_admin.html), el botón vuelve al panel
+$volverA = '../html/pagina_principal.html';
+$textoVolver = 'Ir al inicio';
+
+if (($_POST['desde'] ?? '') === 'admin') {
+    $volverA = '../html/pagina_principal_admin.html';
+    $textoVolver = 'Volver al panel';
+}
+
 $nombreSeguro = htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
 $servicioSeguro = htmlspecialchars($servicio, ENT_QUOTES, 'UTF-8');
 
@@ -60,7 +69,7 @@ $servicioSeguro = htmlspecialchars($servicio, ENT_QUOTES, 'UTF-8');
     <main class="contenedor">
         <h1>Encuesta recibida</h1>
         <p class="descripcion"><span>Gracias</span><?php if ($nombreSeguro !== '') { echo ', ' . $nombreSeguro; } ?>. <span>Tu opinión sobre</span> <?php echo $servicioSeguro; ?> <span>fue registrada.</span></p>
-        <a href="../html/pagina_principal.html" class="boton-volver">Ir al inicio</a>
+        <a href="<?php echo $volverA; ?>" class="boton-volver"><?php echo $textoVolver; ?></a>
     </main>
     <script src="../js/idioma.js"></script>
 

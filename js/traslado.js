@@ -77,7 +77,7 @@ function mostrarDetalle(id, datos) {
     document.getElementById('d_ambulancia').textContent = datos.get('matricula');
     document.getElementById('d_origen').textContent = datos.get('origen') || '—';
     document.getElementById('d_destino').textContent = datos.get('destino') || '—';
-    document.getElementById('d_estado').textContent = 'En curso';
+    document.getElementById('d_estado').textContent = 'En camino';
 
     // Los datos se escriben en español: los traducimos si la página está en inglés
     traducirPagina();

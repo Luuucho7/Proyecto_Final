@@ -28,8 +28,8 @@ try {
         $stmt = $pdo->prepare("DELETE FROM Traslado WHERE id_traslado = :id_traslado");
         $stmt->execute([':id_traslado' => $traslado['id_traslado']]);
 
-        // 3. Si estaba en curso, liberar la ambulancia
-        if ($traslado['estado'] === 'en_curso') {
+        // 3. Si todavía no había vuelto al hospital, liberar la ambulancia
+        if ($traslado['estado'] !== 'finalizado') {
             $stmt = $pdo->prepare("UPDATE Ambulancia SET estado = 'libre' WHERE matricula = :matricula AND estado = 'en_servicio'");
             $stmt->execute([':matricula' => $traslado['matricula']]);
         }

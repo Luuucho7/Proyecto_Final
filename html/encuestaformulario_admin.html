@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!-- Copia de encuestaformulario.html para los funcionarios: tiene el banner y el menú del panel de administración -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Satisfacción</title>
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/encuesta.css">
+</head>
+<body>
+
+<header class="banner-barra">
+
+    <div class="banner-izquierda">
+        <div class="banner-menu" id="btnMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="banner">
+        <a href="../html/pagina_principal_admin.html" class="banner-logo" aria-label="Ir al panel principal">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </a>
+        <div class="banner-texto">
+            <h2>Hospital de Clínicas</h2>
+            <p>Atención de calidad para toda la comunidad</p>
+        </div>
+    </div>
+
+    <div class="banner-derecha"></div>
+
+</header>
+
+<div class="menulateral" id="menuLateral">
+
+    <h4>PANEL PRINCIPAL</h4>
+
+    <ul>
+        <li>
+            <a href="../html/pagina_principal_admin.html">
+                <img src="../css/img/casa_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Inicio</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/pacientes.html">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Pacientes</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Atencion_admin.html">
+                <img src="../css/img/hospital_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Atención</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Documentacion.html">
+                <img src="../css/img/qr_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Documentación</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/encuestaformulario_admin.html" class="actual">
+                <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Encuestas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/encuestas_resultados.html">
+                <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Resultados de encuestas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Traslado.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Traslados en Ambulancia</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/ambulancias.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Ambulancias</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/tripulacion.html">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Choferes y copilotos</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/FAQ_admin.html">
+                <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Preguntas frecuentes</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+    <div class="contenedor">
+
+        <h1>Encuesta de Satisfacción</h1>
+
+        <p class="descripcion">
+            Su opinión es muy importante para ayudarnos a mejorar nuestros servicios.
+            Complete el siguiente formulario.
+        </p>
+
+            <form action="../php/encuesta.php" method="post">
+
+                <!-- Avisa a encuesta.php que la encuesta se cargó desde el panel, para que el botón vuelva al panel -->
+                <input type="hidden" name="desde" value="admin">
+
+            <div class="grupo">  
+                <label for="nombre">Nombre (opcional)</label> 
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">  
+            </div>
+
+            <div class="grupo"> 
+                <label>Edad</label>
+                <input type="number" name="edad" min="0" max="120" required>
+            </div>
+
+            <div class="grupo"> 
+                <label>Servicio Recibido</label>
+                <select name="servicio" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="Consulta Médica">Consulta Médica</option>
+                    <option value="Emergencia">Emergencia</option>
+                    <option value="Laboratorio">Laboratorio</option>
+                    <option value="Imagenología">Imagenología</option>
+                    <option value="Internación">Internación</option>
+                    <option value="Nefrología">Nefrología</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+
+            <div class="grupo">
+                <label>¿Cómo calificaría la atención recibida?</label>
+                <div class="radio">
+                    <label><input type="radio" name="atencion" value="Excelente" required> <span>Excelente</span></label>
+                    <label><input type="radio" name="atencion" value="Muy Buena" required> <span>Muy Buena</span></label>
+                    <label><input type="radio" name="atencion" value="Buena" required> <span>Buena</span></label>
+                    <label><input type="radio" name="atencion" value="Regular" required> <span>Regular</span></label>
+                    <label><input type="radio" name="atencion" value="Mala" required> <span>Mala</span></label>
+                </div>
+            </div>
+
+            <div class="grupo">
+                <label>¿El personal fue amable?</label>
+                <div class="radio"> 
+                    <label><input type="radio" name="amabilidad" value="Si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="amabilidad" value="No" required> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="grupo">
+                <label>¿Recibió toda la información necesaria?</label>
+                <div class="radio"> 
+                    <label><input type="radio" name="informacion" value="Si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="informacion" value="No" required> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="grupo">
+                <label>Califique nuestras instalaciones</label>
+                <input type="range" name="instalaciones" min="1" max="10" value="8">
+            </div>
+
+            <div class="grupo">
+                <label>¿Recomendaría el Hospital de Clínicas?</label>
+                <div class="radio">
+                    <label><input type="radio" name="recomendacion" value="Si" required> <span>Sí</span></label> 
+                    <label><input type="radio" name="recomendacion" value="No" required> <span>No</span></label> 
+                </div>
+            </div>
+
+            <div class="grupo">
+                <label>Sugerencias o comentarios</label>
+                <textarea name="comentarios" rows="6" placeholder="Escriba aquí su comentario..."></textarea>
+            </div>
+
+            <button type="submit">Enviar Encuesta</button>
+
+        </form>
+
+    </div>
+
+<script src="../js/idioma.js"></script>
+<script src="../js/java.js"></script>
+</body>
+</html>

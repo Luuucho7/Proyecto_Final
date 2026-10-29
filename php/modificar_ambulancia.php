@@ -32,7 +32,7 @@ try {
     // 2. Si tiene un traslado en curso, tiene que seguir "En servicio".
     //    Si no, se podría poner "Libre" y asignarla a otro traslado al mismo tiempo.
     if ($estado !== 'en_servicio') {
-        $enCurso = $pdo->prepare("SELECT id_traslado FROM Traslado WHERE matricula = :matricula AND estado = 'en_curso'");
+        $enCurso = $pdo->prepare("SELECT id_traslado FROM Traslado WHERE matricula = :matricula AND estado <> 'finalizado'");
         $enCurso->execute([':matricula' => $matricula]);
         $traslado = $enCurso->fetch();
 

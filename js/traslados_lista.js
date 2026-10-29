@@ -1,6 +1,7 @@
 // traslados_lista.js
 // Muestra en una tabla todos los traslados registrados, con la información de cada uno.
-// Los que están "En curso" se pueden modificar (botón "Editar") o terminar (botón "Finalizar").
+// Cada traslado pasa por estos pasos: En camino -> En destino -> Retornando -> Finalizado.
+// Mientras no está finalizado se puede modificar (botón "Editar") y pasar al siguiente paso (el otro botón).
 // Al finalizar un traslado, su ambulancia vuelve a quedar libre.
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         biologico: { nombre: 'Biológico', detalle: 'Estado:' },
         no_biologico: { nombre: 'No biológico', detalle: 'Pendiente:' },
         organo: { nombre: 'Órgano', detalle: 'En curso:' }
+    };
+
+    // Cada estado del traslado: cómo se muestra, su color y qué dice el botón que lo pasa al siguiente paso
+    const estadosTraslado = {
+        en_camino:  { texto: 'En camino',  clase: 'estado-servicio', boton: 'Llegó al destino' },
+        en_destino: { texto: 'En destino', clase: 'estado-activo',   boton: 'Inicia el retorno' },
+        retornando: { texto: 'Retornando', clase: 'estado-servicio', boton: 'Volvió al hospital' },
+        finalizado: { texto: 'Finalizado', clase: 'estado-inactivo', boton: '' }
     };
 
     const textoEstadoAmbulancia = {
@@ -72,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
         tablaBody.innerHTML = '';
 
         if (!resultado.exito) {
-            tablaBody.innerHTML = '<tr><td colspan="13" class="sin-pacientes"></td></tr>';
+            tablaBody.innerHTML = '<tr><td colspan="15" class="sin-pacientes"></td></tr>';
             tablaBody.querySelector('td').textContent = t(resultado.mensaje);
             return;
         }
 
         if (resultado.traslados.length === 0) {
-            tablaBody.innerHTML = '<tr><td colspan="13" class="sin-pacientes">No hay traslados registrados todavía.</td></tr>';
+            tablaBody.innerHTML = '<tr><td colspan="15" class="sin-pacientes">No hay traslados registrados todavía.</td></tr>';
             traducirPagina();
             return;
         }
@@ -97,18 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 recorrido = dato(traslado.origen) + ' → ' + dato(traslado.destino);
             }
 
-            // Estado del traslado y botones: solo los que están en curso se pueden editar o finalizar
-            const enCurso = (traslado.estado === 'en_curso');
-            let estadoHtml = '';
-            let botonesHtml = '';
+            // Estado del traslado y botones: mientras no esté finalizado se puede editar y pasar al siguiente paso
+            let estado = estadosTraslado[traslado.estado];
 
-            if (enCurso) {
-                estadoHtml = '<span class="estado estado-servicio">En curso</span>';
+            if (!estado) {
+                estado = { texto: dato(traslado.estado), clase: 'estado-inactivo', boton: '' };
+            }
+
+            const activo = (estado.boton !== '');
+            const estadoHtml = '<span class="estado ' + estado.clase + '">' + estado.texto + '</span>';
+            let botonesHtml = '—';
+
+            if (activo) {
                 botonesHtml = '<button type="button" class="boton-editar">Editar</button> ' +
-                              '<button type="button" class="boton-editar boton-finalizar">Finalizar</button>';
-            } else {
-                estadoHtml = '<span class="estado estado-inactivo">Finalizado</span>';
-                botonesHtml = '—';
+                              '<button type="button" class="boton-editar boton-avanzar">' + estado.boton + '</button>';
             }
 
             const fila = document.createElement('tr');
@@ -123,19 +134,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${dato(traslado.copiloto)}</td>
                 <td>${fechaHora(traslado.hora_salida)}</td>
                 <td>${fechaHora(traslado.hora_llegada)}</td>
+                <td>${fechaHora(traslado.hora_llegada_real)}</td>
+                <td>${fechaHora(traslado.hora_retorno)}</td>
                 <td>${dato(traslado.paciente)}</td>
                 <td>${estadoHtml}</td>
                 <td>${botonesHtml}</td>
             `;
 
-            if (enCurso) {
-                // El primer botón con clase "boton-editar" es Editar; el de "boton-finalizar" es Finalizar
+            if (activo) {
+                // El primer botón con clase "boton-editar" es Editar; el de "boton-avanzar" pasa al siguiente paso
                 fila.querySelector('.boton-editar').addEventListener('click', () => {
                     empezarEdicion(traslado);
                 });
 
-                fila.querySelector('.boton-finalizar').addEventListener('click', () => {
-                    finalizarTraslado(traslado);
+                fila.querySelector('.boton-avanzar').addEventListener('click', () => {
+                    avanzarTraslado(traslado, estado.boton);
                 });
             }
 
@@ -146,27 +159,34 @@ document.addEventListener('DOMContentLoaded', () => {
         traducirPagina();
     }
 
-    // ---------- Finalizar un traslado ----------
+    // ---------- Pasar un traslado al siguiente paso ----------
 
-    async function finalizarTraslado(traslado) {
-        if (!confirm(t('¿Finalizar el traslado Nº') + ' ' + traslado.id_traslado + '? ' + t('La ambulancia va a quedar libre.'))) {
+    async function avanzarTraslado(traslado, accion) {
+        let pregunta = t('Traslado Nº') + ' ' + traslado.id_traslado + ': ' + t(accion) + '?';
+
+        // El último paso libera la ambulancia: se avisa
+        if (traslado.estado === 'retornando') {
+            pregunta = pregunta + ' ' + t('La ambulancia va a quedar libre.');
+        }
+
+        if (!confirm(pregunta)) {
             return;
         }
 
         const datos = new FormData();
         datos.append('id_traslado', traslado.id_traslado);
 
-        const respuesta = await fetch('../php/finalizar_traslado.php', { method: 'POST', body: datos });
+        const respuesta = await fetch('../php/avanzar_traslado.php', { method: 'POST', body: datos });
         const resultado = await respuesta.json();
 
         if (resultado.exito) {
-            // Si justo se estaba editando este traslado, se cierra el formulario
-            if (id_traslado.value === String(traslado.id_traslado)) {
+            // Si se finalizó justo el traslado que se estaba editando, se cierra el formulario
+            if (resultado.estado === 'finalizado' && id_traslado.value === String(traslado.id_traslado)) {
                 terminarEdicion();
             }
             cargarTraslados();
         } else {
-            alert(t(resultado.mensaje || 'No se pudo finalizar el traslado'));
+            alert(t(resultado.mensaje || 'No se pudo actualizar el traslado.'));
         }
     }
 

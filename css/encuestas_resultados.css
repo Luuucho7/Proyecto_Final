@@ -1,0 +1,124 @@
+/* encuestas_resultados.css
+   Estilos de la página de indicadores de encuestas (encuestas_resultados.html).
+   Usa como base pacientes.css (título, tablas) y le agrega las tarjetas y las barras. */
+
+/* Lista para elegir el servicio */
+.filtro-servicio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #475569;
+}
+
+.filtro-servicio select {
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+    font-size: 14px;
+}
+
+/* Tarjetas con los números principales */
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.indicador {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    padding: 18px;
+}
+
+.indicador .valor {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #1d61e7;
+}
+
+.indicador .nombre {
+    display: block;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* Cajas blancas de cada sección */
+.seccion-resultados {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+.seccion-resultados h2 {
+    margin: 0 0 18px 0;
+    font-size: 20px;
+    color: #0f172a;
+}
+
+/* Barras de la calificación de la atención */
+.barra-fila {
+    display: grid;
+    grid-template-columns: 100px 1fr 70px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #334155;
+}
+
+.barra-fondo {
+    background: #f1f5f9;
+    border-radius: 6px;
+    height: 14px;
+    overflow: hidden;
+}
+
+.barra-relleno {
+    background: #1d61e7;
+    height: 100%;
+    border-radius: 6px;
+}
+
+.barra-cantidad {
+    text-align: right;
+    color: #64748b;
+}
+
+/* Comentarios */
+.comentario {
+    border-bottom: 1px solid #f1f5f9;
+    padding: 12px 0;
+}
+
+.comentario:last-child {
+    border-bottom: none;
+}
+
+.comentario p {
+    margin: 0 0 6px 0;
+    color: #334155;
+}
+
+.comentario small {
+    color: #64748b;
+}
+
+.sin-datos {
+    color: #64748b;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .barra-fila {
+        grid-template-columns: 80px 1fr 60px;
+    }
+}

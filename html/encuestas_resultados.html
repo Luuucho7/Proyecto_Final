@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Encuestas - Hospital de Clínicas</title>
+    <link rel="stylesheet" href="../css/pacientes.css">
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/encuestas_resultados.css">
+
+</head>
+<body>
+
+<header class="banner-barra">
+
+    <div class="banner-izquierda">
+        <div class="banner-menu" id="btnMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="banner">
+        <a href="../html/pagina_principal_admin.html" class="banner-logo" aria-label="Ir al panel principal">
+            <img src="../css/img/foca.jpg" alt="Logo del Hospital de Clínicas">
+        </a>
+        <div class="banner-texto">
+            <h2>Hospital de Clínicas</h2>
+            <p>Atención de calidad para toda la comunidad</p>
+        </div>
+    </div>
+
+    <div class="banner-derecha"></div>
+
+</header>
+
+<div class="menulateral" id="menuLateral">
+
+    <h4>PANEL PRINCIPAL</h4>
+
+    <ul>
+        <li>
+            <a href="../html/pagina_principal_admin.html">
+                <img src="../css/img/casa_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Inicio</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/pacientes.html">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Pacientes</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Atencion_admin.html">
+                <img src="../css/img/hospital_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Atención</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Documentacion.html">
+                <img src="../css/img/qr_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Documentación</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/encuestaformulario_admin.html">
+                <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Encuestas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/encuestas_resultados.html" class="actual">
+                <img src="../css/img/estadisticas_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Resultados de encuestas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/Traslado.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Traslados en Ambulancia</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/ambulancias.html">
+                <img src="../css/img/ambulancia_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Ambulancias</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/tripulacion.html">
+                <img src="../css/img/persona_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Choferes y copilotos</span>
+            </a>
+        </li>
+        <li>
+            <a href="../html/FAQ_admin.html">
+                <img src="../css/img/pregunta_logo.svg" alt="" style="width:20px; height:20px; object-fit:contain;">
+                <span>Preguntas frecuentes</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+
+<main class="pacientes">
+
+        <div class="titulo-pacientes">
+            <div>
+                <h1>Resultados de Encuestas</h1>
+                <p class="subtitulo">Indicadores de satisfacción calculados con las respuestas de los pacientes</p>
+            </div>
+        </div>
+
+        <!-- Al cambiar el servicio, encuestas_resultados.js vuelve a pedir los indicadores -->
+        <div class="filtro-servicio">
+            <label for="servicio">Servicio:</label>
+            <select id="servicio">
+                <option value="">Todos los servicios</option>
+                <option value="Consulta Médica">Consulta Médica</option>
+                <option value="Emergencia">Emergencia</option>
+                <option value="Laboratorio">Laboratorio</option>
+                <option value="Imagenología">Imagenología</option>
+                <option value="Internación">Internación</option>
+                <option value="Nefrología">Nefrología</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </div>
+
+        <!-- Tarjetas con los números principales: las llena encuestas_resultados.js -->
+        <div class="indicadores">
+            <div class="indicador"><span class="valor" id="i_total">—</span><span class="nombre">Encuestas respondidas</span></div>
+            <div class="indicador"><span class="valor" id="i_satisfechos">—</span><span class="nombre">Satisfechos con la atención</span></div>
+            <div class="indicador"><span class="valor" id="i_atencion">—</span><span class="nombre">Atención promedio (de 5)</span></div>
+            <div class="indicador"><span class="valor" id="i_recomendacion">—</span><span class="nombre">Recomendarían el hospital</span></div>
+            <div class="indicador"><span class="valor" id="i_amabilidad">—</span><span class="nombre">Personal amable</span></div>
+            <div class="indicador"><span class="valor" id="i_informacion">—</span><span class="nombre">Recibieron la información necesaria</span></div>
+            <div class="indicador"><span class="valor" id="i_instalaciones">—</span><span class="nombre">Instalaciones (de 10)</span></div>
+            <div class="indicador"><span class="valor" id="i_edad">—</span><span class="nombre">Edad promedio</span></div>
+        </div>
+
+        <section class="seccion-resultados">
+            <h2>Calificación de la atención</h2>
+            <div id="barras_atencion"></div>
+        </section>
+
+        <section class="seccion-resultados">
+            <h2>Comparación entre servicios</h2>
+            <div class="tabla-contenedor">
+                <table class="tabla-pacientes">
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Encuestas</th>
+                            <th>Atención promedio (de 5)</th>
+                            <th>Instalaciones (de 10)</th>
+                            <th>Recomendarían</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla_servicios">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="seccion-resultados">
+            <h2>Últimos comentarios</h2>
+            <div id="lista_comentarios"></div>
+        </section>
+
+    </main>
+
+<script src="../js/idioma.js"></script>
+<script src="../js/encuestas_resultados.js"></script>
+<script src="../js/java.js"></script>
+</body>
+</html>
